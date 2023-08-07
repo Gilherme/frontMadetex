@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <title>Madetex - Controle</title>
+</head>
+<body>
+  <header class="header-apendices">
+    <div class="logo-apendices">
+      <svg height="25" width="130">
+        <path d="M 5 30 l 65 -25" stroke="red" stroke-width="10" fill="none" />
+        <path d="M 66 5 l 58 25" stroke="red" stroke-width="10" fill="none" />
+      </svg>
+      <svg height="23" width="130">
+        <a class="logo" href="/">
+          <text x="8" y="20" stroke="3" fill="red">MADETEX</text>
+        </a>
+      </svg>
+     </div>
+  </header>
+
+  <div class="escolha-madetex">
+    <ul>
+      <li><a onclick="getProdutos('Jundiai')" href="#">Madetex Jundiaí</a></li>
+      <li><a onclick="getProdutos('Clpta')"  href="#">Madetex Campo Limpo Pta</a></li>
+      <li><a onclick="getProdutos('Itupeva')" href="#">Madetex Itupeva</a></li>
+      <li><a onclick="getProdutos('Mogi')" href="#">Madetex Mogi Mirim</a></li>
+    </ul>
+  </div>
+
+  <!-- <nav class="nav-controle">
+    <button onclick="carregarElemento('/views/apendices/formAddMad.html', 'conteudo-controle' )"  class="btn-add-prod">Adicionar Madeiramento</button>
+    <button onclick="carregarElemento('/views/apendices/formAddProd.html', 'conteudo-controle' )"  class="btn-add-prod">Adicionar Produto</button>
+    <button class="btn-show-prod">Produtos Jundiai</button>
+    <button id="selecionador">Select</button>
+  </nav> -->
+
+
+  <main id="main-controle">
+
+    <section id="menu-controle">
+
+      <ul class="tree">
+        <li>
+          <span>Adicionar Produto</span>
+          <ul style="display: none;">
+            <li onclick="carregarElemento('/views/apendices/formAddMad.html', 'conteudo-controle' )" class="item">Madeiramento</li>
+            <li onclick="carregarElemento('/views/apendices/formAddProd.html', 'conteudo-controle' )" class="item">Produto Comum</li>
+          </ul>
+        </li>
+        <li>
+          <span>Exibir Produtos</span>
+          <ul style="display: none;">
+            <li onclick="carregarProdutos('Jundiai')" class="item">Jundiai</li>
+            <li onclick="carregarProdutos('Clpta')" class="item">Campo Limpo Pta</li>
+            <li onclick="carregarProdutos('Itupeva')" class="item">Itupeva</li>
+            <li onclick="carregarProdutos('Mogi')" class="item">Mogi Mirim</li>
+          </ul>
+        </li>
+      </ul>
+
+      <button id="selecionador">Select</button>
+    </section>
+
+    <section id="conteudo-controle"></section>
+  </main>
+
+    
+  <script src="../js/controle.js"></script>
+</body>
+</html>

@@ -1,0 +1,325 @@
+
+@import 'base';
+
+header{
+  background-color: $primaryColor;
+}
+
+.container-header{
+  width: 100%;
+}
+.container-header-top{
+  height: 100px;
+  display: grid;
+  align-content: center;
+  justify-content: space-between;
+  grid-template-columns: 20% 50% 25%;
+
+  .area-logo{
+    margin-inline: 30px;
+    grid-column: 1 / 2;
+
+    a{
+      font-family: 'Wix Madefor Display', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+    }
+
+    .logo-pequeno{
+      width: 130px;
+      height: 48px;
+      display: none;
+    } 
+    .logo-grande{
+      width: 165px;
+      height: 55px;
+      display: block;
+    }
+    .logo-ex-pq{
+      display: none;
+      width: 140px;
+      height: 55px;
+    }
+  }
+}
+
+.area-pesquisa{
+  @include flex(center);
+  grid-column: 2 / 3;
+  gap: 2px;
+  input, button{
+    width: 90%;
+    height: 35px;
+    padding: 5px 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+  }
+  button{
+    width: 35px;
+    padding: 0;
+    background-color: $fontClara;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+  
+}
+
+.area-usuario{
+  @include flex(evenly);
+  grid-column: 3 / 4;
+  color: $fontClara;
+
+  .usuario{
+    @include flex(center);
+    position: relative;
+    gap: .8rem;
+    .svg-user{
+      cursor: pointer;
+      display: block;
+      width: 35px;
+      height: 35px;
+    }
+    .mensagem-login p{
+      font-size: 0.9rem;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      line-height: 1.1rem;
+      a{
+        color: $fontClara;
+      }
+    }
+  }
+
+  .menu-hamburguer{
+    display: none;
+  }
+}
+
+.carrinho-de-compras{
+    position: relative;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+
+    .itens-no-carrinho{
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      line-height: 18px;
+      border-radius: 50%;
+      text-align: center;
+      background-color: $darkRed;
+      left: 75%;
+      top: -15%;
+      font-size: 12px;
+      // border: 1px solid red;
+    }
+}
+
+.navTopo{
+  @include flex(center);
+  width: 100%;
+  height: 30px;
+  background-color: red;
+}
+
+.container-header-bottom{
+  color: $primaryColor;
+  height: 40px;
+  background-color: $secondaryColor;
+  display: grid;
+  align-content: center;
+  grid-template-columns: 25% 50% 20%;
+
+  .categorias{
+    display: none;
+    p{
+      font-size: 1.2rem;
+      font-weight: 500;
+
+      span{
+        padding: 5px;
+        line-height: .9rem;
+        display: inline-block;
+        transform: rotate(90deg);
+      }
+    }
+  }
+  .localizacao{
+    grid-column: 1 / 2;
+    gap: 5px;
+    @include flex(center);
+    span{
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+  }
+
+  .oferta-dia{
+    @include flex(center);
+    grid-column: 3 / 4;
+
+    strong{
+      color: #fff;
+      font-size: 1.1rem;
+      transition: .3s;
+
+      &:hover{
+        font-size: 1.3rem;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .nav-header-bottom{
+    grid-column: 2 / 3;
+    nav{
+      ul{
+        @include flex(between);
+        list-style: none;
+        li{
+          font-family: $font;
+          font-size: 1rem;
+          letter-spacing: 0.5px;
+          font-weight: 500;
+          transition: .4s;
+          &:hover{
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+          }
+          a{
+            text-decoration: none;
+            color: $fontClara;
+           
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 960px){
+
+  .container-header-top{
+    height: auto;
+    grid-template-columns: 30% 50%;
+    grid-template-rows: 65px 50px;
+  }
+
+  .area-pesquisa{
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+  }
+
+  .area-logo{
+    @include flex(evenly);
+    grid-column: 1 / 2;
+    margin-inline: 0;
+  }
+  
+  .area-usuario{
+    grid-column: 2 / 3;
+
+    .mensagem-login{
+      display: none;
+    }
+   
+    .menu-hamburguer{
+      display: block;
+      border: none;
+      background-color: transparent;
+      width: 30px;
+      height: 25px;
+      div{
+        background-color: $secondaryColor;
+        width: 100%;
+        height: 4px;
+        border-radius: 2px;
+        margin: 4px 0;
+      }
+  }
+  }
+  
+  .container-header-bottom{
+    gap: 1rem;
+
+    .nav-header-bottom{
+
+      .ultimo{
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 740px){
+  .container-header-bottom{
+    gap: 0.6rem;
+
+    .nav-header-bottom{
+
+      .penultimo{
+        display: none;
+      }
+    }
+  }
+ 
+}
+
+@media screen and (max-width: 600px){
+  html{
+    font-size: 15px;
+  }
+  .container-header-top{
+    .area-logo{
+      .logo-grande{
+        display: none;
+      }
+
+      .logo-pequeno{
+        display: block;
+        a{
+          font-size:20px;
+          letter-spacing: 1px;
+        }
+        
+      }
+      
+    }
+  }
+  
+  .container-header-bottom{
+    gap: 0;
+    grid-template-columns: 35% 30% 35%;
+    .nav-header-bottom{
+      @include flex(center);
+      .categorias{
+        display: block;
+      }
+      nav{
+        display: none;
+      }
+    }
+  }
+  .penultimo{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 490px){
+  html{
+    font-size: 13px;
+  }
+  .container-header-top{
+    grid-template-columns: 40% 60%;  
+  }
+  .container-header-bottom{
+    grid-template-columns: 50% 50%;
+    .oferta-dia{
+      display: none;
+    }
+  }
+}
