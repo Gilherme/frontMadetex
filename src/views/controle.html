@@ -30,14 +30,6 @@
     </ul>
   </div>
 
-  <!-- <nav class="nav-controle">
-    <button onclick="carregarElemento('/views/apendices/formAddMad.html', 'conteudo-controle' )"  class="btn-add-prod">Adicionar Madeiramento</button>
-    <button onclick="carregarElemento('/views/apendices/formAddProd.html', 'conteudo-controle' )"  class="btn-add-prod">Adicionar Produto</button>
-    <button class="btn-show-prod">Produtos Jundiai</button>
-    <button id="selecionador">Select</button>
-  </nav> -->
-
-
   <main id="main-controle">
 
     <section id="menu-controle">
@@ -53,10 +45,19 @@
         <li>
           <span>Exibir Produtos</span>
           <ul style="display: none;">
-            <li onclick="carregarProdutos('Jundiai')" class="item">Jundiai</li>
-            <li onclick="carregarProdutos('Clpta')" class="item">Campo Limpo Pta</li>
-            <li onclick="carregarProdutos('Itupeva')" class="item">Itupeva</li>
-            <li onclick="carregarProdutos('Mogi')" class="item">Mogi Mirim</li>
+            <li onclick="carregarProdutos('Jundiai', 'produtos')" class="item">Jundiai</li>
+            <li onclick="carregarProdutos('Clpta', 'produtos')" class="item">Campo Limpo Pta</li>
+            <li onclick="carregarProdutos('Itupeva', 'produtos')" class="item">Itupeva</li>
+            <li onclick="carregarProdutos('Mogi','produtos')" class="item">Mogi Mirim</li>
+          </ul>
+        </li>
+        <li>
+          <span>Exibir Madeiramento</span>
+          <ul style="display: none;">
+            <li onclick="carregarProdutos('Jundiai', 'madeiramento')" class="item">Jundiai</li>
+            <li onclick="carregarProdutos('Clpta', 'madeiramento')" class="item">Campo Limpo Pta</li>
+            <li onclick="carregarProdutos('Itupeva', 'madeiramento')" class="item">Itupeva</li>
+            <li onclick="carregarProdutos('Mogi','madeiramento')" class="item">Mogi Mirim</li>
           </ul>
         </li>
       </ul>
