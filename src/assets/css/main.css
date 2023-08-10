@@ -102,21 +102,27 @@ html {
 #apendice-cadastrese p {
   text-align: center;
   padding: 10px;
+  font-size: 1rem;
   line-height: 1rem;
 }
 #apendice-cadastrese button {
+  cursor: pointer;
   display: block;
-  margin: 20px auto;
+  margin: 16px auto;
   width: 80%;
-  padding: 10px;
-  border: 1px solid black;
+  padding: 8px;
+  background-color: transparent;
+  border: 2px solid black;
   border-radius: 10px;
 }
 #apendice-cadastrese button a {
+  color: #000;
   text-decoration: none;
-  color: #1c1c1c;
+  font-weight: 500;
+  font-size: 1.1rem;
 }
 #apendice-cadastrese .entre {
+  padding: 9px;
   background-color: red;
   border: 0;
 }
@@ -1180,4 +1186,46 @@ footer {
 }
 footer a {
   color: #fff;
+}
+
+.card-entre {
+  width: 40%;
+  min-width: 360px;
+  padding: 2rem;
+  border-radius: 10px;
+  margin: 50px auto;
+}
+.card-entre h1, .card-entre p {
+  text-align: center;
+}
+.card-entre div {
+  position: relative;
+  margin-block: 10%;
+}
+.card-entre div input {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 2px solid #000;
+  outline: none;
+  font-size: 1rem;
+  transition: all 0.2 ease-out;
+  background-color: transparent;
+}
+.card-entre div label {
+  font-size: 1.3rem;
+  pointer-events: none;
+  margin: 0.4rem;
+}
+.card-entre button {
+  cursor: pointer;
+  padding: 1rem 5rem;
+  font-size: 1.3rem;
+  background-color: red;
+  border-radius: 1rem;
+  color: #fff;
+  border: 0;
+}
+.card-entre a {
+  color: #000;
 }/*# sourceMappingURL=main.css.map */

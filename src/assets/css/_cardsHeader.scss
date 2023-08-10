@@ -84,25 +84,30 @@
   p{
     text-align: center;
     padding: 10px;
+    font-size: 1rem;
     line-height: 1rem;
   }
 
   button{
+    cursor: pointer;
     display: block;
-    margin: 20px auto;
+    margin: 16px auto;
     width: 80%;
-    padding: 10px;
-    border: 1px solid black;
+    padding: 8px;
+    background-color: transparent;
+    border: 2px solid black;
     border-radius: 10px;
     a{
+      color: #000;
       text-decoration: none;
-      color: $primaryColor;
+      font-weight: 500;
+      font-size: 1.1rem;
     }
   }
   .entre{
+    padding: 9px;
     background-color: red;
     border: 0;
-    
     a{
       color: #fff;
     }
