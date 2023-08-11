@@ -1,4 +1,83 @@
 
+// CADASTRAR USUARIO
+
+function cadastrarUser(data){
+ 
+  fetch(`http://localhost:1039/cadastrarUsuario`, {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+  .then(response => response.json())
+  .then(result => {
+   alert(result.msg)
+  })
+  .catch(error => {
+    console.error('Erro ao inserir dados:', error);
+  });
+}
+// verificar usuario
+
+async function verificarUser(){
+
+  const nome = document.getElementById('nome').value
+  const cpf = document.getElementById('cpf').value
+  const email = document.getElementById('email').value
+  const nascimento = document.getElementById('data_nascimento').value
+  const telefone = document.getElementById('telefone').value
+  const senha = document.getElementById('senha').value
+
+  const data = {
+    nome: nome,
+    cpf: cpf,
+    email: email,
+    data_nascimento: nascimento,
+    telefone: telefone,
+    senha: senha
+  }
+  
+  const response = await fetch('http://localhost:1039/verificarUsuario', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+
+  if(response.ok){
+    const resposta = await response.json()
+     if(!resposta.existe){
+      cadastrarUser(data)
+     }else{
+      console.log('usuario já tem cadastro')
+     }
+}
+}
+
+function exibirAviso(aviso){
+  const card = criarElemento('div', 'card-aviso')
+  const mensagem = criarElemento('h4', 'aviso')
+  const login = criarElemento('a', 'faca-login')
+  const ou = criarElemento('span', 'ou')
+  const recupere = criarElemento('a', 'recuperar')
+
+  
+  ou.textContent = 'ou'
+  recupere.href = '#'; recupere.textContent = 'Recupere sua conta';
+  login.href = './login.html'; login.textContent = 'Faça login';
+  mensagem.textContent = aviso;
+
+  const body = document.querySelector('body')
+  card.appendChild(mensagem)
+  card.appendChild(login); card.appendChild(ou); card.appendChild(recupere)
+  body.appendChild(card)
+}
+
+exibirAviso('Ops, Esse CPF já está cadastrado')
+ 
+//  CPF
 function formatarCPF(cpf) {
   cpf = cpf.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
   cpf = cpf.substring(0, 11); // Limita o CPF a 11 dígitos
@@ -71,4 +150,16 @@ function atualizarCampo(campo) {
   } else {
     campo.setCustomValidity('');
   }
+}
+
+// Ferramentas
+
+function criarElemento(elemento, classe){
+  const element = document.createElement(elemento)
+  if(elemento == 'img'){
+    return element
+  }else{
+    element.classList.add(classe)
+  }
+  return element
 }

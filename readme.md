@@ -7,9 +7,10 @@
 ---- [] Criar pagina de exibicão de um produto com detalhes 
 ---- [] Criar apendice de escolher tamanho da viga antes de adicionar ao carrinho
 
-- [] Cadastre-se  *** FAZENDO ***
----- [] Criar rota de cadastre-se e cadastrar usuario 
----- [] Aplicar cors para deixar a rota segura
+- [x] Cadastre-se 
+---- [x] Criar rota de cadastre-se e cadastrar usuario 
+---- [x] Aplicar cors para deixar a rota segura
+---- [x] Verificar se o usuario já está cadastrado
 
 - [] Rotas do controle
 ---- [] Assistir aula de criptografia do curso node e mais fontes
@@ -27,7 +28,10 @@
 ---- [] Criar apendice que exibe os produtos ou aviso de cadastrese
 ---- [] Criar rota para buscar no banco de dados com base no cliente e exibir no apendice
 
-- [] 
+- [] Recuperar conta  *** FAZENDO ***
+---- [1/2] criar poupup que aparece na tela se o usuario já estiver cadastrado com o link de recuperar conta e o link de entrar 
+---- [] Enviar email com link para mudar senha 
+
 - [] 
 - [] 
 - [] 

@@ -97,7 +97,6 @@ function submitProd(produto){
     let quantidade = document.getElementById('quantidade').value;
     var data = { nome: nome, descricao: descricao, preco: preco, categoria: categoria, imagem: imagem, quantidade: quantidade };
   }
-  console.log(data)
   fetch(`http://localhost:1039/adicionar${produto}${madetex}`, {
     method: 'POST', 
     headers: {
