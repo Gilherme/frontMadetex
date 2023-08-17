@@ -23,17 +23,13 @@ function cadastrarUser(data){
 async function verificarUser(){
 
   const nome = document.getElementById('nome').value
-  const cpf = document.getElementById('cpf').value
   const email = document.getElementById('email').value
-  const nascimento = document.getElementById('data_nascimento').value
   const telefone = document.getElementById('telefone').value
   const senha = document.getElementById('senha').value
 
   const data = {
     nome: nome,
-    cpf: cpf,
     email: email,
-    data_nascimento: nascimento,
     telefone: telefone,
     senha: senha
   }
@@ -51,31 +47,30 @@ async function verificarUser(){
      if(!resposta.existe){
       cadastrarUser(data)
      }else{
-      console.log('usuario já tem cadastro')
+      exibirAviso(data.email)
      }
 }
 }
 
-function exibirAviso(aviso){
+function exibirAviso(email){
   const card = criarElemento('div', 'card-aviso')
   const mensagem = criarElemento('h4', 'aviso')
   const login = criarElemento('a', 'faca-login')
-  const ou = criarElemento('span', 'ou')
   const recupere = criarElemento('a', 'recuperar')
-
+  const btnRecupere = criarElemento('button', 'btn-recuperar')
+  const bntEntre = criarElemento('button', 'btn-entre-aviso')
   
-  ou.textContent = 'ou'
   recupere.href = '#'; recupere.textContent = 'Recupere sua conta';
   login.href = './login.html'; login.textContent = 'Faça login';
-  mensagem.textContent = aviso;
+  mensagem.textContent = `Já existe uma conta com o email ${email}`
 
   const body = document.querySelector('body')
+  btnRecupere.appendChild(recupere)
+  bntEntre.appendChild(login)
   card.appendChild(mensagem)
-  card.appendChild(login); card.appendChild(ou); card.appendChild(recupere)
+  card.appendChild(bntEntre);  card.appendChild(btnRecupere)
   body.appendChild(card)
 }
-
-exibirAviso('Ops, Esse CPF já está cadastrado')
  
 //  CPF
 function formatarCPF(cpf) {

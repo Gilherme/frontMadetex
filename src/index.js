@@ -1,16 +1,16 @@
 
 document.addEventListener('DOMContentLoaded', function() {
-  carregarProdutos('Jundiai', 'Produtos', 'section-populares');
-  carregarProdutos('Jundiai', 'Produtos', 'section-ofertas');
+  carregarProdutos('produtos', 'Madetex Jundiai', 'section-populares');
+  carregarProdutos('produtos', 'Madetex Itupeva', 'section-ofertas');
 });
 
-async function carregarProdutos(cidade, produto, destino){
-  const response = await fetch(`http://localhost:1039/${produto}${cidade}`)
+async function carregarProdutos(tipo, loja, destino){
+  const response = await fetch(`http://localhost:1039/${tipo}?loja=${encodeURIComponent(loja)}`)
     const data = await response.json()
-    CriarCarroselProdutos(cidade, produto, data, destino)
+    CriarCarroselProdutos( tipo, data, destino)
 }
 
-function CriarCarroselProdutos(cidade, produto, data, destino){
+function CriarCarroselProdutos(tipo, data, destino){
 
   const containerProdutos = criarElemento('div', 'container-produtos');
   const containerCarroselProdutos = criarElemento('div', 'container-carrosel-produtos');
@@ -30,23 +30,28 @@ function CriarCarroselProdutos(cidade, produto, data, destino){
     const imgProduto = criarElemento('div', 'img-produto');
     const img = criarElemento('img');
     const nome = criarElemento('p', 'titulo');
+    const loja = criarElemento('p', 'loja')
     const preco = criarElemento('p', 'preco-produto' );
     const parcelamento = criarElemento('p', 'parcelamento');
 
+    itemCarroselProdutos.setAttribute('data-tipo', tipo)
+    itemCarroselProdutos.setAttribute('data-id', produto.id)
     img.src = `./assets/img/${produto.imagem}`
-    if(produto == 'madeiramento'){
+    if(tipo == 'madeiramentos'){
       nome.textContent =  ` ${produto.nome} ${produto.madeira} ${produto.medida}`
     }else{
       nome.textContent = produto.nome
     }
-    preco.textContent = `R$ ${produto.preco.toString().replace('.', ',')}`
+    preco.textContent = `R$ ${produto.preco.toFixed(2).toString().replace('.', ',')}`
     parcelamento.textContent = 'em até 10x sem juros'
+    loja.textContent = `Vendido por ${produto.loja}`
 
     imgProduto.appendChild(img)
     itemCarroselProdutos.appendChild(imgProduto)
     itemCarroselProdutos.appendChild(preco)
     itemCarroselProdutos.appendChild(parcelamento)
     itemCarroselProdutos.appendChild(nome)
+    itemCarroselProdutos.appendChild(loja)
     carroselProdutos.appendChild(itemCarroselProdutos)
   })
 
@@ -58,15 +63,6 @@ function CriarCarroselProdutos(cidade, produto, data, destino){
   secaoProdutos.appendChild(containerProdutos);
 }
 
-
-// ABRIR FECHAR 
-const apendiceEntre = document.querySelector('.area-usuario .usuario')
-apendiceEntre.addEventListener('mouseover', () => abrirFechar('apendice-cadastrese'))
-apendiceEntre.addEventListener('mouseout', () => abrirFechar('apendice-cadastrese'))
-const btnMenu = document.getElementById('btn-menu')
-const btnX = document.getElementById('btn-x')
-btnMenu.addEventListener('click', () => abrirFechar('menu-mobile'));
-btnX.addEventListener('click', () => abrirFechar('menu-mobile'))
 
 // SLIDER
 let count = 1;
@@ -84,26 +80,27 @@ function nextImage(){
   document.getElementById("radio"+ count).checked = true;
 }
 
-// FERRAMENTAS
-function criarElemento(elemento, classe){
-  const element = document.createElement(elemento)
-  if(elemento == 'img'){
-    return element
-  }else{
-    element.classList.add(classe)
-  }
-  return element
-}
 
-function abrirFechar(elemento) {
-  const el = document.getElementById(elemento)
-  const computedStyle = window.getComputedStyle(el);
-  const currentDisplay = computedStyle.display;
+// Produto solo
+function carregarProduto() {
+  const cardProd = document.querySelectorAll('.item-carrosel-produtos');
+  cardProd.forEach(item => {
+    item.addEventListener('click', () => abrirProduto(item))
+  });
+};
 
-  if (currentDisplay === 'none') {
-    el.style.display = 'block'; 
-  } else {
-    el.style.display = 'none';
-  }
-}
+async function abrirProduto(item){
+  const id = item.getAttribute('data-id')
+  const tipo = item.getAttribute('data-tipo').slice(0, -1)
+  const response = await fetch(`http://localhost:1039/${tipo}?id=${encodeURIComponent(id)}`)
+  const data = await response.json()
 
+  const detalhesUrl = `/views/produto.html?id=${encodeURIComponent(id)}&tipo=${encodeURIComponent(tipo)}`;
+  window.location.href = detalhesUrl;
+};
+
+window.onload = function() {
+  setInterval(() => {
+    carregarProduto()
+  }, 1000);;
+};

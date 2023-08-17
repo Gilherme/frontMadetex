@@ -1,4 +1,12 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <title>Editar Produto</title>
+</head>
+<body>
   <form  class="form-adicionar-produto" >
 
     <div class="form-add-prod-nome">
@@ -59,8 +67,11 @@
     </div>
 
    <div class="form-add-prod-btn" >
-    <button type="button" onclick="submitProd('Produto')">Adicionar</button>
+    <button id="btn-put" type="button" onclick="editarProduto('produto')">Adicionar</button>
    </div>
 
   </form>
 
+<script src="../js/editarProduto.js"></script>
+</body>
+</html>

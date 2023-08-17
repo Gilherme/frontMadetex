@@ -214,20 +214,41 @@
 }
 
 .card-aviso{
+  padding: 30px;
   border-radius: 10px;
-  box-shadow: 0px 500px 500px 500px #0003;
+  box-shadow: 0px 0px 600px 800px #0009;
   background-color: #fff;
   position: absolute;
-  width: 300px;
+  width: 350px;
   height: 200px;
-  top: 150px;
-  left: calc(50% - 150px);
-  
+  top: 250px;
+  left: calc(50% - 175px);
+
   .aviso{
     text-align: center;
-    margin-top: 30px;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 500;
-    color: red;
+  }
+  
+  button{
+    margin-top: 60px;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+
+    a{
+      color: black;
+      text-decoration: none;
+    }
+  } 
+  .btn-entre-aviso{
+    border: 0;
+    padding: 0.6rem 1.1rem;
+    margin-inline: 1rem;
+    background-color: red;
+
+    a{
+      color: #fff;
+    }
   }
 }
