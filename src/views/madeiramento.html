@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../assets/css/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&family=Wix+Madefor+Display:wght@500;700;800&display=swap" rel="stylesheet">
-  <title>Madetex</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Roboto:wght@100;300;500&family=Wix+Madefor+Display:wght@500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&family=Wix+Madefor+Display:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <title>Madetex - Madeiramento</title>
 </head>
 <body>
   <header id="home">
@@ -33,7 +36,7 @@
               <path d="M 66 5 l 58 25" stroke="red" stroke-width="10" fill="none" />
             </svg>
             <svg height="23" width="130">
-              <a class="logo" href="../index.html">
+              <a class="logo" href="#home">
                 <text x="8" y="20" stroke="3" fill="red">MADETEX</text>
               </a>
             </svg>
@@ -57,9 +60,9 @@
           <div class="usuario">
 
             <div id="apendice-cadastrese">
-              <p>Entre ou faça login para comprar e acompanhar seus pedidos :D</p>
-              <button class="entre"><a href="/login">Entre</a></button>
-              <button><a href="/cadastrese">Cadastre-se</a></button>
+              <p>Entre ou Cadastre-se para comprar e acompanhar seus pedidos :D</p>
+              <button class="entre"> <a href="./views/login.html">Entre</a></button>
+              <button><a href="./views/cadastrese.html">Cadastre-se</a></button>
             </div>
 
             <div class="svg-user">
@@ -71,8 +74,8 @@
               </svg>
             </div>
             <div class="mensagem-login">
-              <p>Olá! faça <a href="/login">login</a></p> 
-              <p>ou <a href="/cadastrese">cadastre-se</a></p>
+              <p>Olá! faça login</p> 
+              <p>ou cadastre-se </p>
             </div>
 
           </div>
@@ -94,7 +97,7 @@
               <circle cx="22" cy="29" r="1.5" stroke="red" stroke-width="1.5" fill="red" />
             </svg> 
           </div>
-
+          
           <button  id="btn-menu" class="menu-hamburguer">
             <div></div>
             <div></div>
@@ -137,58 +140,131 @@
    
   </header>
 
-  <div class="banner">
-    <img src="../assets/img/carrosel1.png" alt="Foto de apresentação da loja">
-  </div>
+  <div id="menu-mobile" class="container-menu">
 
-  <section class="mais-vendidos-da-loja">
-    <h2 class="titulo-carrosel-produtos">MAIS VENDIDOS <span>ver mais</span></h2>
-  </section>
+    <button id="btn-x" class="x">
+      <div class="one"></div>
+      <div class="two" ></div>
+    </button>
 
-  <section class="section-telhas">
-    <h2 class="titulo-carrosel-produtos">TELHAS <span>ver mais</span></h2>
-  </section>
-
-  <section class="section-madeiramento">
-    <h2 class="titulo-carrosel-produtos">MADEIRAMENTOS <span>ver mais</span></h2>
-  </section>
-  
-  <section class="section-acessorios">
-    <h2 class="titulo-carrosel-produtos">ACESSÓRIOS <span>ver mais</span></h2>
-  </section>
-
-  <button class="btn-todos-produtos">Ver todos os produtos</button>
-  
-
-  <section class="section-informacoes">
-    
-    <div class="mapa">
-      <div class="mapa-loja">
-        <iframe  
-         src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14667.666620958371!2d-46.7688144!3d-23.2097078!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cedef4e6602cb7%3A0xaae8f2c990a5d393!2sMadetex!5e0!3m2!1spt-BR!2sbr!4v1692411414398!5m2!1spt-BR!2sbr"
-         width="350" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
+    <div class="area-usuario-menu">
+      <div class="img-usuario">
+        <img src="" alt="usuario">
       </div>
-      
     </div>
 
-    <div class="informacoes">
+    <div class="area-botoes-menu">
+      <button class="entre">Entre</button>
+      <button>Faça Login</button>
+    </div>
+    
+    <div class="area-nav-menu">
+      <nav>
+        <ul>
+          <li> <a href="#">Minhas Compras</a></li>
+          <li> <a href="#"> Todas as Categotias </a></li>
+          <li> <a href="#"> Vigamento </a></li>
+          <li> <a href="#"> Telhas </a></li>
+          <li> <a href="#"> Forro </a></li>
+          <li><a href="#">  Moveis </a></li>
+          <li> <a href="#"> Acessórios </a></li>
+          <li> <a href="#"> Churrasqueiras </a></li>
+          <li> <a href="#"> Tintas e Verniz</a> </li>
+          <li> <a href="#"> Configurações </a></li>
+        </ul>
+      </nav>
+    </div>
 
-      <h4 class="redes">     
-         <a class="instagram" href="#"><img src="../assets/img/instagram.png" alt=""></a>
-         <a class="email" href="#"><img src="../assets/img/email.png" alt=""></a>
-         <a class="whatsApp" href="#"><img src="../assets/img/whatsapp.png" alt=""></a>       
-      </h4>
+  </div>
 
-      <p>Endereço:<span class="endereco"></span></p>
+  <main class="main-produto">
+    
+    <div>
+      <p>aaa</p>
+    </div>
 
-      <p>Telefone:<span class="telefone"></span></p>
+    <section class="section-madeiramento-solo">
 
-      <p>Cidades com frete gratis:<span class="cidades-frete-gratis"></span></p>
-    </div> 
+      <div class="galeria">
 
-  </section>
+        <div class="coluna-fotos">
+        </div>
 
-  <script src="../js/madetex.js"></script>
+        <div class="fotao">
+          <img src="" alt="Foto do produto">
+        </div>
+
+      </div>
+
+      <div class="descricao">
+  
+        <h1></h1>
+        <span class="preco-antigo"></span>
+        <h2>
+          <span class="precao"></span>
+          <span class="condicao green"></span>
+        </h2>
+        <p>ou 
+          <span class="preco-parcelado"></span> 
+          <span class="parcelamento green">em até 10x</span>
+        </p>
+        <button id="btn-formas-pag" class="btn-prod-solo"><span class="setinha">&#10095</span> ver formas de pagamento </button>
+        <ul id="formas-pag"></ul>
+        
+        <h3>Quantidade de peeças:
+          <input type="number" id="pecas" value="1">
+        </h3>
+        <h3>Comprimento: 
+          <select name="Comprimento" id="comprimento">
+            <option value="1">1,00 Metro</option>
+            <option value="1.5">1,50 Metro</option>
+            <option value="2">2,00 Metros</option>
+            <option value="2.5">2,50 Metros</option>
+            <option value="3">3,00 Metros</option>
+            <option value="3.5">3,50 Metros</option>
+            <option value="4">4,00 Metros</option>
+            <option value="4.5">4,50 Metros</option>
+            <option value="5">5,00 Metross</option>
+            <option value="5.5">5,50 Metros</option>
+            <option value="6">6,00 Metros</option>
+            <option value="6.5">6,50 Metros</option>
+            <option value="7">7 Metros</option>
+            <option value="7.5">7,50 Metros</option>
+          </select>
+        </h3>
+
+      </div>
+
+      <div class="entrega-pagamento">
+
+        <span class="frete green">Frete grátis </span>
+        <p class="regiao gray"> Para a região de <span>Jundiai-SP</span></p>
+       
+
+        <button class=" btn-frete btn-prod-solo">Calcular frete e prazo de entrega</button>
+
+        <p class="retire">
+          <span class="green">Retire Gratis </span> em
+          <span class="loja">Madetex Campo Limpo Pta</span>
+        </p>
+        <button class="btn-prod-solo">ver no mapa</button>
+
+        <p class="gray entregue">Vendido e entregue por <span>Madetex Campo Limpo Pta</span></p>
+
+        <button class="comprar">Comprar agora</button>
+        <button class="add-carrinho">Adicionar ao carrinho</button>
+      </div>
+
+      <button class="btn-prod-solo ver-mais">mais informações sobre o produto <span class="seta-baixo">&#10095</span></button>
+      <div class="detalhes-mobile"></div>
+    </section>
+    <section class="recomendados">
+
+    </section>
+
+  </main>
+
+
 </body>
+<script src="../js/header.js"></script><script src="../js/ferramentas.js"></script><script src="../js/madeiramento.js"></script>
 </html>

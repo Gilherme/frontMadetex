@@ -20,10 +20,16 @@ function preencherFormulario(data){
   document.getElementById('nome').value = data.nome
   document.getElementById('categoria').value = data.categoria
   document.getElementById('preco').value = data.preco
+  if(data.medida){
+    document.getElementById('medida').value = data.medida
+    document.getElementById('madeira').value = data.madeira
+  }
+  else{
+    document.getElementById('quantidade').value = data.quantidade
+  }
   document.getElementById('desconto').value = data.desconto
   document.getElementById('condicao').value = data.condicao
   document.getElementById('pagamento').value = data.pagamento
-  document.getElementById('quantidade').value = data.quantidade
   document.getElementById('imagem').value = data.imagem
   document.getElementById('galeria').value = data.galeria
   document.getElementById('lista').value = data.lista_descricao
@@ -45,13 +51,13 @@ function preencherFormulario(data){
 // };
 
 async function editarProduto(produto){
+  
   const nome = document.getElementById('nome').value
   const categoria = document.getElementById('categoria').value
   const preco = document.getElementById('preco').value
   const desconto = document.getElementById('desconto').value
   const condicao = document.getElementById('condicao').value
   const pagamento = document.getElementById('pagamento').value
-  const quantidade = document.getElementById('quantidade').value
   const imagem = document.getElementById('imagem').value
   const galeria = document.getElementById('galeria').value
   const lista = document.getElementById('lista').value
@@ -59,8 +65,14 @@ async function editarProduto(produto){
   const loja = document.getElementById('loja').value
   const regiao = document.getElementById('regiao').value
   const id =  document.getElementById('btn-put').getAttribute('data-id')
-
-  const produtoAtualizado = { nome: nome, descricao: descricao, preco: preco, categoria: categoria, imagem: imagem, quantidade: quantidade, loja: loja, desconto: desconto, condicao: condicao, pagamento: pagamento, galeria: galeria, lista_descricao: lista, regiao: regiao};
+  if(produto === 'madeiramento'){
+    const madeira = document.getElementById('madeira').value
+    const medida = document.getElementById('medida').value
+    var produtoAtualizado = { nome: nome, descricao: descricao, madeira: madeira, medida: medida, preco: preco, categoria: categoria, imagem: imagem, loja: loja, desconto: desconto, condicao: condicao, pagamento: pagamento, galeria: galeria, lista_descricao: lista, regiao: regiao};
+  }if(produto === 'produto'){
+    const quantidade = document.getElementById('quantidade').value
+    var produtoAtualizado = { nome: nome, descricao: descricao, preco: preco, categoria: categoria, imagem: imagem, quantidade: quantidade, loja: loja, desconto: desconto, condicao: condicao, pagamento: pagamento, galeria: galeria, lista_descricao: lista, regiao: regiao};
+  }
 
   const options = {
     method: 'PUT', 

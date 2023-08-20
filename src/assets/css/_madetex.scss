@@ -1,0 +1,68 @@
+
+.banner{
+  width: 100%;
+
+  img{
+    width: 100%;
+  }
+}
+
+.btn-todos-produtos{
+  display: block;
+  margin: 10px auto;
+  font-size: 1.3rem;
+  padding: 16px;
+  cursor: pointer;
+  border: 0;
+  background-color: transparent;
+  color: $darkRed;
+}
+
+.section-informacoes{
+  width: 100%;
+  background-color: #1c1c1c;
+  @include flex(between);
+
+  .mapa{
+    height: 400px;
+    width: 50%;
+    @include flex(center);
+    border: 1px solid #fff;
+
+    .mapa-loja{
+      
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+  }
+  .informacoes{
+    padding-left: 15px;
+    color: #fff;
+    height: 400px;
+    border: 1px solid #fff;
+    width: 50%;
+    
+    .redes{
+      margin-top: 30px;
+      text-align: center;
+      a{ 
+        padding: 10px;
+        img{
+        width: 50px;
+        }
+      }
+    }
+    p{
+      font-size: 1.4rem;
+      line-height: 1.5rem;
+      margin-block: 20px;
+
+      span{
+        padding-left: 10px;
+        font-size: 1.1rem;
+        line-height: 1.5rem;
+      }
+    }
+  }
+}

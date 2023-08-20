@@ -1,4 +1,3 @@
-
 window.onload = function() {
   buscarDetalhesDoProduto();
 };
@@ -10,47 +9,63 @@ async function buscarDetalhesDoProduto() {
 
   const response = await fetch(`http://localhost:1039/${tipo}?id=${encodeURIComponent(id)}`);
   const data = await response.json();
-  preencherProduto(data[0])
+
+  preencherMadeiramento(data[0])
 }
 
-
-function preencherProduto(dados) {
+function preencherMadeiramento(dados) {
     
   const desconto = dados.desconto.toString().length === 1 ? "0.0" + dados.desconto : '0.' + dados.desconto
   const preco = dados.preco.toFixed(2)
   const precoAvista = (preco - (preco * desconto)).toFixed(2)
 
   document.querySelector('.fotao img').src = `../assets/img/${dados.imagem}`;
-  document.querySelector('.descricao h1').textContent = dados.nome;
+  document.querySelector('.descricao h1').textContent = `${dados.nome} ${dados.madeira} ${dados.medida}`;
   document.querySelector('.preco-antigo').textContent = `R$ ${preco.toString().replace('.', ',')}`;
   document.querySelector('.precao').textContent = `R$ ${precoAvista.toString().replace('.', ',')}`;
   document.querySelector('.condicao').textContent = dados.condicao;
   document.querySelector('.preco-parcelado').textContent = `R$ ${preco.toString().replace('.', ',')}`;
 
   preencherGaleria(dados.galeria)
-  preencherLista(dados.lista_descricao)
   preencherFormasPag(dados.pagamento)
 
   document.querySelector('.loja').textContent = dados.loja
   document.querySelector('.entregue span').textContent = dados.loja
-  document.querySelector('.estoque').textContent = `(${dados.quantidade} unidades)`
 
+  // Atualizar preço
+  let pecas = document.getElementById('pecas')
+  let comprimento = document.getElementById('comprimento')
+  pecas.onchange = () => atualizaPreco(dados.preco, desconto);
+  comprimento.onchange = () => atualizaPreco(dados.preco, desconto);
 }
 
-function preencherLista(dado){
-  const lista = separarString(dado)
-  const ul = document.querySelector('.sobre ul')
+function atualizaPreco(preco, desconto) {
 
-  for(const item of lista){
-    let li = document.createElement('li')
-    let span = document.createElement('span')
-    span.classList.add('a')
-    span.textContent = item
-    li.appendChild(span)
-    ul.appendChild(li)
-  }
+  const precoComDesconto = (preco - (preco * desconto)).toFixed(2)
+  
+  let pecas = document.getElementById('pecas').value
+  let comprimento = document.getElementById('comprimento').value
+
+  let qtdMetros = pecas * comprimento
+  if(qtdMetros <= 0) qtdMetros = 1
+
+  let precaoAtual = qtdMetros * precoComDesconto
+  let precoNormalAtual = qtdMetros * preco
+
+  document.querySelector('.precao').textContent = `R$ ${precaoAtual.toFixed(2).toString().replace('.', ',')}`
+  document.querySelector('.preco-antigo').textContent = `R$ ${precoNormalAtual.toFixed(2).toString().replace('.', ',')}`;
+  document.querySelector('.preco-parcelado').textContent = `R$ ${precoNormalAtual.toFixed(2).toString().replace('.', ',')}`;
 }
 
+const btnFrete = document.querySelector('.btn-frete')
+
+btnFrete.addEventListener('click', calcularFrete)
+// Função calcular frete
+function calcularFrete(){
+  console.log( 'Amigo estou aqu')
+}
+
+// Função repetida - produto.js
 const btnFormaPag = document.getElementById('btn-formas-pag')
 btnFormaPag.addEventListener('click',() => showFormasPag() )
 
@@ -68,5 +83,3 @@ function toggleSeta(seta) {
     setinha.classList.add('seta-open');
   }
 }
-
-

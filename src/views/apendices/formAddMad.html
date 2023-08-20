@@ -14,19 +14,39 @@
   </div>
 
   <div class="form-add-madeira-preco">
-    <input placeholder="preco" id="preco" type="text" name="preco">
+    <input placeholder="preco" id="preco" type="number" name="preco">
   </div>
 
-  <div class="form-add-madeira-imagem">
-    <input placeholder="imagem" id="imagem" type="text" name="imagem">
+  <div class="form-add-madeira-condicao">
+    <input type="text" placeholder="condicao de pag do desconto" id="condicao" name="condicao">
+  </div>
+
+  <div class="form-add-madeira-desconto">
+    <input type="text" placeholder="desconto em numero" id="desconto" name="desconto">
+  </div>
+
+  <div class="form-add-madeira-regiao">
+    <input type="text" id="regiao" name="regiao" placeholder="regiao com frete gratis">
   </div>
 
   <div class="form-add-madeira-categoria">
     <input placeholder="categoria" id="categoria" type="text" name="categoria">
   </div>
 
+  <div class="form-add-madeira-imagem">
+    <input placeholder="imagem" id="imagem" type="text" name="imagem">
+  </div>
+
+  <div class="form-add-madeira-galeria">
+    <input placeholder="até 5 imagems separadas por '/'" id="galeria" type="text" name="galeria">
+  </div>
+
+  <div class="form-add-madeira-lista">
+    <textarea name="lista" id="lista" placeholder="Lista de descrição separadas por '/' " cols="90" rows="5"></textarea>
+  </div>
+
   <div class="form-add-madeira-descricao">
-    <input placeholder="descricao" id="descricao" type="text" name="descricao">
+   <textarea name="descricao" id="descricao" placeholder="descricao grande do prduto" cols="90" rows="8"></textarea>
   </div>
 
   <div class="form-add-madeira-madetex">
@@ -38,8 +58,12 @@
     </select>
   </div>
 
+  <div class="form-add-madeira-pagamento">
+    <input type="text" placeholder="Formas de pagamento separado por '/' " id="pagamento" name="pagamento">
+  </div>
+
   <div class="form-add-madeira-btn" >
-    <button type="button" onclick="submitProd('Madeiramento')">Adicionar</button>
+    <button id="btn-put" type="button" onclick="submitProd('madeiramento')">Adicionar</button>
   </div>
 
 </form>

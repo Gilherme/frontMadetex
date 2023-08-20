@@ -1,17 +1,44 @@
 # Coisas a fazer
 
+## O que falta pra publicar 
+- [] Carrinho de compras 
+- [] 1 pagina pra cada madetex
+- [] footer
+- [] barra de pesquisa
+- [] pagina com resultado das pesquisas 
+- [] linkar itens do carrosel de categorias 
+- [] Função para definir locais de entrega, frete, e mais relacionado a entrega
+- [] links do menu mobile
+- [] Pagina de configurações do cliente
+- [] fazer paginas de pagamento
+
+### Meta para a semanha 18/08 - 22/08
+- [] Fazer pagina inicial dinamicamente de cada madetex
+--- [] construir 1 tabela com dados de cada uma em linha na mesma tabela
+--- [] Inserir dados na pagina bruscamente 
+--- [] Fazer banner para cada loja 
+--- [] exibir produtos de cada loja 
+--- [] colocar todos os dados de cada loja 
+--- [] botão de whats de cada loja 
+
  ### Meta para a semanha 14/08 - 18/08
-- [] Formularios e banco de dados atualizados com nova informações nescessárias sobre o produto e madeiramento
-- [] pagina de exibição para madeiramento e produto solo com todos os dados nescessários inseridos dinamicamente 
+- [x] Formularios e banco de dados atualizados com nova informações nescessárias sobre o produto e madeiramento
+- [x] pagina de exibição para madeiramento e produto solo com todos os dados nescessários inseridos dinamicamente 
+
+**Passo 2**
+- [x] Criar pagina de exibição do produto 
+- [x] Criar pagina de exibição de madeiramento
 
 **Passo 1**
 - [x] arrumar form de inserção de produtos 
 - [x] criar rota  de editar produto
-- [] Acrescentar dados que faltam dos produtos 
+- [x] Acrescentar dados que faltam dos produtos 
 
-- [] Arrumar form de inserção de madeiramento
-- [] criar rota d eeditar madeiramento
-- [] Inserir 10 produtos em cada madeireira 
+----------------------------------------------------------------------------------
+
+- [x] Arrumar form de inserção de madeiramento
+- [x] criar rota de editar madeiramento
+- [x] Inserir 10 produtos em cada madeireira 
 
 - [x] Apendice cadastrese: *** 10/08 ***
 ---- [x] Criar paginas cadastrese e login e Linkar links
@@ -31,17 +58,9 @@
 ---- [x] criar poupup que aparece na tela se o usuario já estiver cadastrado com o link de recuperar conta e o link de entrar *** 11/08 ***
 ---- [] Enviar email com link para mudar senha 
 
-- [1/2] Popular banco de dados 
-----[] criar array ou obj com produtos das 4 lojas
-----[] Inserir dinamicamente no bd 
-
 - [x] Arrumar card *** 11/08 ***
 ---- [x] Colocar "vendido por quem"
 ---- [x] Passar para grid e colocar link no nome da loja 
-
-- [] Produtos 
----- [] Criar pagina de exibicão de um produto com detalhes 
----- [] Criar apendice de escolher tamanho da viga antes de adicionar ao carrinho
 
 - [] Rotas do controle
 ---- [] Assistir aula de criptografia do curso node e mais fontes
@@ -55,14 +74,19 @@
 - [] Restringir rotas que precisa de cadastro
 ---- [] Rota de controle, cadastro de adm
 
-- [] Carrinho de compras *** Fazendo ***
+- [] Carrinho de compras
 ---- [] Criar apendice que exibe os produtos ou aviso de cadastrese
 ---- [] Criar rota para buscar no banco de dados com base no cliente e exibir no apendice
 
 - [] Setas dos carrosseis 
 ---- [] Criar uma função que recebe parametros que controle cada seta especifica 
 
-- [] 
+- [] produto e madeiramento
+--- [] Fazer ferramenta de calculo de frete implementar em produto
+--- [] implementar ferramenta de cep em madeiramento
+--- [] Exibir detalhes da loja ao clicar em ver no mapa
+
+
 - [] 
 - [] 
 - [] 

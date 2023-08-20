@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../assets/css/main.css">
+  <title>Editar Produto</title>
+</head>
+<body>
+  <form class="form-adicionar-madeira"  action="/adicionarMadeiramentoJundiai" method="post">
+  
+    <div class="form-add-madeira-nome">
+      <input placeholder="Nome" id="nome" type="text" name="nome">
+    </div>
+  
+    <div class="form-add-madeira-madeira">
+      <input placeholder="madeira" id="madeira" type="text" name="madeira">
+    </div>
+  
+    <div class="form-add-madeira-medida">
+      <input placeholder="medida" id="medida" type="text" name="medida">
+    </div>
+  
+    <div class="form-add-madeira-preco">
+      <input placeholder="preco" id="preco" type="number" name="preco">
+    </div>
+  
+    <div class="form-add-madeira-condicao">
+      <input type="text" placeholder="condicao de pag do desconto" id="condicao" name="condicao">
+    </div>
+  
+    <div class="form-add-madeira-desconto">
+      <input type="text" placeholder="desconto em numero" id="desconto" name="desconto">
+    </div>
+  
+    <div class="form-add-madeira-regiao">
+      <input type="text" id="regiao" name="regiao" placeholder="regiao com frete gratis">
+    </div>
+  
+    <div class="form-add-madeira-categoria">
+      <input placeholder="categoria" id="categoria" type="text" name="categoria">
+    </div>
+  
+    <div class="form-add-madeira-imagem">
+      <input placeholder="imagem" id="imagem" type="text" name="imagem">
+    </div>
+  
+    <div class="form-add-madeira-galeria">
+      <input placeholder="até 5 imagems separadas por '/'" id="galeria" type="text" name="galeria">
+    </div>
+  
+    <div class="form-add-madeira-lista">
+      <textarea name="lista" id="lista" placeholder="Lista de descrição separadas por '/' " cols="90" rows="5"></textarea>
+    </div>
+  
+    <div class="form-add-madeira-descricao">
+     <textarea name="descricao" id="descricao" placeholder="descricao grande do prduto" cols="90" rows="8"></textarea>
+    </div>
+  
+    <div class="form-add-madeira-madetex">
+      <select id="loja">
+        <option value="Madetex Jundiai">Jundiaí</option>
+        <option value="Madetex Campo Limpo Pta">Campo Limpo Pta</option>
+        <option value="Madetex Itupeva">Itupeva</option>
+        <option value="Madetex Mogi Mirim">Mogi Mirim</option>
+      </select>
+    </div>
+  
+    <div class="form-add-madeira-pagamento">
+      <input type="text" placeholder="Formas de pagamento separado por '/' " id="pagamento" name="pagamento">
+    </div>
+  
+    <div class="form-add-madeira-btn" >
+      <button id="btn-put" type="button" onclick="editarProduto('madeiramento')">Adicionar</button>
+    </div>
+  
+  </form>
+
+<script src="../../js/controle/editarProduto.js"></script>
+</body>
+</html>
