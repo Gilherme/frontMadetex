@@ -2,7 +2,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&family=Wix+Madefor+Display:wght@500;700;800&display=swap" rel="stylesheet">
     <title>Madetex</title>
@@ -41,7 +41,9 @@
           </div>
 
           <div class="area-pesquisa">
-            <input type="text" placeholder="Busque por vigamentos, movéis e mais... ">
+            <input id="input-pesquisa" onkeyup="filtrarSugestoesProd()" type="text" placeholder="Busque por vigamentos, movéis e mais... ">
+            <ul>
+            </ul>
             <div>
               <button>
                 <svg heigth="35" width="35">
@@ -108,7 +110,7 @@
        <div class=" closed container-header-bottom">
 
         <div class="localizacao">
-          <img src="./assets/img/local.png" width="23px" alt="">
+          <img src="../assets/img/local.png" width="23px" alt="">
           <span>Digite seu CEP</span>
         </div>
 
@@ -187,16 +189,16 @@
   
       <!-- slider images -->
         <div class="slide first">
-          <img src="./assets/img/carrosel1.png" alt="imagem 1">
+          <img src="../assets/img/carrosel1.png" alt="imagem 1">
         </div>
         <div class="slide">
-          <img src="./assets/img/carrosel2.png" alt="imagem 2">
+          <img src="../assets/img/carrosel2.png" alt="imagem 2">
         </div>
         <div class="slide">
-          <img src="./assets/img/carrosel3.png" alt="imagem 3">
+          <img src="../assets/img/carrosel3.png" alt="imagem 3">
         </div>
         <div class="slide">
-          <img src="./assets/img/carrosel2.png" alt="imagem 4">
+          <img src="../assets/img/carrosel2.png" alt="imagem 4">
         </div>
       <!-- Fim Slider Images -->
   
@@ -240,12 +242,12 @@
                 <path d="M 80 5 l 80 30" stroke="red" stroke-width="13" fill="none" />
               </svg>
               <svg height="30" width="165">
-                <a href="/views/madetex.html?loja=Madetex_Jundiaí">
+                <a href="/views/madetex.html?loja=Madetex_Jundiai">
                   <text x="4" y="24" stroke="3" fill="red">MADETEX</text>
                 </a>
               </svg>
             </div>
-            <h3><a style="text-decoration: none; color: #fff;" href="/views/madetex.html?loja=Madetex_Jundiaí">Jundiaí</a></h3>
+            <h3><a style="text-decoration: none; color: #fff;" href="/views/madetex.html?loja=Madetex_Jundiai">Jundiaí</a></h3>
           </div>
   
           <div class="item-madetexs">
@@ -285,12 +287,12 @@
                 <path d="M 80 5 l 80 30" stroke="red" stroke-width="13" fill="none" />
               </svg>
               <svg height="30" width="165">
-                <a href="/views/madetex.html?loja=Madetex_Moji_Mirim">
+                <a href="/views/madetex.html?loja=Madetex_Mogi_Mirim">
                   <text x="4" y="24" stroke="3" fill="red">MADETEX</text>
                 </a>
               </svg>
             </div> 
-            <h3><a style="text-decoration: none; color: #fff;" href="/views/madetex.html?loja=Madetex_Moji_Mirim">Mogi Mirim</a></h3>
+            <h3><a style="text-decoration: none; color: #fff;" href="/views/madetex.html?loja=Madetex_Mogi_Mirim">Mogi Mirim</a></h3>
           </div>
           
         </div>
@@ -319,67 +321,67 @@
         <div class="carrosel-categorias">
 
           <div class="item-categoria">
-            <div><img  src="./assets/img/porta.jfif"></div>
+            <div><img  src="../assets/img/porta.jfif"></div>
             <h3>Portas</h3>
           </div>
 
           <div class="item-categoria">
-            <div><img  src="./assets/img/janela.jfif"></div>
+            <div><img  src="../assets/img/janela.jfif"></div>
             <h3>Janelas</h3>
           </div>
 
           <div class="item-categoria">
-            <div><img  src="./assets/img/deck.jfif"></div>
+            <div><img  src="../assets/img/deck.jfif"></div>
             <h3>Deck</h3>
           </div>
     
           <div class="item-categoria">
-            <div><img  src="./assets/img/cambara.jfif"></div>
+            <div><img  src="../assets/img/cambara.jfif"></div>
             <h3>Madeira Cambará</h3>
           </div>
 
           <div class="item-categoria">
-            <div><img  src="./assets/img/peroba.jfif"></div>
+            <div><img  src="../assets/img/peroba.jfif"></div>
             <h3>Madeira Peroba</h3>
           </div>
 
           <div class="item-categoria">
-            <div><img  src="./assets/img/pinus.jfif"></div>
+            <div><img  src="../assets/img/pinus.jfif"></div>
             <h3>Madeira Pinus</h3>
           </div>
 
           <div class="item-categoria">
-            <div><img  src="./assets/img/mista.jfif"></div>
+            <div><img  src="../assets/img/mista.jfif"></div>
             <h3>Madeira Mista</h3>
           </div>
 
           <div class="item-categoria">
-            <div><img  src="./assets/img/cedrinho.jfif"></div>
+            <div><img  src="../assets/img/cedrinho.jfif"></div>
             <h3>Madeira Cedrinho</h3>
           </div>
 
           <div class="item-categoria">
-            <div><img  src="./assets/img/forro.jfif"></div>
+            <div><img  src="../assets/img/forro.jfif"></div>
             <h3>Forro de madeira</h3>
           </div>
 
           <div class="item-categoria">
-            <div><img  src="./assets/img/telhas/telhaRomana.jfif"></div>
+            <div><img  src="../assets/img/telhas/telhaRomana.jfif"></div>
             <h3>Telhas de Barro</h3>
           </div>
 
           <div class="item-categoria">
-            <div><img  src="./assets/img//telhas/telhaDeFibrocimentoG.png"></div>
+            <div><img  src="../assets/img//telhas/telhaDeFibrocimentoG.png"></div>
             <h3>Telhas de Fibrocimento</h3>
           </div>
 
           <div class="item-categoria">
-            <div><img  src="./assets/img/chapas.jfif"></div>
+            <div><img  src="../assets/img/chapas.jfif"></div>
             <h3>Chapas de Madeira</h3>
           </div>
     
           <div class="item-categoria">
-            <div><img  src="./assets/img/verniz.jfif"></div>
+            <div><img  src="../assets/img/verniz.jfif"></div>
             <h3>Verniz e Polisten</h3>
           </div>       
 
@@ -400,8 +402,9 @@
       <a href="./views/controle/controle.html">controle</a>
     </footer>
     
-    <script src="./js/header.js"></script>
-    <script src="./js/ferramentas.js"></script>
-    <script src="./index.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/ferramentas.js"></script>
+    <script src="../js/index.js"></script>
+    <script src="../js/barraPesquisa.js"></script>
   </body>
 </html>

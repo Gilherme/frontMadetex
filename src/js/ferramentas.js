@@ -36,35 +36,8 @@ function primeiraMaiuscula(string){
   return resultado
 }
 
-// Preenchimento de produtos e madeiramentos 
-function separarString(string){
-  const partes = string.split(" / ");
-  return partes
-}
-
-function preencherGaleria(dado){
-  const dadosDivididos = separarString(dado)
-  const galeria = document.querySelector('.coluna-fotos')
-
-  for(const link of dadosDivididos){
-    let img = document.createElement('img');
-    img.src = `../assets/img/${link}`
-    galeria.appendChild(img)
-  } 
-}
-
-function preencherFormasPag(dado){
-  const formas = separarString(dado)
-  const ulFormaPag = document.querySelector('#formas-pag')
-  for(const forma of formas){
-    let li = document.createElement('li')
-    li.textContent = forma
-    ulFormaPag.appendChild(li)
-  }
-}
-
 // Carrosel Produtos 
-function CriarCarroselProdutos(tipo, data, destino){
+function CriarCarroselProdutos(data, destino){
 
   const containerProdutos = criarElemento('div', 'container-produtos');
   const containerCarroselProdutos = criarElemento('div', 'container-carrosel-produtos');
@@ -88,15 +61,10 @@ function CriarCarroselProdutos(tipo, data, destino){
     const preco = criarElemento('p', 'preco-produto' );
     const parcelamento = criarElemento('p', 'parcelamento');
 
-    itemCarroselProdutos.setAttribute('data-tipo', tipo)
     itemCarroselProdutos.setAttribute('data-id', produto.id)
 
-    img.src = `./assets/img/${produto.imagem}`
-    if(tipo == 'madeiramentos'){
-      nome.textContent =  ` ${produto.nome} ${produto.madeira} ${produto.medida}`
-    }else{
-      nome.textContent = produto.nome
-    }
+    img.src = `../assets/img/${produto.imagem}`
+    nome.textContent = produto.nome
     preco.textContent = `R$ ${produto.preco.toFixed(2).toString().replace('.', ',')}`
     parcelamento.textContent = 'em até 10x sem juros'
     loja.textContent = `Vendido por ${produto.loja}`

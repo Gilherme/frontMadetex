@@ -2,7 +2,7 @@
 
 ## O que falta pra publicar 
 - [] Carrinho de compras 
-- [] 1 pagina pra cada madetex
+- [x] 1 pagina pra cada madetex
 - [] footer
 - [] barra de pesquisa
 - [] pagina com resultado das pesquisas 
@@ -13,13 +13,13 @@
 - [] fazer paginas de pagamento
 
 ### Meta para a semanha 18/08 - 22/08
-- [] Fazer pagina inicial dinamicamente de cada madetex
---- [] construir 1 tabela com dados de cada uma em linha na mesma tabela
---- [] Inserir dados na pagina bruscamente 
---- [] Fazer banner para cada loja 
---- [] exibir produtos de cada loja 
---- [] colocar todos os dados de cada loja 
---- [] botão de whats de cada loja 
+- [x] Fazer pagina inicial dinamicamente de cada madetex
+--- [x] construir 1 tabela com dados de cada uma em linha na mesma tabela
+--- [x] Inserir dados na pagina bruscamente 
+--- [x] Fazer banner para cada loja 
+--- [x] exibir produtos de cada loja 
+--- [x] colocar todos os dados de cada loja 
+--- [x] botão de whats de cada loja 
 
  ### Meta para a semanha 14/08 - 18/08
 - [x] Formularios e banco de dados atualizados com nova informações nescessárias sobre o produto e madeiramento
