@@ -96,6 +96,7 @@
           </div>
 
           <button  id="btn-menu" class="menu-hamburguer">
+
             <div></div>
             <div></div>
             <div></div>
@@ -107,22 +108,18 @@
 
      <div class=" closed container-header-bottom">
 
-      <div class="localizacao">
-        <img src="../assets/img/local.png" width="23px" alt="">
-        <span>Digite seu CEP</span>
+      <div class="categorias">
+        <p>Categorias <span>&#10095</span></p>
       </div>
 
       <div class="nav-header-bottom">
-        <div class="categorias">
-          <p>Categorias <span>&#10095</span></p>
-        </div>
         <nav>
           <ul>
-            <li><a href="#">Para seu Telhado</a></li>
-            <li><a href="#">Madeiras</a></li>
-            <li><a href="#">Móveis</a></li>
-            <li class="penultimo"><a href="#">Acessórios</a></li>
-            <li class="ultimo"><a href="#">Compensados</a></li>
+            <li><a href="./produtos.html?subCategoria=vigamentos">Vigamentos</a></li>
+            <li><a href="./produtos.html?subCategoria=telhas">Telhas</a></li>
+            <li><a href="./produtos.html?subCategoria=portasEjanelas">Portas e Janelas</a></li>
+            <li class="penultimo"><a href="./produtos.html?subCategoria=tabuas">Tabuas</a></li>
+            <li class="ultimo"><a href="./produtos.html?subCategoria=compensadosEmadeirites">Compensados e Madeirites</a></li>
           </ul>
         </nav>
       </div>
@@ -137,13 +134,50 @@
    
   </header>
 
+  <div id="menu-mobile" class="container-menu">
+
+    <button id="btn-x" class="x">
+      <div class="one"></div>
+      <div class="two" ></div>
+    </button>
+
+    <div class="area-usuario-menu">
+      <div class="img-usuario">
+        <img src="" alt="usuario">
+      </div>
+    </div>
+
+    <div class="area-botoes-menu">
+      <button class="entre">Entre</button>
+      <button>Faça Login</button>
+    </div>
+    
+    <div class="area-nav-menu">
+      <nav>
+        <ul>
+          <li> <a href="#">Minhas Compras</a></li>
+          <li> <a href="#"> Todas as Categotias </a></li>
+          <li> <a href="#"> Vigamento </a></li>
+          <li> <a href="#"> Telhas </a></li>
+          <li> <a href="#"> Forro </a></li>
+          <li><a href="#">  Moveis </a></li>
+          <li> <a href="#"> Acessórios </a></li>
+          <li> <a href="#"> Churrasqueiras </a></li>
+          <li> <a href="#"> Tintas e Verniz</a> </li>
+          <li> <a href="#"> Configurações </a></li>
+        </ul>
+      </nav>
+    </div>
+
+  </div>
+
   <div class="banner">
     <img src="" alt="Foto de apresentação da loja">
   </div>
 
-  <section id="mais-vendidos-da-loja">
+  <!-- <section id="mais-vendidos-da-loja">
     <h2 class="titulo-carrosel-produtos">MAIS VENDIDOS <span>ver mais</span></h2>
-  </section>
+  </section> -->
 
   <section id="section-telhas">
     <h2 class="titulo-carrosel-produtos">TELHAS <span>ver mais</span></h2>
@@ -153,9 +187,9 @@
     <h2 class="titulo-carrosel-produtos">MADEIRAMENTOS <span>ver mais</span></h2>
   </section>
   
-  <section id="section-acessorios">
+  <!-- <section id="section-acessorios">
     <h2 class="titulo-carrosel-produtos">ACESSÓRIOS <span>ver mais</span></h2>
-  </section>
+  </section> -->
 
   <button class="btn-todos-produtos">Ver todos os produtos</button>
   
@@ -188,6 +222,6 @@
     </div> 
 
   </section>
-  <script src="../js/ferramentas.js"></script><script src="../js/madetex.js"></script><script src="../js/services/produtoSolo.js"></script><script src="../js/header.js"></script>
+  <script src="../js/ferramentas.js"></script><script src="../js/madetex.js"></script><script src="../js/header.js"></script>
 </body>
 </html>

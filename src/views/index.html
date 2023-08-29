@@ -40,19 +40,18 @@
             </div>
           </div>
 
-          <div class="area-pesquisa">
+          <form class="area-pesquisa">
             <input id="input-pesquisa" onkeyup="filtrarSugestoesProd()" type="text" placeholder="Busque por vigamentos, movéis e mais... ">
-            <ul>
-            </ul>
+            <ul></ul>
             <div>
-              <button>
+              <button type="button" onclick="ola()">
                 <svg heigth="35" width="35">
                   <circle cx="16" cy="15" r="8" stroke="red" stroke-width="2" fill="#fff" />
                    <line x1="21" y1="22" x2="27" y2="30" style="stroke:red; stroke-width:2" />
                 </svg>
               </button>
             </div>
-          </div>
+          </form>
   
           <div class="area-usuario">
 
@@ -60,8 +59,8 @@
 
               <div id="apendice-cadastrese">
                 <p>Entre ou Cadastre-se para comprar e acompanhar seus pedidos :D</p>
-                <button class="entre"> <a href="./views/user/login.html">Entre</a></button>
-                <button><a href="./views/user/cadastrese.html">Cadastre-se</a></button>
+                <button class="entre"> <a href="./user/login.html">Entre</a></button>
+                <button><a href="./user/cadastrese.html">Cadastre-se</a></button>
               </div>
 
               <div class="svg-user">
@@ -109,22 +108,18 @@
 
        <div class=" closed container-header-bottom">
 
-        <div class="localizacao">
-          <img src="../assets/img/local.png" width="23px" alt="">
-          <span>Digite seu CEP</span>
+        <div class="categorias">
+          <p>Categorias <span>&#10095</span></p>
         </div>
 
         <div class="nav-header-bottom">
-          <div class="categorias">
-            <p>Categorias <span>&#10095</span></p>
-          </div>
           <nav>
             <ul>
-              <li><a href="#">Para seu Telhado</a></li>
-              <li><a href="#">Madeiras</a></li>
-              <li><a href="#">Móveis</a></li>
-              <li class="penultimo"><a href="#">Acessórios</a></li>
-              <li class="ultimo"><a href="#">Compensados</a></li>
+              <li><a href="./produtos.html?param=vigamentos&column=sub_categoria">Vigamentos</a></li>
+              <li><a href="./produtos.html?param=telhas&column=categoria">Telhas</a></li>
+              <li><a href="./produtos.html?param=esquadrias&column=categoria">Portas e Janelas</a></li>
+              <li class="penultimo"><a href="./produtos.html?param=tabuas&column=sub_categoria">Tabuas</a></li>
+              <li class="ultimo"><a href="./produtos.html?param=chapas_de_madeira&column=categoria">Compensados e Madeirites</a></li>
             </ul>
           </nav>
         </div>
@@ -141,40 +136,41 @@
 
     <div id="menu-mobile" class="container-menu">
 
-      <button id="btn-x" class="x">
-        <div class="one"></div>
-        <div class="two" ></div>
-      </button>
+    <button id="btn-x" class="x">
+      <div class="one"></div>
+      <div class="two" ></div>
+    </button>
 
-      <div class="area-usuario-menu">
-        <div class="img-usuario">
-          <img src="" alt="usuario">
-        </div>
+    <div class="area-usuario-menu">
+      <div class="img-usuario">
+        <img src="" alt="usuario">
       </div>
+    </div>
 
-      <div class="area-botoes-menu">
-        <button class="entre">Entre</button>
-        <button>Faça Login</button>
-      </div>
-      
-      <div class="area-nav-menu">
-        <nav>
-          <ul>
-            <li> <a href="#">Minhas Compras</a></li>
-            <li> <a href="#"> Todas as Categotias </a></li>
-            <li> <a href="#"> Vigamento </a></li>
-            <li> <a href="#"> Telhas </a></li>
-            <li> <a href="#"> Forro </a></li>
-            <li><a href="#">  Moveis </a></li>
-            <li> <a href="#"> Acessórios </a></li>
-            <li> <a href="#"> Churrasqueiras </a></li>
-            <li> <a href="#"> Tintas e Verniz</a> </li>
-            <li> <a href="#"> Configurações </a></li>
-          </ul>
-        </nav>
-      </div>
+    <div class="area-botoes-menu">
+      <button class="entre">Entre</button>
+      <button>Faça Login</button>
+    </div>
+    
+    <div class="area-nav-menu">
+      <nav>
+        <ul>
+          <li> <a href="#">Minhas Compras</a></li>
+          <li> <a href="#"> Todas as Categotias </a></li>
+          <li> <a href="#"> Vigamento </a></li>
+          <li> <a href="#"> Telhas </a></li>
+          <li> <a href="#"> Forro </a></li>
+          <li><a href="#">  Moveis </a></li>
+          <li> <a href="#"> Acessórios </a></li>
+          <li> <a href="#"> Churrasqueiras </a></li>
+          <li> <a href="#"> Tintas e Verniz</a> </li>
+          <li> <a href="#"> Configurações </a></li>
+        </ul>
+      </nav>
+    </div>
 
     </div>
+    
 
     <!-- CARROSEL-->
     <div class="slider">
@@ -321,68 +317,94 @@
         <div class="carrosel-categorias">
 
           <div class="item-categoria">
-            <div><img  src="../assets/img/porta.jfif"></div>
-            <h3>Portas</h3>
+            <a href="./produtos.html?param=portas&column=sub_sub_categoria">
+              <div><img  src="../assets/img/porta.jfif"></div>
+              <h3>Portas</h3>
+            </a>
           </div>
 
           <div class="item-categoria">
-            <div><img  src="../assets/img/janela.jfif"></div>
-            <h3>Janelas</h3>
+            <a href="./produtos.html?param=janelas&column=sub_sub_categoria">
+              <div><img  src="../assets/img/janela.jfif"></div>
+              <h3>Janelas</h3>
+            </a>
           </div>
 
           <div class="item-categoria">
+           <a href="./produtos.html?param=decks&column=sub_categoria">
             <div><img  src="../assets/img/deck.jfif"></div>
             <h3>Deck</h3>
+           </a>
           </div>
     
           <div class="item-categoria">
-            <div><img  src="../assets/img/cambara.jfif"></div>
-            <h3>Madeira Cambará</h3>
+            <a href="./produtos.html?param=cambara&column=madeira">
+              <div><img  src="../assets/img/cambara.jfif"></div>
+              <h3>Madeira Cambará</h3>
+            </a>
           </div>
 
           <div class="item-categoria">
-            <div><img  src="../assets/img/peroba.jfif"></div>
-            <h3>Madeira Peroba</h3>
+            <a href="./produtos.html?param=peroba&column=madeira">
+              <div><img  src="../assets/img/peroba.jfif"></div>
+              <h3>Madeira Peroba</h3>
+            </a>
           </div>
 
           <div class="item-categoria">
-            <div><img  src="../assets/img/pinus.jfif"></div>
-            <h3>Madeira Pinus</h3>
+            <a href="./produtos.html?param=pinus&column=madeira">
+              <div><img  src="../assets/img/pinus.jfif"></div>
+              <h3>Madeira Pinus</h3>
+            </a>
           </div>
 
           <div class="item-categoria">
-            <div><img  src="../assets/img/mista.jfif"></div>
-            <h3>Madeira Mista</h3>
+            <a href="./produtos.html?param=mista&column=madeira">
+              <div><img  src="../assets/img/mista.jfif"></div>
+              <h3>Madeira Mista</h3>
+            </a>
           </div>
 
           <div class="item-categoria">
+           <a href="./produtos.html?param=cedro&column=madeira">
             <div><img  src="../assets/img/cedrinho.jfif"></div>
             <h3>Madeira Cedrinho</h3>
+           </a>
           </div>
 
           <div class="item-categoria">
-            <div><img  src="../assets/img/forro.jfif"></div>
-            <h3>Forro de madeira</h3>
+            <a href="./produtos.html?param=forro&column=categoria">
+              <div><img  src="../assets/img/forro.jfif"></div>
+              <h3>Forro de madeira</h3>
+            </a>
           </div>
 
           <div class="item-categoria">
-            <div><img  src="../assets/img/telhas/telhaRomana.jfif"></div>
-            <h3>Telhas de Barro</h3>
+            <a href="./produtos.html?param=telhas_de_barro&column=sub_categoria">
+              <div><img  src="../assets/img/telhas/telhaRomana.jfif"></div>
+              <h3>Telhas de Barro</h3>
+            </a>
           </div>
 
           <div class="item-categoria">
-            <div><img  src="../assets/img//telhas/telhaDeFibrocimentoG.png"></div>
-            <h3>Telhas de Fibrocimento</h3>
+            <a href="./produtos.html?param=telhas_de_fibrocimento&column=sub_categoria">
+              <div><img  src="../assets/img//telhas/telhaDeFibrocimentoG.png"></div>
+              <h3>Telhas de Fibrocimento</h3>
+            </a>
           </div>
 
           <div class="item-categoria">
-            <div><img  src="../assets/img/chapas.jfif"></div>
-            <h3>Chapas de Madeira</h3>
+            <a href="./produtos.html?param=chapas_de_madeira&column=categoria">
+              <div><img  src="../assets/img/chapas.jfif"></div>
+              <h3>Chapas de Madeira</h3>
+            </a>
           </div>
     
           <div class="item-categoria">
-            <div><img  src="../assets/img/verniz.jfif"></div>
-            <h3>Verniz e Polisten</h3>
+            <a href="./produtos.html?param=tintas&column=categoria">
+              <div><img  src="../assets/img/verniz.jfif"></div>
+              <h3>Verniz e Polisten</h3>
+            </a>
           </div>       
 
         </div>
@@ -399,12 +421,11 @@
     </section>
     
     <footer>
-      <a href="./views/controle/controle.html">controle</a>
+      <a href="./controle/controle.html">controle</a>
     </footer>
     
     <script src="../js/header.js"></script>
     <script src="../js/ferramentas.js"></script>
     <script src="../js/index.js"></script>
-    <script src="../js/barraPesquisa.js"></script>
   </body>
 </html>

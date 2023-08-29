@@ -36,6 +36,13 @@ function primeiraMaiuscula(string){
   return resultado
 }
 
+function limitarString(texto, limite) {
+  if (texto.length <= limite) {
+      return texto;
+  } else {
+      return texto.slice(0, limite - 3) + "...";
+  }
+}
 // Carrosel Produtos 
 function CriarCarroselProdutos(data, destino){
 
@@ -52,8 +59,10 @@ function CriarCarroselProdutos(data, destino){
   
   const secaoProdutos = document.getElementById(destino)
 
+  const produtosInseridos = {}
   data.forEach(produto => {
-    const itemCarroselProdutos = criarElemento('div', 'item-carrosel-produtos');
+    if(!produtosInseridos[produto.nome]){
+      const itemCarroselProdutos = criarElemento('div', 'item-carrosel-produtos');
     const imgProduto = criarElemento('div', 'img-produto');
     const img = criarElemento('img');
     const nome = criarElemento('p', 'titulo');
@@ -64,7 +73,7 @@ function CriarCarroselProdutos(data, destino){
     itemCarroselProdutos.setAttribute('data-id', produto.id)
 
     img.src = `../assets/img/${produto.imagem}`
-    nome.textContent = produto.nome
+    nome.textContent =  limitarString(produto.nome, 42)
     preco.textContent = `R$ ${produto.preco.toFixed(2).toString().replace('.', ',')}`
     parcelamento.textContent = 'em até 10x sem juros'
     loja.textContent = `Vendido por ${produto.loja}`
@@ -76,6 +85,8 @@ function CriarCarroselProdutos(data, destino){
     itemCarroselProdutos.appendChild(nome)
     itemCarroselProdutos.appendChild(loja)
     carroselProdutos.appendChild(itemCarroselProdutos)
+    produtosInseridos[produto.nome] = true;
+    }
   })
 
   containerCarroselProdutos.appendChild(btnProdutosE)
@@ -85,3 +96,5 @@ function CriarCarroselProdutos(data, destino){
 
   secaoProdutos.appendChild(containerProdutos);
 }
+
+

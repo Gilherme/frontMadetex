@@ -1,11 +1,11 @@
 
 document.addEventListener('DOMContentLoaded', function() {
-  carregarProdutos('Madetex Jundiai', 'section-populares');
-  carregarProdutos('Madetex Itupeva', 'section-ofertas');
+  carregarProdutos('Madetex Jundiai', 'loja', 'section-populares');
+  carregarProdutos('Madetex Itupeva', 'loja', 'section-ofertas');
 });
 
-async function carregarProdutos(loja, destino){
-  const response = await fetch(`http://localhost:1039/produtos?loja=${encodeURIComponent(loja)}`)
+async function carregarProdutos(loja, column, destino){
+  const response = await fetch(`http://localhost:1039/produtos?param=${encodeURIComponent(loja)}&column=${encodeURIComponent(column)}`)
     const data = await response.json()
     CriarCarroselProdutos(data, destino)
 }

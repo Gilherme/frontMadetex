@@ -69,11 +69,13 @@ header{
   }
   ul{
     display: none;
+    max-height: 200px;
     top: 67px;
     background-color: #fff;
     position: absolute;
     list-style: none;
-    width: 48.5%;
+    width: 48%;
+    overflow: hidden;
     border-radius: 0px 0px 5px 5px;
     z-index: 1;
 
@@ -157,10 +159,12 @@ header{
   background-color: $secondaryColor;
   display: grid;
   align-content: center;
-  grid-template-columns: 25% 50% 20%;
+  grid-template-columns: 15% 65% 15%;
 
   .categorias{
-    display: none;
+    grid-column: 1 / 2;
+    gap: 5px;
+    @include flex(center);
     p{
       font-size: 1.2rem;
       font-weight: 500;
@@ -173,32 +177,6 @@ header{
       }
     }
   }
-  .localizacao{
-    grid-column: 1 / 2;
-    gap: 5px;
-    @include flex(center);
-    span{
-      font-size: 1.1rem;
-      font-weight: 500;
-    }
-  }
-
-  .oferta-dia{
-    @include flex(center);
-    grid-column: 3 / 4;
-
-    strong{
-      color: #fff;
-      font-size: 1.1rem;
-      transition: .3s;
-
-      &:hover{
-        font-size: 1.3rem;
-        cursor: pointer;
-      }
-    }
-  }
-
   .nav-header-bottom{
     grid-column: 2 / 3;
     nav{
@@ -225,6 +203,23 @@ header{
       }
     }
   }
+  .oferta-dia{
+    @include flex(center);
+    grid-column: 3 / 4;
+
+    strong{
+      color: #fff;
+      font-size: 1.1rem;
+      transition: .3s;
+
+      &:hover{
+        font-size: 1.3rem;
+        cursor: pointer;
+      }
+    }
+  }
+
+  
 }
 
 @media screen and (max-width: 960px){

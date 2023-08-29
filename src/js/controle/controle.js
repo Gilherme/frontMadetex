@@ -1,7 +1,7 @@
 
 // GET
-async function carregarProdutos(loja){
-  const response = await fetch(`http://localhost:1039/produtos?loja=${encodeURIComponent(loja)}`)
+async function carregarProdutos(loja, column){
+  const response = await fetch(`http://localhost:1039/produtos?param=${encodeURIComponent(loja)}&column=${encodeURIComponent(column)}`)
     const produtos = await response.json()
     CriarCarroselControle(produtos)
 }
@@ -89,7 +89,8 @@ function submitProd(produto){
   let lista     =document.getElementById('lista').value
   let pagamento =document.getElementById('pagamento').value
   let quantidade=document.getElementById('quantidade').value;
-  var produto = { nome: nome, descricao: descricao, preco: preco, categoria: categoria, imagem: imagem, quantidade: quantidade, loja: loja, desconto: desconto, condicao: condicao, pagamento: pagamento, galeria: galeria, lista_descricao: lista, regiao: regiao };
+  let madeira   =document.getElementById('madeira').value;
+  var produto = { nome: nome, madeira: madeira, descricao: descricao, preco: preco, categoria: categoria, imagem: imagem, quantidade: quantidade, loja: loja, desconto: desconto, condicao: condicao, pagamento: pagamento, galeria: galeria, lista_descricao: lista, regiao: regiao };
 
   fetch(`http://localhost:1039/adicionarProduto`,{
    method: 'POST',

@@ -3,7 +3,7 @@ buscarDadosDaLoja();
 
 async function buscarDadosDaLoja() {
   const urlParams = new URLSearchParams(window.location.search);
-  const loja = urlParams.get('loja');
+  const loja = urlParams.get('loja').replace('_', ' ').replace('_', ' ');
 
   const response = await fetch(`http://localhost:1039/homeLoja?loja=${encodeURIComponent(loja)}`);
   const data = await response.json();
@@ -29,14 +29,12 @@ document.addEventListener('DOMContentLoaded', function() {
     loja = loja.replace('_', ' ');
   }
 
-  carregarProdutos(loja, 'mais-vendidos-da-loja');
-  carregarProdutos(loja, 'section-telhas');
-  carregarProdutos(loja, 'section-madeiramento');
-  carregarProdutos(loja, 'section-acessorios');
+  carregarProdutos(loja, 'telhas', 'section-telhas');
+  carregarProdutos(loja, 'madeiramentos', 'section-madeiramento');
 });
 
-async function carregarProdutos(loja, destino){
-  const response = await fetch(`http://localhost:1039/produtos?loja=${encodeURIComponent(loja)}`)
+async function carregarProdutos(loja, categoria, destino){
+  const response = await fetch(`http://localhost:1039/produtosPorLoja?loja=${encodeURIComponent(loja)}&categoria=${encodeURIComponent(categoria)}`)
     const data = await response.json()
     CriarCarroselProdutos(data, destino)
 }

@@ -16,20 +16,22 @@
       .item-carrosel-produtos{
         align-items: center;
         display: grid;
-        grid-template-columns: 1;
+        grid-template-columns: 1fr;
         grid-template-rows: 55% 12% 8% 20% 5%;
         transition: .2s;
         padding: 15px;
         min-width: 220px;
+        max-width: 220px;
         min-height: 340px;
+        max-height: 340px;
         box-shadow: 2px 3px 3px #0005;
         border-radius: 8px; 
         background-color: #fff;
 
       &:hover{
         cursor: pointer;
-        min-width: 230px;
         min-height: 360px;
+        max-width: 360px;
         box-shadow: 2px 5px 5px #0005;
       }
         .img-produto{

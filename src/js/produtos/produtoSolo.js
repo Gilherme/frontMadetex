@@ -9,11 +9,10 @@ async function buscarDetalhesDoProduto() {
 
   const response = await fetch(`http://localhost:1039/produto?id=${encodeURIComponent(id)}`);
   const produto = await response.json();
-  preencherProduto(produto)
+  preencherProduto(produto[0])
 }
 
 function preencherProduto(produto) {
-    
   const desconto = produto.desconto.toString().length === 1 ? "0.0" + produto.desconto : '0.' + produto.desconto
   const preco = produto.preco.toFixed(2)
   const precoAvista = (preco - (preco * desconto)).toFixed(2)
@@ -33,14 +32,23 @@ function preencherProduto(produto) {
   document.querySelector('.entregue span').textContent = produto.loja
   document.querySelector('.estoque').textContent = `(${produto.quantidade} unidades)`
 
-   // Atualizar preço Madeiramento
-  //  let pecas = document.getElementById('pecas')
-  //  let comprimento = document.getElementById('comprimento')
-  //  pecas.onchange = () => atualizaPreco(dados.preco, desconto);
-  //  comprimento.onchange = () => atualizaPreco(dados.preco, desconto);
+  if(produto.categoria == "madeiramentos"){
+    exibirOpcoesDeTamanho()
+  }
+
+  exibirProdutosRelacionados(produto.sub_categoria)
+
+  let pecas = document.getElementById('pecas')
+  let comprimento = document.getElementById('comprimento')
+  pecas.onchange = () => atualizaPreco(produto.preco, desconto);
+  comprimento.onchange = () => atualizaPreco(produto.preco, desconto);
 }
 
-// Atualizar preço de acordo com a quantidade (madeiramento)
+function exibirOpcoesDeTamanho(){
+  document.querySelector('.quantidade').style.display = 'none'
+  document.querySelector('.opcoesDeTamanho').style.display = 'block'
+}
+
 function atualizaPreco(preco, desconto) {
 
   const precoComDesconto = (preco - (preco * desconto)).toFixed(2)
@@ -59,11 +67,18 @@ function atualizaPreco(preco, desconto) {
   document.querySelector('.preco-parcelado').textContent = `R$ ${precoNormalAtual.toFixed(2).toString().replace('.', ',')}`;
 }
 
-const btnFrete = document.querySelector('.btn-frete')
-btnFrete.addEventListener('click', calcularFrete)
-function calcularFrete(){
-  console.log( 'Amigo estou aqu')
+async function exibirProdutosRelacionados(subCategoria){
+  const response = await fetch(`http://localhost:1039/produtos?param=${encodeURIComponent(subCategoria)}&column=sub_categoria`)
+    const produtos = await response.json()
+    CriarCarroselProdutos(produtos, 'recomendados')
 }
+
+// Calcular frete
+// const btnFrete = document.querySelector('.btn-frete')
+// btnFrete.addEventListener('click', calcularFrete)
+// function calcularFrete(){
+//   console.log( 'Amigo estou aqu')
+// }
 
 function separarString(string){
   const partes = string.split(" / ");
