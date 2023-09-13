@@ -1,30 +1,10 @@
-.escolha-madetex{
-  ul{
-    list-style: none;
-    @include flex(evenly);
-    background-color: $secondaryColor;
 
-    li{
-      padding: 5px;
-
-       &:hover{
-        background-color: $darkRed;
-       }
-
-       a{
-        text-decoration: none;
-        color: #fff;
-        font-size: 1.2rem;
-      }
-    }
-  }
-}
-nav.nav-controle{
-  height: 80px;
+.nav-controle, .nav-exibir-prod{
+  height: 50px;
   @include flex(center);
   gap: 10px;
 
-  button{
+  li{
     cursor: pointer;
     font-size: 1rem;
     display: block;
@@ -33,38 +13,20 @@ nav.nav-controle{
     background-color: transparent;
   }
 }
+#nav-exibir-prod{
+  display: none;
+}
 #main-controle{
-  display: grid;
-  grid-template-columns: 220px calc(100% - 220px);
-  height: calc(100vh - 115px);
 
-  #menu-controle{  
-    grid-column: 1 / 2;
-    background-color: rgba(239, 9, 9, 0.33);
-    box-shadow: 0px 5px 5px 2px #0009;
-    border-radius: 0px 5px 5px 0px;
-
-    ul{
-      font-size: 1.1rem;
-      padding: 5px 15px;
-      list-style: none;
-    }
-    li.item, span{
-      cursor: pointer;
-      line-height: 1.7rem; 
-      
-      &:hover{
-        color: $darkRed;
-      }
-    }
-  }
+  
    #conteudo-controle{
-    grid-column: 2 / 3;
+    width: 80%;
+    margin: 0 auto;
    }
 }
 .container-cards-controle{
   width: 90%;
-  height: 270px;
+  height: 320px;
   margin: 0 auto;
   @include flex(between);
   overflow-x: overlay;
@@ -72,11 +34,11 @@ nav.nav-controle{
 
   .card{
     padding: 5px;
-    min-width: 200px;
+    min-width: 230px;
     background-color: #ffffffe9;
     box-shadow: 0px 5px 5px #0005;
-    max-width: 200px;
-    min-height: 220px;
+    max-width: 230px;
+    height: 280px;
     border-radius: 10px;
 
     img{

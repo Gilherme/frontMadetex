@@ -14,7 +14,6 @@ async function buscarDetalhesDoProduto() {
 }
 
 function preencherFormulario(produto){
-  console.log(produto)
   document.getElementById('nome').value      = produto.nome
   document.getElementById('madeira').value   = produto.madeira
   document.getElementById('categoria').value = produto.categoria
@@ -25,16 +24,15 @@ function preencherFormulario(produto){
   document.getElementById('desconto').value  = produto.desconto
   document.getElementById('condicao').value  = produto.condicao
   document.getElementById('pagamento').value = produto.pagamento
-  document.getElementById('imagem').value    = produto.imagem
   document.getElementById('galeria').value   = produto.galeria
   document.getElementById('lista').value     = produto.lista_descricao
   document.getElementById('descricao').value = produto.descricao
   document.getElementById('loja').value      = produto.loja
-  document.getElementById('regiao').value    = produto.regiao
+  document.getElementById('oferta').value    = produto.oferta
   document.getElementById('btn-put').setAttribute('data-id', produto.id) 
 }
 
-async function editarProduto(produto){ 
+async function editarProduto(){ 
   const nome      =document.getElementById('nome').value
   const categoria =document.getElementById('categoria').value
   const subCategoria    =document.getElementById('sub-categoria').value
@@ -43,16 +41,15 @@ async function editarProduto(produto){
   const desconto  =document.getElementById('desconto').value
   const condicao  =document.getElementById('condicao').value
   const pagamento =document.getElementById('pagamento').value
-  const imagem    =document.getElementById('imagem').value
   const galeria   =document.getElementById('galeria').value
   const lista     =document.getElementById('lista').value
   const descricao =document.getElementById('descricao').value
   const loja      =document.getElementById('loja').value
-  const regiao    =document.getElementById('regiao').value
+  const oferta    =document.getElementById('oferta').value
   const id        =document.getElementById('btn-put').getAttribute('data-id')
   const quantidade=document.getElementById('quantidade').value 
   const madeira   =document.getElementById('madeira').value
-  var produtoAtualizado = { nome: nome, madeira: madeira, descricao: descricao, categoria: categoria, sub_categoria: subCategoria, sub_sub_categoria: subSubCategoria, preco: preco, imagem: imagem, quantidade: quantidade, loja: loja, desconto: desconto, condicao: condicao, pagamento: pagamento, galeria: galeria, lista_descricao: lista, regiao: regiao};
+  var produtoAtualizado = { nome: nome, madeira: madeira, descricao: descricao, categoria: categoria, sub_categoria: subCategoria, sub_sub_categoria: subSubCategoria, preco: preco, quantidade: quantidade, loja: loja, desconto: desconto, condicao: condicao, pagamento: pagamento, galeria: galeria, lista_descricao: lista, oferta: oferta};
 
   const options = {
     method: 'PUT', 

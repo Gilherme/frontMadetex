@@ -20,39 +20,29 @@
       </svg>
      </div>
   </header>
+ 
+  <ul class="nav-controle">
+    <li onclick="carregarElemento('/views/apendices/formAddProd.html', 'conteudo-controle' )">Adicionar produtos</li>
+    <li onclick="abrirFechar('nav-exibir-prod')">Exibir Produtos</li>
+    <li><a href="./centralDeContato.html">Central de contato</a></li>
+    <li><button id="selecionador">Select</button></li>
+  </ul>
+
+  <nav id="nav-exibir-prod">
+    <ul class="nav-exibir-prod">
+      <li onclick="carregarProdutos('Madetex Jundiai', 'loja')" class="item">Jundiai</li>
+      <li onclick="carregarProdutos('Madetex Campo Limpo Pta', 'loja')" class="item">Campo Limpo Pta</li>
+      <li onclick="carregarProdutos('Madetex Itupeva', 'loja')" class="item">Itupeva</li>
+      <li onclick="carregarProdutos('Madetex Mogi Mirim', 'loja')" class="item">Mogi Mirim</li>
+    </ul>
+  </nav>
 
   <main id="main-controle">
-
-    <section id="menu-controle">
-
-      <ul class="tree">
-        <li>
-          <span>Adicionar Produto</span>
-          <ul style="display: none;">
-            <li onclick="carregarElemento('/views/apendices/formAddProd.html', 'conteudo-controle' )" class="item">Produto Comum</li>
-          </ul>
-        </li>
-        <li>
-          <span>Exibir Produtos</span>
-          <ul style="display: none;">
-            <li onclick="carregarProdutos('Madetex Jundiai', 'loja')" class="item">Jundiai</li>
-            <li onclick="carregarProdutos('Madetex Campo Limpo Pta', 'loja')" class="item">Campo Limpo Pta</li>
-            <li onclick="carregarProdutos('Madetex Itupeva', 'loja')" class="item">Itupeva</li>
-            <li onclick="carregarProdutos('Madetex Mogi Mirim', 'loja')" class="item">Mogi Mirim</li>
-          </ul>
-        </li>
-      </ul>
-
-      <button id="selecionador">Select</button>
-    </section>
-
     <section id="conteudo-controle"></section>
   </main>
 
   
   <script src="../../js/ferramentas.js"></script>
-  <script src="../../js/controle/controle.js">
-
-  </script>
+  <script src="../../js/controle/controle.js"></script>
 </body>
 </html>

@@ -49,10 +49,6 @@
       <input placeholder="quantidade" id="quantidade" type="text" name="quantidade" >
     </div>
 
-    <div class="form-add-prod-img">
-      <input placeholder="imagem" id="imagem" type="text" name="imagem">
-    </div>
-
     <div class="form-add-prod-galeria">
       <input placeholder="até 5 imagems separadas por '/'" id="galeria" type="text" name="galeria">
     </div>
@@ -74,12 +70,12 @@
     </select>
     </div>
 
-    <div class="form-add-prod-regiao">
-      <input type="text" id="regiao" name="regiao" placeholder="regiao com frete gratis">
+    <div class="form-add-prod-oferta">
+      <input type="number" id="oferta" name="oferta" placeholder="oferta: 1 = sim, 0 = não">
     </div>
 
    <div class="form-add-prod-btn" >
-    <button id="btn-put" type="button" onclick="editarProduto('produto')">Adicionar</button>
+    <button id="btn-put" type="button" onclick="editarProduto()">Adicionar</button>
    </div>
 
   </form>

@@ -1,0 +1,15 @@
+main.central-contato{
+  display: grid;
+  grid-template-columns: 300px calc(100% - 300px);
+
+  .todas-mensagens{
+    grid-column: 1 / 2;
+
+    ul{
+      @include flex(between);
+    }
+  }
+  .mensagem-atual{
+    grid-column: 2/ 3;
+  }
+}

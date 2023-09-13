@@ -3,7 +3,7 @@ buscarDadosDaLoja();
 
 async function buscarDadosDaLoja() {
   const urlParams = new URLSearchParams(window.location.search);
-  const loja = urlParams.get('loja').replace('_', ' ').replace('_', ' ');
+  const loja = urlParams.get('loja').replace('_', ' ').replace('_', ' ').replace('_', ' ');
 
   const response = await fetch(`http://localhost:1039/homeLoja?loja=${encodeURIComponent(loja)}`);
   const data = await response.json();
@@ -39,6 +39,28 @@ async function carregarProdutos(loja, categoria, destino){
     CriarCarroselProdutos(data, destino)
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    let carrossels = document.querySelectorAll('.container-carrosel');
 
+    carrossels.forEach(carroselContainer => {
+      let btnProximo = carroselContainer.querySelector('.btn-proximo');
+      let btnAnterior = carroselContainer.querySelector('.btn-anterior');
+      let carrosel = carroselContainer.querySelector('.carrosel-interno');
 
+      btnProximo.addEventListener("click", () => {
+        carrosel.scrollBy({
+          left: +230,
+          behavior: 'smooth'
+        });
+      });
 
+      btnAnterior.addEventListener("click", () => {
+        carrosel.scrollBy({
+          left: -230,
+          behavior: 'smooth'
+        });
+      });
+    });
+  }, 1000);
+});

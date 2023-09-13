@@ -1,7 +1,7 @@
 
 // GET
 async function carregarProdutos(loja, column){
-  const response = await fetch(`http://localhost:1039/produtos?param=${encodeURIComponent(loja)}&column=${encodeURIComponent(column)}`)
+  const response = await fetch(`http://localhost:1039/produtos?param=${encodeURIComponent(loja)}&column=${encodeURIComponent(column)}&limit=100`)
     const produtos = await response.json()
     CriarCarroselControle(produtos)
 }
@@ -17,14 +17,15 @@ function CriarCarroselControle(produtos){
     const preco =criarElemento('p', 'preco')
     const loja  =criarElemento('p', 'loja')
     const apagar=criarElemento('button', 'apagar')
-    const editar=criarElemento('button', 'editar')
-    
+    const editar=criarElemento('button', 'editar') 
+    const imgs = separarString(produto.galeria, " / ")
+
     apagar.textContent = 'Apagar';
     apagar.id = produto.id; 
     loja.textContent = produto.loja
     editar.textContent = 'Editar';
     editar.setAttribute('data-id', produto.id)
-    img.src = `../../assets/img/${ produto.imagem}`
+    img.src = `../../assets/img/${imgs[0]}`
     titulo.textContent = produto.nome
     preco.textContent = `R$ ${ produto.preco}`
 
@@ -80,17 +81,18 @@ function submitProd(produto){
   let preco     =document.getElementById('preco').value;
   let descricao =document.getElementById('descricao').value
   let categoria =document.getElementById('categoria').value;
-  let imagem    =document.getElementById('imagem').value;
+  let subCategoria    =document.getElementById('sub-categoria').value
+  let subSubCategoria =document.getElementById('sub-sub-categoria').value
   let loja      =document.getElementById('loja').value
   let condicao  =document.getElementById('condicao').value
   let desconto  =document.getElementById('desconto').value
-  let regiao    =document.getElementById('regiao').value
+  let oferta    =document.getElementById('oferta').value
   let galeria   =document.getElementById('galeria').value
   let lista     =document.getElementById('lista').value
   let pagamento =document.getElementById('pagamento').value
   let quantidade=document.getElementById('quantidade').value;
   let madeira   =document.getElementById('madeira').value;
-  var produto = { nome: nome, madeira: madeira, descricao: descricao, preco: preco, categoria: categoria, imagem: imagem, quantidade: quantidade, loja: loja, desconto: desconto, condicao: condicao, pagamento: pagamento, galeria: galeria, lista_descricao: lista, regiao: regiao };
+  var produto = { nome: nome, madeira: madeira, descricao: descricao, preco: preco, categoria: categoria, sub_categoria: subCategoria, sub_sub_categoria: subSubCategoria, quantidade: quantidade, loja: loja, desconto: desconto, condicao: condicao, pagamento: pagamento, galeria: galeria, lista_descricao: lista, oferta: oferta };
 
   fetch(`http://localhost:1039/adicionarProduto`,{
    method: 'POST',
@@ -101,12 +103,3 @@ function submitProd(produto){
   .then(mensagem => alert(mensagem.msg))
   .catch(error => {console.error('Erro ao inserir dados:', error);});
 }
-
-const galho = document.querySelectorAll('.tree span')
-  galho.forEach(topico => {
-    topico.onclick = function(e){
-      const ul = topico.nextElementSibling
-      const d = ul.style.display
-      ul.style.display = d === 'none' ? 'block' : 'none'
-    }
-  })

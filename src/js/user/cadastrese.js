@@ -1,55 +1,25 @@
 
-// CADASTRAR USUARIO
+// CADASTRAR USUARIO 
 
-function cadastrarUser(data){
- 
-  fetch(`http://localhost:1039/cadastrarUsuario`, {
-    method: 'POST', 
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
-  .then(response => response.json())
-  .then(result => {
-   alert(result.msg)
-  })
-  .catch(error => {
-    console.error('Erro ao inserir dados:', error);
-  });
-}
-// verificar usuario
-
-async function verificarUser(){
+function cadastrarUser(){
 
   const nome = document.getElementById('nome').value
   const email = document.getElementById('email').value
   const telefone = document.getElementById('telefone').value
   const senha = document.getElementById('senha').value
 
-  const data = {
-    nome: nome,
-    email: email,
-    telefone: telefone,
-    senha: senha
-  }
+  const usuario = { nome: nome, email: email, telefone: telefone, senha: senha }
   
-  const response = await fetch('http://localhost:1039/verificarUsuario', {
-    method: 'POST',
+  fetch(`http://localhost:1039/cadastrarUsuario`, {
+    method: 'POST', 
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify(usuario)
   })
-
-  if(response.ok){
-    const resposta = await response.json()
-     if(!resposta.existe){
-      cadastrarUser(data)
-     }else{
-      exibirAviso(data.email)
-     }
-}
+  .then(response => response.json())
+  .then(result => alert(result.msg))
+  .catch(error => { console.error('Erro ao inserir dados:', error);});
 }
 
 function exibirAviso(email){
@@ -145,16 +115,4 @@ function atualizarCampo(campo) {
   } else {
     campo.setCustomValidity('');
   }
-}
-
-// Ferramentas
-
-function criarElemento(elemento, classe){
-  const element = document.createElement(elemento)
-  if(elemento == 'img'){
-    return element
-  }else{
-    element.classList.add(classe)
-  }
-  return element
 }

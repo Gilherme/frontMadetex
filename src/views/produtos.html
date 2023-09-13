@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,18 +43,18 @@
           </div>
         </div>
 
-        <div class="area-pesquisa">
-          <input type="text" placeholder="Busque por vigamentos, movéis e mais... ">
+        <form onsubmit="return false;" class="area-pesquisa">
+          <input id="input-pesquisa" autocomplete="off" onkeyup="pesquisarEnter(event); filtrarSugestoesProd();" type="text" placeholder="Busque por vigamentos, telhas e mais... ">
           <ul></ul>
           <div>
-            <button>
+            <button type="button" onclick="pesquisar()">
               <svg height="35" width="35">
                 <circle cx="16" cy="15" r="8" stroke="red" stroke-width="2" fill="#fff" />
                  <line x1="21" y1="22" x2="27" y2="30" style="stroke:red; stroke-width:2" />
               </svg>
             </button>
           </div>
-        </div>
+        </form>
 
         <div class="area-usuario">
 
@@ -62,8 +62,8 @@
 
             <div id="apendice-cadastrese">
               <p>Entre ou Cadastre-se para comprar e acompanhar seus pedidos :D</p>
-              <button class="entre"> <a href="./views/login.html">Entre</a></button>
-              <button><a href="./views/cadastrese.html">Cadastre-se</a></button>
+              <button class="entre"> <a href="./user/login.html">Entre</a></button>
+              <button><a href="./user/cadastrese.html">Cadastre-se</a></button>
             </div>
 
             <div class="svg-user">
@@ -112,24 +112,43 @@
      <div class=" closed container-header-bottom">
 
       <div class="categorias">
-        <p>Categorias <span>&#10095</span></p>
+        <p>Categorias <span class="seta">&#10095</span></p>
+        <ul id="nav-categorias">
+          <li><a href="./produtos.html?param=vigamentos&column=sub_categoria">Vigamentos</a></li>
+          <li><a href="./produtos.html?param=janelas&column=sub_sub_categoria">Janelas</a></li>
+          <li><a href="./produtos.html?param=portas&column=sub_sub_categoria">Portas</a></li>
+          <li><a href="./produtos.html?param=telhas de barro&column=sub_categoria">Telhas de Barro</a></li>
+          <li><a href="./produtos.html?param=telhas de fibrocimento&column=sub_categoria">Telhas de Fibrocimento</a></li>
+          <li><a href="./produtos.html?param=telhas de concreto&column=sub_categoria">Telhas de Concreto</a></li>
+          <li><a href="./produtos.html?param=decks&column=sub_categoria">Decks</a></li>
+          <li><a href="./produtos.html?param=cambara&column=madeira">Madeira Cambara</a></li>
+          <li><a href="./produtos.html?param=peroba&column=madeira">Madeira Peroba</a></li>
+          <li><a href="./produtos.html?param=pinus&column=madeira">Madeira Pinus</a></li>
+          <li><a href="./produtos.html?param=mista&column=madeira">Madeira Mista</a></li>
+          <li><a href="./produtos.html?param=cedro&column=madeira">Madeira Cedro</a></li>
+          <li><a href="./produtos.html?param=eucalipto&column=madeira">Madeira Eucalipto</a></li>
+          <li><a href="./produtos.html?param=forro&column=sub_categoria">Forro de Madeira</a></li>
+          <li><a href="./produtos.html?param=chapas de madeira&column=categoria">Chapas de Madeira</a></li>
+          <!-- <li><a href="./produtos.html?param=tintas&column=categoria">Verniz e Polistem</a></li>
+          <li><a href="./produtos.html?param=pregos e parafusos&column=sub_categoria">Pregos e parafusos</a></li> -->
+        </ul>
       </div>
 
       <div class="nav-header-bottom">
         <nav>
           <ul>
-            <li><a href="./produtos.html?subCategoria=vigamentos">Vigamentos</a></li>
-            <li><a href="./produtos.html?subCategoria=telhas">Telhas</a></li>
-            <li><a href="./produtos.html?subCategoria=portasEjanelas">Portas e Janelas</a></li>
-            <li class="penultimo"><a href="./produtos.html?subCategoria=tabuas">Tabuas</a></li>
-            <li class="ultimo"><a href="./produtos.html?subCategoria=compensadosEmadeirites">Compensados e Madeirites</a></li>
+            <li><a href="./produtos.html?param=vigamentos&column=sub_categoria">Vigamentos</a></li>
+            <li><a href="./produtos.html?param=telhas&column=categoria">Telhas</a></li>
+            <li><a href="./produtos.html?param=portas e janelas&column=sub_categoria">Portas e Janelas</a></li>
+            <li class="penultimo"><a href="./produtos.html?param=pinus&column=madeira">Madeira Pinus</a></li>
+            <li class="ultimo"><a href="./produtos.html?param=chapas de madeira&column=categoria">Compensados e Madeirites</a></li>
           </ul>
         </nav>
-      </div>
+    </div>
 
-      <div class="oferta-dia">
-        <p><strong>Ofertas do dia</strong></p>
-      </div>
+    <div class="oferta-dia">
+      <a href="./produtos.html?param=1&column=oferta">Ofertas do dia</a>
+    </div>
 
      </div>
 
@@ -175,14 +194,41 @@
   </div>
 
   <main class="main-produtos">
+
+    <div class="container-filtros">
+      <button  class="btn-filtros">Filtros</button> 
+    </div>
+
+    <div id="filtros-mobile">
+      <h3>Cidade</h3>
+      <ul>
+        <li><a id="clpta" onclick="abrirProdutosFiltrados(this)">Campo Limpo Pta</a> </li>
+        <li><a id="mogiMirim" onclick="abrirProdutosFiltrados(this)" >Mogi Mirim</a></li>
+        <li><a id="itupeva" onclick="abrirProdutosFiltrados(this)">Itupeva</a></li>
+        <li><a id="jundiai" onclick="abrirProdutosFiltrados(this)">Jundiaí</a></li>
+      </ul> 
+    </div>
+    
+    <div id="filtros">  
+      <h3>Cidade</h3>
+      <ul>
+        <li><a id="clpta" onclick="abrirProdutosFiltrados(this)">Campo Limpo Pta</a> </li>
+        <li><a id="mogiMirim" onclick="abrirProdutosFiltrados(this)" >Mogi Mirim</a></li>
+        <li><a id="itupeva" onclick="abrirProdutosFiltrados(this)">Itupeva</a></li>
+        <li><a id="jundiai" onclick="abrirProdutosFiltrados(this)">Jundiaí</a></li>
+      </ul>  
+    </div>
     
     <section id="categoria-escolhida">
-
     </section>
 
   </main>
 
 
 </body>
-<script src="../js/ferramentas.js"></script><script src="../js/header.js"></script><script src="../js/produtos/produtos.js"></script>
+<script src="../js/ferramentas.js"></script>
+<script src="../js/header.js"></script>
+<script src="../js/produtos/produtos.js"></script>
+<script src="../js/produtos/abrirProduto.js"></script>
+<script src="../js/footer.js"></script>
 </html>

@@ -1,5 +1,9 @@
 
 // Abrir e fechar menu e apendices 
+const btnCategorias = document.querySelector('.categorias')
+btnCategorias.addEventListener('click', toggleCategorias)
+function toggleCategorias(){abrirFechar('nav-categorias'); toggleSeta('.categorias .seta')}
+
 const apendiceEntre = document.querySelector('.area-usuario .usuario')
 apendiceEntre.addEventListener('mouseover', () => abrirFechar('apendice-cadastrese'))
 apendiceEntre.addEventListener('mouseout',  () => abrirFechar('apendice-cadastrese'))
@@ -8,6 +12,7 @@ const btnMenu = document.getElementById('btn-menu')
 const btnX    = document.getElementById('btn-x')
 btnMenu.addEventListener('click', () => abrirFechar('menu-mobile'));
 btnX.addEventListener('click',    () => abrirFechar('menu-mobile'))
+
 
 
 fetch('http://localhost:1039/chavesProdutos')
@@ -71,7 +76,14 @@ function preencherInput(li){
   console.log(param, local)
 }
 
-function ola(){
+
+function pesquisarEnter(event){
+  if(event.key == "Enter"){
+    pesquisar()
+  }
+}
+
+function pesquisar(){
   const detalhesUrl = `/views/produtos.html?param=${encodeURIComponent(param)}&column=${encodeURIComponent(local)}`;
   window.location.href = detalhesUrl;
 }

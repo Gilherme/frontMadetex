@@ -9,7 +9,7 @@
   </head> 
   <body>
     
-    <header id="home">
+    <header>
 
       <div class="container-header">
 
@@ -22,7 +22,7 @@
                 <path d="M 80 5 l 80 30" stroke="red" stroke-width="13" fill="none" />
               </svg>
               <svg height="30" width="165">
-                <a href="#">
+                <a href="./index.html">
                   <text x="4" y="24" stroke="3" fill="red">MADETEX</text>
                 </a>
               </svg>
@@ -33,19 +33,19 @@
                 <path d="M 66 5 l 58 25" stroke="red" stroke-width="10" fill="none" />
               </svg>
               <svg height="23" width="130">
-                <a class="logo" href="#home">
+                <a class="logo" href="./index.html">
                   <text x="8" y="20" stroke="3" fill="red">MADETEX</text>
                 </a>
               </svg>
             </div>
           </div>
 
-          <form class="area-pesquisa">
-            <input id="input-pesquisa" onkeyup="filtrarSugestoesProd()" type="text" placeholder="Busque por vigamentos, movéis e mais... ">
+          <form onsubmit="return false;" class="area-pesquisa">
+            <input id="input-pesquisa" autocomplete="off" onkeyup="pesquisarEnter(event); filtrarSugestoesProd();" type="text" placeholder="Busque por vigamentos, telhas mais... ">
             <ul></ul>
             <div>
-              <button type="button" onclick="ola()">
-                <svg heigth="35" width="35">
+              <button type="button"  onclick="pesquisar()">
+                <svg height="35" width="35">
                   <circle cx="16" cy="15" r="8" stroke="red" stroke-width="2" fill="#fff" />
                    <line x1="21" y1="22" x2="27" y2="30" style="stroke:red; stroke-width:2" />
                 </svg>
@@ -109,7 +109,26 @@
        <div class=" closed container-header-bottom">
 
         <div class="categorias">
-          <p>Categorias <span>&#10095</span></p>
+          <p>Categorias <span class="seta">&#10095</span></p>
+          <ul id="nav-categorias">
+            <li><a href="./produtos.html?param=vigamentos&column=sub_categoria">Vigamentos</a></li>
+            <li><a href="./produtos.html?param=janelas&column=sub_sub_categoria">Janelas</a></li>
+            <li><a href="./produtos.html?param=portas&column=sub_sub_categoria">Portas</a></li>
+            <li><a href="./produtos.html?param=telhas de barro&column=sub_categoria">Telhas de Barro</a></li>
+            <li><a href="./produtos.html?param=telhas de fibrocimento&column=sub_categoria">Telhas de Fibrocimento</a></li>
+            <li><a href="./produtos.html?param=telhas de concreto&column=sub_categoria">Telhas de Concreto</a></li>
+            <li><a href="./produtos.html?param=decks&column=sub_categoria">Decks</a></li>
+            <li><a href="./produtos.html?param=cambara&column=madeira">Madeira Cambara</a></li>
+            <li><a href="./produtos.html?param=peroba&column=madeira">Madeira Peroba</a></li>
+            <li><a href="./produtos.html?param=pinus&column=madeira">Madeira Pinus</a></li>
+            <li><a href="./produtos.html?param=mista&column=madeira">Madeira Mista</a></li>
+            <li><a href="./produtos.html?param=cedro&column=madeira">Madeira Cedro</a></li>
+            <li><a href="./produtos.html?param=eucalipto&column=madeira">Madeira Eucalipto</a></li>
+            <li><a href="./produtos.html?param=forro&column=sub_categoria">Forro de Madeira</a></li>
+            <li><a href="./produtos.html?param=chapas de madeira&column=categoria">Chapas de Madeira</a></li>
+            <!-- <li><a href="./produtos.html?param=tintas&column=categoria">Verniz e Polistem</a></li>
+            <li><a href="./produtos.html?param=pregos e parafusos&column=sub_categoria">Pregos e parafusos</a></li> -->
+          </ul>
         </div>
 
         <div class="nav-header-bottom">
@@ -117,15 +136,15 @@
             <ul>
               <li><a href="./produtos.html?param=vigamentos&column=sub_categoria">Vigamentos</a></li>
               <li><a href="./produtos.html?param=telhas&column=categoria">Telhas</a></li>
-              <li><a href="./produtos.html?param=esquadrias&column=categoria">Portas e Janelas</a></li>
-              <li class="penultimo"><a href="./produtos.html?param=tabuas&column=sub_categoria">Tabuas</a></li>
-              <li class="ultimo"><a href="./produtos.html?param=chapas_de_madeira&column=categoria">Compensados e Madeirites</a></li>
+              <li><a href="./produtos.html?param=portas e janelas&column=sub_categoria">Portas e Janelas</a></li>
+              <li class="penultimo"><a href="./produtos.html?param=pinus&column=madeira">Madeira Pinus</a></li>
+              <li class="ultimo"><a href="./produtos.html?param=chapas de madeira&column=categoria">Compensados e Madeirites</a></li>
             </ul>
           </nav>
         </div>
 
         <div class="oferta-dia">
-          <p><strong>Ofertas do dia</strong></p>
+          <a href="./produtos.html?param=1&column=oferta">Ofertas do dia</a>
         </div>
 
        </div>
@@ -156,7 +175,7 @@
       <nav>
         <ul>
           <li> <a href="#">Minhas Compras</a></li>
-          <li> <a href="#"> Todas as Categotias </a></li>
+          <li> <a href="#"> Todas as Categorias </a></li>
           <li> <a href="#"> Vigamento </a></li>
           <li> <a href="#"> Telhas </a></li>
           <li> <a href="#"> Forro </a></li>
@@ -238,7 +257,7 @@
                 <path d="M 80 5 l 80 30" stroke="red" stroke-width="13" fill="none" />
               </svg>
               <svg height="30" width="165">
-                <a href="/views/madetex.html?loja=Madetex_Jundiai">
+                <a  href="/views/madetex.html?loja=Madetex_Jundiai">
                   <text x="4" y="24" stroke="3" fill="red">MADETEX</text>
                 </a>
               </svg>
@@ -302,7 +321,7 @@
     </div>
 
     <section id="section-populares">
-      <h2 class="titulo-carrosel-produtos">OS QUERIDINHOS DA MADETEX <span>ver mais</span></h2>
+      <h2 class="titulo-carrosel-produtos">OS QUERIDINHOS DA MADETEX <a href="./produtos.html?limit=30" >ver mais</a></h2>
     </section>
 
     <div class="container-carrosel-categorias">
@@ -332,7 +351,7 @@
 
           <div class="item-categoria">
            <a href="./produtos.html?param=decks&column=sub_categoria">
-            <div><img  src="../assets/img/deck.jfif"></div>
+            <div><img  src="../assets/img/mad/decks/deck.jfif"></div>
             <h3>Deck</h3>
            </a>
           </div>
@@ -373,7 +392,7 @@
           </div>
 
           <div class="item-categoria">
-            <a href="./produtos.html?param=forro&column=categoria">
+            <a href="./produtos.html?param=forro&column=sub_categoria">
               <div><img  src="../assets/img/forro.jfif"></div>
               <h3>Forro de madeira</h3>
             </a>
@@ -381,31 +400,31 @@
 
           <div class="item-categoria">
             <a href="./produtos.html?param=telhas_de_barro&column=sub_categoria">
-              <div><img  src="../assets/img/telhas/telhaRomana.jfif"></div>
+              <div><img  src="../assets/img/telhas/telha-romana.jfif"></div>
               <h3>Telhas de Barro</h3>
             </a>
           </div>
 
           <div class="item-categoria">
-            <a href="./produtos.html?param=telhas_de_fibrocimento&column=sub_categoria">
-              <div><img  src="../assets/img//telhas/telhaDeFibrocimentoG.png"></div>
+            <a href="./produtos.html?param=telhas de fibrocimento&column=sub_categoria">
+              <div><img  src="../assets/img//telhas/telha-ondulada.png"></div>
               <h3>Telhas de Fibrocimento</h3>
             </a>
           </div>
 
           <div class="item-categoria">
-            <a href="./produtos.html?param=chapas_de_madeira&column=categoria">
+            <a href="./produtos.html?param=chapas de madeira&column=categoria">
               <div><img  src="../assets/img/chapas.jfif"></div>
               <h3>Chapas de Madeira</h3>
             </a>
           </div>
     
-          <div class="item-categoria">
+          <!-- <div class="item-categoria">
             <a href="./produtos.html?param=tintas&column=categoria">
               <div><img  src="../assets/img/verniz.jfif"></div>
               <h3>Verniz e Polisten</h3>
             </a>
-          </div>       
+          </div>        -->
 
         </div>
   
@@ -417,15 +436,14 @@
      </div>
 
     <section id="section-ofertas" >
-      <h2 class="titulo-carrosel-produtos"> OFERTAS IMPERDIVEIS!! <span>ver mais</span></h2>
+      <h2 class="titulo-carrosel-produtos"> OFERTAS IMPERDIVEIS!! <a href="./produtos.html?param=1&column=oferta">ver mais</a></h2>
     </section>
-    
-    <footer>
-      <a href="./controle/controle.html">controle</a>
-    </footer>
+  
     
     <script src="../js/header.js"></script>
     <script src="../js/ferramentas.js"></script>
     <script src="../js/index.js"></script>
+    <script src="../js/produtos/abrirProduto.js"></script>
+    <script src="../js/footer.js"></script>
   </body>
 </html>

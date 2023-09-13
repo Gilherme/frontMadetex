@@ -1,19 +1,19 @@
 
 .container-produtos{
   background-color: #1c1c1c05;
-  .container-carrosel-produtos{
+  .container-carrosel{
     @include flex(center);
     height: 380px;
     overflow: hidden;
 
-    .carrosel-produtos{
+    .carrosel-interno{
       width: 93%;
       @include flex(between);
       gap: 15px;
-      height: 400px;
+      height: 415px;
       overflow-x: overlay;
 
-      .item-carrosel-produtos{
+      .card-prod{
         align-items: center;
         display: grid;
         grid-template-columns: 1fr;
@@ -31,7 +31,7 @@
       &:hover{
         cursor: pointer;
         min-height: 360px;
-        max-width: 360px;
+        max-width: 220px;
         box-shadow: 2px 5px 5px #0005;
       }
         .img-produto{
@@ -39,14 +39,16 @@
           width: 100%;
           img{
             width: 100%;
-            height: 100%;
+            height: 180px;
           }
+        }
+        .preco-produto,.parcelamento{
+          font-family: 'Roboto';
+          font-weight: 300;
         }
         .preco-produto{
           grid-row: 2 / 3;
-          font-family: 'Roboto';
           padding: 8px 0 0 0;
-          font-weight: 300;
           letter-spacing: 0.6px;
           font-size: 1.6rem;
         }
@@ -54,8 +56,6 @@
           grid-row: 3 / 4;
           color: green;
           font-size: 1rem;
-          font-family: 'Roboto';
-          font-weight: 300;
         }
         .titulo{
           grid-row: 4 / 5;
@@ -73,6 +73,17 @@
   }   
 }
 
+.produto-oferta{
+  letter-spacing: 1px;
+  display: inline-block;
+  font-size: .9rem;
+  margin-left: 10px;
+  font-weight: bold;
+  padding: 3px 8px;
+  background-color: rgb(6, 161, 6);
+  border-radius: 5px;
+  color: #fff;
+}
 
 .titulo-carrosel-produtos{
   font-family: 'Roboto';
@@ -82,8 +93,8 @@
   font-size: 1.2rem;
   margin: 40px 0 20px 0;
   
-  span{
-    cursor: pointer;
+  a{
+    text-decoration: none;
     letter-spacing: normal;
     font-size: .9rem;
     color: $darkRed;

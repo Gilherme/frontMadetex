@@ -13,11 +13,13 @@
   display: none;
 }
 .btn-prod-solo{
+  text-decoration: none;
   background-color: transparent;
   border: 0;
   color: red;
   cursor: pointer;
   padding: 5px 0 10px 0;
+  font-size: .9rem;
 }
 .seta-baixo{
   display: inline-block;
@@ -29,8 +31,7 @@
 }
 
 .main-produto{
-  background-color: rgba(79, 19, 19, 0.1);
-  height: 2000px;
+  background-color: #1c1c1c09;
 
   >div{
     width: 90%;
@@ -56,12 +57,10 @@
         flex-direction: column;
         gap: 8px;
 
-        img:first-child {
-          margin-top: 50px;
-        }
-        img{
-          display: block;
+        .btn-galeria{
+          overflow: hidden;
           width: 75%;
+          display: block;
           margin: 0 auto;
           border-radius: 20px;
           border: .5px solid #0003;
@@ -70,6 +69,18 @@
           &:hover{
             border: 3px solid black;
           }
+          &.ativo{
+            border: 3px solid black;
+          }
+          &:active{
+            border: 3px solid black; 
+          }
+        }
+        .btn-galeria:first-child {
+          margin-top: 50px;
+        }
+        img{
+          width: 100%;
         }
       }
       .fotao{
@@ -108,9 +119,10 @@
     }
     #formas-pag{
       display: none;
+      margin-bottom: 10px;
        li{
-      color: #000;
-      line-height: 1.2rem;
+        color: #000;
+        line-height: 1.6rem;
       }
     }
      .parcelamento{
@@ -140,6 +152,15 @@
 
       .frete{
         display: block;
+      }
+      #cidades-frete-gratis{
+        display: none;
+        padding-left: 20px;
+        margin-bottom: 10px;
+
+        li{
+          line-height: 1.6rem;
+        }
       }
       .retire{
         margin-top: 20px;

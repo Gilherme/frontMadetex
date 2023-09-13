@@ -1,7 +1,4 @@
-
-window.onload = function() {
-  buscarDetalhesDoProduto();
-};
+buscarDetalhesDoProduto();
 
 async function buscarDetalhesDoProduto() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -9,6 +6,7 @@ async function buscarDetalhesDoProduto() {
 
   const response = await fetch(`http://localhost:1039/produto?id=${encodeURIComponent(id)}`);
   const produto = await response.json();
+
   preencherProduto(produto[0])
 }
 
@@ -17,7 +15,6 @@ function preencherProduto(produto) {
   const preco = produto.preco.toFixed(2)
   const precoAvista = (preco - (preco * desconto)).toFixed(2)
 
-  document.querySelector('.fotao img').src = `../assets/img/${produto.imagem}`;
   document.querySelector('.descricao h1').textContent = produto.nome;
   document.querySelector('.preco-antigo').textContent = `R$ ${preco.toString().replace('.', ',')}`;
   document.querySelector('.precao').textContent = `R$ ${precoAvista.toString().replace('.', ',')}`;
@@ -42,6 +39,18 @@ function preencherProduto(produto) {
   let comprimento = document.getElementById('comprimento')
   pecas.onchange = () => atualizaPreco(produto.preco, desconto);
   comprimento.onchange = () => atualizaPreco(produto.preco, desconto);
+
+  buscarDadosDaLoja(produto.loja)
+}
+
+function buscarDadosDaLoja(loja){
+  fetch(`http://localhost:1039/homeLoja?loja=${encodeURIComponent(loja)}`)
+  .then(response => response.json())
+  .then(data => {
+    
+    preencherMapa(data[0].mapa);
+    preencherCidadesFreteGratis(data[0].cidades_frete_gratis);
+  })
 }
 
 function exibirOpcoesDeTamanho(){
@@ -68,25 +77,13 @@ function atualizaPreco(preco, desconto) {
 }
 
 async function exibirProdutosRelacionados(subCategoria){
-  const response = await fetch(`http://localhost:1039/produtos?param=${encodeURIComponent(subCategoria)}&column=sub_categoria`)
+  const response = await fetch(`http://localhost:1039/produtos?param=${encodeURIComponent(subCategoria)}&column=sub_categoria&limit=15`)
     const produtos = await response.json()
     CriarCarroselProdutos(produtos, 'recomendados')
 }
 
-// Calcular frete
-// const btnFrete = document.querySelector('.btn-frete')
-// btnFrete.addEventListener('click', calcularFrete)
-// function calcularFrete(){
-//   console.log( 'Amigo estou aqu')
-// }
-
-function separarString(string){
-  const partes = string.split(" / ");
-  return partes
-}
-
-function preencherLista(dado){
-  const lista = separarString(dado)
+function preencherLista(listaQualidades){
+  const lista = separarString(listaQualidades, " / ")
   const ul = document.querySelector('.sobre ul')
 
   for(const item of lista){
@@ -99,19 +96,21 @@ function preencherLista(dado){
   }
 }
 
-function preencherGaleria(dado){
-  const dadosDivididos = separarString(dado)
+function preencherGaleria(galeriaDeFotos){
+  const fotosIndividuais = separarString(galeriaDeFotos, " / ")
   const galeria = document.querySelector('.coluna-fotos')
 
-  for(const link of dadosDivididos){
+  for(const link of fotosIndividuais){
+    let btn = criarElemento('button', 'btn-galeria')
     let img = document.createElement('img');
     img.src = `../assets/img/${link}`
-    galeria.appendChild(img)
+    btn.appendChild(img)
+    galeria.appendChild(btn)
   } 
 }
 
-function preencherFormasPag(dado){
-  const formas = separarString(dado)
+function preencherFormasPag(formasDePagamento){
+  const formas = separarString(formasDePagamento, " / ")
   const ulFormaPag = document.querySelector('#formas-pag')
   for(const forma of formas){
     let li = document.createElement('li')
@@ -120,22 +119,77 @@ function preencherFormasPag(dado){
   }
 }
 
+function preencherMapa(link){
+  document.querySelector('.link-mapa').href = link
+}
+
+function preencherCidadesFreteGratis(cidades){
+  const cidadesSeparadas = separarString(cidades, ',')
+  const listaCidades = document.querySelector('#cidades-frete-gratis')
+
+  for(const cidade of cidadesSeparadas){
+    let li = document.createElement('li')
+    li.textContent = cidade
+    listaCidades.appendChild(li)
+  }
+}
+
 const btnFormaPag = document.getElementById('btn-formas-pag')
 btnFormaPag.addEventListener('click',() => showFormasPag() )
+
+const btnCidadesFreteGratis = document.querySelector('.btn-cidades-frete-gratis')
+btnCidadesFreteGratis.addEventListener('click', () => showCidadesFreteGratis())
 
 function showFormasPag(){
   abrirFechar('formas-pag')
   toggleSeta('.setinha')
 }
 
-function toggleSeta(seta) {
-  const setinha = document.querySelector(seta);
-  
-  if (setinha.classList.contains('seta-open')) {
-    setinha.classList.remove('seta-open');
-  } else {
-    setinha.classList.add('seta-open');
-  }
+function showCidadesFreteGratis(){
+  abrirFechar('cidades-frete-gratis')
+  toggleSeta('.seta-frete-gratis')
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+  const btnGaleria = document.querySelectorAll('.btn-galeria')
+  atualizarFotao(btnGaleria[0])
 
+  btnGaleria.forEach( btn => {
+    btn.addEventListener('click', () => atualizarFotao(btn))
+  })        
+  }, 300);
+});
+
+function atualizarFotao(btn){
+  const img = btn.querySelector('img') 
+  const novoFotao = img.src
+  document.querySelector('.fotao img').src = novoFotao
+}
+
+// seta do carrosel
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    let carrossels = document.querySelectorAll('.container-carrosel');
+
+    carrossels.forEach(carroselContainer => {
+      let btnProximo = carroselContainer.querySelector('.btn-proximo');
+      let btnAnterior = carroselContainer.querySelector('.btn-anterior');
+      let carrosel = carroselContainer.querySelector('.carrosel-interno');
+
+      btnProximo.addEventListener("click", () => {
+        carrosel.scrollBy({
+          left: +230,
+          behavior: 'smooth'
+        });
+      });
+
+      btnAnterior.addEventListener("click", () => {
+        carrosel.scrollBy({
+          left: -230,
+          behavior: 'smooth'
+        });
+      });
+    });
+  }, 1000);
+});

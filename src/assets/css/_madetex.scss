@@ -27,7 +27,7 @@
     height: 400px;
     width: 50%;
     @include flex(center);
-    border: 1px solid #fff;
+    border-right: 1px solid #fff;
 
     .mapa-loja{
       
@@ -40,7 +40,6 @@
     padding-left: 15px;
     color: #fff;
     height: 400px;
-    border: 1px solid #fff;
     width: 50%;
     
     .redes{
@@ -63,6 +62,24 @@
         font-size: 1.1rem;
         line-height: 1.5rem;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 800px){
+  .section-informacoes{
+    flex-direction: column;
+
+    .mapa{
+      height: 300px;
+      order: 2;
+      border-right: 0;
+      width: 100%;
+    }
+    .informacoes{
+      height: 300px;
+      order: 1;
+      width: 100%;
     }
   }
 }

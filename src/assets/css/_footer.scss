@@ -1,10 +1,82 @@
 footer{
-  height: 250px;
-  background-color: #1c1c1c;
-  padding: 20px 30px;
   color: #fff;
+  margin-top: 50px;
+  position: relative;
+  background-color: #1c1c1c;
 
-  a{
-    color: #fff;
+  .mais-informacoes{
+
+    #informacoes{
+      @include flex(evenly);
+      flex-wrap: wrap;
+      transition: 2s;
+      .card-informacoes{
+        display: none;
+        padding: 20px;
+        min-width: 200px;
+        h3{
+          font-size: 1.1rem;
+        }
+        ul{
+          list-style: none;
+          li{
+            line-height: 1.5rem;
+            a{
+              text-decoration: none;
+              font-size: .9rem;
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+    button{
+      cursor: pointer;
+      position: absolute;
+      top: - 35px;
+      left: calc(50% - 80px);
+      color: #fff;
+      background-color: #1c1c1c;
+      border: 1px solid #fff;
+      border-bottom: none;
+      border-radius: 3px 3px 0 0;
+      height: 35px;
+      width: 160px;
+
+      .seta-footer-closed{
+        display: inline-block;
+        padding: 2px;
+        transform: rotate(-90deg);
+      }
+      .seta-footer-open{
+        transform: rotate(90deg);
+      }
+    }
+  }
+  p{
+    padding: 15px;
+    a{
+      color: #fff;
+      margin-inline: 10px;
+    }
+  }
+  .GB{
+    text-align: end;
+    a{
+      margin-inline: 5px;
+    }
+  }
+}
+@media screen and (max-width: 430px){
+  footer{
+
+    .mais-informacoes{
+
+    }
+    p{
+     a{
+      margin-inline: 3px;
+     }
+    }
   }
 }

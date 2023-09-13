@@ -1,35 +1,22 @@
 
-document.addEventListener('DOMContentLoaded', function() {
-  carregarProdutos('Madetex Jundiai', 'loja', 'section-populares');
-  carregarProdutos('Madetex Itupeva', 'loja', 'section-ofertas');
-});
+carregarProdutos();
 
-async function carregarProdutos(loja, column, destino){
-  const response = await fetch(`http://localhost:1039/produtos?param=${encodeURIComponent(loja)}&column=${encodeURIComponent(column)}`)
-    const data = await response.json()
-    CriarCarroselProdutos(data, destino)
+function carregarProdutos(){
+  carregarPopulares()
+  carregarOfertas()
 }
 
-// Abrir Produto Solo
-window.onload = function() {
-  setInterval(() => {
-    carregarProduto()
-  }, 1000);;
-};
+async function carregarPopulares(){
+  const response = await fetch(`http://localhost:1039/produtosPopulares?limit=20`)
+  const data = await response.json()
+  CriarCarroselProdutos(data, 'section-populares')
+}
 
-function carregarProduto() {
-  const cardProd = document.querySelectorAll('.item-carrosel-produtos');
-  cardProd.forEach(item => {
-    item.addEventListener('click', () => abrirProduto(item))
-  });
-};
-
-async function abrirProduto(item){
-  const id = item.getAttribute('data-id')
-
-  const detalhesUrl = `/views/produto.html?id=${encodeURIComponent(id)}`;
-  window.location.href = detalhesUrl;
-};
+async function carregarOfertas(){
+    const response = await fetch(`http://localhost:1039/produtosEmOferta`)
+    const data = await response.json()
+    CriarCarroselProdutos(data, 'section-ofertas')
+} 
 
 // Carrosel
 let count = 1;
@@ -47,3 +34,65 @@ function nextImage(){
   document.getElementById("radio"+ count).checked = true;
 }
 
+// carrosel Produtos
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    let carrossels = document.querySelectorAll('.container-carrosel');
+
+    carrossels.forEach(carroselContainer => {
+      let btnProximo = carroselContainer.querySelector('.btn-proximo');
+      let btnAnterior = carroselContainer.querySelector('.btn-anterior');
+      let carrosel = carroselContainer.querySelector('.carrosel-interno');
+
+      btnProximo.addEventListener("click", () => {
+        carrosel.scrollBy({
+          left: +230,
+          behavior: 'smooth'
+        });
+      });
+
+      btnAnterior.addEventListener("click", () => {
+        carrosel.scrollBy({
+          left: -230,
+          behavior: 'smooth'
+        });
+      });
+    });
+  }, 1000);
+});
+
+// carrosel categorias
+const carroselCategoria = document.querySelector('.container-interno-categorias');
+let btnProximoCateg = carroselCategoria.querySelector('.btn-proximo');
+let btnAnteriorCateg = carroselCategoria.querySelector('.btn-anterior');
+let carroselCateg = carroselCategoria.querySelector('.carrosel-categorias');
+btnProximoCateg.addEventListener("click", () => {
+  carroselCateg.scrollBy({
+    left: +165,
+    behavior: 'smooth'
+  });
+});
+btnAnteriorCateg.addEventListener("click", () => {
+  carroselCateg.scrollBy({
+    left: -165,
+    behavior: 'smooth'
+  });
+});
+
+// Carrosel madetexs
+const carroselMadetexs = document.querySelector('.container-interno-madetexs');
+let btnProximoMad = carroselMadetexs.querySelector('.btn-proximo');
+let btnAnteriorMad = carroselMadetexs.querySelector('.btn-anterior');
+let carroselMad = carroselMadetexs.querySelector('.carrosel-madetexs');
+btnProximoMad.addEventListener("click", () => {
+  carroselMad.scrollBy({
+    left: +165,
+    behavior: 'smooth'
+  });
+});
+btnAnteriorMad.addEventListener("click", () => {
+  carroselMad.scrollBy({
+    left: -165,
+    behavior: 'smooth'
+  });
+});

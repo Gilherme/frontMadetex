@@ -49,12 +49,8 @@
     grid-column: 3 / 4;
     grid-row: 4 / 5; 
   }
-  .form-add-prod-img{
-    grid-column: 1 / 2;
-    grid-row: 5 / 6; 
-  }
   .form-add-prod-galeria{
-    grid-column: 2 / 4;
+    grid-column: 1 / 4;
     grid-row: 5 / 6; 
   }
   .form-add-prod-lista{
@@ -74,7 +70,7 @@
       padding: 5px;
     }
   }
-  .form-add-prod-regiao{
+  .form-add-prod-oferta{
     grid-column: 2 / 3;
     grid-row: 8 / 9;
   } 

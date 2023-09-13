@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <title>Madetex - Contato </title>
+</head>
+<body>
+  <header class="header-apendices">
+    <div class="logo-apendices">
+      <svg height="25" width="130">
+        <path d="M 5 30 l 65 -25" stroke="red" stroke-width="10" fill="none" />
+        <path d="M 66 5 l 58 25" stroke="red" stroke-width="10" fill="none" />
+      </svg>
+      <svg height="23" width="130">
+        <a class="logo" href="./index.html">
+          <text x="8" y="20" stroke="3" fill="red">MADETEX</text>
+        </a>
+      </svg>
+     </div>
+  </header>
+ 
+    <h1 class="contato">Contato</h1>
+    
+    <ul class="redes-sociais-contato">
+      <li onclick="meioDeContato('whats')"><img src="../assets/img/whatsapp.png" alt="WhatsApp"> <span>WhataApp</span></li>
+      <li onclick="meioDeContato('email')"><img src="../assets/img/email.png" alt="email"> <span>E-mail</span></li>
+    </ul>
+
+   <div class="formulario-contato">
+    <form>
+      
+      <div>
+        <label for="assunto">Assunto:</label>
+        <input type="text" id="assunto" name="assunto">
+        <sup class="mensagem-assunto"></sup>
+      </div>
+
+     <div>
+      <label for="mensagem">Mensagem:</label>
+      <textarea name="mensagem" id="mensagem" cols="30" rows="6"></textarea>
+     </div>
+      
+      <div>
+        <label for="email">E-mail de resposta</label>
+        <input type="text" name="email" id="email">
+        <sup class="mensagem-email"></sup>
+      </div>
+
+     <button type="button" onclick="enviarMensagem()" class="btn-contato">Enviar</button>
+
+    </form>
+   </div>
+   <script src="../js/ferramentas.js"></script>
+   <script src="../js/contato.js"></script>
+   <script src="../js/footer.js"></script>
+</body>
+</html>
