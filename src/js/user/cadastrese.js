@@ -1,20 +1,39 @@
 
 // CADASTRAR USUARIO 
 
+const nome = document.getElementById('nome')
+const email = document.getElementById('email')
+const telefoneInput = document.getElementById('telefone')
+const senha = document.getElementById('senha')
+
+telefoneInput.addEventListener('input', formatarNumeroTelefone);
+
+function formatarNumeroTelefone() {
+  var numero = telefoneInput.value.replace(/\D/g, '');
+  var numeroFormatado = '';
+
+  if (numero.length > 0) {
+    numeroFormatado += '(' + numero.substring(0, 2);
+  }
+  if (numero.length >= 3) {
+    numeroFormatado += ') ' + numero.substring(2, 7);
+  }
+  if (numero.length > 7) {
+    numeroFormatado += '-' + numero.substring(7, 11);
+  }
+
+  telefoneInput.value = numeroFormatado;
+}
+
 function cadastrarUser(){
+  
+  const tel = telefoneInput.value.replace('(', '').replace(') ', '').replace('-', '').replace(' ', '')
 
-  const nome = document.getElementById('nome').value
-  const email = document.getElementById('email').value
-  const telefone = document.getElementById('telefone').value
-  const senha = document.getElementById('senha').value
-
-  const usuario = { nome: nome, email: email, telefone: telefone, senha: senha }
+  const usuario = { nome: nome.value, email: email.value, telefone: tel, senha: senha.value }
   
   fetch(`http://localhost:1039/cadastrarUsuario`, {
     method: 'POST', 
-    headers: {
-      'Content-Type': 'application/json'
-    },
+    headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(usuario)
   })
   .then(response => response.json())

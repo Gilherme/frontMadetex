@@ -1,18 +1,15 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Roboto:wght@100;300;500&family=Wix+Madefor+Display:wght@500;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&family=Wix+Madefor+Display:wght@500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/main.css">
-  <title>Madetex</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&family=Wix+Madefor+Display:wght@500;700;800&display=swap" rel="stylesheet">
+  <title>Madetex - Carrinho de compras</title>
 </head>
 <body>
-  <header id="home">
+  <header>
 
     <div class="container-header">
 
@@ -44,10 +41,10 @@
         </div>
 
         <form onsubmit="return false;" class="area-pesquisa">
-          <input id="input-pesquisa" autocomplete="off" onkeyup="pesquisarEnter(event); filtrarSugestoesProd();" type="text" placeholder="Busque por vigamentos, telhas e mais... ">
+          <input id="input-pesquisa" autocomplete="off" onkeyup="pesquisarEnter(event); filtrarSugestoesProd();" type="text" placeholder="Busque por vigamentos, telhas mais... ">
           <ul></ul>
           <div>
-            <button type="button" onclick="pesquisar()">
+            <button type="button"  onclick="pesquisar()">
               <svg height="35" width="35">
                 <circle cx="16" cy="15" r="8" stroke="red" stroke-width="2" fill="#fff" />
                  <line x1="21" y1="22" x2="27" y2="30" style="stroke:red; stroke-width:2" />
@@ -154,11 +151,11 @@
             <li class="ultimo"><a href="./produtos.html?param=chapas de madeira&column=categoria">Compensados e Madeirites</a></li>
           </ul>
         </nav>
-    </div>
+      </div>
 
-    <div class="oferta-dia">
-      <a href="./produtos.html?param=1&column=oferta">Ofertas do dia</a>
-    </div>
+      <div class="oferta-dia">
+        <a href="./produtos.html?param=1&column=oferta">Ofertas do dia</a>
+      </div>
 
      </div>
 
@@ -168,85 +165,132 @@
 
   <div id="menu-mobile" class="container-menu">
 
-    <button id="btn-x" class="x">
-      <div class="one"></div>
-      <div class="two" ></div>
-    </button>
+  <button id="btn-x" class="x">
+    <div class="one"></div>
+    <div class="two" ></div>
+  </button>
 
-    <div class="area-usuario-menu">
-      <div class="img-usuario">
-        <img src="../assets/img/user.png" alt="usuario">
-      </div>
-      <p>Olá! faça login ou cadastre-se</p>
+  <div class="area-usuario-menu">
+    <div class="img-usuario">
+      <img src="../assets/img/user.png" alt="usuario">
     </div>
+    <p>Olá! faça login ou cadastre-se</p>
+  </div>
 
-    <div class="area-botoes-menu">
-      <div>
-        <button class="entre"><a href="../views/user/login.html">Entre</a></button>
-        <button><a href="../views/user/cadastrese.html">Cadastre-se</a></button>
-      </div>
-      <div class="btns-logado">
-        <button onclick="sair()" class="entre">sair</button>
-        <button>Minha conta</button>
-      </div>
+  <div class="area-botoes-menu">
+    <div>
+      <button class="entre"><a href="../views/user/login.html">Entre</a></button>
+      <button><a href="../views/user/cadastrese.html">Cadastre-se</a></button>
     </div>
-    
-    <div class="area-nav-menu">
-      <nav>
-        <ul>
-          <li> <a href="#">Minhas Compras</a></li>
-          <li> <a href="#"> Todas as Categorias </a></li>
-          <li> <a href="#"> Vigamento </a></li>
-          <li> <a href="#"> Telhas </a></li>
-          <li> <a href="#"> Forro </a></li>
-          <li><a href="#">  Moveis </a></li>
-          <li> <a href="#"> Acessórios </a></li>
-          <li> <a href="#"> Churrasqueiras </a></li>
-          <li> <a href="#"> Tintas e Verniz</a> </li>
-          <li> <a href="#"> Configurações </a></li>
-        </ul>
-      </nav>
+    <div class="btns-logado">
+      <button onclick="sair()" class="entre">sair</button>
+      <button>Minha conta</button>
     </div>
+  </div>
+  
+  <div class="area-nav-menu">
+    <nav>
+      <ul>
+        <li> <a href="#">Minhas Compras</a></li>
+        <li> <a href="#"> Todas as Categorias </a></li>
+        <li> <a href="#"> Vigamento </a></li>
+        <li> <a href="#"> Telhas </a></li>
+        <li> <a href="#"> Forro </a></li>
+        <li><a href="#">  Moveis </a></li>
+        <li> <a href="#"> Acessórios </a></li>
+        <li> <a href="#"> Churrasqueiras </a></li>
+        <li> <a href="#"> Tintas e Verniz</a> </li>
+        <li> <a href="#"> Configurações </a></li>
+      </ul>
+    </nav>
+  </div>
 
   </div>
 
-  <main class="main-produtos">
+  <main class="main-carrinho">
 
-    <div class="container-filtros">
-      <button  class="btn-filtros">Filtros</button> 
-    </div>
+    <section class="itens-no-carrinho">
 
-    <div id="filtros-mobile">
-      <h3>Cidade</h3>
-      <ul>
-        <li><a id="clpta" onclick="abrirProdutosFiltrados(this)">Campo Limpo Pta</a> </li>
-        <li><a id="mogiMirim" onclick="abrirProdutosFiltrados(this)" >Mogi Mirim</a></li>
-        <li><a id="itupeva" onclick="abrirProdutosFiltrados(this)">Itupeva</a></li>
-        <li><a id="jundiai" onclick="abrirProdutosFiltrados(this)">Jundiaí</a></li>
-      </ul> 
-    </div>
-    
-    <div id="filtros">  
-      <h3>Cidade</h3>
-      <ul>
-        <li><a id="clpta" onclick="abrirProdutosFiltrados(this)">Campo Limpo Pta</a> </li>
-        <li><a id="mogiMirim" onclick="abrirProdutosFiltrados(this)" >Mogi Mirim</a></li>
-        <li><a id="itupeva" onclick="abrirProdutosFiltrados(this)">Itupeva</a></li>
-        <li><a id="jundiai" onclick="abrirProdutosFiltrados(this)">Jundiaí</a></li>
-      </ul>  
-    </div>
-    
-    <section id="categoria-escolhida">
+      <div class="item-carrinho">
+
+        <div class="vendido-por">
+          Vendido por: Madetex Campo Limpo Pta
+        </div>
+        
+        <div class="div-img">
+          <img src="../assets/img/cedrinho.jfif" alt="foto do produto">
+        </div>
+
+        <h2>Viga de madeira crdeinho 15cm x 5cm </h2>
+
+        <div class="qtd-comum">
+          <label for="quantidade">Quantidade:</label>
+          <input id="quantidade" type="number">
+        </div>
+
+        <div class="qtd-madeira">   
+          <div>
+            <label for="pecas">Peças:</label>
+            <input type="number" name="pecas" id="pecas">
+          </div>
+
+          <div>
+            <label for="comprimento">Comprimento:</label>
+            <select name="comprimento" id="comprimento">
+              <option value="1">1,00 Metro</option>
+              <option value="1.5">1,50 Metro</option>
+              <option value="2">2,00 Metros</option>
+              <option value="2.5">2,50 Metros</option>
+              <option value="3">3,00 Metros</option>
+              <option value="3.5">3,50 Metros</option>
+              <option value="4">4,00 Metros</option>
+              <option value="4.5">4,50 Metros</option>
+              <option value="5">5,00 Metros</option>
+              <option value="5.5">5,50 Metros</option>
+              <option value="6">6,00 Metros</option>
+              <option value="6.5">6,50 Metros</option>
+              <option value="7">7,00 Metros</option>
+            </select>
+          </div> 
+        </div>
+
+        <div class="div-preco">
+          <p class="preco-antigo">R$ 10,99</p>
+          <p class="preco-atual">R$ 9,99</p>
+        </div>
+
+        <div class="div-botoes">
+          <button>Comprar Agora</button>
+          <button>Excluir</button>
+        </div>
+      </div>
+
     </section>
-
+    <section class="resumo-carrinho-desktop">
+      <h4>Resumo da compra</h4>
+      <div class="container-interno-resumo-car">
+        <div class="direita">
+          <p class="items">Items <span>(2)</span></p>
+          <p>Frete </p>
+          <p class="total">Total</p>
+        </div>
+        <div class="esquerda">
+          <p class="total-items">R$ 233,00</p>
+          <p class="total-frete">R$ 10,99</p>
+          <p class="total-com-frete">R$ 243,99</p>
+        </div>
+      </div>
+      <div class="div-jutify-center div-btn-resumo-car">
+        <button>Continuar compra</button>
+      </div>
+    </section>
   </main>
+  
 
-
+  <script src="../js/header.js"></script>
+  <script src="../js/ferramentas.js"></script>
+  <script src="../js/produtos/abrirProduto.js"></script>
+  <script src="../js/user/atualizarDados.js"></script>
+  <script src="../js/footer.js"></script>
 </body>
-<script src="../js/ferramentas.js"></script>
-<script src="../js/header.js"></script>
-<script src="../js/produtos/produtos.js"></script>
-<script src="../js/produtos/abrirProduto.js"></script>
-<script src="../js/user/atualizarDados.js"></script>
-<script src="../js/footer.js"></script>
 </html>

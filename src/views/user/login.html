@@ -19,32 +19,33 @@
           </a>
         </svg>
       </div>
-  </header>
-
+    </header>
   <form class="card-entre">
-
+    
     <h1>Entrar</h1>
     
     <div>
       <label for="email">E-mail</label>
       <input id="email" name="email" type="text">
+      <sup class="msg-email"></sup>
     </div>
 
     <div>
       <label for="senha">Senha</label>
       <input id="senha" name="senha" type="password">
+      <sup class="msg-senha"></sup>
     </div>
 
     <p>Não tem uma conta ? <a href="./cadastrese.html">Cadastre-se</a></p>
 
     <div class="flex-center">
-      <button type="submit">Continuar</button>
+      <button class="btn-entre" type="button" onclick="entrar()">Continuar</button>
     </div>
     
     <p>Ao continuar com o login você comcorda com nossa <a href="#">Politica de privacidade</a></p>
     
   </form>
 
- 
+ <script src="../../js/user/login.js"></script>
 </body>
 </html>

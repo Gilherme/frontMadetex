@@ -1,0 +1,238 @@
+.container-top-minha-conta{
+  display: grid;
+  height: 70px;
+  grid-template-columns: 20% 80%;
+
+  .minha-conta{
+    position: relative;
+    padding-left: 1.2rem;
+    grid-column: 1 / 2;
+    height: 70px;
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    background-color: #1c1c1c09;
+
+    a{
+      text-decoration: none;
+      cursor: pointer;
+      color: #000;
+    }
+
+    #btn-menu-minha-conta{
+
+      div{
+        background-color: black;
+      }
+    }
+    #card-menu-minha-conta{
+      display: none;
+      background-color: #fff;
+      position: absolute;
+      border-radius: 10px;
+      padding: 10px;
+      top: 56px;
+      width: 160px;
+      list-style: none;
+      box-shadow: 0px 100px 100px 1000px #0009;
+
+      li{
+        line-height: 2.5rem;
+        
+        &:hover{
+          color:red;
+        }
+      }
+    }
+  }
+
+  .arvore-config{
+    grid-column: 2 / 3;
+    background-color: transparent;
+  }
+}
+
+#main-minha-conta{
+  display: grid;
+  grid-template-columns: 20% 80%;
+  min-height: 100vh;
+
+  #container-menu-minha-conta{
+    background-color: #1c1c1c09;
+    grid-column: 1 / 2;
+    padding-left: 1.2rem;
+
+    nav{
+
+      ul{
+        list-style: none;
+  
+        li{
+          line-height: 3rem;
+          font-size: 1.1rem;
+          cursor: pointer;
+
+          &:hover{
+            color:red;
+          }
+        }
+      }
+    }
+  }
+
+  #container-minha-conta{
+    grid-column: 2 / 3;
+
+    .perfil, #config-escolhida{
+      width: 80%;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 15px;
+    }
+    .perfil{
+      padding: 20px;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+
+      .img-perfil{
+        overflow: hidden;
+        width: 60px;
+        height: 60px;
+        border: 4px solid black;
+        border-radius: 50%;
+
+        img{
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .nome{
+
+      }
+      .email{
+
+      }
+    }
+    #config-escolhida{
+      margin-top: 30px;
+      padding: 30px;
+    }
+  }
+}
+
+#meu-perfil, #configuracoes{
+
+  div.label-float{
+    padding-left: 30px;
+    margin-block: 1.2rem;
+    position: relative;
+
+    label{
+      pointer-events: none;
+      color: #0009;
+      transition: all .2s ease-out;
+    }
+
+    input{
+      width: 100%;
+      padding: 5px;
+      display: inline-block;
+      border: 0;
+      border-bottom: 1px solid #0009;
+      background-color: transparent;
+      outline:none;                             /*tira a borda que é ativada o clicar*/
+      min-width: 200px;
+      font-size: 16px;
+      transition: all .2s ease-out;
+      border-radius: 0;
+    }
+  }
+  
+  .fa-eye{
+    position: absolute;
+    top: 0.7rem;
+    right: 0.6rem;
+    cursor: pointer;
+  }
+  .div-btn{
+    @include flex(center);
+
+    button{
+      cursor: pointer;
+      width: 150px;
+      line-height: 2rem;
+      padding: 0 5px;
+      background-color: transparent;
+      border-radius: 10px;
+    }
+  }
+  #alterar-true{
+    display: none;
+  }
+}
+
+#minhas-compras{
+
+  .compras{
+
+    
+  }
+}
+
+.avisoMinhaConta{
+  text-align: center;
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 900px){
+  .container-top-minha-conta{
+    grid-template-columns: 30% 70%;
+    height: 50px;
+
+    .minha-conta{
+      height: 50px;
+    }
+  }
+  #main-minha-conta{
+    grid-template-columns: 30% 70%;
+
+    #container-minha-conta{
+
+      .perfil, #config-escolhida{
+        width: 90%;
+      }
+    }
+  }
+}
+@media screen and (max-width: 600px){
+  .container-top-minha-conta{
+    grid-template-columns: 50% 50%;
+    height: 80px;
+
+    .minha-conta{
+      height: 80px;
+      background-color: transparent;
+    }
+  }
+
+  #main-minha-conta{
+    grid-template-columns: 100%;
+
+    #container-menu-minha-conta{
+      display: none;
+
+      .minha-conta{
+         position: absolute;
+      }
+    }
+    #container-minha-conta{
+      grid-column: 1 / 2;
+
+      .perfil, #config-escolhida{
+        width: 90%;
+      }
+    }
+  }
+}
+

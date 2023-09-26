@@ -63,6 +63,12 @@
               <button><a href="./user/cadastrese.html">Cadastre-se</a></button>
             </div>
 
+            <div id="apendice-logado">
+              <a href="./minhaConta.html">Minha Conta</a> 
+              <a href="./contato.html">Ajuda</a>
+              <a style="color: red; cursor: pointer;" onclick="sair()">Sair</a>
+            </div>
+
             <div class="svg-user">
               <svg height="35px" width="35px">
                 <circle cx="17.5" cy="17.5" r="16" stroke="red" stroke-width="1.5" fill="#1c1c1c" />
@@ -72,31 +78,35 @@
               </svg>
             </div>
             <div class="mensagem-login">
-              <p>Olá! faça login</p> 
-              <p>ou cadastre-se </p>
+              <div>
+                <p>Olá! faça login</p> 
+                <p>ou cadastre-se </p>
+              </div>
             </div>
 
           </div>
 
           <div class="carrinho-de-compras">
             <div class="itens-no-carrinho">0</div>
-            <svg height="35px" width="35px">
-              <line x1="1" x2="7.5" y1="5" y2="5" style="stroke:red; stroke-width:1.5;" />   <!-- onde segura -->
-              <line x1="7" x2="10" y1="4.5" y2="25" style="stroke:red; stroke-width:1.5;" /> <!--Primeira linha vertical -->
-              <line x1="7" x2="29.2" y1="9" y2="9" style="stroke:red; stroke-width:1.5;" />  <!--Primeira linha horizontal-->
-              <line x1="8" x2="27" y1="14" y2="14" style="stroke:red; stroke-width:1.5;" />  <!--Segunda linha horizontal-->
-              <line x1="12.5" x2="14" y1="9" y2="20" style="stroke:red; stroke-width:1.5;"/> <!--Segunda linha vertical -->
-              <line x1="18" x2="18" y1="9" y2="20" style="stroke:red; stroke-width:1.5;" />  <!--Terceira linha vertical-->
-              <line x1="24" x2="21.5" y1="9" y2="20" style="stroke:red; stroke-width:1.5;"/> <!--Quarta linha vertical-->
-              <line x1="10" x2="26" y1="20" y2="20" style="stroke:red; stroke-width:1.5;" /> <!--Terceira linha Horizontal-->
-              <line x1="28.5" x2="25" y1="9" y2="20" style="stroke:red; stroke-width:1.5;"/> <!--Quinta linha vertical-->
-              <line x1="10" x2="25" y1="24" y2="24" style="stroke:red; stroke-width:1.5;" />
-              <circle cx="12" cy="29" r="1.5" stroke="red" stroke-width="1.5" fill="red" />
-              <circle cx="22" cy="29" r="1.5" stroke="red" stroke-width="1.5" fill="red" />
-            </svg> 
+            <a href="./carrinho.html">
+              <svg height="35px" width="35px">
+                <line x1="1" x2="7.5" y1="5" y2="5" style="stroke:red; stroke-width:1.5;" />   <!-- onde segura -->
+                <line x1="7" x2="10" y1="4.5" y2="25" style="stroke:red; stroke-width:1.5;" /> <!--Primeira linha vertical -->
+                <line x1="7" x2="29.2" y1="9" y2="9" style="stroke:red; stroke-width:1.5;" />  <!--Primeira linha horizontal-->
+                <line x1="8" x2="27" y1="14" y2="14" style="stroke:red; stroke-width:1.5;" />  <!--Segunda linha horizontal-->
+                <line x1="12.5" x2="14" y1="9" y2="20" style="stroke:red; stroke-width:1.5;"/> <!--Segunda linha vertical -->
+                <line x1="18" x2="18" y1="9" y2="20" style="stroke:red; stroke-width:1.5;" />  <!--Terceira linha vertical-->
+                <line x1="24" x2="21.5" y1="9" y2="20" style="stroke:red; stroke-width:1.5;"/> <!--Quarta linha vertical-->
+                <line x1="10" x2="26" y1="20" y2="20" style="stroke:red; stroke-width:1.5;" /> <!--Terceira linha Horizontal-->
+                <line x1="28.5" x2="25" y1="9" y2="20" style="stroke:red; stroke-width:1.5;"/> <!--Quinta linha vertical-->
+                <line x1="10" x2="25" y1="24" y2="24" style="stroke:red; stroke-width:1.5;" />
+                <circle cx="12" cy="29" r="1.5" stroke="red" stroke-width="1.5" fill="red" />
+                <circle cx="22" cy="29" r="1.5" stroke="red" stroke-width="1.5" fill="red" />
+              </svg> 
+            </a>
           </div>
           
-          <button  id="btn-menu" class="menu-hamburguer">
+          <button  id="btn-menu" class="menu-hamburguer menu-hamburguer-header">
             <div></div>
             <div></div>
             <div></div>
@@ -162,20 +172,27 @@
 
     <div class="area-usuario-menu">
       <div class="img-usuario">
-        <img src="" alt="usuario">
+        <img src="../assets/img/user.png" alt="usuario">
       </div>
+      <p>Olá! faça login ou cadastre-se</p>
     </div>
 
     <div class="area-botoes-menu">
-      <button class="entre">Entre</button>
-      <button>Faça Login</button>
+      <div>
+        <button class="entre"><a href="../views/user/login.html">Entre</a></button>
+        <button><a href="../views/user/cadastrese.html">Cadastre-se</a></button>
+      </div>
+      <div class="btns-logado">
+        <button onclick="sair()" class="entre">sair</button>
+        <button>Minha conta</button>
+      </div>
     </div>
     
     <div class="area-nav-menu">
       <nav>
         <ul>
           <li> <a href="#">Minhas Compras</a></li>
-          <li> <a href="#"> Todas as Categotias </a></li>
+          <li> <a href="#"> Todas as Categorias </a></li>
           <li> <a href="#"> Vigamento </a></li>
           <li> <a href="#"> Telhas </a></li>
           <li> <a href="#"> Forro </a></li>
@@ -188,7 +205,7 @@
       </nav>
     </div>
 
-  </div>
+    </div>
 
   <div class="banner">
     <img src="" alt="Foto de apresentação da loja">
@@ -241,6 +258,7 @@
   <script src="../js/madetex.js"></script>
   <script src="../js/header.js"></script>
   <script src="../js/produtos/abrirProduto.js"></script>
+  <script src="../js/user/atualizarDados.js"></script>
   <script src="../js/footer.js"></script>
 </body>
 </html>

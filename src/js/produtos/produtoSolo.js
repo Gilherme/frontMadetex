@@ -74,6 +74,7 @@ function atualizaPreco(preco, desconto) {
   document.querySelector('.precao').textContent = `R$ ${precaoAtual.toFixed(2).toString().replace('.', ',')}`
   document.querySelector('.preco-antigo').textContent = `R$ ${precoNormalAtual.toFixed(2).toString().replace('.', ',')}`;
   document.querySelector('.preco-parcelado').textContent = `R$ ${precoNormalAtual.toFixed(2).toString().replace('.', ',')}`;
+  document.querySelector('#quantidade').value = qtdMetros
 }
 
 async function exibirProdutosRelacionados(subCategoria){
@@ -158,13 +159,74 @@ document.addEventListener('DOMContentLoaded', () => {
   btnGaleria.forEach( btn => {
     btn.addEventListener('click', () => atualizarFotao(btn))
   })        
-  }, 300);
+  }, 1000);
 });
 
 function atualizarFotao(btn){
   const img = btn.querySelector('img') 
   const novoFotao = img.src
   document.querySelector('.fotao img').src = novoFotao
+}
+
+const btnAddCarriho = document.querySelector('.add-carrinho')
+btnAddCarriho.addEventListener('click', () => {
+
+  const userLogado = localStorage.getItem('user')
+  const idUsuario = JSON.parse(userLogado).id
+
+  if(userLogado){
+    const qtd = document.querySelector('#quantidade').value
+    if(qtd < 1){
+      alert('Quantidade Inválida')
+     }
+     else{
+      adicionarAoCarrinho(idUsuario, qtd)
+      exibirApendice('.apendice-irPcarrinho')
+      atualizaQtdProdutosNoCar()
+     }  
+  }else{
+    exibirApendice('.apendice-entrePaddCarrinho')
+  }
+})
+
+async function adicionarAoCarrinho(idUsuario, qtd){
+  const payload = localStorage.getItem('user')
+  const urlParams = new URLSearchParams(window.location.search);
+  const produtoId = urlParams.get('id'); 
+  const pecas = document.getElementById('pecas').value
+
+  const produto = {usuario_ID: idUsuario, produto_ID: produtoId, quantidade: qtd, pecas: pecas || null}
+
+  fetch(`http://localhost:1039/adicionarAoCarrinho`,{
+   method: 'POST',
+   headers: {'Content-Type': 'application/json'},
+   body: JSON.stringify(produto),
+   payload: JSON.stringify(payload)
+   })
+  .then(response => response.json())
+  // .then(mensagem => console.log(mensagem))
+  .catch(error => console.log(error))
+}
+
+
+function exibirApendice(apendice){
+  const ap = document.querySelector(apendice)
+  ap.style.display = 'block'
+  let naTela = true 
+
+  setTimeout(()=> {
+    document.addEventListener("click", function(event) {
+      if (event.target !== ap && naTela) {
+  
+          ap.style.display = "none";
+          naTela = false
+      }
+    });
+  },300)
+}
+
+function continuarComprando(){
+  document.querySelector('.apendice-irPcarrinho').style.display = 'none'
 }
 
 // seta do carrosel
@@ -193,3 +255,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, 1000);
 });
+

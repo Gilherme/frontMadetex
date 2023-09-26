@@ -5,10 +5,11 @@
     <link rel="stylesheet" href="../assets/css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&family=Wix+Madefor+Display:wght@500;700;800&display=swap" rel="stylesheet">
-    <title>Madetex</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Madetex - Configurações</title>
   </head> 
   <body>
-    
+   
     <header>
 
       <div class="container-header">
@@ -206,262 +207,69 @@
     </div>
 
     </div>
-    
 
-    <!-- CARROSEL-->
-    <div class="slider">
-      <div class="slides">
-        
-      <!-- Radio Ruttons -->
-        <input type="radio" name="radio-btn" id="radio1">
-        <input type="radio" name="radio-btn" id="radio2">
-        <input type="radio" name="radio-btn" id="radio3">
-        <input type="radio" name="radio-btn" id="radio4">
-      <!-- Fim Radio Buttons -->
-  
-      <!-- slider images -->
-        <div class="slide first">
-          <img src="../assets/img/carrosel1.png" alt="imagem 1">
-        </div>
-        <div class="slide">
-          <img src="../assets/img/carrosel2.png" alt="imagem 2">
-        </div>
-        <div class="slide">
-          <img src="../assets/img/carrosel3.png" alt="imagem 3">
-        </div>
-        <div class="slide">
-          <img src="../assets/img/carrosel2.png" alt="imagem 4">
-        </div>
-      <!-- Fim Slider Images -->
-  
-      <!-- Navegation Auto -->
-        <div class="nav-auto">
-          <div class="auto-btn1"></div>
-          <div class="auto-btn2"></div>
-          <div class="auto-btn3"></div>
-          <div class="auto-btn4"></div>
-        </div>
-      <!-- Fim Navegation Auto -->
-  
+    <div class="container-top-minha-conta">
+
+      <div class="minha-conta">
+
+        <button id="btn-menu-minha-conta" class="menu-hamburguer">
+          <div></div>
+          <div></div>
+          <div></div>
+        </button>
+        <p>Minha conta</p>
+
+        <ul id="card-menu-minha-conta">
+          <li>Dados pessoais</li>
+          <li>Meus endereços</li>
+          <li>Minhas compras</li>
+          <li>Meus cartões</li>
+          <li>Configurações</li>
+        </ul>
       </div>
-  
-      <!-- Manual Navigation -->
-        <div class="manual-navigation">
-          <label for="radio1" class="manual-btn"></label>
-          <label for="radio2" class="manual-btn"></label>
-          <label for="radio3" class="manual-btn"></label>
-          <label for="radio4" class="manual-btn"></label>
-        </div>
+
+      <div class="arvore-config"></div>
+
     </div>
-    <!--Fim do carrosel -->
 
-    <div class="container-carrosel-madetexs">
+    <main id="main-minha-conta">
 
-      <h2>COMPRE DA MADETEX MAIS PRÓXIMA DE VOCÊ! <sup>* Disponivel apenas para SP</sup></h2>
+      <div id="container-menu-minha-conta"> 
+        <nav>
+          <ul>
+            <li onclick="meuPerfil()">Meu perfil</li>
+            <li onclick="minhasCompras()">Minhas compras</li>
+            <li onclick="meusEnderecos()">Meus endereços</li>
+            <li onclick="configuracoes()">Configurações</li>
+          </ul>
+        </nav>
 
-      <div class="container-interno-madetexs">
+      </div>
 
-        <div class="bnt-madetexs">
-          <button class="btn-anterior">&#10094</button>
+      <div id="container-minha-conta">
+
+        <div class="perfil">
+          <div class="img-perfil">
+            <img src="../assets/img/user.png" alt="foto do usuario">
+          </div>
+          <div>
+            <p class="nome-perfil"></p>
+            <p class="email-perfil"></p>
+          </div>
         </div>
 
-        <div class="carrosel-madetexs">
-
-          <div class="item-madetexs">
-            <div class="logo-madetexs">
-              <svg height="30" width="165">
-                <path d="M 5 35 l 80 -30" stroke="red" stroke-width="13" fill="none" />
-                <path d="M 80 5 l 80 30" stroke="red" stroke-width="13" fill="none" />
-              </svg>
-              <svg height="30" width="165">
-                <a  href="/views/madetex.html?loja=Madetex_Jundiai">
-                  <text x="4" y="24" stroke="3" fill="red">MADETEX</text>
-                </a>
-              </svg>
-            </div>
-            <h3><a style="text-decoration: none; color: #fff;" href="/views/madetex.html?loja=Madetex_Jundiai">Jundiaí</a></h3>
-          </div>
-  
-          <div class="item-madetexs">
-            <div class="logo-madetexs">
-              <svg height="30" width="165">
-                <path d="M 5 35 l 80 -30" stroke="red" stroke-width="13" fill="none" />
-                <path d="M 80 5 l 80 30" stroke="red" stroke-width="13" fill="none" />
-              </svg>
-              <svg height="30" width="165">
-                <a href="/views/madetex.html?loja=Madetex_Itupeva">
-                  <text x="4" y="24" stroke="3" fill="red">MADETEX</text>
-                </a>
-              </svg>
-            </div>
-            <h3> <a style="text-decoration: none; color: #fff;" href="/views/madetex.html?loja=Madetex_Itupeva">Itupeva</a></h3>
-          </div>
-  
-          <div class="item-madetexs">
-            <div class="logo-madetexs">
-              <svg height="30" width="165">
-                <path d="M 5 35 l 80 -30" stroke="red" stroke-width="13" fill="none" />
-                <path d="M 80 5 l 80 30" stroke="red" stroke-width="13" fill="none" />
-              </svg>
-              <svg height="30" width="165">
-                <a href="/views/madetex.html?loja=Madetex_Campo_Limpo_Pta" >
-                  <text x="4" y="24" stroke="3" fill="red">MADETEX </text>
-                </a>
-              </svg>
-            </div>
-            <h3> <a  style="text-decoration: none; color: #fff;" href="/views/madetex.html?loja=Madetex_Campo_Limpo_Pta">Campo Limpo Pta</a></h3>
-          </div>
-
-          <div class="item-madetexs">
-            <div class="logo-madetexs">
-              <svg height="30" width="165">
-                <path d="M 5 35 l 80 -30" stroke="red" stroke-width="13" fill="none" />
-                <path d="M 80 5 l 80 30" stroke="red" stroke-width="13" fill="none" />
-              </svg>
-              <svg height="30" width="165">
-                <a href="/views/madetex.html?loja=Madetex_Mogi_Mirim">
-                  <text x="4" y="24" stroke="3" fill="red">MADETEX</text>
-                </a>
-              </svg>
-            </div> 
-            <h3><a style="text-decoration: none; color: #fff;" href="/views/madetex.html?loja=Madetex_Mogi_Mirim">Mogi Mirim</a></h3>
-          </div>
+        <section id="config-escolhida">
           
-        </div>
-
-        <div class="bnt-madetexs">
-          <button class="btn-proximo">&#10095</button>
-        </div>
-
+        </section>
       </div>
-
-    </div>
-
-    <section id="section-populares">
-      <h2 class="titulo-carrosel-produtos">OS QUERIDINHOS DA MADETEX <a href="./produtos.html?limit=30" >ver mais</a></h2>
-    </section>
-
-    <div class="container-carrosel-categorias">
-      <h2>ARRASTE PARA O LADO E CONFIRA NOSSOS SETORES</h2>
-  
-      <div class="container-interno-categorias">
-  
-        <div>
-          <button class="btn-anterior">&#10094</button>
-        </div>
-  
-        <div class="carrosel-categorias">
-
-          <div class="item-categoria">
-            <a href="./produtos.html?param=portas&column=sub_sub_categoria">
-              <div><img  src="../assets/img/porta.jfif"></div>
-              <h3>Portas</h3>
-            </a>
-          </div>
-
-          <div class="item-categoria">
-            <a href="./produtos.html?param=janelas&column=sub_sub_categoria">
-              <div><img  src="../assets/img/janela.jfif"></div>
-              <h3>Janelas</h3>
-            </a>
-          </div>
-
-          <div class="item-categoria">
-           <a href="./produtos.html?param=decks&column=sub_categoria">
-            <div><img  src="../assets/img/mad/decks/deck.jfif"></div>
-            <h3>Deck</h3>
-           </a>
-          </div>
+    </main>
     
-          <div class="item-categoria">
-            <a href="./produtos.html?param=cambara&column=madeira">
-              <div><img  src="../assets/img/cambara.jfif"></div>
-              <h3>Madeira Cambará</h3>
-            </a>
-          </div>
 
-          <div class="item-categoria">
-            <a href="./produtos.html?param=peroba&column=madeira">
-              <div><img  src="../assets/img/peroba.jfif"></div>
-              <h3>Madeira Peroba</h3>
-            </a>
-          </div>
 
-          <div class="item-categoria">
-            <a href="./produtos.html?param=pinus&column=madeira">
-              <div><img  src="../assets/img/pinus.jfif"></div>
-              <h3>Madeira Pinus</h3>
-            </a>
-          </div>
-
-          <div class="item-categoria">
-            <a href="./produtos.html?param=mista&column=madeira">
-              <div><img  src="../assets/img/mista.jfif"></div>
-              <h3>Madeira Mista</h3>
-            </a>
-          </div>
-
-          <div class="item-categoria">
-           <a href="./produtos.html?param=cedro&column=madeira">
-            <div><img  src="../assets/img/cedrinho.jfif"></div>
-            <h3>Madeira Cedrinho</h3>
-           </a>
-          </div>
-
-          <div class="item-categoria">
-            <a href="./produtos.html?param=forro&column=sub_categoria">
-              <div><img  src="../assets/img/forro.jfif"></div>
-              <h3>Forro de madeira</h3>
-            </a>
-          </div>
-
-          <div class="item-categoria">
-            <a href="./produtos.html?param=telhas_de_barro&column=sub_categoria">
-              <div><img  src="../assets/img/telhas/telha-romana.jfif"></div>
-              <h3>Telhas de Barro</h3>
-            </a>
-          </div>
-
-          <div class="item-categoria">
-            <a href="./produtos.html?param=telhas de fibrocimento&column=sub_categoria">
-              <div><img  src="../assets/img//telhas/telha-ondulada.png"></div>
-              <h3>Telhas de Fibrocimento</h3>
-            </a>
-          </div>
-
-          <div class="item-categoria">
-            <a href="./produtos.html?param=chapas de madeira&column=categoria">
-              <div><img  src="../assets/img/chapas.jfif"></div>
-              <h3>Chapas de Madeira</h3>
-            </a>
-          </div>
-    
-          <!-- <div class="item-categoria">
-            <a href="./produtos.html?param=tintas&column=categoria">
-              <div><img  src="../assets/img/verniz.jfif"></div>
-              <h3>Verniz e Polisten</h3>
-            </a>
-          </div>        -->
-
-        </div>
-  
-        <div>
-          <button class="btn-proximo">&#10095</button>
-        </div>
-  
-      </div>
-     </div>
-
-    <section id="section-ofertas" >
-      <h2 class="titulo-carrosel-produtos"> OFERTAS IMPERDIVEIS!! <a href="./produtos.html?param=1&column=oferta">ver mais</a></h2>
-    </section>
-  
-    
     <script src="../js/header.js"></script>
     <script src="../js/ferramentas.js"></script>
-    <script src="../js/index.js"></script>
-    <script src="../js/produtos/abrirProduto.js"></script>
     <script src="../js/user/atualizarDados.js"></script>
+    <script src="../js/user/minhaConta.js"></script>
     <script src="../js/footer.js"></script>
   </body>
 </html>

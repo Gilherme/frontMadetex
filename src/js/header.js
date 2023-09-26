@@ -5,8 +5,8 @@ btnCategorias.addEventListener('click', toggleCategorias)
 function toggleCategorias(){abrirFechar('nav-categorias'); toggleSeta('.categorias .seta')}
 
 const apendiceEntre = document.querySelector('.area-usuario .usuario')
-apendiceEntre.addEventListener('mouseover', () => abrirFechar('apendice-cadastrese'))
-apendiceEntre.addEventListener('mouseout',  () => abrirFechar('apendice-cadastrese'))
+apendiceEntre.addEventListener('mouseover', () =>  toggleApendiceUserHeader())
+apendiceEntre.addEventListener('mouseout',  () => toggleApendiceUserHeader()) //Função no user/atualizarDados.js
 
 const btnMenu = document.getElementById('btn-menu')
 const btnX    = document.getElementById('btn-x')

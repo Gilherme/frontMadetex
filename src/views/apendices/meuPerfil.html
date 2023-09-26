@@ -1,0 +1,42 @@
+<div id="meu-perfil">
+  <h3 style="text-align: center;">Meu Perfil</h3>
+ <form>
+  <div class="label-float">
+    <label for="nome">Nome:</label>
+    <input autocomplete="off" type="text" id="nome" name="nome" class="nome-meu-perfil">
+  </div> 
+  <div class="label-float">
+    <label for="email">E-mail: </label>
+    <input autocomplete="off" type="text" name="email" id="email">
+  </div>
+  <div class="label-float">
+    <label for="telefone">Telefone: </label>
+    <input autocomplete="off" type="text" name="telefone" id="telefone">
+  </div>
+  <div class="label-float">
+    <label for="data-nascimento">Data de nascimento: </label>
+    <input autocomplete="off" type="date" id="data-nascimento" name="data-nascimento">
+  </div>
+  <div class="label-float">
+    <label for="cpf">CPF: </label>
+    <input autocomplete="off" type="text" name="cpf" id="cpf">
+  </div>           
+  
+
+  <div class=" div-alterar-dados div-btn">
+    <button class="alterar-dados">Alterar Dados</button>
+  </div>
+
+  <div id="alterar-true">
+    <div class="label-float">
+      <label for="senha">Digite sua senha:</label>
+      <input autocomplete="off" type="password" id="senha" name="senha">
+      <i onclick="mostrarSenha()" class="fa fa-eye" aria-hidden="true"></i>
+    </div>
+
+    <div class="div-btn">
+      <button type="button" onclick="alterarCadastro()">alterar</button>
+    </div>
+  </div>
+ </form>
+</div>

@@ -52,9 +52,10 @@ async function editarProduto(){
   var produtoAtualizado = { nome: nome, madeira: madeira, descricao: descricao, categoria: categoria, sub_categoria: subCategoria, sub_sub_categoria: subSubCategoria, preco: preco, quantidade: quantidade, loja: loja, desconto: desconto, condicao: condicao, pagamento: pagamento, galeria: galeria, lista_descricao: lista, oferta: oferta};
 
   const options = {
-    method: 'PUT', 
-    headers: { authorization: 'Bearer 1234','Content-Type': 'application/json'},  
-    body: JSON.stringify(produtoAtualizado) 
+    method: 'PUT',   
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(produtoAtualizado),
+    user: 'usuario 123'
   }
   
  fetch(`http://localhost:1039/editarProduto/${id}`, options)
