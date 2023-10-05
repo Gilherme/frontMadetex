@@ -1,0 +1,168 @@
+.main-finalizar-compra{
+  min-height: 90vh;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 72% 25%;
+  margin: 30px;
+
+  .conteudo-finalizar-compra{
+    background-color: transparent;
+    border-radius: 1rem;
+    border-radius: 1rem;
+    grid-column: 1 / 2;
+  }
+
+  .resumo-finalizar-compra{
+    border-radius: 1rem;
+    background-color: #fff;
+    height: 200px;
+    grid-column: 2 / 3;
+
+    h4{
+      margin-block: 15px;
+      text-align: center;
+    }
+    .container-interno-resumo-FC{
+      display: flex;
+
+      .total, .total-com-frete{
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+    
+      div{
+        padding: 10px;
+        width: 50%;
+
+        p{
+          line-height: 2rem;
+        }
+      }
+      .esquerda{
+        p{
+          text-align: end;
+        }
+      }
+    }
+  }
+}
+
+#add-endereco{
+  h2{
+    text-align: center;
+    margin-block: 2rem;
+  }
+}
+.form-endereco{
+  width: 90%;
+  margin: 0 auto;
+
+  .dupla{
+    margin-block: 2rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 1rem;
+
+    div{
+      width: 40%;
+    }
+  }
+  .trio{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 1rem;
+    margin-block: 1rem;
+    div{
+      width: 35%;
+    }
+    .ultimo-trio{
+      width: 15%;
+    }
+  }
+  .complemento, .telefone, .nome, .cep, .continuar{
+    margin-block: 2rem;
+
+    input{
+      width: 80%;
+    }
+    #telefone, #cep{
+      width: 200px;
+    }
+  }
+  label{
+    display: block;
+    color: #0009;
+    font-size: .9rem;
+    padding-left:  10px;
+  }
+  input{
+    width: 100%;
+    line-height: 2.5rem;
+    border-radius: .5rem;
+    border: 1px solid #0009;
+    padding-left: 10px;
+  }
+  .continuar{
+    
+    button{
+      padding: 10px 30px;
+      background-color: red;
+      color: #fff;
+      font-size: 1.1rem;
+      border-radius: .9rem;
+      cursor: pointer;
+      border: none;
+    }
+  }
+  sup{
+    color: red;
+    font-size: .8rem;
+    text-align: end;
+  }
+} 
+.div-escolha-endereco{
+  position: relative;
+  width: 80%;
+  margin: 2rem auto;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 4px 4px 4px #0003;
+  height: 100px;
+  padding: 30px;
+
+  p{
+    line-height: 3rem;
+    color: #0009;
+    padding-left: 40px;
+  }
+  label{
+    padding-left: 20px;
+    font-size: 1.2rem;
+  }
+  .btn-editar-endereco{
+    position: absolute;
+    right: 1.2rem;
+    top: 40px;
+    background-color: transparent;
+    border: 0;
+    color: red;
+    height: 20px;
+    cursor: pointer;
+  }
+  
+  &:hover{
+    background-color: #00000003;
+  }
+}
+.btn-escolher-endereco{
+  display: block;
+  width: auto;
+  margin: 1rem auto;
+}
+.titulo-escolha-endereco{
+  padding-left: .3rem;
+  width: 80%;
+  margin: 1rem auto;
+}

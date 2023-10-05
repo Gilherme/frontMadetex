@@ -4,7 +4,7 @@
   gap: 2rem;
   grid-template-columns: 72% 25%;
 
-  .itens-no-carrinho{
+  .produtos-no-carrinho{
     
     grid-column: 1 / 2;
 
@@ -44,26 +44,51 @@
         font-size: 1.2rem;
         font-weight: 400;
       }
-      input{
-        width: 60px;
+      input, select{
+        outline: none;
+        line-height: 1.3rem;
+        border: .7px solid #0009;
       }
       .qtd-comum{
         grid-column: 3 / 4;
         grid-row: 2 / 3;
-        
+        input{
+          text-align: center;
+          width: 50px;
+          border-radius: 2px;
+        }
+        label{
+          color: #fff;
+        }
       }
       .qtd-madeira{
-        display: none;
+        gap: 5px;
         grid-column: 3 / 4;
         grid-row: 2 / 3;
-        padding: 1rem;
-      }
-      .qtd-madeira, .qtd-comum{
-        label{
-          margin-top: 3px;
-          display: block;
-          font-size: .8rem;
-          color: #0009;
+        display: grid;
+        grid-template-columns: 30% 70%;
+        grid-template-rows: 45% 45%;
+
+        input{
+          border-radius: 2px;
+          width: 100%;
+        }
+        .label-pecas{
+          grid-column: 2 / 3;
+          grid-row: 1 / 2;
+        }
+        #pecas{
+          grid-column: 1 / 2;
+          grid-row: 1 / 2;
+        }
+        .label-qtd{
+          grid-column: 1 / 2;
+          grid-row: 2 / 3;
+        }
+        #quantidade{
+          border-radius: 2px;
+          grid-column: 2 / 3;
+          grid-row: 2 / 3;
         }
       }
       .div-preco{
@@ -72,13 +97,13 @@
         display: grid;
         justify-content: center;
 
-        .preco-antigo{
+        .preco-normal{
           padding-left: 15px;
           font-size: .8rem;
           text-decoration: line-through;
           color:#0009;
         }
-        .preco-atual{
+        .preco-avista{
           font-size: 1.2rem;
           letter-spacing: .6px;
         }
@@ -150,10 +175,37 @@
   }
 }
 
+.resumo-compra-mobile{
+  display: none;
+  height: 70px;
+  position: fixed;
+  bottom: 0;
+  z-index: 3;
+  width: 100%;
+  background-color: #fff;
+  
+  .total{
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+  div{
+    padding-inline: 20px;
+    height: 100%;
+    @include flex(between);
+  }
+  button{
+    padding: 10px;
+    border: 0;
+    border-radius: 15px;
+    color: #fff;
+    background-color: red;
+  }
+}
+
 @media screen and (max-width: 960px){
   .main-carrinho{
     grid-template-columns: 96.5%;
-    .itens-no-carrinho{
+    .produtos-no-carrinho{
       
       .item-carrinho{
         grid-template-columns: 15% 45% 20% 20%;
@@ -169,16 +221,31 @@
       display: none;
     }
   } 
+  .resumo-compra-mobile{
+    display: block;
+  }
 }
 @media screen and (max-width: 760px){
   .main-carrinho{
 
-    .itens-no-carrinho{
+    .produtos-no-carrinho{
      
 
       .item-carrinho{
         grid-template-columns: 20% 40% 20% 20%;
 
+        .qtd-madeira{
+          gap: 2px;
+          grid-template-columns: 20% 78%;
+          grid-template-rows: 49% 49%;
+  
+          .label-pecas, #pecas, #quantidade, .label-qtd{
+            font-size: .9rem;
+          }
+          .label-pecas, .label-qtd{
+            color: #0009;
+          }
+        }
         .vendido-por{
           grid-column: 1 / 4;
         }
@@ -189,12 +256,37 @@
 @media screen and (max-width: 560px){
   .main-carrinho{
     grid-template-columns: 100%;
-    .itens-no-carrinho{
+    .produtos-no-carrinho{
       
 
       .item-carrinho{
         grid-template-columns: 20% 40% 20% 20%;
         margin-left: 0px;
+
+        .qtd-madeira{
+          gap: 2px;
+          grid-template-columns: 100%;
+          grid-template-rows: 24% 24% 24% 24%;
+          
+          #pecas{
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+          } 
+          .label-pecas{
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+          }
+          .label-qtd{
+            grid-column: 1 / 2;
+            grid-row: 3 / 4;
+          }
+          #quantidade{
+            grid-column: 1 / 2;
+            grid-row: 4 / 5;
+          } 
+          
+        }
+
         .vendido-por{
           grid-column: 1 / 5;
         }
@@ -213,14 +305,32 @@
       }
     }
   }  
+
+  .resumo-compra-mobile{
+    display: block;
+
+    div{
+
+      .qtd-items-mobile{
+        display: none;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 380px){
   .main-carrinho{
-    .itens-no-carrinho{
+    .produtos-no-carrinho{
       .item-carrinho{
         grid-template-columns: 18% 35% 23% 24%;
       }
     }
   }  
+  .resumo-compra-mobile{
+    div{
+      .preco-frete-mobile{
+        display: none;
+      }
+    }
+  }
 }

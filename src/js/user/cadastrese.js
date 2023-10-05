@@ -3,27 +3,10 @@
 
 const nome = document.getElementById('nome')
 const email = document.getElementById('email')
-const telefoneInput = document.getElementById('telefone')
 const senha = document.getElementById('senha')
+const telefoneInput = document.querySelector('#telefone')
 
-telefoneInput.addEventListener('input', formatarNumeroTelefone);
-
-function formatarNumeroTelefone() {
-  var numero = telefoneInput.value.replace(/\D/g, '');
-  var numeroFormatado = '';
-
-  if (numero.length > 0) {
-    numeroFormatado += '(' + numero.substring(0, 2);
-  }
-  if (numero.length >= 3) {
-    numeroFormatado += ') ' + numero.substring(2, 7);
-  }
-  if (numero.length > 7) {
-    numeroFormatado += '-' + numero.substring(7, 11);
-  }
-
-  telefoneInput.value = numeroFormatado;
-}
+telefoneInput.addEventListener('input', () => formatarTelefone(telefoneInput));
 
 function cadastrarUser(){
   

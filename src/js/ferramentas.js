@@ -46,7 +46,44 @@ function exibirMensagemAlertaInput(input, mensagem, destino){
   const dest = document.querySelector(destino)
   // console.log(btn)
   input.style.borderColor = "red"
+  input.style.outline = "2px solid red"
   dest.textContent = mensagem
+}
+function deixarInputVerde(input, elementoPraSumir){
+  input.style.borderColor = "green"
+  input.style.outline = "2px solid green"
+
+  const el = document.querySelector( elementoPraSumir)
+  el.style.display = 'none'
+}
+
+function formatarCEP(cep) {
+  cep = cep.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+  cep = cep.substring(0, 8); // Limita o cep a 8 dígitos
+  
+  // Insere pontos e traço na formatação do cep
+  if (cep.length >= 5) {
+    cep = cep.replace(/(\d{5})(\d{3})$/, '$1-$2');
+  }
+  
+  return cep;
+}
+
+function formatarTelefone(input) {
+  var numero = input.value.replace(/\D/g, '');
+  var numeroFormatado = '';
+
+  if (numero.length > 0) {
+    numeroFormatado += '(' + numero.substring(0, 2);
+  }
+  if (numero.length >= 3) {
+    numeroFormatado += ') ' + numero.substring(2, 7);
+  }
+  if (numero.length > 7) {
+    numeroFormatado += '-' + numero.substring(7, 11);
+  }
+
+  input.value = numeroFormatado;
 }
 
 function limitarString(texto, limite) {
@@ -117,7 +154,6 @@ function CriarCarroselProdutos(data, destino){
   secaoProdutos.appendChild(containerProdutos);
 }
 
-
 function toggleSeta(seta) {
   const setinha = document.querySelector(seta);
   
@@ -127,6 +163,3 @@ function toggleSeta(seta) {
     setinha.classList.add('seta-open');
   }
 }
-
-
-

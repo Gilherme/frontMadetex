@@ -206,91 +206,47 @@
   </div>
 
   </div>
-
+  
   <main class="main-carrinho">
 
-    <section class="itens-no-carrinho">
-
-      <div class="item-carrinho">
-
-        <div class="vendido-por">
-          Vendido por: Madetex Campo Limpo Pta
-        </div>
-        
-        <div class="div-img">
-          <img src="../assets/img/cedrinho.jfif" alt="foto do produto">
-        </div>
-
-        <h2>Viga de madeira crdeinho 15cm x 5cm </h2>
-
-        <div class="qtd-comum">
-          <label for="quantidade">Quantidade:</label>
-          <input id="quantidade" type="number">
-        </div>
-
-        <div class="qtd-madeira">   
-          <div>
-            <label for="pecas">Peças:</label>
-            <input type="number" name="pecas" id="pecas">
-          </div>
-
-          <div>
-            <label for="comprimento">Comprimento:</label>
-            <select name="comprimento" id="comprimento">
-              <option value="1">1,00 Metro</option>
-              <option value="1.5">1,50 Metro</option>
-              <option value="2">2,00 Metros</option>
-              <option value="2.5">2,50 Metros</option>
-              <option value="3">3,00 Metros</option>
-              <option value="3.5">3,50 Metros</option>
-              <option value="4">4,00 Metros</option>
-              <option value="4.5">4,50 Metros</option>
-              <option value="5">5,00 Metros</option>
-              <option value="5.5">5,50 Metros</option>
-              <option value="6">6,00 Metros</option>
-              <option value="6.5">6,50 Metros</option>
-              <option value="7">7,00 Metros</option>
-            </select>
-          </div> 
-        </div>
-
-        <div class="div-preco">
-          <p class="preco-antigo">R$ 10,99</p>
-          <p class="preco-atual">R$ 9,99</p>
-        </div>
-
-        <div class="div-botoes">
-          <button>Comprar Agora</button>
-          <button>Excluir</button>
-        </div>
-      </div>
-
+    <section class="produtos-no-carrinho">
     </section>
+
     <section class="resumo-carrinho-desktop">
       <h4>Resumo da compra</h4>
       <div class="container-interno-resumo-car">
         <div class="direita">
-          <p class="items">Items <span>(2)</span></p>
+          <p class="items">Items <span></span></p>
           <p>Frete </p>
           <p class="total">Total</p>
         </div>
         <div class="esquerda">
-          <p class="total-items">R$ 233,00</p>
-          <p class="total-frete">R$ 10,99</p>
-          <p class="total-com-frete">R$ 243,99</p>
+          <p class="total-items"></p>
+          <p class="total-frete green">Grátis</p>
+          <p class="total-com-frete"></p>
         </div>
       </div>
       <div class="div-jutify-center div-btn-resumo-car">
-        <button>Continuar compra</button>
+        <button onclick="continuarCompra()">Continuar compra</button>
       </div>
     </section>
   </main>
   
+  <div class="resumo-compra-mobile">
+
+    <div>
+      <p class="qtd-items-mobile">Items <span></span></p>
+      <p class="preco-frete-mobile">Frete <span class="green"> Gratis</span></p>
+      <p class="total">Total <span class="total-com-frete-mobile"></span></p>
+      <button onclick="continuarCompra()">Continuar compra</button>
+    </div>
+
+  </div>
 
   <script src="../js/header.js"></script>
   <script src="../js/ferramentas.js"></script>
-  <script src="../js/produtos/abrirProduto.js"></script>
   <script src="../js/user/atualizarDados.js"></script>
+  <script src="../js/carrinho.js"></script>
   <script src="../js/footer.js"></script>
 </body>
 </html>

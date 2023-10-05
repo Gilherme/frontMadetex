@@ -54,3 +54,14 @@ $darkRed: #951515;
 .div-jutify-center{
   @include flex(center);
 }
+.btn-red{
+  padding: 10px 1.5rem;
+  line-height: 1.5rem;
+  font-size: 1.1rem;
+  border: 0;
+  cursor: pointer;
+  border-radius: 1rem;
+  color: #fff;
+  background-color: red;
+  margin-block: .4rem;
+}
