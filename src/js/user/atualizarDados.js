@@ -1,4 +1,5 @@
 
+// informacão usada em carrinho, finalizarCompra e talvez outros arquivos, não modificar sem mudar as funções que a usam
 const userLogado = JSON.parse(localStorage.getItem('user'))
 
 function toggleApendiceUserHeader(){

@@ -19,7 +19,7 @@ $fontClara: #fff;
 $primaryColor: #1c1c1c;
 $secondaryColor: red;
 $darkRed: #951515;
-
+.red{color: red;}
 
 @mixin flex($val){
   display: flex;
@@ -64,4 +64,20 @@ $darkRed: #951515;
   color: #fff;
   background-color: red;
   margin-block: .4rem;
+}
+
+.btn-link-red{
+  padding: 10px;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+  color: red;
+  background-color: transparent;
+  font-size: .9rem;
+}
+
+.sup-msg-erro{
+  color: red;
+  font-size: .8rem;
+  text-align: end;
 }

@@ -68,9 +68,7 @@ function atualizarPrecoMadeira(el){
   let precoAtualNormal = (ml * precoNormal).toFixed(2)
   let precoAtualAvista = (ml * precoAvista).toFixed(2)
 
-  let elPrecoNormal = parentDiv.querySelector('.preco-normal')
   let elPrecoAvista = parentDiv.querySelector('.preco-avista');
-  elPrecoNormal.textContent = `R$ ${precoAtualNormal}`
   elPrecoAvista.textContent = `R$ ${precoAtualAvista}`
 
   editarItemNoCarrinho(idProdutoNoCar, ml, pecas.value)
@@ -94,9 +92,7 @@ function atualizarPrecoProdNormal(btn) {
   let precoAtualNormal = (quantidade * precoNormal).toFixed(2)
   let precoAtualAvista = (quantidade * precoAvista).toFixed(2)
 
-  let elPrecoNormal = parentDiv.querySelector('.preco-normal');
   let elPrecoAvista = parentDiv.querySelector('.preco-avista');
-  elPrecoNormal.textContent = `R$ ${precoAtualNormal}`
   elPrecoAvista.textContent = `R$ ${precoAtualAvista}`
 
   editarItemNoCarrinho(idProdutoNoCar, quantidade);
@@ -169,13 +165,12 @@ async function preencherProdutosNoCarrinho(){
           </div> 
   
           <div class="div-preco">
-            <p class="preco-normal">R$ ${preco.toFixed(2)}</p>
-            <p class="preco-avista">R$ ${precoAvista.toFixed(2)}</p>
+            <p class="preco-avista">R$ ${preco.toFixed(2)}</p>
           </div>
   
           <div class="div-botoes">
-            <button>Comprar Agora</button>
-            <button onclick="apagarItemNoCarrinho(${produto.id})"> Remover</button>
+            <!-- <button>Comprar Agora</button> -->
+            <button class="btn-link-red" onclick="apagarItemNoCarrinho(${produto.id})"> Remover do carrinho</button>
           </div>
         </div>
       `
@@ -200,13 +195,12 @@ async function preencherProdutosNoCarrinho(){
           </div>
   
           <div class="div-preco">
-            <p class="preco-normal">R$ ${preco.toFixed(2)}</p>
-            <p class="preco-avista">R$ ${precoAvista.toFixed(2)}</p>
+            <p class="preco-avista">R$ ${preco.toFixed(2)}</p>
           </div>
   
           <div class="div-botoes">
-            <button>Comprar Agora</button>
-            <button onclick="apagarItemNoCarrinho(${produto.id})"> Remover</button>
+            <!-- <button>Comprar Agora</button> -->
+            <button class="btn-link-red" onclick="apagarItemNoCarrinho(${produto.id})"> Remover do carrinho</button>
           </div>
         </div>
       `
@@ -238,9 +232,20 @@ window.addEventListener("scroll", () => moverResumoDaCompra(scrollY));
 
 function moverResumoDaCompra(scroll){
   const resumo = document.querySelector('.resumo-carrinho-desktop')
-  resumo.style.marginTop = `${scroll + 30}px`
+  resumo.style.marginTop = `${scroll + 45}px`
 }
 
-function continuarCompra() {
-  window.location = '/views/finalizarCompra.html'
+async function continuarCompra() {
+
+  const produtos = await getProdutosNoCarrinho(userLogado.id)
+
+  const todosMesmaLoja = produtos.every((produto, index, array) => {
+    return index === 0 || produto.loja === array[index - 1].loja;
+  });
+
+  if(todosMesmaLoja){
+    window.location = '/views/finalizarCompra.html'
+  }else{
+    abrirFechar('aviso-produtos-diferentes')
+  }
 }

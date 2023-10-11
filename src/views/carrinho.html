@@ -210,6 +210,7 @@
   <main class="main-carrinho">
 
     <section class="produtos-no-carrinho">
+      <h2>Meu carrinho de compras</h2>
     </section>
 
     <section class="resumo-carrinho-desktop">
@@ -237,10 +238,18 @@
     <div>
       <p class="qtd-items-mobile">Items <span></span></p>
       <p class="preco-frete-mobile">Frete <span class="green"> Gratis</span></p>
-      <p class="total">Total <span class="total-com-frete-mobile"></span></p>
+      <p class="total">Total: <span class="total-com-frete-mobile"></span></p>
       <button onclick="continuarCompra()">Continuar compra</button>
     </div>
 
+  </div>
+
+  <div id="aviso-produtos-diferentes">
+    <h3>Só é possível comprar de uma loja por vez</h3>
+    <p>Seu carrinho possui items de lojas diferentes, remova-os antes de continuar.</p>
+    <p>Cada loja Madetex é idependente então as compras devem ser separadas por loja.</p>
+    <p>Para comprar de lojas diferentes finalize a compra com os itens de uma e depois compre da outra, como duas compras separadas.</p>
+    <button onclick="abrirFechar('aviso-produtos-diferentes')">Ok</button>
   </div>
 
   <script src="../js/header.js"></script>

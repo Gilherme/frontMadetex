@@ -1,8 +1,8 @@
 .main-finalizar-compra{
-  min-height: 90vh;
+  min-height: 85vh;
   display: grid;
-  gap: 2rem;
-  grid-template-columns: 72% 25%;
+  gap: 1.5rem;
+  grid-template-columns: 65% 30%;
   margin: 30px;
 
   .conteudo-finalizar-compra{
@@ -17,6 +17,7 @@
     background-color: #fff;
     height: 200px;
     grid-column: 2 / 3;
+    box-shadow: 4px 4px 4px #0003;
 
     h4{
       margin-block: 15px;
@@ -26,8 +27,8 @@
       display: flex;
 
       .total, .total-com-frete{
-        font-size: 1.1rem;
-        font-weight: 600;
+        font-size: 1.3rem;
+        font-weight: 500;
       }
     
       div{
@@ -47,7 +48,126 @@
   }
 }
 
+.section-entrega-retira{
+
+  h2{
+    font-weight: 500;
+    width: 90%;
+    margin: 0 auto;
+  }
+  .aviso-escolha-opcao{
+    display: none;
+    color: red;
+    text-align: center;
+    margin-block: 1rem;
+  }
+  label{
+    color: #fff;
+    position: absolute;
+    right: 0;
+  }
+  .div-retirar{
+    width: 90%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 1rem;
+    margin-block: 1rem;
+
+    h3{
+      font-weight: 500;
+      margin-top: -15px;
+      padding-left: 20px;
+    } 
+    p{
+      margin-top: 5px;
+      padding-left: 30px;
+      color: #0009;
+    }
+    .ver-no-mapa{
+      color: red;
+      padding-left: 30px;
+    }
+  }
+}
+
+.item-prod-frete{
+  background-color: #fff;
+  border-radius: 1rem;
+  display: grid;
+  min-height: 200px;
+  margin-block: 2rem;
+  grid-template-columns:20% 40% 20% 20%;
+  grid-template-rows: 20% 60% 20%;
+
+  .div-img, h2, .info-qtd, .vendido-por, .div-preco,.div-info-frete{
+    @include flex(center);
+  }
+
+  .vendido-por{
+    border-bottom: 1px solid #0009;
+    grid-column: 1 / 5;
+    grid-row: 1 / 2;
+  }
+  .div-img{
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+
+    img{
+      width: 80%;
+      max-height:80% ;
+    }
+  }
+  h2{
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+  .info-qtd{
+    text-align: center;
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+  }
+  .div-preco{
+    flex-direction: column;
+    grid-column: 4 / 5;
+    grid-row: 2 / 3;
+
+    .preco-normal{
+      padding-left: 15px;
+      font-size: .8rem;
+      text-decoration: line-through;
+      color:#0009;
+    }
+    .preco-avista{
+      font-size: 1.2rem;
+      letter-spacing: .6px;
+    }
+  }
+  .div-info-frete{
+    border-top: 1px solid #0009;
+    grid-column: 1 / 5;
+    grid-row: 3 / 4;
+
+    button{
+      padding: 5px 10px;
+      background-color: black;
+      color: #fff;
+      border: 0;
+      outline: 0;
+      border-radius: 7px;
+      cursor: pointer;
+    }
+  }
+
+}
+
 #add-endereco{
+  background-color: #fff;
+  border-radius: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   h2{
     text-align: center;
     margin-block: 2rem;
@@ -114,14 +234,11 @@
       border-radius: .9rem;
       cursor: pointer;
       border: none;
+      box-shadow: 4px 4px 4px #0003;
     }
   }
-  sup{
-    color: red;
-    font-size: .8rem;
-    text-align: end;
-  }
-} 
+}
+
 .div-escolha-endereco{
   position: relative;
   width: 80%;
@@ -129,11 +246,12 @@
   background-color: #fff;
   border-radius: 1rem;
   box-shadow: 4px 4px 4px #0003;
-  height: 100px;
+  min-height: 100px;
   padding: 30px;
 
   p{
-    line-height: 3rem;
+    line-height: 2rem;
+    margin-top: .5rem;
     color: #0009;
     padding-left: 40px;
   }
@@ -141,15 +259,26 @@
     padding-left: 20px;
     font-size: 1.2rem;
   }
-  .btn-editar-endereco{
+  .btn-editar-endereco, .btn-excluir-endereco{
     position: absolute;
-    right: 1.2rem;
-    top: 40px;
     background-color: transparent;
     border: 0;
+    cursor: pointer;
+    right: 1.2rem;
+  }
+  .btn-editar-endereco{
+    top: 40px;
     color: red;
     height: 20px;
-    cursor: pointer;
+  }
+  .btn-excluir-endereco{
+    height: 22px;
+    width: 22px;
+
+    img{
+      width: 100%;
+      height: 100%;
+    }
   }
   
   &:hover{
@@ -160,9 +289,165 @@
   display: block;
   width: auto;
   margin: 1rem auto;
+  box-shadow: 2px 2px 2px #0003;
 }
 .titulo-escolha-endereco{
   padding-left: .3rem;
   width: 80%;
   margin: 1rem auto;
+}
+.aviso-escolha-endereco{
+  text-align: center;
+  color: red;
+  font-size: 1.3rem;
+  display: none;
+  font-weight: 500;
+}
+.p-add-outro-ende{
+  text-align: center;
+
+  button{
+    text-decoration:underline;
+  }
+}
+
+@media screen and (max-width: 960px){
+  .main-finalizar-compra{
+    gap: 1rem;
+    grid-template-columns: 100%;
+
+    .resumo-finalizar-compra{
+     display: none;
+    }
+  }
+  .div-escolha-endereco{
+
+    .btn-editar-endereco{
+      top: 10px;
+      
+    }
+  }
+}
+
+@media screen and (max-width: 660px){
+  .main-finalizar-compra{
+    margin: 20px 10px 20px 10px;
+  }
+  .span-telefone{
+    display: none;
+  }
+  .div-escolha-endereco{
+    width: 100%;  
+    padding: 15px;
+
+    p{
+      line-height: 1.3rem;
+      margin-top: .2rem;
+      color: #0009;
+      padding-left: 20px;
+    }
+    label{
+      padding-left: 10px;
+    }
+  }
+  .titulo-escolha-endereco{
+    padding-left: .3rem;
+    width: 100%;
+    margin: 1rem auto;
+  }
+  .div-escolha-endereco{
+
+    .btn-editar-endereco{
+      top: 10px;
+      right: 8px;
+    }
+  }
+
+
+  .form-endereco{
+  
+    .dupla{
+      flex-direction: column;
+
+      div{
+        width: 100%;
+      }
+    }
+    .trio{
+      flex-direction: column;
+      gap: 1rem;
+      margin-block: 1rem;
+      div{
+        width: 100%;
+      }
+      .ultimo-trio{
+        width: 100%;
+      }
+    }
+    #complemento, #nome{
+      width: 100%;
+    }
+    
+  }
+
+ .item-prod-frete{
+    grid-template-columns:18% 37% 20% 25%; 
+
+    p{
+      text-align: center;
+      font-size: .9rem;
+    }
+    h2{
+      font-size: 1rem;
+    }
+    .div-preco{
+      .preco-avista{
+        font-size: 1rem;
+        letter-spacing: .2px;
+      }
+    }
+    .div-info-frete{
+      span{
+        font-size: .9rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 420px){
+  .resumo-finalizar-compra-mobile{
+
+    .preco-frete-mobile{
+      display: none;
+    }
+  }
+}
+@media screen and (max-width: 375px){
+  .item-prod-frete{
+    grid-template-columns:18% 37% 20% 25%; 
+
+    p{
+      font-size: .8rem;
+    }
+    h2{
+      font-size: .9rem;
+    }
+    .div-preco{
+      .preco-avista{
+        font-size: .9rem;
+      }
+    }
+    .div-info-frete{
+      span{
+        font-size: .8rem;
+      }
+    }
+    .div-info-frete{
+      button{
+        padding: 3px 8px;
+        font-size: .72rem;
+        border-radius: 5px;
+      }
+    }
+  }
 }

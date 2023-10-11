@@ -41,20 +41,26 @@ function separarString(string, separador){
   return partes
 }
 
-function exibirMensagemAlertaInput(input, mensagem, destino){
-  // const btn = document.getElementById(input)
-  const dest = document.querySelector(destino)
-  // console.log(btn)
-  input.style.borderColor = "red"
-  input.style.outline = "2px solid red"
+function exibirMensagemAlertaInput(elemento, mensagem){
+  const el = document.querySelector(elemento)
+  const dest = el.nextElementSibling;
+
+  el.style.borderColor = "red"
+  el.style.outline = "2px solid red"
+
   dest.textContent = mensagem
+  el.focus()
 }
+
 function deixarInputVerde(input, elementoPraSumir){
   input.style.borderColor = "green"
   input.style.outline = "2px solid green"
 
-  const el = document.querySelector( elementoPraSumir)
-  el.style.display = 'none'
+  const el = document.querySelector(elementoPraSumir)
+  if(el){
+    el.style.display = 'none'
+  }
+  
 }
 
 function formatarCEP(cep) {

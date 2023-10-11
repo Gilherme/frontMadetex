@@ -5,9 +5,11 @@
   grid-template-columns: 72% 25%;
 
   .produtos-no-carrinho{
-    
     grid-column: 1 / 2;
 
+    h2{
+      margin: 40px 0 10px 40px;
+    }
     .item-carrinho{
       display: grid;
       grid-template-columns: 15% 45% 20% 20%;
@@ -114,15 +116,6 @@
         align-items: center;
         grid-column: 3 / 5;
         grid-row: 3 / 4;
-
-        button{
-          padding: 10px;
-          cursor: pointer;
-          border: 0;
-          outline: 0;
-          color: red;
-          background-color: transparent;
-        }
       }
     }
   }
@@ -170,23 +163,62 @@
         border: 0;
         font-size: 1rem;
         width: 70%;
+        cursor: pointer;
       }
     }
   }
 }
+#aviso-produtos-diferentes{
+  display: none;
+  width: 320px;
+  height: 320px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 1rem;
+  position: fixed;
+  top: calc(50vh - 125px);
+  left: calc(50vw - 160px);
+  box-shadow: 0px 100px 2000px 1000px  rgba(0, 0, 0, 0.6);
+  z-index: 6;
 
-.resumo-compra-mobile{
+  h3,p{
+    text-align: center;
+  }
+  h3{
+    margin-block: 1rem;
+  }
+  p{
+    font-size: .95rem;
+    margin-block: .5rem;
+  }
+  button{
+    display: block;
+    width: 80px;
+    margin: 0 auto;
+    background-color: black;
+    color: #fff;
+    font-weight: 600;
+    border: 0;
+    outline: 0;
+    border-radius: 10px;
+    padding: 5px;
+    margin-block: .5rem;
+    cursor: pointer;
+  }
+}
+.resumo-compra-mobile, .resumo-finalizar-compra-mobile{
   display: none;
   height: 70px;
   position: fixed;
   bottom: 0;
   z-index: 3;
   width: 100%;
+  left: 0;
   background-color: #fff;
   
   .total{
-    font-size: 1.1rem;
-    font-weight: bold;
+    font-size: 1.3rem;
+    font-weight: 500;
   }
   div{
     padding-inline: 20px;
@@ -199,6 +231,7 @@
     border-radius: 15px;
     color: #fff;
     background-color: red;
+    cursor: pointer;
   }
 }
 
@@ -221,7 +254,7 @@
       display: none;
     }
   } 
-  .resumo-compra-mobile{
+  .resumo-compra-mobile, .resumo-finalizar-compra-mobile{
     display: block;
   }
 }
@@ -307,8 +340,6 @@
   }  
 
   .resumo-compra-mobile{
-    display: block;
-
     div{
 
       .qtd-items-mobile{
@@ -326,11 +357,4 @@
       }
     }
   }  
-  .resumo-compra-mobile{
-    div{
-      .preco-frete-mobile{
-        display: none;
-      }
-    }
-  }
 }
