@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./src/assets/css/main.css">
+  <title>Madetex - Autenticação </title>
+  <style>
+
+    *{
+      font-size: 16px;
+      font-family: Arial, Helvetica, sans-serif;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    .card-autenticacaoo{
+      width: 380px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 5px 7px 16px -4px #0009;
+      margin: calc(50vh - 134px) calc(50vw - 195px) calc(50vh - 250px) calc(50vw - 195px);
+    }
+
+    .card-autenticacaoo div{
+      width: 90%;
+      margin: 20px auto;
+    }
+    label{
+      padding-left: .8rem;
+    }
+    button{
+      display: block;
+      
+      margin: 0 auto;
+      padding: 8px 25px;
+      background-color: black;
+      border: 0;
+      border-radius: 1rem;
+      color: #fff;
+      text-decoration: bold;
+      cursor: pointer;
+    }
+    button:active{
+      padding: 10px 30px;
+    }
+    input{
+      display: block;
+      margin: 5px 0;
+      width: 100%;
+      line-height: 2.3rem;
+      padding: 2px 10px;
+      font-size: 1.2rem;
+      border-radius: .8rem;
+      border: 2px solid black;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card-autenticacaoo">
+   
+    <div>
+      <label for="usuario">Usuario</label>
+      <input type="text" id="usuario" name="usuario">
+    </div>
+
+    <div>
+      <label for="senha">Senha</label>
+      <input type="password" name="senha" id="senha">
+    </div>  
+
+    <div>
+      <button onclick="authCafeComLeite()">Entrar</button>
+    </div>
+  
+  </div>
+
+  <script>
+    
+    const UserAuth = 'usuario01';
+    const SenhaAuth = '091148';
+
+    function authCafeComLeite(){
+      const user = document.querySelector('#usuario').value
+      const senha = document.querySelector('#senha').value
+
+      console.log(user, senha)
+
+      if(user == UserAuth && senha == SenhaAuth){
+        window.location = './home.html'
+      }else{
+        alert('senha ou usuario errado')
+      }
+    }
+  </script>
+</body>
+</html>

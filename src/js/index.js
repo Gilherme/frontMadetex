@@ -1,5 +1,5 @@
-
-carregarProdutos();
+// alert('Site em desenvolvimento, pode apresentar falhas e erros, estamos trabalhando para o lançamento')
+// carregarProdutos();
 
 function carregarProdutos(){
   carregarPopulares()
@@ -86,13 +86,63 @@ let btnAnteriorMad = carroselMadetexs.querySelector('.btn-anterior');
 let carroselMad = carroselMadetexs.querySelector('.carrosel-madetexs');
 btnProximoMad.addEventListener("click", () => {
   carroselMad.scrollBy({
-    left: +165,
+    left: +210,
     behavior: 'smooth'
   });
 });
 btnAnteriorMad.addEventListener("click", () => {
   carroselMad.scrollBy({
-    left: -165,
+    left: -210,
     behavior: 'smooth'
   });
 });
+
+texts = document.querySelectorAll('.text-logo-mad-carrosel')
+pathsLefth = document.querySelectorAll('.path-logo-mad-carrosel-left')
+pathsRigth = document.querySelectorAll('.path-logo-mad-carrosel-rigth')
+
+function larguraMaiorQue1300() {
+
+  texts.forEach(tx => {
+    tx.setAttribute('y', '32')
+  })
+
+  pathsLefth.forEach(path => {
+    path.setAttribute('d', 'M 2 50 l 110 -40')
+    path.setAttribute('stroke-width', '20')
+  })
+
+  pathsRigth.forEach(path => {
+    path.setAttribute('d', 'M 105 10 l 120 45')
+    path.setAttribute('stroke-width', '20')
+  })
+}
+
+function larguraMenorQue1300(){
+
+  texts.forEach(tx => {
+    tx.setAttribute('y', '24')
+  })
+
+  pathsLefth.forEach(path => {
+    path.setAttribute('d', 'M 5 35 l 80 -30')
+    path.setAttribute('stroke-width', '13')
+  })
+
+  pathsRigth.forEach(path => {
+    path.setAttribute('d', 'M 80 5 l 80 30')
+    path.setAttribute('stroke-width', '13')
+  })
+}
+
+function verificarLargura() {
+  if (window.innerWidth > 1300) {
+      larguraMaiorQue1300();
+  }else{
+    larguraMenorQue1300();
+  }
+}
+
+window.addEventListener('resize', verificarLargura);
+
+verificarLargura();

@@ -1,5 +1,5 @@
 let bodyzin = document.body
-fetch('./apendices/footer.html')
+fetch('./src/views/apendices/footer.html')
 .then(response => response.text())
 .then(data => {
 

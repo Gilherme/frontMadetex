@@ -12,6 +12,11 @@ html{
 body{
   background-color: #1c1c1c09;
 }
+@media (min-width: 1300px){
+  html{
+    font-size: 22px;
+  }
+}
 
 $borda: 1px solid #fff;
 $font: 'Montserrat', sans-serif;
@@ -81,3 +86,4 @@ $darkRed: #951515;
   font-size: .8rem;
   text-align: end;
 }
+

@@ -1,17 +1,17 @@
 @import 'base';
 
 .container-carrosel-madetexs{
-  height: 215px;
+  height: 13rem;
   .container-interno-madetexs{
-    height: 160px;
+    height: 10rem;
+    overflow: hidden;
   }
 
   h2{
-    width: 496px;
-    margin: 20px auto 0 auto;
+    width: 31rem;
+    margin: 1.8rem auto 0 auto;
     text-align: center;
     font-weight: 500;
-    margin-top: 30px;
     color: #1c1c1c;
     letter-spacing: 0.8px;
     font-size: 1.2rem;
@@ -19,17 +19,18 @@
   }
   
   sup{
-    letter-spacing: normal;
-    font-size: 0.8rem
+    display: block;
+    font-size: 0.9rem
   }
 
   .carrosel-madetexs{
    @include flex(evenly);
-   height: 170px;
+   height: 11rem;
 
     .item-madetexs{
-      width: 200px;
-      height: 120px;
+      min-width: 14rem;
+      height: 8rem;
+      margin-inline: 1rem;
       border-radius: 20px;
       color: #fff;
       background-color: black;
@@ -40,13 +41,17 @@
     }
 
     h3{
-      font-size: 1.3rem;
+      font-size: 1.5rem;
     }
 
     .logo-madetexs{
       margin: 10px;
-      width: 165px;
+      width: 10.1rem;
 
+      svg{
+        width: 10rem;
+        height: 1.85rem;
+      }
       a{
         font-size: 1.7rem;
         font-weight: 800;
@@ -60,9 +65,9 @@
   }
 }
 
-@media screen and (max-width: 890px) {
+@media screen and (max-width: 1080px) {
   .container-carrosel-madetexs{
-    height: 206px;
+    height: 12.87rem;
     .container-interno-madetexs{
       width: 100%;
       @include flex(center);
@@ -71,7 +76,6 @@
         @include flex(between);
         width: 93%;
         overflow-x: overlay;
-        gap: 20px;
       }
     }
 
@@ -85,7 +89,7 @@
   .container-carrosel-madetexs{
     height: 230px;
     h2{
-      width: 264px;
+      width: 90%;
     }
   }
 }

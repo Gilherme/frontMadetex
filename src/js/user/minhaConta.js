@@ -96,25 +96,21 @@ async function minhasCompras(){
 }
 
 async function meusEnderecos(){
-  const fileME = await fetch('./apendices/meusEnderecos.html')
-  const fileEnderecos = await fileME.text()
+  const response = await fetch('./apendices/meusEnderecos.html')
+  const section = await response.text()
 
-  divConfig.innerHTML = fileEnderecos
+  divConfig.innerHTML = section
+ 
+  const divEnderecos = document.querySelector('.enderecos')
 
-    // fazer fech que busca enderecos do usuario no banco de dados
+  const enderecos = await getEnderecosUser(userLogado.id)
 
-  let usuarioTemEndereco = false 
-
-  setTimeout( () => {
-    const divEnderecos = document.querySelector('.enderecos')
-
-    if(!usuarioTemEndereco){
-      mostrarAvisoMc(divEnderecos, 'Você ainda não tem endereço cadastrado')
-    }
-    else{
-      // Colocar as compras
-    }
-  },300)
+  if(enderecos.length > 0){
+    console.log(enderecos)
+  }
+  else{
+    mostrarAvisoMc(divEnderecos, 'Você ainda não tem endereço cadastrado')
+  }
 }
 
 async function configuracoes(){
