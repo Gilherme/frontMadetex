@@ -9,14 +9,14 @@ header{
   width: 100%;
 }
 .container-header-top{
-  height: 100px;
+  height: 6.25rem;
   display: grid;
   align-content: center;
   justify-content: space-between;
   grid-template-columns: 20% 50% 25%;
 
   .area-logo{
-    margin-inline: 30px;
+    margin-inline: 1.9rem;
     grid-column: 1 / 2;
 
     a{
@@ -31,9 +31,13 @@ header{
       display: none;
     } 
     .logo-grande{
-      width: 165px;
-      height: 55px;
+      width: 10.31px;
+      height: 3.43rem;
       display: block;
+      svg{
+        width: 10.31rem;
+        height: 1.87rem;
+      }
     }
     .logo-ex-pq{
       display: none;
@@ -49,7 +53,7 @@ header{
   gap: 2px;
   input, button{
     width: 90%;
-    height: 35px;
+    height: 2.18rem;
     padding: 5px 10px;
     font-size: 1rem;
     border-radius: 5px;
@@ -60,10 +64,10 @@ header{
     }
   }
   div{
-    height: 35px;
+    height: 2.18rem;
   }
   button{
-    width: 35px;
+    width: 2.18rem;
     padding: 0;
     background-color: $fontClara;
     &:hover{
@@ -72,8 +76,8 @@ header{
   }
   ul{
     display: none;
-    max-height: 200px;
-    top: 67px;
+    max-height: 12.5rem;
+    top: 4.18rem;
     background-color: #fff;
     position: absolute;
     list-style: none;

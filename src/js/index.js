@@ -9,13 +9,13 @@ function carregarProdutos(){
 async function carregarPopulares(){
   const response = await fetch(`http://localhost:1039/produtosPopulares?limit=20`)
   const data = await response.json()
-  CriarCarroselProdutos(data, 'section-populares')
+  // CriarCarroselProdutos(data, 'section-populares')
 }
 
 async function carregarOfertas(){
     const response = await fetch(`http://localhost:1039/produtosEmOferta`)
     const data = await response.json()
-    CriarCarroselProdutos(data, 'section-ofertas')
+    // CriarCarroselProdutos(data, 'section-ofertas')
 } 
 
 // Carrosel
@@ -46,14 +46,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       btnProximo.addEventListener("click", () => {
         carrosel.scrollBy({
-          left: +230,
+          left: +250,
           behavior: 'smooth'
         });
       });
 
       btnAnterior.addEventListener("click", () => {
         carrosel.scrollBy({
-          left: -230,
+          left: -250,
           behavior: 'smooth'
         });
       });
@@ -86,13 +86,13 @@ let btnAnteriorMad = carroselMadetexs.querySelector('.btn-anterior');
 let carroselMad = carroselMadetexs.querySelector('.carrosel-madetexs');
 btnProximoMad.addEventListener("click", () => {
   carroselMad.scrollBy({
-    left: +210,
+    left: +260,
     behavior: 'smooth'
   });
 });
 btnAnteriorMad.addEventListener("click", () => {
   carroselMad.scrollBy({
-    left: -210,
+    left: -260,
     behavior: 'smooth'
   });
 });

@@ -55,6 +55,11 @@ $darkRed: #951515;
     margin: 4px 0;
   }
 }
+.gif-loading{
+  width: 3.9rem;
+  height: 3.9rem;
+  margin: 10px auto
+}
 
 .div-jutify-center{
   @include flex(center);

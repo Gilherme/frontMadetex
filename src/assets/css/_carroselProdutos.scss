@@ -9,7 +9,7 @@
     .carrosel-interno{
       width: 93%;
       @include flex(between);
-      gap: 15px;
+      gap: 1.5rem;
       height: 415px;
       overflow-x: overlay;
 
