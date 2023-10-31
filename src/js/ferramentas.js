@@ -119,6 +119,7 @@ function CriarCarroselProdutos(data, destino){
   data.forEach(produto => {
     if(!produtosInseridos[produto.nome]){
     const itemCarroselProdutos = criarElemento('div', 'card-prod');
+    
     const imgProduto = criarElemento('div', 'img-produto');
     const img = criarElemento('img');
     const nome = criarElemento('p', 'titulo');

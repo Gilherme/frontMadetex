@@ -64,7 +64,7 @@ async function abrirProdutosFiltrados(elemento){
   const param = urlParams.get('param');
   const column = urlParams.get('column')
 
-  const response = await fetch(`http://localhost:1039/produtosFloja?param=${encodeURIComponent(param)}&column=${encodeURIComponent(column)}&loja=${encodeURIComponent(loja)}`);
+  const response = await fetch(`http://localhost:1039/produtosFiltroLoja?param=${encodeURIComponent(param)}&column=${encodeURIComponent(column)}&loja=${encodeURIComponent(loja)}`);
   const produtos = await response.json();
 
   const produtosSemFiltros = document.getElementById('categoria-escolhida')

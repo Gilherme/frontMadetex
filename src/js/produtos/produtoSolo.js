@@ -4,7 +4,7 @@ async function buscarDetalhesDoProduto() {
   const urlParams = new URLSearchParams(window.location.search);
   const id = urlParams.get('id');
 
-  const response = await fetch(`http://localhost:1039/produto?id=${encodeURIComponent(id)}`);
+  const response = await fetch(`https://api.madetex.com.br/produto?id=${encodeURIComponent(id)}`);
   const produto = await response.json();
 
   preencherProduto(produto[0])
@@ -44,7 +44,7 @@ function preencherProduto(produto) {
 }
 
 function buscarDadosDaLoja(loja){
-  fetch(`http://localhost:1039/homeLoja?loja=${encodeURIComponent(loja)}`)
+  fetch(`https://api.madetex.com.br/homeLoja?loja=${encodeURIComponent(loja)}`)
   .then(response => response.json())
   .then(data => {
     
@@ -78,7 +78,7 @@ function atualizaPreco(preco, desconto) {
 }
 
 async function exibirProdutosRelacionados(subCategoria){
-  const response = await fetch(`http://localhost:1039/produtos?param=${encodeURIComponent(subCategoria)}&column=sub_categoria&limit=15`)
+  const response = await fetch(`https://api.madetex.com.br/produtos?param=${encodeURIComponent(subCategoria)}&column=sub_categoria&limit=15`)
     const produtos = await response.json()
     CriarCarroselProdutos(produtos, 'recomendados')
 }
@@ -197,7 +197,7 @@ async function adicionarAoCarrinho(idUsuario, qtd){
 
   const produto = {usuario_ID: idUsuario, produto_ID: produtoId, quantidade: qtd, pecas: pecas || null}
 
-  fetch(`http://localhost:1039/adicionarAoCarrinho`,{
+  fetch(`https://api.madetex.com.br/adicionarAoCarrinho`,{
    method: 'POST',
    headers: {'Content-Type': 'application/json'},
    body: JSON.stringify(produto),

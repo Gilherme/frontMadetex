@@ -35,16 +35,18 @@ function atualizarDadosUsuario(dadosUsuario){
 
 async function atualizaQtdProdutosNoCar(){
   const usuarioId = userLogado.id
-  const response = await fetch(`http://localhost:1039/qtdDeProdutosNoCarrinho?id=${encodeURIComponent(usuarioId)}`)
-  if(!response.ok){
-    console.log('erro na fetch')
-  }
-  else{
-    const qtdDeProdNoCar = await response.json()
-    let qtdd = qtdDeProdNoCar[0]
-    const count = qtdd["COUNT(*)"]; // Extrair o valor do campo COUNT(*)
-    document.querySelector('.itens-no-carrinho').textContent = count
-  }
+  if(usuarioId){
+    const response = await fetch(`https://api.madetex.com.br/qtdDeProdutosNoCarrinho?id=${encodeURIComponent(usuarioId)}`)
+    if(!response.ok){
+      console.log('erro na fetch')
+    }
+    else{
+      const qtdDeProdNoCar = await response.json()
+      let qtdd = qtdDeProdNoCar[0]
+      const count = qtdd["COUNT(*)"]; // Extrair o valor do campo COUNT(*)
+      document.querySelector('.itens-no-carrinho').textContent = count
+    }
+}
 }
 
 function sair(){

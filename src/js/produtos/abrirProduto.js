@@ -14,6 +14,6 @@ function carregarProduto() {
 async function abrirProduto(item){
   const id = item.getAttribute('data-id')
 
-  const detalhesUrl = `/views/produto.html?id=${encodeURIComponent(id)}`;
+  const detalhesUrl = `/src/views/produto.html?id=${encodeURIComponent(id)}`;
   window.location.href = detalhesUrl;
 };

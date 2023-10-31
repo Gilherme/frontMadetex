@@ -15,7 +15,7 @@ btnX.addEventListener('click',    () => abrirFechar('menu-mobile'))
 
 
 
-fetch('http://localhost:1039/chavesProdutos')
+fetch('https://api.madetex.com.br/chavesProdutos')
   .then(res => res.json())
   .then(json => {
 
@@ -73,7 +73,6 @@ function preencherInput(li){
   valorNoInput.value = li.textContent 
   param = li.getAttribute('param')
   local = li.getAttribute('local')
-  console.log(param, local)
 }
 
 
@@ -95,7 +94,6 @@ function ajustarChapeu(){
   const path = document.querySelectorAll('.logo-grande path')
   const pathLeft = path[0]
   const pathRigth = path[1]
-  console.log(pathLeft, pathRigth)
 
   if (window.innerWidth >= 1300){
     text.setAttribute('y', '38')

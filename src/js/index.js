@@ -1,21 +1,13 @@
-// alert('Site em desenvolvimento, pode apresentar falhas e erros, estamos trabalhando para o lançamento')
-// carregarProdutos();
-
-function carregarProdutos(){
-  carregarPopulares()
-  carregarOfertas()
-}
+carregarPopulares(); carregarOfertas();
 
 async function carregarPopulares(){
-  const response = await fetch(`http://localhost:1039/produtosPopulares?limit=20`)
-  const data = await response.json()
-  // CriarCarroselProdutos(data, 'section-populares')
+  const prod = await getProdutosPopulares(12)
+  preencherCarroselProdutos('#section-populares', prod)
 }
 
 async function carregarOfertas(){
-    const response = await fetch(`http://localhost:1039/produtosEmOferta`)
-    const data = await response.json()
-    // CriarCarroselProdutos(data, 'section-ofertas')
+    const prod = await getProdutosEmOferta(12)
+    preencherCarroselProdutos('#section-ofertas', prod)
 } 
 
 // Carrosel
