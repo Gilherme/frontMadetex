@@ -104,5 +104,13 @@ function ajustarChapeu(){
     })
     pathLeft.setAttribute('d', 'M 2 50 l 110 -40')
     pathRigth.setAttribute('d', 'M 105 10 l 120 45')
+  }else{
+    text.setAttribute('y', '24')
+    path.forEach(ph => {
+      ph.setAttribute('stroke-width', '13')
+    })
+    pathLeft.setAttribute('d', 'M 5 35 l 80 -30')
+    pathRigth.setAttribute('d', 'M 80 5 l 80 30')
   }
 }
+window.addEventListener('resize', ajustarChapeu);

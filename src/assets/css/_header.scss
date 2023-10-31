@@ -102,7 +102,9 @@ header{
 }
 
 .area-usuario{
-  @include flex(evenly);
+  display: flex;
+  align-items: center;
+  justify-content: left;
   grid-column: 3 / 4;
   color: $fontClara;
 
@@ -113,14 +115,13 @@ header{
     .svg-user{
       cursor: pointer;
       display: block;
-      width: 35px;
-      height: 35px;
+    }
+    .svg-user-grande{
+      cursor: pointer;
+      display: none;
     }
     .mensagem-login p{
-      font-size: 0.9rem;
       font-weight: bold;
-      letter-spacing: 0.5px;
-      line-height: 1.1rem;
       a{
         color: $fontClara;
       }
@@ -134,22 +135,26 @@ header{
 
 .carrinho-de-compras{
     position: relative;
-    width: 35px;
-    height: 35px;
     cursor: pointer;
+    margin-left: 1.2rem;
 
+    .carrinho-p{
+      display: block;
+    }
+    .carrinho-g{
+      display: none;
+    }
     .itens-no-carrinho{
       position: absolute;
-      width: 18px;
-      height: 18px;
-      line-height: 18px;
+      width: 1.125rem;
+      height: 1.125rem;
+      line-height: 1.125rem;
       border-radius: 50%;
       text-align: center;
       background-color: $darkRed;
       left: 75%;
       top: -15%;
-      font-size: 12px;
-      // border: 1px solid red;
+      font-size: 0.75rem;
     }
 }
 
@@ -250,8 +255,33 @@ header{
       }
     }
   }
+}
 
-  
+@media (min-width: 1300px){
+  .area-usuario{
+    .usuario{
+      .svg-user{
+        display: none;
+      }
+      .svg-user-grande{
+        display: block;
+      }
+    } 
+  }
+
+  .carrinho-de-compras{
+
+    .carrinho-p{
+      display: none;
+    }
+    .carrinho-g{
+      display: block;
+    }
+    .itens-no-carrinho{
+      left: 75%;
+      top: -15%;
+    }
+}
 }
 
 @media screen and (max-width: 960px){
@@ -286,13 +316,16 @@ header{
   
   .area-usuario{
     grid-column: 2 / 3;
+    justify-content: space-evenly;
 
     .mensagem-login{
       display: none;
     }
   }
-  
-  
+  .carrinho-de-compras{
+    margin-left: 0;
+  }
+
   .container-header-bottom{
     grid-template-columns: 20% 55% 20%;
     gap: 1rem;

@@ -2,8 +2,14 @@
 .banner{
   width: 100%;
 
-  img{
+  .img-banner{
     width: 100%;
+  }
+  .gif-loading-banner{
+    display: block;
+   width: 3rem;
+   height: 3rem;
+   margin: 30px auto;
   }
 }
 

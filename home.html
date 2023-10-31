@@ -1,122 +1,157 @@
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./src/assets/css/main.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&family=Wix+Madefor+Display:wght@500;700;800&display=swap" rel="stylesheet">
-    <title>Madetex</title>
-  </head> 
-  <body>
-    
-    <header>
 
-      <div class="container-header">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./src/assets/css/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&family=Wix+Madefor+Display:wght@500;700;800&display=swap"
+    rel="stylesheet">
+  <title>Madetex</title>
+</head>
 
-        <div class="container-header-top">
+<body>
 
-          <div class="area-logo">
-            <div class="logo-grande">
-              <svg height="30" width="165">
-                <path d="M 5 35 l 80 -30" stroke="red" stroke-width="13" fill="none" />
-                <path d="M 80 5 l 80 30" stroke="red" stroke-width="13" fill="none" />
-              </svg>
-              <svg height="30" width="165">
-                <a href="./index.html">
-                  <text x="2" y="24" stroke="3" fill="red">MADETEX</text>
-                </a>
-              </svg>
-            </div>
-            <div class="logo-pequeno">
-              <svg height="25" width="130">
-                <path d="M 5 30 l 65 -25" stroke="red" stroke-width="10" fill="none" />
-                <path d="M 66 5 l 58 25" stroke="red" stroke-width="10" fill="none" />
-              </svg>
-              <svg height="23" width="130">
-                <a class="logo" href="./index.html">
-                  <text x="8" y="20" stroke="3" fill="red">MADETEX</text>
-                </a>
-              </svg>
-            </div>
-          </div>
+  <header>
 
-          <form onsubmit="return false;" class="area-pesquisa">
-            <input id="input-pesquisa" autocomplete="off" onkeyup="pesquisarEnter(event); filtrarSugestoesProd();" type="text" placeholder="Busque por vigamentos, telhas mais... ">
-            <ul></ul>
-            <div>
-              <button type="button"  onclick="pesquisar()">
-                <svg height="35" width="35">
-                  <circle cx="16" cy="15" r="8" stroke="red" stroke-width="2" fill="#fff" />
-                   <line x1="21" y1="22" x2="27" y2="30" style="stroke:red; stroke-width:2" />
-                </svg>
-              </button>
-            </div>
-          </form>
-  
-          <div class="area-usuario">
+    <div class="container-header">
 
-            <div class="usuario">
+      <div class="container-header-top">
 
-              <div id="apendice-cadastrese">
-                <p>Entre ou Cadastre-se para comprar e acompanhar seus pedidos :D</p>
-                <button class="entre"> <a href="./src/views/user/login.html">Entre</a></button>
-                <button><a href="./src/views/user/cadastrese.html">Cadastre-se</a></button>
-              </div>
-
-              <div id="apendice-logado">
-                <a href="./src/views/minhaConta.html">Minha Conta</a> 
-                <a href="./src/views/contato.html">Ajuda</a>
-                <a style="color: red; cursor: pointer;" onclick="sair()">Sair</a>
-              </div>
-
-              <div class="svg-user">
-                <svg height="35px" width="35px">
-                  <circle cx="17.5" cy="17.5" r="16" stroke="red" stroke-width="1.5" fill="#1c1c1c" />
-                  <circle cx="17.5" cy="12" r="4" stroke="red" stroke-width="1.5" fill="#1c1c1c" />
-                  <path d="M 8 27 q 10 -14 19 0" stroke="red" stroke-width="1.5" fill="none" />
-                  <line x1="7.62" y1="26.8" x2="27.48" y2="26.8" style="stroke:red; stroke-width:1.5" />
-                </svg>
-              </div>
-              <div class="mensagem-login">
-                <div>
-                  <p>Olá! faça login</p> 
-                  <p>ou cadastre-se </p>
-                </div>
-              </div>
-
-            </div>
-
-            <div class="carrinho-de-compras">
-              <div class="itens-no-carrinho">0</div>
-              <a href="./src/views/carrinho.html">
-                <svg height="35px" width="35px">
-                  <line x1="1" x2="7.5" y1="5" y2="5" style="stroke:red; stroke-width:1.5;" />   <!-- onde segura -->
-                  <line x1="7" x2="10" y1="4.5" y2="25" style="stroke:red; stroke-width:1.5;" /> <!--Primeira linha vertical -->
-                  <line x1="7" x2="29.2" y1="9" y2="9" style="stroke:red; stroke-width:1.5;" />  <!--Primeira linha horizontal-->
-                  <line x1="8" x2="27" y1="14" y2="14" style="stroke:red; stroke-width:1.5;" />  <!--Segunda linha horizontal-->
-                  <line x1="12.5" x2="14" y1="9" y2="20" style="stroke:red; stroke-width:1.5;"/> <!--Segunda linha vertical -->
-                  <line x1="18" x2="18" y1="9" y2="20" style="stroke:red; stroke-width:1.5;" />  <!--Terceira linha vertical-->
-                  <line x1="24" x2="21.5" y1="9" y2="20" style="stroke:red; stroke-width:1.5;"/> <!--Quarta linha vertical-->
-                  <line x1="10" x2="26" y1="20" y2="20" style="stroke:red; stroke-width:1.5;" /> <!--Terceira linha Horizontal-->
-                  <line x1="28.5" x2="25" y1="9" y2="20" style="stroke:red; stroke-width:1.5;"/> <!--Quinta linha vertical-->
-                  <line x1="10" x2="25" y1="24" y2="24" style="stroke:red; stroke-width:1.5;" />
-                  <circle cx="12" cy="29" r="1.5" stroke="red" stroke-width="1.5" fill="red" />
-                  <circle cx="22" cy="29" r="1.5" stroke="red" stroke-width="1.5" fill="red" />
-                </svg> 
+        <div class="area-logo">
+          <div class="logo-grande">
+            <svg height="30" width="165">
+              <path d="M 5 35 l 80 -30" stroke="red" stroke-width="13" fill="none" />
+              <path d="M 80 5 l 80 30" stroke="red" stroke-width="13" fill="none" />
+            </svg>
+            <svg height="30" width="165">
+              <a href="./index.html">
+                <text x="2" y="24" stroke="3" fill="red">MADETEX</text>
               </a>
-            </div>
-            
-            <button  id="btn-menu" class="menu-hamburguer menu-hamburguer-header">
-              <div></div>
-              <div></div>
-              <div></div>
+            </svg>
+          </div>
+          <div class="logo-pequeno">
+            <svg height="25" width="130">
+              <path d="M 5 30 l 65 -25" stroke="red" stroke-width="10" fill="none" />
+              <path d="M 66 5 l 58 25" stroke="red" stroke-width="10" fill="none" />
+            </svg>
+            <svg height="23" width="130">
+              <a class="logo" href="./index.html">
+                <text x="8" y="20" stroke="3" fill="red">MADETEX</text>
+              </a>
+            </svg>
+          </div>
+        </div>
+
+        <form onsubmit="return false;" class="area-pesquisa">
+          <input id="input-pesquisa" autocomplete="off" onkeyup="pesquisarEnter(event); filtrarSugestoesProd();"
+            type="text" placeholder="Busque por vigamentos, telhas mais... ">
+          <ul></ul>
+          <div>
+            <button type="button" onclick="pesquisar()">
+              <svg height="35" width="35">
+                <circle cx="16" cy="15" r="8" stroke="red" stroke-width="2" fill="#fff" />
+                <line x1="21" y1="22" x2="27" y2="30" style="stroke:red; stroke-width:2" />
+              </svg>
             </button>
+          </div>
+        </form>
+
+        <div class="area-usuario">
+
+          <div class="usuario">
+
+            <div id="apendice-cadastrese">
+              <p>Entre ou Cadastre-se para comprar e acompanhar seus pedidos :D</p>
+              <button class="entre"> <a href="./src/views/user/login.html">Entre</a></button>
+              <button><a href="./src/views/user/cadastrese.html">Cadastre-se</a></button>
+            </div>
+
+            <div id="apendice-logado">
+              <a href="./src/views/minhaConta.html">Minha Conta</a>
+              <a href="./src/views/contato.html">Ajuda</a>
+              <a style="color: red; cursor: pointer;" onclick="sair()">Sair</a>
+            </div>
+
+            <div class="svg-user">
+              <svg height="35px" width="35px">
+                <circle cx="17.5" cy="17.5" r="16" stroke="red" stroke-width="1.5" fill="#1c1c1c" />
+                <circle cx="17.5" cy="12" r="4" stroke="red" stroke-width="1.5" fill="#1c1c1c" />
+                <path d="M 8 27 q 10 -14 19 0" stroke="red" stroke-width="1.5" fill="none" />
+                <line x1="7.62" y1="26.8" x2="27.48" y2="26.8" style="stroke:red; stroke-width:1.5" />
+              </svg>
+            </div>
+            <div class="svg-user-grande">
+              <svg height="50px" width="50px">
+                <circle cx="24.5" cy="24.5" r="23" stroke="red" stroke-width="2" fill="#1c1c1c"></circle>
+                <circle cx="24.5" cy="15" r="6" stroke="red" stroke-width="2" fill="#1c1c1c"></circle>
+                <path d="M 13 34 q 12 -15 24 0" stroke="red" stroke-width="2" fill="none"></path>
+                <line x1="11.62" y1="34.8" x2="38.48" y2="34.8" style="stroke:red; stroke-width:2"></line>
+              </svg>
+            </div>
+            <div class="mensagem-login">
+              <div>
+                <p>Olá! faça login</p>
+                <p>ou cadastre-se </p>
+              </div>
+            </div>
 
           </div>
+
+          <div class="carrinho-de-compras">
+            <div class="itens-no-carrinho">0</div>
+            <a href="./src/views/carrinho.html">
+              <svg class="carrinho-p" height="35px" width="35px">
+                <line x1="1" x2="7.5" y1="5" y2="5" style="stroke:red; stroke-width:1.5;" /> <!-- onde segura -->
+                <line x1="7" x2="10" y1="4.5" y2="25" style="stroke:red; stroke-width:1.5;" />
+                <!--Primeira linha vertical -->
+                <line x1="7" x2="29.2" y1="9" y2="9" style="stroke:red; stroke-width:1.5;" />
+                <!--Primeira linha horizontal-->
+                <line x1="8" x2="27" y1="14" y2="14" style="stroke:red; stroke-width:1.5;" />
+                <!--Segunda linha horizontal-->
+                <line x1="12.5" x2="14" y1="9" y2="20" style="stroke:red; stroke-width:1.5;" />
+                <!--Segunda linha vertical -->
+                <line x1="18" x2="18" y1="9" y2="20" style="stroke:red; stroke-width:1.5;" />
+                <!--Terceira linha vertical-->
+                <line x1="24" x2="21.5" y1="9" y2="20" style="stroke:red; stroke-width:1.5;" />
+                <!--Quarta linha vertical-->
+                <line x1="10" x2="26" y1="20" y2="20" style="stroke:red; stroke-width:1.5;" />
+                <!--Terceira linha Horizontal-->
+                <line x1="28.5" x2="25" y1="9" y2="20" style="stroke:red; stroke-width:1.5;" />
+                <!--Quinta linha vertical-->
+                <line x1="10" x2="25" y1="24" y2="24" style="stroke:red; stroke-width:1.5;" />
+                <circle cx="12" cy="29" r="1.5" stroke="red" stroke-width="1.5" fill="red" />
+                <circle cx="22" cy="29" r="1.5" stroke="red" stroke-width="1.5" fill="red" />
+              </svg>
+              <svg class="carrinho-g" height="50px" width="50px">
+                <line x1="14.5" x2="3" y1="1" y2="1" style="stroke:red; stroke-width:3;" ></line>   <!-- onde segura -->
+                <line x1="13" x2="16" y1="1.5" y2="30" style="stroke:red; stroke-width:3;"></line> <!--Primeira linha vertical -->
+                <line x1="13" x2="43.2" style="stroke:red; stroke-width:3;" y1="7.5" y2="7.5"></line>  <!--Primeira linha horizontal-->
+                <line x1="13" x2="41" y1="16" y2="16" style="stroke:red; stroke-width:2;"></line>  <!--Segunda linha horizontal-->
+                <line x1="19.5" x2="21" y1="6" y2="23" style="stroke:red; stroke-width:2;"></line> <!--Segunda linha vertical -->
+                <line x1="27" x2="27" y1="6" y2="23" style="stroke:red; stroke-width: 2;"></line>  <!--Terceira linha vertical-->
+                <line x1="35" x2="32.5" y1="6" y2="23" style="stroke:red; stroke-width:2;"></line> <!--Quarta linha vertical-->
+                <line x1="14" x2="39" y1="24" y2="24" style="stroke:red; stroke-width:3;"></line> <!--Terceira linha Horizontal-->
+                <line x1="41.5" x2="39" y1="7" style="stroke:red; stroke-width:3;" y2="25"></line> <!--Quinta linha vertical-->
+                <line x1="14.5" x2="37" y1="30" y2="30" style="stroke:red; stroke-width:3;"></line>
+                <circle cx="18" cy="37" r="2.5" stroke="red" stroke-width="1.5" fill="red"></circle>
+                <circle cx="32" cy="37" r="2.5" stroke="red" stroke-width="1.5" fill="red"></circle>
+              </svg>
+            </a>
+          </div>
+
+          <button id="btn-menu" class="menu-hamburguer menu-hamburguer-header">
+            <div></div>
+            <div></div>
+            <div></div>
+          </button>
 
         </div>
 
-       <div class=" closed container-header-bottom">
+      </div>
+
+      <div class=" closed container-header-bottom">
 
         <div class="categorias">
           <p>Categorias <span class="seta">&#10095</span></p>
@@ -125,8 +160,10 @@
             <li><a href="./src/views/produtos.html?param=janelas&column=sub_sub_categoria">Janelas</a></li>
             <li><a href="./src/views/produtos.html?param=portas&column=sub_sub_categoria">Portas</a></li>
             <li><a href="./src/views/produtos.html?param=telhas de barro&column=sub_categoria">Telhas de Barro</a></li>
-            <li><a href="./src/views/produtos.html?param=telhas de fibrocimento&column=sub_categoria">Telhas de Fibrocimento</a></li>
-            <li><a href="./src/views/produtos.html?param=telhas de concreto&column=sub_categoria">Telhas de Concreto</a></li>
+            <li><a href="./src/views/produtos.html?param=telhas de fibrocimento&column=sub_categoria">Telhas de
+                Fibrocimento</a></li>
+            <li><a href="./src/views/produtos.html?param=telhas de concreto&column=sub_categoria">Telhas de Concreto</a>
+            </li>
             <li><a href="./src/views/produtos.html?param=decks&column=sub_categoria">Decks</a></li>
             <li><a href="./src/views/produtos.html?param=cambara&column=madeira">Madeira Cambara</a></li>
             <li><a href="./src/views/produtos.html?param=peroba&column=madeira">Madeira Peroba</a></li>
@@ -146,9 +183,13 @@
             <ul>
               <li><a href="./src/views/produtos.html?param=vigamentos&column=sub_categoria">Vigamentos</a></li>
               <li><a href="./src/views/produtos.html?param=telhas&column=categoria">Telhas</a></li>
-              <li><a href="./src/views/produtos.html?param=portas e janelas&column=sub_categoria">Portas e Janelas</a></li>
-              <li class="penultimo"><a href="./src/views/produtos.html?param=pinus&column=madeira">Madeira Pinus</a></li>
-              <li class="ultimo"><a href="./src/views/produtos.html?param=chapas de madeira&column=categoria">Compensados e Madeirites</a></li>
+              <li><a href="./src/views/produtos.html?param=portas e janelas&column=sub_categoria">Portas e Janelas</a>
+              </li>
+              <li class="penultimo"><a href="./src/views/produtos.html?param=pinus&column=madeira">Madeira Pinus</a>
+              </li>
+              <li class="ultimo"><a
+                  href="./src/views/produtos.html?param=chapas de madeira&column=categoria">Compensados e Madeirites</a>
+              </li>
             </ul>
           </nav>
         </div>
@@ -157,17 +198,17 @@
           <a href="./src/views/produtos.html?param=1&column=oferta">Ofertas do dia</a>
         </div>
 
-       </div>
-
       </div>
-     
-    </header>
 
-    <div id="menu-mobile" class="container-menu">
+    </div>
+
+  </header>
+
+  <div id="menu-mobile" class="container-menu">
 
     <button id="btn-x" class="x">
       <div class="one"></div>
-      <div class="two" ></div>
+      <div class="two"></div>
     </button>
 
     <div class="area-usuario-menu">
@@ -187,7 +228,7 @@
         <a href="./src/views/minhaConta.html"><button>Minha conta</button></a>
       </div>
     </div>
-    
+
     <div class="area-nav-menu">
       <nav>
         <ul>
@@ -196,7 +237,7 @@
           <li> <a href="#"> Vigamento </a></li>
           <li> <a href="#"> Telhas </a></li>
           <li> <a href="#"> Forro </a></li>
-          <li> <a href="#">  Moveis </a></li>
+          <li> <a href="#"> Moveis </a></li>
           <li> <a href="#"> Acessórios </a></li>
           <li> <a href="#"> Churrasqueiras </a></li>
           <li> <a href="#"> Tintas e Verniz</a> </li>
@@ -205,314 +246,354 @@
       </nav>
     </div>
 
-    </div>
-    
-    <!-- CARROSEL-->
-    <div class="slider">
-      <div class="slides">
-        
+  </div>
+
+  <!-- CARROSEL-->
+  <div class="slider">
+    <div class="slides">
+
       <!-- Radio Ruttons -->
-        <input type="radio" name="radio-btn" id="radio1">
-        <input type="radio" name="radio-btn" id="radio2">
-        <input type="radio" name="radio-btn" id="radio3">
-        <input type="radio" name="radio-btn" id="radio4">
+      <input type="radio" name="radio-btn" id="radio1">
+      <input type="radio" name="radio-btn" id="radio2">
+      <input type="radio" name="radio-btn" id="radio3">
+      <input type="radio" name="radio-btn" id="radio4">
       <!-- Fim Radio Buttons -->
-  
+
       <!-- slider images -->
-        <div class="slide first">
-          <img src="./src/assets/img/carrosel1.png" alt="imagem 1">
-        </div>
-        <div class="slide">
-          <img src="./src/assets/img/carrosel2.png" alt="imagem 2">
-        </div>
-        <div class="slide">
-          <img src="./src/assets/img/carrosel3.png" alt="imagem 3">
-        </div>
-        <div class="slide">
-          <img src="./src/assets/img/carrosel2.png" alt="imagem 4">
-        </div>
-      <!-- Fim Slider Images -->
-  
-      <!-- Navegation Auto -->
-        <div class="nav-auto">
-          <div class="auto-btn1"></div>
-          <div class="auto-btn2"></div>
-          <div class="auto-btn3"></div>
-          <div class="auto-btn4"></div>
-        </div>
-      <!-- Fim Navegation Auto -->
-  
+      <div class="slide first">
+        <img src="./src/assets/img/carrosel1.png" alt="imagem 1">
       </div>
-  
-      <!-- Manual Navigation -->
-        <div class="manual-navigation">
-          <label for="radio1" class="manual-btn"></label>
-          <label for="radio2" class="manual-btn"></label>
-          <label for="radio3" class="manual-btn"></label>
-          <label for="radio4" class="manual-btn"></label>
-        </div>
+      <div class="slide">
+        <img src="./src/assets/img/carrosel2.png" alt="imagem 2">
+      </div>
+      <div class="slide">
+        <img src="./src/assets/img/carrosel3.png" alt="imagem 3">
+      </div>
+      <div class="slide">
+        <img src="./src/assets/img/carrosel2.png" alt="imagem 4">
+      </div>
+      <!-- Fim Slider Images -->
+
+      <!-- Navegation Auto -->
+      <div class="nav-auto">
+        <div class="auto-btn1"></div>
+        <div class="auto-btn2"></div>
+        <div class="auto-btn3"></div>
+        <div class="auto-btn4"></div>
+      </div>
+      <!-- Fim Navegation Auto -->
+
     </div>
-    <!--Fim do carrosel -->
 
-    <div class="container-carrosel-madetexs">
+    <!-- Manual Navigation -->
+    <div class="manual-navigation">
+      <label for="radio1" class="manual-btn"></label>
+      <label for="radio2" class="manual-btn"></label>
+      <label for="radio3" class="manual-btn"></label>
+      <label for="radio4" class="manual-btn"></label>
+    </div>
+  </div>
+  <!--Fim do carrosel -->
 
-      <h2>COMPRE DA MADETEX MAIS PRÓXIMA DE VOCÊ! <sup>* Disponivel apenas para SP</sup></h2>
+  <div class="container-carrosel-madetexs">
 
-      <div class="container-interno-madetexs">
+    <h2>COMPRE DA MADETEX MAIS PRÓXIMA DE VOCÊ! <sup>* Disponivel apenas para SP</sup></h2>
 
-        <div class="bnt-madetexs">
+    <div class="container-interno-madetexs">
+
+      <div class="bnt-madetexs">
+        <button class="btn-anterior">&#10094</button>
+      </div>
+
+      <div class="carrosel-madetexs">
+
+        <div class="item-madetexs">
+          <div class="logo-madetexs">
+            <svg height="30" width="165">
+              <path class="path-logo-mad-carrosel-left" d="M 5 35 l 80 -30" stroke="red" stroke-width="13"
+                fill="none" />
+              <path class="path-logo-mad-carrosel-rigth" d="M 80 5 l 80 30" stroke="red" stroke-width="13"
+                fill="none" />
+            </svg>
+            <svg height="30" width="165">
+              <a href="/src/views/madetex.html?loja=Madetex_Jundiai">
+                <text class="text-logo-mad-carrosel" x="4" y="24" stroke="3" fill="red">MADETEX</text>
+              </a>
+            </svg>
+          </div>
+          <h3><a style="text-decoration: none; color: #fff;"
+              href="/src/views/madetex.html?loja=Madetex_Jundiai">Jundiaí</a></h3>
+        </div>
+
+        <div class="item-madetexs">
+          <div class="logo-madetexs">
+            <svg height="30" width="165">
+              <path class="path-logo-mad-carrosel-left" d="M 5 35 l 80 -30" stroke="red" stroke-width="13"
+                fill="none" />
+              <path class="path-logo-mad-carrosel-rigth" d="M 80 5 l 80 30" stroke="red" stroke-width="13"
+                fill="none" />
+            </svg>
+            <svg height="30" width="165">
+              <a href="/src/views/madetex.html?loja=Madetex_Itupeva">
+                <text class="text-logo-mad-carrosel" x="4" y="24" stroke="3" fill="red">MADETEX</text>
+              </a>
+            </svg>
+          </div>
+          <h3> <a style="text-decoration: none; color: #fff;"
+              href="/src/views/madetex.html?loja=Madetex_Itupeva">Itupeva</a></h3>
+        </div>
+
+        <div class="item-madetexs">
+          <div class="logo-madetexs">
+            <svg height="30" width="165">
+              <path class="path-logo-mad-carrosel-left" d="M 5 35 l 80 -30" stroke="red" stroke-width="13"
+                fill="none" />
+              <path class="path-logo-mad-carrosel-rigth" d="M 80 5 l 80 30" stroke="red" stroke-width="13"
+                fill="none" />
+            </svg>
+            <svg height="30" width="165">
+              <a href="/src/views/madetex.html?loja=Madetex_Campo_Limpo_Pta">
+                <text class="text-logo-mad-carrosel" x="4" y="24" stroke="3" fill="red">MADETEX </text>
+              </a>
+            </svg>
+          </div>
+          <h3> <a style="text-decoration: none; color: #fff;"
+              href="/src/views/madetex.html?loja=Madetex_Campo_Limpo_Pta">Campo Limpo Pta</a></h3>
+        </div>
+
+        <div class="item-madetexs">
+          <div class="logo-madetexs">
+            <svg height="30" width="165">
+              <path class="path-logo-mad-carrosel-left" d="M 5 35 l 80 -30" stroke="red" stroke-width="13"
+                fill="none" />
+              <path class="path-logo-mad-carrosel-rigth" d="M 80 5 l 80 30" stroke="red" stroke-width="13"
+                fill="none" />
+            </svg>
+            <svg height="30" width="165">
+              <a href="/src/views/madetex.html?loja=Madetex_Mogi_Mirim">
+                <text class="text-logo-mad-carrosel" x="4" y="24" stroke="3" fill="red">MADETEX</text>
+              </a>
+            </svg>
+          </div>
+          <h3><a style="text-decoration: none; color: #fff;" href="/src/views/madetex.html?loja=Madetex_Mogi_Mirim">Mogi
+              Mirim</a></h3>
+        </div>
+
+      </div>
+
+      <div class="bnt-madetexs">
+        <button class="btn-proximo">&#10095</button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <section id="section-populares">
+    <h2 class="titulo-carrosel-produtos">OS QUERIDINHOS DA MADETEX <a href="./src/views/produtos.html?limit=30">ver
+        mais</a></h2>
+    <div class="container-produtos">
+      <div class="container-carrosel">
+        <div class="bnt-produtos">
           <button class="btn-anterior">&#10094</button>
         </div>
 
-        <div class="carrosel-madetexs">
-
-          <div class="item-madetexs">
-            <div class="logo-madetexs">
-              <svg height="30" width="165">
-                <path class="path-logo-mad-carrosel-left" d="M 5 35 l 80 -30" stroke="red" stroke-width="13" fill="none" />
-                <path class="path-logo-mad-carrosel-rigth" d="M 80 5 l 80 30" stroke="red" stroke-width="13" fill="none" />
-              </svg>
-              <svg height="30" width="165">
-                <a  href="/src/views/madetex.html?loja=Madetex_Jundiai">
-                  <text class="text-logo-mad-carrosel" x="4" y="24" stroke="3" fill="red">MADETEX</text>
-                </a>
-              </svg>
-            </div>
-            <h3><a style="text-decoration: none; color: #fff;" href="/src/views/madetex.html?loja=Madetex_Jundiai">Jundiaí</a></h3>
+        <div class="carrosel-interno">
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
           </div>
-  
-          <div class="item-madetexs">
-            <div class="logo-madetexs">
-              <svg height="30" width="165">
-                <path class="path-logo-mad-carrosel-left" d="M 5 35 l 80 -30" stroke="red" stroke-width="13" fill="none" />
-                <path class="path-logo-mad-carrosel-rigth" d="M 80 5 l 80 30" stroke="red" stroke-width="13" fill="none" />
-              </svg>
-              <svg height="30" width="165">
-                <a href="/src/views/madetex.html?loja=Madetex_Itupeva">
-                  <text class="text-logo-mad-carrosel" x="4" y="24" stroke="3" fill="red">MADETEX</text>
-                </a>
-              </svg>
-            </div>
-            <h3> <a style="text-decoration: none; color: #fff;" href="/src/views/madetex.html?loja=Madetex_Itupeva">Itupeva</a></h3>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
           </div>
-  
-          <div class="item-madetexs">
-            <div class="logo-madetexs">
-              <svg height="30" width="165">
-                <path class="path-logo-mad-carrosel-left" d="M 5 35 l 80 -30" stroke="red" stroke-width="13" fill="none" />
-                <path class="path-logo-mad-carrosel-rigth" d="M 80 5 l 80 30" stroke="red" stroke-width="13" fill="none" />
-              </svg>
-              <svg height="30" width="165">
-                <a href="/src/views/madetex.html?loja=Madetex_Campo_Limpo_Pta" >
-                  <text class="text-logo-mad-carrosel" x="4" y="24" stroke="3" fill="red">MADETEX </text>
-                </a>
-              </svg>
-            </div>
-            <h3> <a  style="text-decoration: none; color: #fff;" href="/src/views/madetex.html?loja=Madetex_Campo_Limpo_Pta">Campo Limpo Pta</a></h3>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
           </div>
-
-          <div class="item-madetexs">
-            <div class="logo-madetexs">
-              <svg height="30" width="165">
-                <path class="path-logo-mad-carrosel-left" d="M 5 35 l 80 -30" stroke="red" stroke-width="13" fill="none" />
-                <path class="path-logo-mad-carrosel-rigth" d="M 80 5 l 80 30" stroke="red" stroke-width="13" fill="none" />
-              </svg>
-              <svg height="30" width="165">
-                <a href="/src/views/madetex.html?loja=Madetex_Mogi_Mirim">
-                  <text class="text-logo-mad-carrosel" x="4" y="24" stroke="3" fill="red">MADETEX</text>
-                </a>
-              </svg>
-            </div> 
-            <h3><a style="text-decoration: none; color: #fff;" href="/src/views/madetex.html?loja=Madetex_Mogi_Mirim">Mogi Mirim</a></h3>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
           </div>
-          
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
         </div>
 
-        <div class="bnt-madetexs">
+        <div class="bnt-produtos">
           <button class="btn-proximo">&#10095</button>
         </div>
-
       </div>
-
     </div>
+  </section>
 
-    <section id="section-populares">
-      <h2 class="titulo-carrosel-produtos">OS QUERIDINHOS DA MADETEX <a href="./src/views/produtos.html?limit=30" >ver mais</a></h2>
-      <div class="container-produtos">
-        <div class="container-carrosel">
-          <div class="bnt-produtos">
-            <button class="btn-anterior">&#10094</button>
-          </div>
+  <div class="container-carrosel-categorias">
+    <h2>ARRASTE PARA O LADO E CONFIRA NOSSOS SETORES</h2>
 
-          <div class="carrosel-interno">
-            <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando"> </div>
-            <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando"> </div>
-            <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando"> </div>
-            <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando"> </div>
-            <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando"> </div>
-            <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando"> </div>
-            <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando"> </div>
-            <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando"> </div>
-            <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando"> </div>
-            <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando"> </div>
-            <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando"> </div>
-            <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando"> </div>
-          </div>
+    <div class="container-interno-categorias">
 
-          <div class="bnt-produtos">
-            <button class="btn-proximo">&#10095</button>
-          </div>
-        </div>
+      <div>
+        <button class="btn-anterior">&#10094</button>
       </div>
-    </section>
 
-    <div class="container-carrosel-categorias">
-      <h2>ARRASTE PARA O LADO E CONFIRA NOSSOS SETORES</h2>
-  
-      <div class="container-interno-categorias">
-  
-        <div>
-          <button class="btn-anterior">&#10094</button>
+      <div class="carrosel-categorias">
+
+        <div class="item-categoria">
+          <a href="./src/views/produtos.html?param=portas&column=sub_sub_categoria">
+            <div><img src="./src/assets/img/porta.jfif"></div>
+            <h3>Portas</h3>
+          </a>
         </div>
-  
-        <div class="carrosel-categorias">
 
-          <div class="item-categoria">
-            <a href="./src/views/produtos.html?param=portas&column=sub_sub_categoria">
-              <div><img  src="./src/assets/img/porta.jfif"></div>
-              <h3>Portas</h3>
-            </a>
-          </div>
+        <div class="item-categoria">
+          <a href=".src/views/produtos.html?param=janelas&column=sub_sub_categoria">
+            <div><img src="./src/assets/img/janela.jfif"></div>
+            <h3>Janelas</h3>
+          </a>
+        </div>
 
-          <div class="item-categoria">
-            <a href=".src/views/produtos.html?param=janelas&column=sub_sub_categoria">
-              <div><img  src="./src/assets/img/janela.jfif"></div>
-              <h3>Janelas</h3>
-            </a>
-          </div>
-
-          <div class="item-categoria">
-           <a href="./src/views/produtos.html?param=decks&column=sub_categoria">
-            <div><img  src="./src/assets/img/mad/decks/deck.jfif"></div>
+        <div class="item-categoria">
+          <a href="./src/views/produtos.html?param=decks&column=sub_categoria">
+            <div><img src="./src/assets/img/mad/decks/deck.jfif"></div>
             <h3>Deck</h3>
-           </a>
-          </div>
-    
-          <div class="item-categoria">
-            <a href="./src/views/produtos.html?param=cambara&column=madeira">
-              <div><img  src="./src/assets/img/cambara.jfif"></div>
-              <h3>Madeira Cambará</h3>
-            </a>
-          </div>
+          </a>
+        </div>
 
-          <div class="item-categoria">
-            <a href="./src/views/produtos.html?param=peroba&column=madeira">
-              <div><img  src="./src/assets/img/peroba.jfif"></div>
-              <h3>Madeira Peroba</h3>
-            </a>
-          </div>
+        <div class="item-categoria">
+          <a href="./src/views/produtos.html?param=cambara&column=madeira">
+            <div><img src="./src/assets/img/cambara.jfif"></div>
+            <h3>Madeira Cambará</h3>
+          </a>
+        </div>
 
-          <div class="item-categoria">
-            <a href="./src/views/produtos.html?param=pinus&column=madeira">
-              <div><img  src="./src/assets/img/pinus.jfif"></div>
-              <h3>Madeira Pinus</h3>
-            </a>
-          </div>
+        <div class="item-categoria">
+          <a href="./src/views/produtos.html?param=peroba&column=madeira">
+            <div><img src="./src/assets/img/peroba.jfif"></div>
+            <h3>Madeira Peroba</h3>
+          </a>
+        </div>
 
-          <div class="item-categoria">
-            <a href="./src/views/produtos.html?param=mista&column=madeira">
-              <div><img  src="./src/assets/img/mista.jfif"></div>
-              <h3>Madeira Mista</h3>
-            </a>
-          </div>
+        <div class="item-categoria">
+          <a href="./src/views/produtos.html?param=pinus&column=madeira">
+            <div><img src="./src/assets/img/pinus.jfif"></div>
+            <h3>Madeira Pinus</h3>
+          </a>
+        </div>
 
-          <div class="item-categoria">
-           <a href="./src/views/produtos.html?param=cedro&column=madeira">
-            <div><img  src="./src/assets/img/cedrinho.jfif"></div>
+        <div class="item-categoria">
+          <a href="./src/views/produtos.html?param=mista&column=madeira">
+            <div><img src="./src/assets/img/mista.jfif"></div>
+            <h3>Madeira Mista</h3>
+          </a>
+        </div>
+
+        <div class="item-categoria">
+          <a href="./src/views/produtos.html?param=cedro&column=madeira">
+            <div><img src="./src/assets/img/cedrinho.jfif"></div>
             <h3>Madeira Cedrinho</h3>
-           </a>
-          </div>
+          </a>
+        </div>
 
-          <div class="item-categoria">
-            <a href="./src/views/produtos.html?param=forro&column=sub_categoria">
-              <div><img  src="./src/assets/img/forro.jfif"></div>
-              <h3>Forro de madeira</h3>
-            </a>
-          </div>
+        <div class="item-categoria">
+          <a href="./src/views/produtos.html?param=forro&column=sub_categoria">
+            <div><img src="./src/assets/img/forro.jfif"></div>
+            <h3>Forro de madeira</h3>
+          </a>
+        </div>
 
-          <div class="item-categoria">
-            <a href="./src/views/produtos.html?param=telhas_de_barro&column=sub_categoria">
-              <div><img  src="./src/assets/img/telhas/telha-romana.jfif"></div>
-              <h3>Telhas de Barro</h3>
-            </a>
-          </div>
+        <div class="item-categoria">
+          <a href="./src/views/produtos.html?param=telhas_de_barro&column=sub_categoria">
+            <div><img src="./src/assets/img/telhas/telha-romana.jfif"></div>
+            <h3>Telhas de Barro</h3>
+          </a>
+        </div>
 
-          <div class="item-categoria">
-            <a href="./src/views/produtos.html?param=telhas de fibrocimento&column=sub_categoria">
-              <div><img  src="./src/assets/img//telhas/telha-ondulada.png"></div>
-              <h3>Telhas de Fibrocimento</h3>
-            </a>
-          </div>
+        <div class="item-categoria">
+          <a href="./src/views/produtos.html?param=telhas de fibrocimento&column=sub_categoria">
+            <div><img src="./src/assets/img//telhas/telha-ondulada.png"></div>
+            <h3>Telhas de Fibrocimento</h3>
+          </a>
+        </div>
 
-          <div class="item-categoria">
-            <a href="./src/views/produtos.html?param=chapas de madeira&column=categoria">
-              <div><img  src="./src/assets/img/chapas.jfif"></div>
-              <h3>Chapas de Madeira</h3>
-            </a>
-          </div>
-    
-          <!-- <div class="item-categoria">
+        <div class="item-categoria">
+          <a href="./src/views/produtos.html?param=chapas de madeira&column=categoria">
+            <div><img src="./src/assets/img/chapas.jfif"></div>
+            <h3>Chapas de Madeira</h3>
+          </a>
+        </div>
+
+        <!-- <div class="item-categoria">
             <a href="./src/views/produtos.html?param=tintas&column=categoria">
               <div><img  src="./src/assets/img/verniz.jfif"></div>
               <h3>Verniz e Polisten</h3>
             </a>
           </div>        -->
 
+      </div>
+
+      <div>
+        <button class="btn-proximo">&#10095</button>
+      </div>
+
+    </div>
+  </div>
+
+  <section id="section-ofertas">
+    <h2 class="titulo-carrosel-produtos"> OFERTAS IMPERDIVEIS!! 
+      <a href="./src/views/produtos.html?param=1&column=oferta">ver mais</a>
+    </h2>
+    <div class="container-produtos">
+      <div class="container-carrosel">
+        <div class="bnt-produtos">
+          <button class="btn-anterior">&#10094</button>
         </div>
-  
-        <div>
+
+        <div class="carrosel-interno">
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+        </div>
+
+        <div class="bnt-produtos">
           <button class="btn-proximo">&#10095</button>
         </div>
-  
       </div>
-     </div>
+    </div>
+  </section>
 
-    <section id="section-ofertas" >
-      <h2 class="titulo-carrosel-produtos"> OFERTAS IMPERDIVEIS!! <a href="./src/views/produtos.html?param=1&column=oferta">ver mais</a></h2>
-      <div class="container-produtos">
-        <div class="container-carrosel">
-          <div class="bnt-produtos">
-            <button class="btn-anterior">&#10094</button>
-          </div>
 
-          <div class="carrosel-interno">
-            <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando"> </div>
-            <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando"> </div>
-            <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando"> </div>
-            <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando"> </div>
-            <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando"> </div>
-            <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando"> </div>
-            <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando"> </div>
-            <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando"> </div>
-            <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando"> </div>
-            <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando"> </div>
-            <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando"> </div>
-            <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando"> </div>
-          </div>
+  <script src="./src/js/header.js"></script>
+  <script src="./src/js/ferramentas.js"></script>
+  <script src="./src/js/index.js"></script>
+  <script src="./src/js/produtos/abrirProduto.js"></script>
+  <script src="./src/js/user/atualizarDados.js"></script>
+  <script src="./src/js/footer.js"></script>
+</body>
 
-          <div class="bnt-produtos">
-            <button class="btn-proximo">&#10095</button>
-          </div>
-        </div>
-      </div>
-    </section>
-  
-    
-    <script src="./src/js/header.js"></script>
-    <script src="./src/js/ferramentas.js"></script>
-    <script src="./src/js/index.js"></script>
-    <script src="./src/js/produtos/abrirProduto.js"></script>
-    <script src="./src/js/user/atualizarDados.js"></script>
-    <script src="./src/js/footer.js"></script>
-  </body>
 </html>
