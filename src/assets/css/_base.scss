@@ -17,6 +17,17 @@ body{
     font-size: 22px;
   }
 }
+@media (min-width: 1800px){
+  html{
+    font-size: 27px;
+  }
+}
+@media (min-width: 2400px){
+  html{
+    font-size: 34px;
+    
+  }
+}
 
 $borda: 1px solid #fff;
 $font: 'Montserrat', sans-serif;

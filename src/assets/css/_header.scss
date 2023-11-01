@@ -338,6 +338,112 @@ header{
     }
   }
 }
+// menu mobile
+.container-menu{
+  display: none;
+  position: fixed;
+  width: 100vw;
+  top: 0px;
+  height: 100vh;
+  overflow-x: overlay;
+  z-index: 1;
+  background-color: #1c1c1c;
+  color: #fff;
+
+  .x{
+    border: none;
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 2rem;
+    top: 1rem;
+
+    .one, .two{
+      position: relative;
+      background-color: red;
+      width: 100%;
+      height: 4px;
+      border-radius: 2px;
+    }
+    .one{
+      transform: rotate(135deg);
+      top: 4px;
+    }
+    .two{
+      transform: rotate(-135deg);
+    }
+  }
+}
+.area-usuario-menu{
+  @include flex(center);
+  flex-direction: column;
+
+  .img-usuario{
+    width: 37px;
+    height: 50px;
+    margin:1.2rem auto;
+  }
+}
+
+.area-botoes-menu{
+  padding: 0.5rem 0 1.2rem 0;
+  div{
+      width: 100% ;
+      @include flex(center);
+      gap: 1.5rem;
+      margin-top: .5rem;
+  }
+  .btns-logado{
+    display: none;
+  }
+  button{
+    width: 40%;
+    height: 50px;
+    border-radius: 1.5rem;
+
+    a{
+      font-size: 1.1rem;
+      font-weight: 600;
+      width: 100%;
+      line-height: 100%;
+      text-decoration: none;
+    }
+  }
+  .btn-left-menu{
+    background-color: red;
+    border: none;
+    a{
+      color: #fff;
+    }
+  }
+  .btn-right-menu{
+    border: 3px solid #fff;
+    height: 46px;
+    background-color: #fff;
+    a{
+      color: #000;
+    }
+  }
+}
+.area-nav-menu{
+  background-color: #fff2;
+  nav{
+    padding-top: 1.2rem;
+   li{
+    height: 2.5rem;
+      a{
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        text-decoration: none;
+        color: #fff;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
 
 @media screen and (max-width: 790px){
   .container-header-bottom{

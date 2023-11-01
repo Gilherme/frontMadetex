@@ -10,6 +10,7 @@ function toggleApendiceUserHeader(){
   }
 }
 
+
 if(userLogado){
   atualizarDadosUsuario(userLogado)
 }
@@ -25,12 +26,11 @@ function atualizarDadosUsuario(dadosUsuario){
   campoUserHeader.innerHTML = `<p> Olá! ${nome} </p>`
 
   const btnsMenuMobile = document.querySelector('.area-botoes-menu')
-  const btnsDefault = document.querySelector('.area-botoes-menu > div:first-child');
+  const btnsDefault = document.querySelector('.area-botoes-menu .btns-default');
   btnsDefault.style.display = 'none'
-  document.querySelector('.btns-logado').style.display = 'block'
+  document.querySelector('.area-botoes-menu .btns-logado').style.display = 'block'
 
   atualizaQtdProdutosNoCar()
- 
 }
 
 async function atualizaQtdProdutosNoCar(){

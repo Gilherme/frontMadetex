@@ -1,7 +1,7 @@
 let bodyzin = document.body
 
-fetch('https://www.madetex.com.br/src/views/apendices/footer.html')
-// fetch('http://localhost:3000/src/views/apendices/footer.html')
+// fetch('https://www.madetex.com.br/src/views/apendices/footer.html')
+fetch('http://localhost:3000/src/views/apendices/footer.html')
 .then(response => response.text())
 .then(data => {
 

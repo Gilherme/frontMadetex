@@ -15,13 +15,13 @@ if (column === 'undefined') {
 }
 
 async function buscarProdutos(limit){
-  const response = await fetch(`http://localhost:1039/produtosPopulares?limit=${encodeURIComponent(limit)}`) 
+  const response = await fetch(`https://api.madetex.com.br/produtosPopulares?limit=${encodeURIComponent(limit)}`) 
   const produtos = await response.json();
   apresentarProdutos(produtos)
 }
 
 async function buscarDetalhesDoProduto(column, param) {
-    const response = await fetch(`http://localhost:1039/produtos?param=${encodeURIComponent(param)}&column=${encodeURIComponent(column)}&limit=15`);
+    const response = await fetch(`https://api.madetex.com.br/produtos?param=${encodeURIComponent(param)}&column=${encodeURIComponent(column)}&limit=15`);
     const produtos = await response.json();
     apresentarProdutos(produtos)
 }
@@ -64,7 +64,7 @@ async function abrirProdutosFiltrados(elemento){
   const param = urlParams.get('param');
   const column = urlParams.get('column')
 
-  const response = await fetch(`http://localhost:1039/produtosFiltroLoja?param=${encodeURIComponent(param)}&column=${encodeURIComponent(column)}&loja=${encodeURIComponent(loja)}`);
+  const response = await fetch(`https://api.madetex.com.br/produtosFiltroLoja?param=${encodeURIComponent(param)}&column=${encodeURIComponent(column)}&loja=${encodeURIComponent(loja)}`);
   const produtos = await response.json();
 
   const produtosSemFiltros = document.getElementById('categoria-escolhida')
