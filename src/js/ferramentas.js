@@ -52,11 +52,21 @@ function exibirMensagemAlertaInput(elemento, mensagem){
   el.focus()
 }
 
-function deixarInputVerde(input, elementoPraSumir){
+function mostrarSenha(){
+  let inputSenha = document.querySelector('#senha');
+  
+  if (inputSenha.getAttribute('type') === 'password') {
+    inputSenha.setAttribute('type', 'text');
+  } else {
+    inputSenha.setAttribute('type', 'password');
+  }
+}
+
+function deixarInputVerde(input){
   input.style.borderColor = "green"
   input.style.outline = "2px solid green"
 
-  const el = document.querySelector(elementoPraSumir)
+  const el = input.nextElementSibling;
   if(el){
     el.style.display = 'none'
   }

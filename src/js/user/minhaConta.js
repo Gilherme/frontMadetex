@@ -164,15 +164,3 @@ function alterarCadastro(){
   .then(response => response.json())
   .then(resposta => alert(resposta.msg))
 }
-
-function mostrarSenha(){
-  let inputSenha = document.querySelector('#senha');
-  
-  if (inputSenha.getAttribute('type') === 'password') {
-    inputSenha.setAttribute('type', 'text');
-  } else {
-    inputSenha.setAttribute('type', 'password');
-  }
-}
-
-

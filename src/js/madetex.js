@@ -5,7 +5,7 @@ async function buscarDadosDaLoja() {
   const urlParams = new URLSearchParams(window.location.search);
   const loja = urlParams.get('loja').replace('_', ' ').replace('_', ' ').replace('_', ' ');
 
-  const response = await fetch(`http://localhost:1039/homeLoja?loja=${encodeURIComponent(loja)}`);
+  const response = await fetch(`https://api.madetex.com.br/homeLoja?loja=${encodeURIComponent(loja)}`);
   const data = await response.json();
   const dados = data[0];
 
@@ -14,30 +14,32 @@ async function buscarDadosDaLoja() {
 
 function inserirDadosLoja(dados){
 
-  document.querySelector('.banner img').src = `../assets/${dados.banner}`
+  const divBanner = document.querySelector('.banner'); divBanner.firstElementChild.remove();
+  const img = document.createElement('img');
+  img.src = `../assets/${dados.banner}`;
+  img.classList.add('img-banner')
+  divBanner.appendChild(img)
   document.querySelector('.endereco').textContent = dados.endereco;
   document.querySelector('.telefone').textContent = dados.telefone;
   document.querySelector('.cidades-frete-gratis').textContent = dados.cidades_frete_gratis;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+
+
+preencherProdutos()
+async function preencherProdutos(){
   const urlParams = new URLSearchParams(window.location.search);
-  const data = urlParams.get('loja');
+  const loja = urlParams.get('loja').replace('_', ' ').replace('_', ' ').replace('_', ' ');
 
-  let loja = data; 
-    while (loja.includes('_')) {
-    loja = loja.replace('_', ' ');
-  }
-
-  carregarProdutos(loja, 'telhas', 'section-telhas');
-  carregarProdutos(loja, 'madeiramentos', 'section-madeiramento');
-});
-
-async function carregarProdutos(loja, categoria, destino){
-  const response = await fetch(`http://localhost:1039/produtosPorLoja?loja=${encodeURIComponent(loja)}&categoria=${encodeURIComponent(categoria)}`)
-    const data = await response.json()
-    CriarCarroselProdutos(data, destino)
+  const produtos = await getProdutosPopularesPorLoja(loja, 12)
+  const prod = await getProdutosEmOfertaPorLoja(loja)
+  preencherCarroselProdutos('#section-populares', produtos)
+  preencherCarroselProdutos('#section-oferta', prod)
 }
+  
+
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {

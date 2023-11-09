@@ -17,7 +17,7 @@ function preencherCarroselProdutos( elementoPai, produtos){
     card.setAttribute('data-id', prod.id)
 
     const imgs = separarString(prod.galeria, " / ")
-    img.src = `./src/assets/img/${imgs[0]}`
+    img.src = `https://www.madetex.com.br/src/assets/img/${imgs[0]}`
     nome.textContent =  limitarString(prod.nome, 42)
     preco.textContent = `R$ ${prod.preco.toFixed(2).toString().replace('.', ',')}`
     parcelamento.textContent = 'em até 10x sem juros'
