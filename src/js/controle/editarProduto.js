@@ -1,14 +1,12 @@
+const userLogado = JSON.parse(localStorage.getItem('user'))
 
-// Carregar produto na tela 
-window.onload = function() {
-  buscarDetalhesDoProduto();
-};
+buscarDetalhesDoProduto();
 
 async function buscarDetalhesDoProduto() {
   const urlParams = new URLSearchParams(window.location.search);
   const id = urlParams.get('id');
 
-  const response = await fetch(`http://localhost:1039/produto?id=${encodeURIComponent(id)}`);
+  const response = await fetch(`https://api.madetex.com.br/produto?id=${encodeURIComponent(id)}`);
   const data = await response.json();
   preencherFormulario(data[0])
 }
@@ -53,12 +51,11 @@ async function editarProduto(){
 
   const options = {
     method: 'PUT',   
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(produtoAtualizado),
-    user: 'usuario 123'
+    headers: { authorization: `${userLogado.token}`, 'Content-Type': 'application/json'},
+    body: JSON.stringify(produtoAtualizado)
   }
   
- fetch(`http://localhost:1039/editarProduto/${id}`, options)
+ fetch(`https://api.madetex.com.br/editarProduto/${id}`, options)
   .then(response => response.json())
   .then(msg => alert(msg.msg))
   .catch(error => console.log(error))

@@ -1,38 +1,38 @@
 @import 'base';
 
 .container-carrosel-madetexs{
-  height: 13rem;
+  height: 190px;
   .container-interno-madetexs{
-    height: 10rem;
+    height: 135px;
+    width: 100%;
+    @include flex(center);
     overflow: hidden;
   }
-
   h2{
-    width: 31rem;
-    margin: 1.8rem auto 0 auto;
+    margin: 20px auto 0 auto;
     text-align: center;
     font-weight: 500;
     color: #1c1c1c;
     letter-spacing: 0.8px;
-    font-size: 1.2rem;
-    line-height: 1.6rem;
+    font-size: 17px;
+    line-height: 25px;
   }
-  
   sup{
     display: block;
-    font-size: 0.9rem
+    font-size: 13px;
   }
-
   .carrosel-madetexs{
-   @include flex(evenly);
-   height: 11rem;
+    @include flex(between);
+    width: 93%;
+    overflow-x: overlay;
+    height: 200px;
+   
 
     .item-madetexs{
-      min-width: 14rem;
-      height: 8rem;
-      margin-inline: 1rem;
+      padding: 6px;
+      width: 220px;
+      margin-inline: 16px;
       border-radius: 20px;
-      color: #fff;
       background-color: black;
       display: flex;
       justify-content: unset;
@@ -41,55 +41,68 @@
     }
 
     h3{
-      font-size: 1.5rem;
+      font-size: 24px;
     }
 
     .logo-madetexs{
-      margin: 10px;
-      width: 10.1rem;
+      margin: 10px 24px;
 
-      svg{
-        width: 10rem;
-        height: 1.85rem;
-      }
       a{
-        font-size: 1.7rem;
+        font-size: 28px;
         font-weight: 800;
         letter-spacing: 1px;
       }
     }
   }
+}
 
+.bnt-madetexs{
+  display: block;
+}
+
+@media (min-width: 1060px){
+  .container-carrosel-madetexs{
+    height: 170px;
+    .container-interno-madetexs{
+      height: 150px;
+      .carrosel-madetexs{
+        @include flex(evenly);
+        height: 220px;
+        overflow-x: hidden;
+      }
+    }
+  }
   .bnt-madetexs{
     display: none;
   }
 }
 
-@media screen and (max-width: 1080px) {
+@media (min-width: 1430px){
   .container-carrosel-madetexs{
-    height: 12.87rem;
-    .container-interno-madetexs{
-      width: 100%;
-      @include flex(center);
-
-      .carrosel-madetexs{
-        @include flex(between);
-        width: 93%;
-        overflow-x: overlay;
-      }
+    h2{
+      font-size: 22px;
     }
-
-    .bnt-madetexs{
-      display: block;
+    sup{
+      font-size: 14px;
     }
   }
 }
-
-@media screen and (max-width: 490px){
+@media (min-width: 1800px){
   .container-carrosel-madetexs{
-    height: 230px;
-    h2{
-      width: 90%;
+    .container-interno-madetexs{
+      height: 180px;
     }
-  }
+    .carrosel-madetexs{
+      .item-madetexs{
+        padding: 20px;
+        width: 250px;
+      }
+    }
+    h2{
+      font-size: 23px;
+    }
+    sup{
+      font-size: 15px;
+    }
+  } 
 }

@@ -1,3 +1,4 @@
+
 function abrirFechar(elemento) {
   const el = document.getElementById(elemento)
   const computedStyle = window.getComputedStyle(el);
@@ -8,6 +9,24 @@ function abrirFechar(elemento) {
   } else {
     el.style.display = 'none';
   }
+}
+
+function fechar(elemento){
+  document.querySelector(elemento).style.display = 'none'
+}
+function abrir(elemento){
+  document.querySelector(elemento).style.display = 'block'
+}
+
+function irParaOheader(){
+  let header = document.querySelector('header');
+  if(header){header.scrollIntoView({ behavior: 'smooth' });}
+}
+
+async function getApendice(caminho){
+  const response = await fetch(caminho)
+  const ape = await response.text()
+  return ape
 }
 
 function criarElemento(elemento, classe){
@@ -52,8 +71,8 @@ function exibirMensagemAlertaInput(elemento, mensagem){
   el.focus()
 }
 
-function mostrarSenha(){
-  let inputSenha = document.querySelector('#senha');
+function mostrarSenha(elemento){
+  let inputSenha = document.querySelector(elemento);
   
   if (inputSenha.getAttribute('type') === 'password') {
     inputSenha.setAttribute('type', 'text');

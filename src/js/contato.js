@@ -1,3 +1,19 @@
+const urlParamns = new URLSearchParams(window.location.search)
+
+try {
+  const trabalheConosco = urlParamns.get('trabalheConosco')
+
+  if(trabalheConosco){
+   document.querySelector('.formulario-contato').innerHTML = `<h3 style="margin-bottom: 15rem;"> Enviei um currículo ou um texto falando sobre você e porque devemos contrata-lo com o titulo "currículo" para o email: guibarreto64042@gmail.com </h3>`
+  }
+} catch { }
+try {
+  const gui = urlParamns.get('Guilherme')
+
+  if (gui){
+    document.querySelector('.formulario-contato').innerHTML = `<h3 style="margin-bottom: 15rem;"> Quer falar com o desenvolvedor ? mande um email para: guibarreto64042@gmail.com ou clique no botão do WhatsApp acima </h3>` 
+  }
+} catch { }
 
 const assunto = document.getElementById('assunto')
 const email = document.getElementById('email')
@@ -7,6 +23,7 @@ assunto.addEventListener("input", () => {
     exibirMensagemAlertaInput(assunto, 'O assunto deve ter até 100 caracteres', '.mensagem-assunto')
   }
 })
+
 email.addEventListener("input", () => {
   const valor = email.value
   if(valor.length > 100){

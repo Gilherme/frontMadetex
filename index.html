@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
   <link rel="stylesheet" href="./src/assets/css/main.css">
   <title>Madetex - Autenticação </title>
   <style>
@@ -78,7 +79,11 @@
   </div>
 
   <script>
-    
+    const user = localStorage.getItem('cafeComLeite')
+
+    if(user){
+      window.location = './home.html'
+    }
     const UserAuth = 'usuario01';
     const SenhaAuth = '091148';
 
@@ -90,6 +95,7 @@
 
       if(user == UserAuth && senha == SenhaAuth){
         window.location = './home.html'
+        localStorage.setItem('cafeComLeite', true)
       }else{
         alert('senha ou usuario errado')
       }

@@ -6,7 +6,7 @@ function toggleApendiceUserHeader(){
   if(userLogado){
     abrirFechar('apendice-logado')
   }else{
-    abrirFechar('apendice-cadastrese')
+    abrir('.ape-faca-login')
   }
 }
 
@@ -36,6 +36,7 @@ function atualizarDadosUsuario(dadosUsuario){
 async function atualizaQtdProdutosNoCar(){
   const usuarioId = userLogado.id
   if(usuarioId){
+    // const response = await fetch(`http://localhost:1039/qtdDeProdutosNoCarrinho?id=${encodeURIComponent(usuarioId)}`)
     const response = await fetch(`https://api.madetex.com.br/qtdDeProdutosNoCarrinho?id=${encodeURIComponent(usuarioId)}`)
     if(!response.ok){
       console.log('erro na fetch')
@@ -51,5 +52,5 @@ async function atualizaQtdProdutosNoCar(){
 
 function sair(){
   localStorage.clear()
-  window.location.href = 'http://localhost:3000/views/user/login.html'
+  window.location.href = '/src/views/user/login.html'
 }

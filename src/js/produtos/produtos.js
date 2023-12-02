@@ -3,6 +3,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const parametro = urlParams.get('param');
 const column = urlParams.get('column')
 const limit = urlParams.get('limit')
+const loja = urlParams.get('loja')
 
 if (column === 'undefined') {
   document.getElementById('categoria-escolhida').innerHTML = `<h3>Produto não encontrado :( </h3>  <p> Escolha um dos itens apresentados no campo de pesquisa </p> `;
@@ -10,7 +11,7 @@ if (column === 'undefined') {
   if (limit) {
     buscarProdutos(limit);
   } else {
-    buscarDetalhesDoProduto(column, parametro);
+    buscarDetalhesDoProduto(column, parametro, loja);
   }
 }
 
@@ -20,10 +21,17 @@ async function buscarProdutos(limit){
   apresentarProdutos(produtos)
 }
 
-async function buscarDetalhesDoProduto(column, param) {
-    const response = await fetch(`https://api.madetex.com.br/produtos?param=${encodeURIComponent(param)}&column=${encodeURIComponent(column)}&limit=15`);
-    const produtos = await response.json();
-    apresentarProdutos(produtos)
+async function buscarDetalhesDoProduto(column, param, loja) {
+    if(loja){
+      const response = await fetch(`https://api.madetex.com.br/produtosFiltroLoja?param=${encodeURIComponent(param)}&column=${encodeURIComponent(column)}&loja=${encodeURIComponent(loja)}`);
+      const produtos = await response.json();
+      apresentarProdutos(produtos)
+    }else{
+      const response = await fetch(`https://api.madetex.com.br/produtos?param=${encodeURIComponent(param)}&column=${encodeURIComponent(column)}&limit=15`);
+      const produtos = await response.json();
+      apresentarProdutos(produtos)
+    }
+    
 }
 
 function apresentarProdutos(produtos){

@@ -1,19 +1,15 @@
-
-const dadosDoUsuario = JSON.parse(localStorage.getItem('user'))
-
-if(dadosDoUsuario){
-  preencherDaDosMinhaConta(dadosDoUsuario)
+if(userLogado){
+  preencherDaDosMinhaConta(userLogado)
 }
 
-function preencherDaDosMinhaConta(dadosDoUsuario){
-  document.querySelector('.nome-perfil').textContent = dadosDoUsuario.nome
-  document.querySelector('.email-perfil').textContent = dadosDoUsuario.email
+function preencherDaDosMinhaConta(user){
+  document.querySelector('.nome-perfil').textContent = user.nome
+  document.querySelector('.email-perfil').textContent = user.email
 }
 
 const btnMenuMinhaConta = document.querySelector('#btn-menu-minha-conta')
 btnMenuMinhaConta.addEventListener('mouseout', () => toggleCardMinhaConta())
 btnMenuMinhaConta.addEventListener('mouseover', () => toggleCardMinhaConta())
-
 
 function toggleCardMinhaConta(){
   let larguraTela = window.innerWidth 
@@ -31,13 +27,13 @@ const divConfig = document.getElementById('config-escolhida');
 
 async function meuPerfil() {
   try{
-    const divMeuPerfil = await fetch('./apendices/meuPerfil.html');
+    const divMeuPerfil = await fetch('/src/views/apendices/meuPerfil.html');
     const containerMeuPerfil = await divMeuPerfil.text();
 
     divConfig.innerHTML = containerMeuPerfil;
 
     setTimeout(async () => {
-      const id = dadosDoUsuario.id;
+      const id = userLogado.id;
       const response = await fetch(`http://localhost:1039/userPorId?id=${encodeURIComponent(id)}`);
       const usuario = await response.json();
 
@@ -73,7 +69,7 @@ async function meuPerfil() {
 }
 
 async function minhasCompras(){
-  const fileMinhasC = await fetch('./apendices/minhasCompras.html')
+  const fileMinhasC = await fetch('src/views/apendices/minhasCompras.html')
   const conteudoMinhasCompras = await fileMinhasC.text()
 
   divConfig.innerHTML = conteudoMinhasCompras
@@ -96,7 +92,7 @@ async function minhasCompras(){
 }
 
 async function meusEnderecos(){
-  const response = await fetch('./apendices/meusEnderecos.html')
+  const response = await fetch('/src/views/apendices/meusEnderecos.html')
   const section = await response.text()
 
   divConfig.innerHTML = section
@@ -114,7 +110,7 @@ async function meusEnderecos(){
 }
 
 async function configuracoes(){
-  const file = await fetch('./apendices/configuracoes.html')
+  const file = await fetch('/src/views/apendices/configuracoes.html')
   const divConfiguracoes = await file.text()
 
   divConfig.innerHTML = divConfiguracoes
@@ -136,9 +132,9 @@ function alterarCadastro(){
   const senha = document.querySelector('#senha').value
 
   const userAtualizado = {
-    id: dadosDoUsuario.id,
+    id: userLogado.id,
     nome: nome,
-    email: email,
+    email: email.trim(),
     cpf: cpf.trim().length === "" ? null : cpf,
     data_nascimento: dataNascimento,
     telefone: telefone.trim().length === "" ? null : telefone,
@@ -155,12 +151,11 @@ function alterarCadastro(){
 
   const options = {
     method: 'PUT',   
-    headers: {'Content-Type': 'application/json'},
+    headers: {'Content-Type': 'application/json', authorization: `${userLogado.token}`},
     body: JSON.stringify(userAtualizado),
-    token: dadosDoUsuario.token
   }
 
-  fetch(`http://localhost:1039/editarUsuario`, options)
+  fetch(`https://api.madetex.com.br/editarUsuario`, options)
   .then(response => response.json())
   .then(resposta => alert(resposta.msg))
 }

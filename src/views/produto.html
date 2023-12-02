@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Roboto:wght@100;300;500&family=Wix+Madefor+Display:wght@500;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&family=Wix+Madefor+Display:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Roboto:wght@100;300;500&family=Wix+Madefor+Display:wght@500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&family=Wix+Madefor+Display:wght@500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/main.css">
   <title>Madetex</title>
 </head>
@@ -37,7 +38,7 @@
             </svg>
             <svg height="23" width="130">
               <a class="logo" href="../../index.html">
-                <text x="8" y="20" stroke="3" fill="red">MADETEX</text>
+                <text x="8" y="16" stroke="3" fill="red">MADETEX</text>
               </a>
             </svg>
           </div>
@@ -59,13 +60,7 @@
         <div class="area-usuario">
 
           <div class="usuario">
-
-            <div id="apendice-cadastrese">
-              <p>Entre ou Cadastre-se para comprar e acompanhar seus pedidos :D</p>
-              <button class="entre"> <a href="./user/login.html">Entre</a></button>
-              <button><a href="./user/cadastrese.html">Cadastre-se</a></button>
-            </div>
-
+            
             <div id="apendice-logado">
               <a href="./minhaConta.html">Minha Conta</a> 
               <a href="./contato.html">Ajuda</a>
@@ -99,7 +94,7 @@
 
           <div class="carrinho-de-compras">
             <div class="itens-no-carrinho">0</div>
-            <a href="./carrinho.html">
+            <a>
               <svg class="carrinho-p" height="35px" width="35px">
                 <line x1="1" x2="7.5" y1="5" y2="5" style="stroke:red; stroke-width:1.5;" /> <!-- onde segura -->
                 <line x1="7" x2="10" y1="4.5" y2="25" style="stroke:red; stroke-width:1.5;" />
@@ -216,14 +211,18 @@
     </div>
 
     <div class="area-botoes-menu">
-      <div class="btns-default">
-        <button class="btn-left-menu"><a href="./user/login.html">Entre</a></button>
-        <button class="btn-right-menu"><a href="./user/cadastrese.html">Cadastre-se</a></button>
-      </div>
-      <div class="btns-logado">
-        <button class="btn-left-menu"  onclick="sair()" class="entre">sair</button>
-        <button class="btn-right-menu" ><a href="./minhaConta.html">Minha conta</a></button></a>
-      </div>
+      <section class="btns-default">
+        <div>
+          <button class="btn-left-menu"><a href="./src/views/user/login.html">Entre</a></button>
+          <button class="btn-right-menu"><a href="./src/views/user/cadastrese.html">Cadastre-se</a></button>
+        </div>
+      </section>
+      <section class="btns-logado">
+        <div>
+          <button class="btn-left-menu"  onclick="sair()" class="entre">sair</button>
+          <button class="btn-right-menu" ><a href="./src/views/minhaConta.html">Minha conta</a></button></a>
+        </div>
+      </section>
     </div>
 
     <div class="area-nav-menu">
@@ -250,10 +249,6 @@
   </div>
 
   <main class="main-produto">
-    
-    <div>
-       
-    </div>
 
     <section class="section-produto-solo">
 
@@ -289,18 +284,6 @@
 
       <div class="entrega-pagamento">
 
-        <div class="apendice-entrePaddCarrinho">
-          <p>Entre para adicionar produtos ao carrinho</p>
-          <button class="btn-red"><a href="./user/login.html">Entre</a></button>
-          <p>Ainda não tem conta ? <a href="./user/cadastrese.html">Cadastre-se</a></p>
-        </div>
-
-        <div class="apendice-irPcarrinho">
-          <p>Produto Adicionado ao carrinho com sucesso!</p>
-          <button onclick="continuarComprando()" class="continuar-comprando">Continuar Comprando</button>
-          <button class="ir-carrinho btn-red"><a href="./carrinho.html">Ir para o carrinho</a></button>
-        </div>
-
         <span class="frete green">Frete grátis </span>
         <p class="regiao gray"> Para a região de <span>Jundiai-SP</span></p>
        
@@ -308,7 +291,7 @@
         <button class=" btn-cidades-frete-gratis btn-prod-solo"> <span class="seta-frete-gratis">&#10095</span> Ver cidades com frete grátis </button>
         <ul id="cidades-frete-gratis"></ul>
         
-        <p style="color: #0009;"> Não está nessa região ? entre em contato conosco <a class="btn-prod-solo" href="">aqui</a> para saber o frete</p>
+        <p style="color: #0009;"> Não está nessa região ? entre em contato conosco <a class="btn-prod-solo" href="/src/views/contato.html">aqui</a> para saber o frete</p>
 
         <p class="retire">
           <span class="green">Retire grátis </span> em
@@ -325,6 +308,12 @@
         </p>
 
         <div class="opcoesDeTamanho">
+          
+          <div>
+            <input type="checkbox" name="aparelhada" id="aparelhada">
+            <label class="aparelhada" for="aparelhada">Aparelhada</label>
+          </div>
+
          <div>
           <label for="pecas">Quantidade de Peças: </label>
           <input value="1" type="number" name="pecas" id="pecas"> 
@@ -333,20 +322,21 @@
           <div>
             <label for="comprimento">Comprimento: </label>
             <select name="comprimento" id="comprimento">
-              <option value="1">1,00 Metro</option>
-              <option value="1.5">1,50 Metro</option>
-              <option value="2">2,00 Metros</option>
-              <option value="2.5">2,50 Metros</option>
-              <option value="3">3,00 Metros</option>
-              <option value="3.5">3,50 Metros</option>
-              <option value="4">4,00 Metros</option>
-              <option value="4.5">4,50 Metros</option>
-              <option value="5">5,00 Metros</option>
-              <option value="5.5">5,50 Metros</option>
-              <option value="6">6,00 Metros</option>
-              <option value="6.5">6,50 Metros</option>
-              <option value="7">7,00 Metros</option>
+              <option value="1">1,00</option>
+              <option value="1.5">1,50</option>
+              <option value="2">2,00</option>
+              <option value="2.5">2,50</option>
+              <option value="3">3,00</option>
+              <option value="3.5">3,50</option>
+              <option value="4">4,00</option>
+              <option value="4.5">4,50</option>
+              <option value="5">5,00</option>
+              <option value="5.5">5,50</option>
+              <option value="6">6,00</option>
+              <option value="6.5">6,50</option>
+              <option value="7">7,00</option>
             </select>
+            Metros
           </div>
         </div>
 
@@ -364,12 +354,24 @@
 
   </main>
 
+  <div class="ape-faca-login card-ape-alert">
+    <p class="fechar"><button class="x"  onclick="fechar('.ape-faca-login')">x</button></p>
+    <h3 class="msg-ape">Faça login para continuar</h3>
+    <button class="btn-red-ape"><a href="/src/views/user/login.html">Entre</a></button>
+    <button class="btn-black-ape"><a href="/src/views/user/cadastrese.html">Cadastre-se</a></button>
+  </div>
 
+  <div class="ape-irPcarrinho card-ape-alert">
+    <p class="fechar"><button class="x"  onclick="fechar('.ape-irPcarrinho')">x</button></p>
+    <h3 class="msg-ape">Ir para o carrinho ?</h3>
+    <button class="btn-red-ape btn-solo"><a href="/src/views/carrinho.html">Carrinho</a></button>
+  </div>
+
+  <script src="../js/ferramentas.js"></script>
+  <script src="../js/header.js"></script>
+  <script src="../js/produtos/produtoSolo.js"></script>
+  <script src="../js/produtos/abrirProduto.js"></script>
+  <script src="../js/user/atualizarDados.js"></script>
+  <script src="../js/footer.js"></script>
 </body>
-<script src="../js/ferramentas.js"></script>
-<script src="../js/header.js"></script>
-<script src="../js/produtos/produtoSolo.js"></script>
-<script src="../js/produtos/abrirProduto.js"></script>
-<script src="../js/user/atualizarDados.js"></script>
-<script src="../js/footer.js"></script>
 </html>

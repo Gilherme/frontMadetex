@@ -1,9 +1,11 @@
 
 .banner{
   width: 100%;
+  height: 25rem;
 
   .img-banner{
     width: 100%;
+    height: 100%;
   }
   .gif-loading-banner{
     display: block;
@@ -72,6 +74,11 @@
   }
 }
 
+@media screen and (max-width: 900px){
+  .banner{
+    height: 300px;
+  }
+}
 @media screen and (max-width: 800px){
   .section-informacoes{
     flex-direction: column;
@@ -87,5 +94,21 @@
       order: 1;
       width: 100%;
     }
+  }
+}
+
+@media screen and (max-width: 620px){
+  .banner{
+    height: 250px;
+  }
+}
+@media screen and (max-width: 490px){
+  .banner{
+    height: 220px;
+  }
+}
+@media screen and (max-width: 476px){
+  .banner{
+    height: 190px;
   }
 }

@@ -5,14 +5,16 @@ btnCategorias.addEventListener('click', toggleCategorias)
 function toggleCategorias(){abrirFechar('nav-categorias'); toggleSeta('.categorias .seta')}
 
 const apendiceEntre = document.querySelector('.area-usuario .usuario')
-apendiceEntre.addEventListener('mouseover', () =>  toggleApendiceUserHeader())
-apendiceEntre.addEventListener('mouseout',  () => toggleApendiceUserHeader()) //Função no user/atualizarDados.js
+apendiceEntre.addEventListener('click', () =>  toggleApendiceUserHeader()) //Função no user/atualizarDados.js
+
+const car = document.querySelector('.carrinho-de-compras')
+car.addEventListener( 'click', irPcarrinho )
+function irPcarrinho(){ if (userLogado) {window.location.href = '/src/views/carrinho.html'}else{abrir('.ape-faca-login')}}
 
 const btnMenu = document.getElementById('btn-menu')
 const btnX    = document.getElementById('btn-x')
 btnMenu.addEventListener('click', () => abrirFechar('menu-mobile'));
 btnX.addEventListener('click',    () => abrirFechar('menu-mobile'))
-
 
 
 fetch('https://api.madetex.com.br/chavesProdutos')
@@ -83,7 +85,7 @@ function pesquisarEnter(event){
 }
 
 function pesquisar(){
-  const detalhesUrl = `/views/produtos.html?param=${encodeURIComponent(param)}&column=${encodeURIComponent(local)}`;
+  const detalhesUrl = `/src/views/produtos.html?param=${encodeURIComponent(param)}&column=${encodeURIComponent(local)}`;
   window.location.href = detalhesUrl;
 }
 

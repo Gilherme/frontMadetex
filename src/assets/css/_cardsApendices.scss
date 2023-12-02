@@ -1,5 +1,65 @@
 @import 'base';
 
+// 
+.card-ape-alert{
+  display: none;
+  padding: .3rem 1rem 1rem 1rem;
+  width: 18.75rem;
+  border-radius: 1rem;
+  background-color: #fff;
+  position: absolute;
+  top: 9rem;
+  left: calc( 50% - 9.375rem );
+  box-shadow: 0px 0px 0px 10000px #0009;
+
+  .msg-ape{
+    text-align: center;
+    font-weight: 500;
+    margin: .5rem 1rem 1rem 1rem;
+  }
+
+  button{
+    border: 0;
+    border-radius: 1rem;
+    font-size: 1rem;
+    width: 7rem;
+    height: 2rem;
+    margin: 0 .5rem;
+    cursor: pointer;
+  }
+  a{
+    text-decoration: none;
+    width: 100%;
+    color: #fff;
+    font-size: 1rem;
+  }:active{
+    font-size: 1.2rem;
+  }
+  
+  .btn-red-ape{
+    background-color: red;
+  }
+  .btn-black-ape{
+    background-color: black;
+  }
+  .fechar{
+    text-align: end;
+
+    button{
+      width: auto;
+      padding: .3rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: red;
+      background-color: transparent;
+    }
+  }
+  .btn-solo{
+    display: block;
+    margin: 0 auto;
+  }
+}
+
 // menu
 #apendice-logado{
   display: none;
@@ -27,51 +87,6 @@
   }
 }
 
-#apendice-cadastrese{
-  display: none;
-  transition-duration: .4s;
-  font-size: 0.8rem;
-  background-color: #fff;
-  z-index: 4;
-  position: absolute;
-  width: 200px;
-  top: 36px;
-  left: -10px;
-  border-radius: 10px;
-  color: $primaryColor;
-  box-shadow: 0 8px 8px #0005;
-  p{
-    text-align: center;
-    padding: 10px;
-    font-size: 1rem;
-    line-height: 1rem;
-  }
-
-  button{
-    cursor: pointer;
-    display: block;
-    margin: 16px auto;
-    width: 80%;
-    padding: 8px;
-    background-color: transparent;
-    border: 2px solid black;
-    border-radius: 10px;
-    a{
-      color: #000;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1.1rem;
-    }
-  }
-  .entre{
-    padding: 9px;
-    background-color: red;
-    border: 0;
-    a{
-      color: #fff;
-    }
-  }
-}
 
 .flex-center{
   @include flex(center);
@@ -79,11 +94,11 @@
 
 // card-entre
 
-
 .header-apendices{
   height: 80px;
   @include flex(center);
 }
+
 .container-apendices{
   height: auto;
 }
@@ -91,9 +106,9 @@
   width: 140px;
   height: 50px;
   a{
-    font-size: 22px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 1px;
   }
 }
 
@@ -135,6 +150,10 @@
     color: #fff;
     border: 0;
     cursor: pointer;
+    
+    &:active{
+      padding: 1.2rem 5.3rem; 
+    }
   }
   a{
     color:#000;
@@ -142,52 +161,8 @@
 }
 
 @media screen and (max-width: 700px){
-  #apendice-cadastrese{
+  #apendice-logado{
     left: -60px;
-  }
-}
-
-.apendice-irPcarrinho, .apendice-entrePaddCarrinho{
-  display: none;
-  background-color: #fff;
-  border-radius: 15px;
-  position: absolute;
-  top: 220px;
-  width: 300px;
-  padding: 30px;
-  left: calc(50% - 150px);
-  box-shadow: 4px 43px 1000px 10000px #1c1c1c90;
-
-  a{
-    color: #000;
-  }
-  p{
-    text-align: center;
-  }
-  button{
-    background-color: transparent;
-    cursor: pointer;
-    display: block;
-    margin: 10px auto;
-    border-radius: 10px;
-    padding: 10px 15px;
-    border: 2px solid black;
-
-    a{
-      text-decoration: none;
-      color: #fff;
-    }
-  }
-  .btn-red{
-    border: none;
-    background-color: red;
-    color: #fff;
-  }
-}
-
-@media screen and (max-width: 960px){
-  .apendice-irPcarrinho,.apendice-entrePaddCarrinho{
-    top: 700px;
   }
 }
 

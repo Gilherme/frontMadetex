@@ -1,5 +1,5 @@
 async function getEnderecosUser(idUser){
-  const response = await fetch(`http://localhost:1039/enderecosUser?id=${encodeURIComponent(idUser)}`)
+  const response = await fetch(`https://api.madetex.com.br/enderecosUser?id=${encodeURIComponent(idUser)}`)
   if(!response.ok){
     alert('erro ao encontrar Endereço')
   }
@@ -11,7 +11,7 @@ async function getEnderecosUser(idUser){
 
 async function getEnderecosUserPelosIds(idEnde, idUser){
 
-  const response = await fetch(`http://localhost:1039/enderecosUserPelosIds?idUser=${encodeURIComponent(idUser)}&idEnde=${encodeURIComponent(idEnde)}`)
+  const response = await fetch(`https://api.madetex.com.br/enderecosUserPelosIds?idUser=${encodeURIComponent(idUser)}&idEnde=${encodeURIComponent(idEnde)}`)
   if(!response.ok){
     alert('erro ao encontrar Endereço')
   }
@@ -23,7 +23,7 @@ async function getEnderecosUserPelosIds(idEnde, idUser){
 
 async function getProdutosNoCarrinho(idUsuario){
 
-  const response = await fetch(`http://localhost:1039/produtosNoCarrinho?id=${encodeURIComponent(idUsuario)}`)
+  const response = await fetch(`https://api.madetex.com.br/produtosNoCarrinho?id=${encodeURIComponent(idUsuario)}`)
   if(!response.ok){
     alert('erro ao encontrar produtos no carrinho, tente novamente')
   }

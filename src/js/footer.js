@@ -1,7 +1,6 @@
 let bodyzin = document.body
 
-fetch('https://www.madetex.com.br/src/views/apendices/footer.html')
-// fetch('http://localhost:3000/src/views/apendices/footer.html')
+fetch('/src/views/apendices/footer.html')
 .then(response => response.text())
 .then(data => {
 
@@ -28,11 +27,3 @@ function mostrarMaisInformacoes(){
       }
    })
 }
-
-// window.addEventListener('load', function() {
-//    setTimeout(function(){
-//       let setaFooter = document.querySelector('#seta-footer')
-      
-//       setaFooter.addEventListener('click')
-//    }, 1500)
-// });

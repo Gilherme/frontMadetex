@@ -1,16 +1,19 @@
+// public kayTeste = TEST-6cc8b8f8-b27e-41d9-856e-ccf7ea111fa5
+
 preencherResumoFinalizarCompra()
 entregaOuRetira()
 
 async function preencherResumoFinalizarCompra(){
-
   let loja;
   let total = 0; let count = 0
+
   const carrinho = await getProdutosNoCarrinho(userLogado.id)
   carrinho.forEach( item => {
     total += (item.preco * item.quantidade);
     count += 1;
     loja = item.loja
   });
+
   document.querySelector('.items span').textContent = `(${count})`
   document.querySelector('.qtd-items-mobile span').textContent = `(${count})`
   document.querySelector('.total-items').textContent = `R$ ${total.toFixed(2)}`
@@ -230,7 +233,7 @@ function preencherInformacoesDeFrete(produtos){
 
 async function getFormCadastarEndereco() {
   const destino = document.querySelector('.conteudo-finalizar-compra')
-  const form = await fetch('./apendices/formEndereco.html')
+  const form = await fetch('/src/views/apendices/formEndereco.html')
   const formEndereco = await form.text()
   destino.innerHTML = formEndereco
 
@@ -247,7 +250,7 @@ async function preencherEndereco(cep){
   const cepFormatado = formatarCEP(valorAtual);
   cep.value = cepFormatado;
 
-  if(cepFormatado.length >= 8){
+  if (cepFormatado.length >= 8) {
     const response = await fetch(`https://brasilapi.com.br/api/cep/v1/${cepFormatado}`)
     if(!response.ok){
       exibirMensagemAlertaInput(cep, 'CEP inválido')
@@ -288,14 +291,13 @@ async function cadastrarEndereco(){
 
   const endereco = {nome: nome, cep: cep, estado: estado, cidade: cidade, bairro: bairro, rua: rua, numero: numero, complemento: complemento, telefone: telefone, id_usuario: idUsuario}
 
-  const response = await fetch('http://localhost:1039/adicionarEndereco',{
+  const response = await fetch('https://api.madetex.com.br/adicionarEndereco',{
     method: 'POST',
-    headers: {'Content-Type': 'application/json'},
+    headers: {'Content-Type': 'application/json', authorization: `${userLogado.token}`},
     body: JSON.stringify(endereco),
-    payload: JSON.stringify(payload)
     })
   const resposta = await response.json()
-  if(!response.ok){
+  if (!response.ok) {
     // console.log(response.el, resposta.msg)
     exibirMensagemAlertaInput(resposta.el, resposta.msg)
   }

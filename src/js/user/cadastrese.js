@@ -7,9 +7,10 @@ telefoneInput.addEventListener('input', () => formatarTelefone(telefoneInput));
 
  async function cadastrarUser(){
   const tel = telefoneInput.value.replace('(', '').replace(') ', '').replace('-', '').replace(' ', '')
-  const usuario = {nome: nome.value, email: email.value, telefone: tel, senha: senha.value}
-  
-  const response = await fetch(`http://localhost:1039/cadastrarUsuario`, {
+  const usuario = {nome: nome.value, email: email.value.trim(), telefone: tel, senha: senha.value}
+
+  // const response = await fetch(`http://localhost:1039/cadastrarUsuario`, {
+  const response = await fetch(`https://api.madetex.com.br/cadastrarUsuario`, {
     method: 'POST', 
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(usuario)
@@ -18,21 +19,22 @@ telefoneInput.addEventListener('input', () => formatarTelefone(telefoneInput));
   if(!response.ok){
     if(resposta.el){
       exibirMensagemAlertaInput(resposta.el, resposta.msg)
-    }else{
+    }
+    else{
       exibirAviso(email.value)
-    } 
-  }else{
-    cadastradoComSucesso()
+    }
+  }
+  else{
+    cadastradoComSucesso(email.value)
   }
 }
 
-function cadastradoComSucesso(){
-    document.querySelector('body').innerHTML = `
-    <h2 style="text-align: center; margin-top: 5rem;" > Usuario cadastrado com sucesso! <h2>`
+function cadastradoComSucesso(email){
+    document.querySelector('.card-entre').innerHTML = `
+    <h2 style="text-align: center; margin-top: 5rem;" > Um link de verificação foi enviado para o email ${email}, Clique no link para verificar seu email<h2>`
     setTimeout(() => {
-      // window.location = 'https://www.madetex.com.br/src/views/user/login.html'
-      window.location = 'http://localhost:3000/src/views/user/login.html'
-    },1500)
+      window.location.href = '/src/views/user/login.html'
+    },5000)
 }
 
 function exibirAviso(email){

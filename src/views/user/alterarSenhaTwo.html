@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../../assets/css/main.css">
-  <title>Madetex - Alterar senha </title>
+  <title>Madetex - alterar senha </title>
 </head>
 <body>
   <header class="header-apendices">
@@ -16,26 +16,28 @@
         </svg>
         <svg height="23" width="130">
           <a class="logo" href="../../../index.html">
-            <text x="8" y="16" stroke="3" fill="red">MADETEX</text>
+            <text x="8" y="20" stroke="3" fill="red">MADETEX</text>
           </a>
         </svg>
       </div>
-    </header>
+  </header>
   <form class="card-entre">
     
     <h1>alterar senha</h1>
-    
+    <p class="msg-senha-difer"></p>
     <div>
-      <label for="email">Email:</label>
-      <input id="email" name="email" type="text">
-      <sup class="sup-msg-erro"></sup>
+      <label for="nSenha">Nova senha:</label>
+      <i class="fa fa-eye" onclick="mostrarSenha('#nSenha')" aria-hidden="true"></i>
+      <input id="nSenha" name="nSenha" type="password">
+    </div>
+    <div>
+      <label for="senha">confirme a nova senha:</label>
+      <i class="fa fa-eye" onclick="mostrarSenha('#senha')" aria-hidden="true"></i>
+      <input id="senha" name="senha" type="password">
     </div>
 
-
-    <p>Um email com um link de alteração será enviado para seu email</p>
-
     <div class="flex-center">
-      <button class="btn-entre" type="button" onclick="alterarSenha()">Continuar</button>
+      <button class="btn-entre" type="button" onclick="alterarSenhaTwo()">Alterar senha</button>
     </div>
     
   </form>

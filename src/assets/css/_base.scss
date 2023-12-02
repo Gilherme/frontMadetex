@@ -98,7 +98,16 @@ $darkRed: #951515;
 }
 
 .sup-msg-erro{
+  display: block;
+  margin: .2rem 0 0 .3rem;
   color: red;
-  font-size: .8rem;
-  text-align: end;
+  font-size: .9rem;
+}
+
+.fa-eye{
+  position: absolute;
+  top: 2.7rem;
+  right: 0.6rem;
+  cursor: pointer;
+  color: #000;
 }

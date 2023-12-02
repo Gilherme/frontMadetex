@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../../assets/css/main.css">
   <title>Madetex - Login </title>
 </head>
@@ -15,7 +17,7 @@
         </svg>
         <svg height="23" width="130">
           <a class="logo" href="../../../index.html">
-            <text x="8" y="20" stroke="3" fill="red">MADETEX</text>
+            <text x="8" y="16" stroke="3" fill="red">MADETEX</text>
           </a>
         </svg>
       </div>
@@ -27,15 +29,17 @@
     <div>
       <label for="email">E-mail</label>
       <input id="email" name="email" type="text">
-      <sup class="msg-email"></sup>
+      <sup class="sup-msg-erro"></sup>
     </div>
 
     <div>
       <label for="senha">Senha</label>
+      <i class="fa fa-eye" onclick="mostrarSenha('#senha')" aria-hidden="true"></i>
       <input id="senha" name="senha" type="password">
-      <sup class="msg-senha"></sup>
+      <sup class="sup-msg-erro"></sup>
     </div>
 
+    <p class="msg-esqueceu-senha">Esqueceu sua senha ? Clique <a href="https://www.madetex.com.br/src/views/user/alterarSenha.html">aqui</a> para redefini-la</p>
     <p>Não tem uma conta ? <a href="./cadastrese.html">Cadastre-se</a></p>
 
     <div class="flex-center">
@@ -46,6 +50,7 @@
     
   </form>
 
+ <script src="../../js/ferramentas.js"></script>
  <script src="../../js/user/login.js"></script>
 </body>
 </html>

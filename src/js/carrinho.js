@@ -2,9 +2,174 @@
 preencherProdutosNoCarrinho()
 const sectionItemsCar = document.querySelector('.produtos-no-carrinho')
 
-async function getProdutosNoCarrinho(idUsuario){
+async function preencherProdutosNoCarrinho(){
 
-  const response = await fetch(`http://localhost:1039/produtosNoCarrinho?id=${encodeURIComponent(idUsuario)}`)
+  const produtos = await getProdutosNoCarrinho(userLogado.id)
+
+  produtos.forEach(produto => {
+    const desconto = produto.desconto.toString().length === 1 ? "0.0" + produto.desconto : '0.' + produto.desconto
+    let preco = (produto.preco * produto.quantidade)
+    let precoAvista = preco - (preco * desconto)
+    const primeiraImg = separarString(produto.galeria, ' / ')[0]
+    let comprimento = (produto.quantidade / produto.pecas)
+    const titulo = limitarString(produto.nome, 30)
+
+    if(produto.aparelhada){
+      preco = preco * 1.1;
+      precoAvista = precoAvista * 1.1;
+    }
+
+    let checked = ''
+    if(produto.aparelhada){
+      checked = 'checked'
+     }
+
+    if(produto.madeira){
+      sectionItemsCar.innerHTML += `<div class="item-carrinho">
+
+      <section class="loja-excluir">
+        <h4 class="loja"> ${produto.loja} </h4>
+        <button  onclick="apagarItemNoCarrinho(${produto.id})" class="btn-link-red">Excluir</button>
+      </section> <hr>
+      
+      <section class="img-titulo-preco">
+        <div class="div-img">
+          <a class="link-img" href="/src/views/produto.html?id=${produto.produto_ID}"><img src="/src/assets/img/${primeiraImg}" alt="foto do produto"></a>
+        </div>
+    
+        <a class="link-titulo" href="/src/views/produto.html?id=${produto.produto_ID}"> <h2 class="titulo">${titulo}</h2></a>
+
+        <div class="preco">
+          <h3 class="preco-normal">R$ ${preco.toFixed(2)} </h3>
+          <h5 class="preco-pix">ou R$ ${precoAvista.toFixed(2)} no pix</h5>
+        </div>
+      </section>
+      
+      <section class="opcoes-tamanho">
+        <div class="qtd-madeira">  
+
+          <input type="number" value="${produto.pecas}" name="pecas" class="pecas" id="pecas">
+          <label class="label-pecas" for="pecas">Peça(s)</label>&nbsp
+            
+          <label class="label-qtd" for="comprimento">De</label>&nbsp
+          <select id="comprimento"id-prod="${produto.id}" preco-normal="${produto.preco}" desconto="${desconto}" value="${comprimento}" name="comprimento" class="comprimento">
+          <option value="1" ${comprimento == 1 ? 'selected' : ''} >1,00 </option>
+            <option value="1.5" ${comprimento == 1.5 ? 'selected' : ''} >1,50 </option>
+            <option value="2" ${comprimento == 2 ? 'selected' : ''} >2,00 </option>
+            <option value="2.5" ${comprimento == 2.5 ? 'selected' : ''} >2,50 </option>
+            <option value="3" ${comprimento == 3 ? 'selected' : ''} >3,00 </option>
+            <option value="3.5" ${comprimento == 3.5 ? 'selected' : ''} >3,50 </option>
+            <option value="4" ${comprimento == 4 ? 'selected' : ''} >4,00 </option>
+            <option value="4.5  ${comprimento == 4.5 ? 'selected' : ''} ">4,50 </option>
+            <option value="5" ${comprimento == 5 ? 'selected' : ''} >5,00 </option>
+            <option value="5.5" ${comprimento == 5.5 ? 'selected' : ''} >5,50 </option>
+            <option value="6" ${comprimento == 6 ? 'selected' : ''} >6,00 </option>
+            <option value="6.5" ${comprimento == 6.5 ? 'selected' : ''} >6,50 </option>
+            <option value="7" ${comprimento == 7 ? 'selected' : ''} >7,00 </option>
+          </select>  <span>Metro(s)</span>&nbsp
+          
+          <div class="div-aparelhada">
+            <input type="checkbox" ${checked} name="aparelhada" id="aparelhada">
+            <label class="aparelhada" for="aparelhada">Aparelhada</label>
+          </div>
+          
+        </div> 
+      </section><hr>
+
+      <section class="frete">
+        
+        <div class="preco-do-frete">
+          <p class="p-frete">Frete <span class="green"> Grátis </span></p>
+        </div>
+
+        <div class="descricao-frete">
+          <p>para região de Júndaí - SP <button> ver cidades </button></span></p>
+          <p>&nbsp&nbsp Não está aqui ?<a href="/src/views/contato.html?frete=true"> ver opções de frete</a></p>
+        </div>
+
+      </section>
+
+    </div>`
+    }
+    else{
+      sectionItemsCar.innerHTML += `<div class="item-carrinho">
+
+      <section class="loja-excluir">
+        <h4 class="loja"> ${produto.loja} </h4>
+        <button  onclick="apagarItemNoCarrinho(${produto.id})" class="btn-link-red">Excluir</button>
+      </section> <hr>
+      
+      <section class="img-titulo-preco">
+        <div class="div-img">
+          <a class="link-img" href="/src/views/produto.html?id=${produto.produto_ID}"><img src="/src/assets/img/${primeiraImg}" alt="foto do produto"></a>
+        </div>
+    
+        <a class="link-titulo" href="/src/views/produto.html?id=${produto.produto_ID}"> <h2 class="titulo">${titulo}</h2></a>
+
+        <div class="preco">
+          <h3 class="preco-normal">R$ ${preco.toFixed(2)} </h3>
+          <h5 class="preco-pix">ou R$ ${precoAvista.toFixed(2)} no pix</h5>
+        </div>
+      </section>
+      
+      <section class="opcoes-tamanho">
+        <div class="qtd-comum">
+          Quantidade: 
+          <input id-prod="${produto.id}"  preco-normal="${produto.preco}" desconto="${desconto}" autocomplete="off" class="quantidade" name="quantidade" value="${produto.quantidade}" type="number">
+        </div>
+      </section><hr>
+
+      <section class="frete">
+        
+        <div class="preco-do-frete">
+          <p class="p-frete">Frete <span class="green"> Grátis </span></p>
+        </div>
+
+        <div class="descricao-frete">
+          <p>para região de Júndaí - SP <button> ver cidades </button></span></p>
+          <p>&nbsp&nbsp Não está aqui ?<a href="/src/views/contato.html?frete=true"> ver opções de frete</a></p>
+        </div>
+
+      </section>
+
+    </div>`
+    }
+  });
+
+  const selectComprimento = document.querySelectorAll('.comprimento')
+  const btnQuantidadeCar = document.querySelectorAll('.quantidade');
+  const pecas = document.querySelectorAll('.pecas')
+  const aparelhada = document.querySelectorAll('#aparelhada')
+
+    if(btnQuantidadeCar){
+      btnQuantidadeCar.forEach(function (btn) {
+        btn.addEventListener('change', () => atualizarPrecoProdNormal(btn));
+      });
+    }
+    if(pecas){
+      pecas.forEach(function (peca) {
+        peca.addEventListener('change', () => atualizarPrecoMadeira(peca));
+      });
+    }
+    if(selectComprimento){
+      selectComprimento.forEach(function (comprimento) {
+        comprimento.addEventListener('change', () => atualizarPrecoMadeira(comprimento));
+      });
+    }
+    if(aparelhada){
+      aparelhada.forEach(function (aparelhada) {
+        aparelhada.addEventListener('change', () => atualizarPrecoMadeira(aparelhada) )
+      })
+    }
+    
+
+  preencherResumoDaCompra()
+}
+
+
+async function getProdutosNoCarrinho(idUsuario){
+  // const response = await fetch(`http://localhost:1039/produtosNoCarrinho?id=${encodeURIComponent(idUsuario)}`)
+  const response = await fetch(`https://api.madetex.com.br/produtosNoCarrinho?id=${encodeURIComponent(idUsuario)}`)
   if(!response.ok){
     alert('erro ao encontrar produtos no carrinho, tente novamente')
   }
@@ -15,10 +180,9 @@ async function getProdutosNoCarrinho(idUsuario){
 }
 
 async function apagarItemNoCarrinho(id){
-  
   const options = {
     method: 'DELETE',
-    headers: { authorization: 'Bearer 1234' }
+    headers: {'Content-Type': 'application/json', authorization: `${userLogado.token}`}
   }
   try {
     const response = await fetch(`http://localhost:1039/apagarItemNoCarrinho/${id}`, options)
@@ -30,48 +194,38 @@ async function apagarItemNoCarrinho(id){
   location.reload();
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  setTimeout(() => {
-    const selectComprimento = document.querySelectorAll('.comprimento')
-    const btnQuantidadeCar = document.querySelectorAll('.quantidade');
-    const pecas = document.querySelectorAll('.pecas')
-
-    btnQuantidadeCar.forEach(function (btn) {
-      btn.addEventListener('change', () => atualizarPrecoProdNormal(btn));
-    });
-    pecas.forEach(function (peca) {
-      peca.addEventListener('change', () => atualizarPrecoMadeira(peca));
-    });
-    selectComprimento.forEach(function (comprimento) {
-      comprimento.addEventListener('change', () => atualizarPrecoMadeira(comprimento));
-    });
-  }, 1000); 
-});
-
 function atualizarPrecoMadeira(el){
-
   const parentDiv = el.closest('.item-carrinho');
-
-  let precoNormal = el.getAttribute('preco-normal');
-  let idProdutoNoCar = el.getAttribute("id-prod");
-  let desconto = el.getAttribute('desconto');
   
   let pecas = parentDiv.querySelector('.pecas');
   let comprimento = parentDiv.querySelector('.comprimento');
+  let aparelhada = parentDiv.querySelector('#aparelhada').checked
+
+  let precoNormal = comprimento.getAttribute('preco-normal');
+  let idProdutoNoCar = comprimento.getAttribute("id-prod");
+  let desconto = comprimento.getAttribute('desconto');
 
   if(pecas.value <= 0){
     pecas.value = 1
   }
 
-  let precoAvista = precoNormal - (precoNormal * desconto);
+  let prenoNoPix = precoNormal - (precoNormal * desconto);
   let ml = (comprimento.value * pecas.value)
-  let precoAtualNormal = (ml * precoNormal).toFixed(2)
-  let precoAtualAvista = (ml * precoAvista).toFixed(2)
+  let precoAtualNormal = (ml * precoNormal)
+  let precoAtualAvista = (ml * prenoNoPix)
 
-  let elPrecoAvista = parentDiv.querySelector('.preco-avista');
-  elPrecoAvista.textContent = `R$ ${precoAtualAvista}`
+  if(aparelhada){
+    precoAtualAvista = precoAtualAvista * 1.1;
+    precoAtualNormal = precoAtualNormal * 1.1;
+  }
 
-  editarItemNoCarrinho(idProdutoNoCar, ml, pecas.value)
+  let elPrecoAvista = parentDiv.querySelector('.preco-normal');
+  let elPrecoNoPix  = parentDiv.querySelector('.preco-pix')
+
+  elPrecoAvista.textContent = `R$ ${precoAtualNormal.toFixed(2)}`;
+  elPrecoNoPix.textContent  = `ou R$ ${precoAtualAvista.toFixed(2)} no pix`;
+
+  editarItemNoCarrinho(idProdutoNoCar, ml, pecas.value, aparelhada)
 }
 
 function atualizarPrecoProdNormal(btn) {
@@ -88,136 +242,54 @@ function atualizarPrecoProdNormal(btn) {
     quantidade = 1;
   }
 
-  let precoAvista = precoNormal - (precoNormal * desconto);
+  let precoNoPix = precoNormal - (precoNormal * desconto);
   let precoAtualNormal = (quantidade * precoNormal).toFixed(2)
-  let precoAtualAvista = (quantidade * precoAvista).toFixed(2)
+  let precoAtualAvista = (quantidade * precoNoPix).toFixed(2)
 
-  let elPrecoAvista = parentDiv.querySelector('.preco-avista');
-  elPrecoAvista.textContent = `R$ ${precoAtualAvista}`
+  const elPrecoNoPix = parentDiv.querySelector('.preco-pix')
+  const elPrecoAvista = parentDiv.querySelector('.preco-normal');
 
-  editarItemNoCarrinho(idProdutoNoCar, quantidade);
+  elPrecoNoPix.textContent  = `ou R$ ${precoAtualAvista} no pix`
+  elPrecoAvista.textContent = `R$ ${precoAtualNormal}`
+
+  editarItemNoCarrinho(idProdutoNoCar, quantidade, aparelhada);
 } 
 
-async function editarItemNoCarrinho(id, quantidade, pecas) {
+async function editarItemNoCarrinho(id, quantidade, pecas, aparelhada) {
 
-  const produtoAtualizado = { quantidade: quantidade, pecas: pecas || 1 };
+  const produtoAtualizado = { quantidade: quantidade, pecas: pecas || 1, aparelhada: aparelhada};
   const options = {
     method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(produtoAtualizado),
-    user: 'usuario 123'
+    headers: { 'Content-Type': 'application/json',  authorization: `${userLogado.token}` },
+    body: JSON.stringify(produtoAtualizado)
   }
 
-  fetch(`http://localhost:1039/editarItemNoCarrinho/${id}`, options)
-    .then(response => response.json())
-    // .then(msg => console.log(msg.msg))
-    .catch(error => console.log(error))
-  
-    preencherResumoDaCompra()
-}
-
-async function preencherProdutosNoCarrinho(){
-
-  const produtos = await getProdutosNoCarrinho(userLogado.id)
-
-  produtos.forEach(produto => {
-    const desconto = produto.desconto.toString().length === 1 ? "0.0" + produto.desconto : '0.' + produto.desconto
-    const preco = (produto.preco * produto.quantidade)
-    const precoAvista = preco - (preco * desconto)
-    const primeiraImg = separarString(produto.galeria, ' / ')[0]
-    let comprimento = (produto.quantidade / produto.pecas)
-
-    if(produto.madeira){
-      sectionItemsCar.innerHTML += `
-      <div class="item-carrinho">
-  
-          <div class="vendido-por">
-              Vendido por: ${produto.loja}
-          </div>
-          
-          <div class="div-img">
-           <img src="../assets/img/${primeiraImg}" alt="foto do produto">
-          </div>
-  
-          <h2>${produto.nome}</h2>
-  
-          <div class="qtd-madeira">  
-
-            <label class="label-pecas" for="pecas">Peças</label>
-            <label class="label-qtd" for="comprimento">De</label>
-
-            <input type="number" id-prod="${produto.id}" preco-normal="${produto.preco}" desconto="${desconto}" value="${produto.pecas}" name="pecas" class="pecas" id="pecas">
-            <select id="comprimento"id-prod="${produto.id}" preco-normal="${produto.preco}" desconto="${desconto}" value="${comprimento}" name="comprimento" class="comprimento">
-              <option value="1" ${comprimento == 1 ? 'selected' : ''} >1,00 Metro</option>
-              <option value="1.5" ${comprimento == 1.5 ? 'selected' : ''} >1,50 Metro</option>
-              <option value="2" ${comprimento == 2 ? 'selected' : ''} >2,00 Metros</option>
-              <option value="2.5" ${comprimento == 2.5 ? 'selected' : ''} >2,50 Metros</option>
-              <option value="3" ${comprimento == 3 ? 'selected' : ''} >3,00 Metros</option>
-              <option value="3.5" ${comprimento == 3.5 ? 'selected' : ''} >3,50 Metros</option>
-              <option value="4" ${comprimento == 4 ? 'selected' : ''} >4,00 Metros</option>
-              <option value="4.5  ${comprimento == 4.5 ? 'selected' : ''} ">4,50 Metros</option>
-              <option value="5" ${comprimento == 5 ? 'selected' : ''} >5,00 Metros</option>
-              <option value="5.5" ${comprimento == 5.5 ? 'selected' : ''} >5,50 Metros</option>
-              <option value="6" ${comprimento == 6 ? 'selected' : ''} >6,00 Metros</option>
-              <option value="6.5" ${comprimento == 6.5 ? 'selected' : ''} >6,50 Metros</option>
-              <option value="7" ${comprimento == 7 ? 'selected' : ''} >7,00 Metros</option>
-            </select>
-          </div> 
-  
-          <div class="div-preco">
-            <p class="preco-avista">R$ ${preco.toFixed(2)}</p>
-          </div>
-  
-          <div class="div-botoes">
-            <!-- <button>Comprar Agora</button> -->
-            <button class="btn-link-red" onclick="apagarItemNoCarrinho(${produto.id})"> Remover do carrinho</button>
-          </div>
-        </div>
-      `
+  const response = await fetch(`https://api.madetex.com.br/editarItemNoCarrinho/${id}`, options)
+  // const response = await fetch(`http://localhost:1039/editarItemNoCarrinho/${id}`, options)
+    if(!response.ok){
+      console.log('erro ao alterar produto no carrinho')
+    }else{
+      const msg = await response.json()
+      console.log(msg.msg)
+      preencherResumoDaCompra()
     }
-    else{
-      sectionItemsCar.innerHTML += `
-      <div class="item-carrinho">
-  
-          <div class="vendido-por">
-              Vendido por: ${produto.loja}
-          </div>
-          
-          <div class="div-img">
-           <img src="../assets/img/${primeiraImg}" alt="foto do produto">
-          </div>
-  
-          <h2>${produto.nome}</h2>
-  
-          <div class="qtd-comum">
-            <label for="quantidade">Quantidade:</label>
-            <input id-prod="${produto.id}"  preco-normal="${produto.preco}" desconto="${desconto}" autocomplete="off" class="quantidade" name="quantidade" value="${produto.quantidade}" type="number">
-          </div>
-  
-          <div class="div-preco">
-            <p class="preco-avista">R$ ${preco.toFixed(2)}</p>
-          </div>
-  
-          <div class="div-botoes">
-            <!-- <button>Comprar Agora</button> -->
-            <button class="btn-link-red" onclick="apagarItemNoCarrinho(${produto.id})"> Remover do carrinho</button>
-          </div>
-        </div>
-      `
-    }
-  });
-
-  preencherResumoDaCompra()
 }
 
 async function preencherResumoDaCompra(){
 
   const produtos = await getProdutosNoCarrinho(userLogado.id)
+
   let soma = 0
   let count = 0
+
   produtos.forEach(prod =>{
     count += 1;
-    soma += (prod.preco * prod.quantidade);
+    let somaAtual = (prod.preco * prod.quantidade)
+
+    if(prod.aparelhada){
+      somaAtual = somaAtual * 1.1;
+    }
+    soma += somaAtual
   })
 
   const total = soma.toFixed(2)
@@ -226,6 +298,7 @@ async function preencherResumoDaCompra(){
   document.querySelector('.total-items').textContent = `R$ ${total}`
   document.querySelector('.total-com-frete').textContent = `R$ ${total}`
   document.querySelector('.total-com-frete-mobile').textContent = `R$ ${total}`
+ 
 }
 
 window.addEventListener("scroll", () => moverResumoDaCompra(scrollY));

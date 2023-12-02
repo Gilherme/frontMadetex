@@ -1,7 +1,9 @@
-function preencherCarroselProdutos( elementoPai, produtos){
+function preencherCarroselProdutos( elementoPai, produtos, url){
   const cards = document.querySelectorAll(`${elementoPai} .card-prod`)
+  // const btnVerMais = document.querySelector(`${elementoPai} .ver-mais-carrosel`)
+  // btnVerMais.href = url
 
-  for (let i = 0; i < cards.length; i++) {
+  for (let i = 0; i < produtos.length; i++) {
     let  card = cards[i]; let prod = produtos[i]
     
     card.removeChild(card.firstChild);

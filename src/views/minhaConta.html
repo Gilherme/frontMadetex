@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&family=Wix+Madefor+Display:wght@500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -58,12 +59,6 @@
 
             <div class="usuario">
 
-              <div id="apendice-cadastrese">
-                <p>Entre ou Cadastre-se para comprar e acompanhar seus pedidos :D</p>
-                <button class="entre"> <a href="./user/login.html">Entre</a></button>
-                <button><a href="./user/cadastrese.html">Cadastre-se</a></button>
-              </div>
-
               <div id="apendice-logado">
                 <a href="./minhaConta.html">Minha Conta</a> 
                 <a href="./contato.html">Ajuda</a>
@@ -97,7 +92,7 @@
 
             <div class="carrinho-de-compras">
               <div class="itens-no-carrinho">0</div>
-              <a href="./carrinho.html">
+              <a>
                 <svg class="carrinho-p" height="35px" width="35px">
                   <line x1="1" x2="7.5" y1="5" y2="5" style="stroke:red; stroke-width:1.5;" /> <!-- onde segura -->
                   <line x1="7" x2="10" y1="4.5" y2="25" style="stroke:red; stroke-width:1.5;" />
@@ -214,20 +209,24 @@
       </div>
   
       <div class="area-botoes-menu">
-        <div class="btns-default">
-          <button class="btn-left-menu"><a href="./user/login.html">Entre</a></button>
-          <button class="btn-right-menu"><a href="./user/cadastrese.html">Cadastre-se</a></button>
-        </div>
-        <div class="btns-logado">
-          <button class="btn-left-menu"  onclick="sair()" class="entre">sair</button>
-          <button class="btn-right-menu" ><a href="./minhaConta.html">Minha conta</a></button></a>
-        </div>
+        <section class="btns-default">
+          <div>
+            <button class="btn-left-menu"><a href="./src/views/user/login.html">Entre</a></button>
+            <button class="btn-right-menu"><a href="./src/views/user/cadastrese.html">Cadastre-se</a></button>
+          </div>
+        </section>
+        <section class="btns-logado">
+          <div>
+            <button class="btn-left-menu"  onclick="sair()" class="entre">sair</button>
+            <button class="btn-right-menu" ><a href="./src/views/minhaConta.html">Minha conta</a></button></a>
+          </div>
+        </section>
       </div>
   
       <div class="area-nav-menu">
         <nav>
           <ul>
-            <li> <a href="./minhaConta.html">Minhas Compras</a></li>
+            <li> <a href="./minhaConta.html">Minhas compras</a></li>
             <li><a href="./produtos.html?param=portas&column=sub_sub_categoria">Portas</a></li>
             <li> <a href="./produtos.html?param=janelas&column=sub_sub_categoria">Janelas</a></li>
             <li> <a href="./produtos.html?param=decks&column=sub_categoria">Decks</a></li>
@@ -280,6 +279,7 @@
             <li onclick="minhasCompras()">Minhas compras</li>
             <li onclick="meusEnderecos()">Meus endereços</li>
             <li onclick="configuracoes()">Configurações</li>
+            <li onclick="">Contato</li>
           </ul>
         </nav>
 
@@ -303,7 +303,12 @@
       </div>
     </main>
     
-
+    <div class="ape-faca-login card-ape-alert">
+      <p class="fechar"><button class="x"  onclick="fechar('.ape-faca-login')">x</button></p>
+      <h3 class="msg-ape">Faça login para continuar</h3>
+      <button class="btn-red-ape"><a href="/src/views/user/login.html">Entre</a></button>
+      <button class="btn-black-ape"><a href="/src/views/user/cadastrese.html">Cadastre-se</a></button>
+    </div>
 
     <script src="../js/header.js"></script>
     <script src="../js/ferramentas.js"></script>

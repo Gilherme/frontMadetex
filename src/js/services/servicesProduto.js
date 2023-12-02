@@ -10,8 +10,8 @@ async function getProdutosEmOferta(limit){
   return data
 }
 
-async function getProdutosPorLojaEcategoria(loja, categoria){
-  const response = await fetch(`https://api.madetex.com.br/produtosPorLoja?loja=${encodeURIComponent(loja)}&categoria=${encodeURIComponent(categoria)}`)
+async function getProdutosPorLojaEcategoria(loja, categoria, limit){
+  const response = await fetch(`https://api.madetex.com.br/produtosPorLoja?loja=${encodeURIComponent(loja)}&categoria=${encodeURIComponent(categoria)}&limit=${encodeURIComponent(limit)}`)
   const data = await response.json();
   return data;
 }
@@ -22,8 +22,8 @@ async function getProdutosPopularesPorLoja(loja, limit){
   return data;
 }
 
-async function getProdutosEmOfertaPorLoja(loja){
-  const response = await fetch(`https://api.madetex.com.br/produtosEmOfertaPorLoja?loja=${encodeURIComponent(loja)}`)
+async function getProdutosEmOfertaPorLoja(loja, limit){
+  const response = await fetch(`https://api.madetex.com.br/produtosEmOfertaPorLoja?loja=${encodeURIComponent(loja)}&limit=${encodeURIComponent(limit)}`)
   const data = await response.json();
   return data;
 }

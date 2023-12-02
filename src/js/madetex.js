@@ -32,14 +32,15 @@ async function preencherProdutos(){
   const loja = urlParams.get('loja').replace('_', ' ').replace('_', ' ').replace('_', ' ');
 
   const produtos = await getProdutosPopularesPorLoja(loja, 12)
-  const prod = await getProdutosEmOfertaPorLoja(loja)
-  preencherCarroselProdutos('#section-populares', produtos)
-  preencherCarroselProdutos('#section-oferta', prod)
+  const prod = await getProdutosEmOfertaPorLoja(loja, 12)
+  const products = await getProdutosPorLojaEcategoria(loja, 'madeiramentos', 12)
+  const product = await getProdutosPorLojaEcategoria(loja, 'telhas', 12)
+
+  preencherCarroselProdutos('#section-populares', produtos);
+  preencherCarroselProdutos('#section-oferta', prod);
+  preencherCarroselProdutos('#section-telhas', product);
+  preencherCarroselProdutos('#section-madeiramento', products);
 }
-  
-
-
-
 
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
@@ -52,14 +53,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       btnProximo.addEventListener("click", () => {
         carrosel.scrollBy({
-          left: +230,
+          left: +250,
           behavior: 'smooth'
         });
       });
 
       btnAnterior.addEventListener("click", () => {
         carrosel.scrollBy({
-          left: -230,
+          left: -250,
           behavior: 'smooth'
         });
       });

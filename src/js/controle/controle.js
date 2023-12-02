@@ -1,7 +1,9 @@
 
 // GET
+const userLogado = JSON.parse(localStorage.getItem('user'))
+
 async function carregarProdutos(loja, column){
-  const response = await fetch(`http://localhost:1039/produtos?param=${encodeURIComponent(loja)}&column=${encodeURIComponent(column)}&limit=100`)
+  const response = await fetch(`https://api.madetex.com.br/produtos?param=${encodeURIComponent(loja)}&column=${encodeURIComponent(column)}&limit=100`)
     const produtos = await response.json()
     CriarCarroselControle(produtos)
 }
@@ -50,29 +52,37 @@ selecionador.addEventListener('click', ()=>{
   const btnEditarProduto = document.querySelectorAll('.editar')
   btnEditarProduto.forEach( btn => {
     btn.addEventListener('click', () =>{
-      abrirProduto(btn)
+      abrirParaEditar(btn)
     })
   })
 });
 
+
+
 async function apagarProduto(id){
-  try {
-    const response = await fetch(`http://localhost:1039/DELproduto/${id}`,
-    {method: 'DELETE', headers: { authorization: 'Bearer 1234' }})
-    const data = await response.json()
-    const msg = data.msg
-    alert(msg);
-  } catch (err) {
-    console.error(err)
+  if (userLogado.admin) {
+    try {
+      const response = await fetch(`https://api.madetex.com.br/DELproduto/${id}`,
+      {method: 'DELETE', headers: { authorization: `${userLogado.token}`}})
+      const data = await response.json()
+      console.log(data.msg)
+    } catch (err) {
+      console.error(err)
+    }
   }
+  else {
+    alert('vc n tem autorização')
+  }
+  
 };
 
 // Abrir para editar 
-async function abrirProduto(btn){
+async function abrirParaEditar(btn){
   const id = btn.getAttribute('data-id')
   
-  const detalhesUrl = `/views/controle/editarProduto.html?id=${encodeURIComponent(id)}`;
-  window.location.href = detalhesUrl;
+  const url = `/src/views/controle/editarProduto.html?id=${encodeURIComponent(id)}`;
+
+  window.location.href = url;
 };
 
 // POST
@@ -94,12 +104,13 @@ function submitProd(produto){
   let madeira   =document.getElementById('madeira').value;
   var produto = { nome: nome, madeira: madeira, descricao: descricao, preco: preco, categoria: categoria, sub_categoria: subCategoria, sub_sub_categoria: subSubCategoria, quantidade: quantidade, loja: loja, desconto: desconto, condicao: condicao, pagamento: pagamento, galeria: galeria, lista_descricao: lista, oferta: oferta };
 
-  fetch(`http://localhost:1039/adicionarProduto`,{
+  fetch(`https://api.madetex.com.br/adicionarProduto`,{
+    // fetch(`http://localhost:1039/adicionarProduto`,{
    method: 'POST',
-   headers: {'Content-Type': 'application/json'},
+   headers: { authorization: `${userLogado.token}`,'Content-Type': 'application/json'},
    body: JSON.stringify(produto)
    })
   .then(response => response.json())
-  .then(mensagem => alert(mensagem.msg))
+  .then(mensagem => console.log(mensagem))
   .catch(error => {console.error('Erro ao inserir dados:', error);});
 }

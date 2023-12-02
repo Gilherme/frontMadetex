@@ -37,6 +37,8 @@ function preencherProduto(produto) {
 
   let pecas = document.getElementById('pecas')
   let comprimento = document.getElementById('comprimento')
+  let aparelhada = document.getElementById('aparelhada')
+  aparelhada.onchange = () => atualizaPreco(produto.preco, desconto)
   pecas.onchange = () => atualizaPreco(produto.preco, desconto);
   comprimento.onchange = () => atualizaPreco(produto.preco, desconto);
 
@@ -62,6 +64,7 @@ function atualizaPreco(preco, desconto) {
 
   const precoComDesconto = (preco - (preco * desconto)).toFixed(2)
   
+  let aparelhada = document.getElementById('aparelhada').checked
   let pecas = document.getElementById('pecas').value
   let comprimento = document.getElementById('comprimento').value
 
@@ -70,6 +73,11 @@ function atualizaPreco(preco, desconto) {
 
   let precaoAtual = qtdMetros * precoComDesconto
   let precoNormalAtual = qtdMetros * preco
+
+  if(aparelhada){
+    precaoAtual = precaoAtual * 1.1;
+    precoNormalAtual = precoNormalAtual * 1.1;
+  }
 
   document.querySelector('.precao').textContent = `R$ ${precaoAtual.toFixed(2).toString().replace('.', ',')}`
   document.querySelector('.preco-antigo').textContent = `R$ ${precoNormalAtual.toFixed(2).toString().replace('.', ',')}`;
@@ -108,7 +116,13 @@ function preencherGaleria(galeriaDeFotos){
     btn.appendChild(img)
     galeria.appendChild(btn)
   } 
+  var btnGaleria = document.querySelectorAll('.btn-galeria')
+  atualizarFotao(btnGaleria[0])
+  btnGaleria.forEach( btn => {
+  btn.addEventListener('click', () => atualizarFotao(btn))
+  })
 }
+
 
 function preencherFormasPag(formasDePagamento){
   const formas = separarString(formasDePagamento, " / ")
@@ -151,16 +165,6 @@ function showCidadesFreteGratis(){
   toggleSeta('.seta-frete-gratis')
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  setTimeout(() => {
-  const btnGaleria = document.querySelectorAll('.btn-galeria')
-  atualizarFotao(btnGaleria[0])
-
-  btnGaleria.forEach( btn => {
-    btn.addEventListener('click', () => atualizarFotao(btn))
-  })        
-  }, 1000);
-});
 
 function atualizarFotao(btn){
   const img = btn.querySelector('img') 
@@ -169,64 +173,50 @@ function atualizarFotao(btn){
 }
 
 const btnAddCarriho = document.querySelector('.add-carrinho')
-btnAddCarriho.addEventListener('click', () => {
+btnAddCarriho.addEventListener('click', irParaOcarrinhoOuNao)
+
+const btnComprarAgr = document.querySelector('.comprar')
+btnComprarAgr.addEventListener('click', irParaOcarrinhoOuNao)
+
+function irParaOcarrinhoOuNao(){
 
   const userLogado = localStorage.getItem('user')
-  const idUsuario = JSON.parse(userLogado).id
 
   if(userLogado){
+    const idUsuario = JSON.parse(userLogado).id
+
     const qtd = document.querySelector('#quantidade').value
     if(qtd < 1){
       alert('Quantidade Inválida')
      }
      else{
       adicionarAoCarrinho(idUsuario, qtd)
-      exibirApendice('.apendice-irPcarrinho')
+      abrir('.ape-irPcarrinho')
+      irParaOheader()
       atualizaQtdProdutosNoCar()
      }  
   }else{
-    exibirApendice('.apendice-entrePaddCarrinho')
+    abrir('.ape-faca-login')
+    irParaOheader();
   }
-})
+}
 
 async function adicionarAoCarrinho(idUsuario, qtd){
-  const payload = localStorage.getItem('user')
   const urlParams = new URLSearchParams(window.location.search);
   const produtoId = urlParams.get('id'); 
   const pecas = document.getElementById('pecas').value
+  const aparelhada = document.getElementById('aparelhada').checked
 
-  const produto = {usuario_ID: idUsuario, produto_ID: produtoId, quantidade: qtd, pecas: pecas || null}
+  const produto = {usuario_ID: idUsuario, produto_ID: produtoId, quantidade: qtd, pecas: pecas || null, aparelhada: aparelhada}
 
+  // fetch(`http://localhost:1039/adicionarAoCarrinho`,{
   fetch(`https://api.madetex.com.br/adicionarAoCarrinho`,{
    method: 'POST',
-   headers: {'Content-Type': 'application/json'},
-   body: JSON.stringify(produto),
-   payload: JSON.stringify(payload)
+   headers: {'Content-Type': 'application/json', authorization: `${userLogado.token}`},
+   body: JSON.stringify(produto)
    })
   .then(response => response.json())
-  // .then(mensagem => console.log(mensagem))
   .catch(error => console.log(error))
-}
-
-
-function exibirApendice(apendice){
-  const ap = document.querySelector(apendice)
-  ap.style.display = 'block'
-  let naTela = true 
-
-  setTimeout(()=> {
-    document.addEventListener("click", function(event) {
-      if (event.target !== ap && naTela) {
-  
-          ap.style.display = "none";
-          naTela = false
-      }
-    });
-  },300)
-}
-
-function continuarComprando(){
-  document.querySelector('.apendice-irPcarrinho').style.display = 'none'
 }
 
 // seta do carrosel
@@ -255,4 +245,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, 1000);
 });
-

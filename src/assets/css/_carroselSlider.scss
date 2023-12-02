@@ -1,14 +1,15 @@
 .slider{
   margin: 0 auto;
   width: 100%;
-  height: 25rem;
+  height: 155px;
   overflow: hidden;
 }
 .slides{
   width: 400%;
-  height: 25rem;
+  height: 155px;
   display: flex;
-}.slides input{
+}
+.slides input{
   display: none;
 }
 .slide{
@@ -23,19 +24,19 @@
 .manual-navigation{
   position: absolute;
   width: 100%;
-  margin-top: -2.5rem;
+  margin-top: -20px;
   display: flex;
   justify-content: center ;
 }
 .manual-btn{
   border: 2px solid #fff;
-  padding: 5px;
-  border-radius: 10px;
+  padding: 4px;
+  border-radius: 8px;
   cursor: pointer;
   transition: 1s;
 }
 .manual-btn:not(:last-child){   /* para não aplicar no ultimo item */
-  margin-right: 30px;
+  margin-right: 10px;
 }
 .manual-btn:hover{
   background-color: #fff;
@@ -54,20 +55,20 @@
 }
 .nav-auto div{
   border: 2px solid #20a6ff;
-  padding: 5px;
-  border-radius: 10px;
+  padding: 4px;
+  border-radius: 8px;
   cursor: pointer;
   transition: 1s;
 }
 .nav-auto{
   position: absolute;
-  width:100%;
-  margin-top: 360px;
+  width: 100%;
+  margin-top: 135px;
   display: flex;
   justify-content: center;
 }
 .nav-auto div:not(:last-child){
-  margin-right: 30px;
+  margin-right: 10px;
 }
 #radio1:checked ~ .nav-auto .auto-btn1{
   background-color: #fff;
@@ -82,65 +83,69 @@
   background-color: #fff;
 }
 
-@media (min-width:1300px){
-  .nav-auto{
-    margin-top: 495px;
-  }
-}
-
-@media screen and (max-width: 900px){
-  .slides{
-    height: 300px;
-  }
-  .slider{
-    height: 300px;
-  }
-  .nav-auto{
-    margin-top: 260px;
-  }
-}
-
-@media screen and (max-width: 620px){
-  .slides{
-    height: 250px;
-  }
-  .slider{
-    height: 250px;
-  }
-  .nav-auto{
-    margin-top: 210px;
-  }
-}
-
-@media screen and (max-width: 490px){
-  .slides{
-    height: 220px;
-  }
+@media (min-width:599px){
   .slider{
     height: 220px;
   }
+  .slides{
+    height: 220px;
+  }
   .nav-auto{
-    margin-top: 204px;
-  }
-  .manual-navigation{
-    margin-top: -16px;
-  }
-  .manual-btn:not(:last-child){ 
-    margin-right: 20px;
-  }
-  .nav-auto div:not(:last-child){
-    margin-right: 20px;
+    margin-top: 200px;
   }
 }
-
-@media screen and (max-width: 476px){
-  .slides{
-    height: 190px;
-  }
+@media (min-width:790px){
   .slider{
-    height: 190px;
+    height: 260px;
+  }
+  .slides{
+    height: 260px;
   }
   .nav-auto{
-    margin-top: 174px;
+    margin-top: 240px;
+  }
+}
+@media (min-width: 1060px){
+  .slider{
+    height: 350px;
+  }
+  .slides{
+    height: 350px;
+  }
+  .nav-auto{
+    margin-top: 330px;
+  }
+}
+@media (min-width: 1260px){
+  .slider{
+    height: 420px;
+  }
+  .slides{
+    height: 420px;
+  }
+  .nav-auto{
+    margin-top: 400px;
+  }
+}
+@media (min-width: 1430px){
+  .slider{
+    height: 480px;
+  }
+  .slides{
+    height: 480px;
+  }
+  .nav-auto{
+    margin-top: 460px;
+  }
+}
+@media (min-width: 1800px){
+  .slider{
+    height: 600px;
+  }
+  .slides{
+    height: 600px;
+  }
+  .nav-auto{
+    margin-top: 580px;
   }
 }

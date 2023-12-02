@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&family=Wix+Madefor+Display:wght@500;700;800&display=swap" rel="stylesheet">
   <title>Madetex - Carrinho de compras</title>
@@ -34,7 +35,7 @@
             </svg>
             <svg height="23" width="130">
               <a class="logo" href="../../index.html">
-                <text x="8" y="20" stroke="3" fill="red">MADETEX</text>
+                <text x="8" y="16" stroke="3" fill="red">MADETEX</text>
               </a>
             </svg>
           </div>
@@ -56,12 +57,6 @@
         <div class="area-usuario">
 
           <div class="usuario">
-
-            <div id="apendice-cadastrese">
-              <p>Entre ou Cadastre-se para comprar e acompanhar seus pedidos :D</p>
-              <button class="entre"> <a href="./user/login.html">Entre</a></button>
-              <button><a href="./user/cadastrese.html">Cadastre-se</a></button>
-            </div>
 
             <div id="apendice-logado">
               <a href="./minhaConta.html">Minha Conta</a> 
@@ -96,7 +91,7 @@
 
           <div class="carrinho-de-compras">
             <div class="itens-no-carrinho">0</div>
-            <a href="./carrinho.html">
+            <a>
               <svg class="carrinho-p" height="35px" width="35px">
                 <line x1="1" x2="7.5" y1="5" y2="5" style="stroke:red; stroke-width:1.5;" /> <!-- onde segura -->
                 <line x1="7" x2="10" y1="4.5" y2="25" style="stroke:red; stroke-width:1.5;" />
@@ -213,14 +208,18 @@
     </div>
 
     <div class="area-botoes-menu">
-      <div class="btns-default">
-        <button class="btn-left-menu"><a href="./user/login.html">Entre</a></button>
-        <button class="btn-right-menu"><a href="./user/cadastrese.html">Cadastre-se</a></button>
-      </div>
-      <div class="btns-logado">
-        <button class="btn-left-menu"  onclick="sair()" class="entre">sair</button>
-        <button class="btn-right-menu" ><a href="./minhaConta.html">Minha conta</a></button></a>
-      </div>
+      <section class="btns-default">
+        <div>
+          <button class="btn-left-menu"><a href="./src/views/user/login.html">Entre</a></button>
+          <button class="btn-right-menu"><a href="./src/views/user/cadastrese.html">Cadastre-se</a></button>
+        </div>
+      </section>
+      <section class="btns-logado">
+        <div>
+          <button class="btn-left-menu"  onclick="sair()" class="entre">sair</button>
+          <button class="btn-right-menu" ><a href="./src/views/minhaConta.html">Minha conta</a></button></a>
+        </div>
+      </section>
     </div>
 
     <div class="area-nav-menu">
@@ -249,7 +248,7 @@
   <main class="main-carrinho">
 
     <section class="produtos-no-carrinho">
-      <h2>Meu carrinho de compras</h2>
+      <h2 class="h2-meu-carrinho">Meu carrinho de compras</h2>
     </section>
 
     <section class="resumo-carrinho-desktop">
@@ -277,20 +276,13 @@
     <div>
       <p class="qtd-items-mobile">Items <span></span></p>
       <p class="preco-frete-mobile">Frete <span class="green"> Gratis</span></p>
-      <p class="total">Total: <span class="total-com-frete-mobile"></span></p>
+      <p class="total">Total: <span class="total-com-frete-mobile"></span> </p>
+      <!-- <sup style="margin-top: -.7rem;" class="p-no-pix">No pix: <span class="no-pix"></span></sup> -->
       <button onclick="continuarCompra()">Continuar compra</button>
     </div>
 
   </div>
-
-  <div id="aviso-produtos-diferentes">
-    <h3>Só é possível comprar de uma loja por vez</h3>
-    <p>Seu carrinho possui items de lojas diferentes, remova-os antes de continuar.</p>
-    <p>Cada loja Madetex é idependente então as compras devem ser separadas por loja.</p>
-    <p>Para comprar de lojas diferentes finalize a compra com os itens de uma e depois compre da outra, como duas compras separadas.</p>
-    <button onclick="abrirFechar('aviso-produtos-diferentes')">Ok</button>
-  </div>
-
+  
   <script src="../js/header.js"></script>
   <script src="../js/ferramentas.js"></script>
   <script src="../js/user/atualizarDados.js"></script>
