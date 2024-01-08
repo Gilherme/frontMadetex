@@ -1,19 +1,28 @@
 <div class="section-entrega-retira">
   <h2>Como você deseja receber seu pedido ?</h2>
   <h3 class="aviso-escolha-opcao"> Escolha uma opção para continuar </h2>
-  <div class="div-retirar">
-    <label for="retirar">Retirar</label>
-    <input type="radio" value="retirar" id="retirar" name="entrega-retira">
+
+  <div class="card-enderecos div-escolha-endereco">
+    <!-- <label for="retirar">Retirar</label> -->
+    <input type="radio" value="retirar" id="retirar" name="escolha" id="entrega-retira">
     <h3 class="nome-loja"></h3>
     <p class="endereco-loja"></p>
     <a class="ver-no-mapa" href="">Ver no mapa</a>
   </div>
-  <div class="div-retirar">
-    <label for="entregar">Entregar</label>
-    <input type="radio" value="entregar" name="entrega-retira">
-    <h3>Entregar no meu endereço</h3>
+
+  <div class="enderecos">
+
   </div>
+
+  <div class="card-enderecos add-endereco">
+    <button onclick="exibirFormAddEndereco()">Adicionar endereço</button>
+  </div>
+
+  <div id="form-add-endereco">
+
+  </div>
+
   <div class="div-jutify-center" >
-    <button onclick="contunuarEouR()" class="btn-red">Continuar</button>
+    <button onclick="contunuarEouR()" class="btn-continuar-ER btn-red">Continuar</button>
   </div>
 </div>

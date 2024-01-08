@@ -6,77 +6,80 @@
   margin: 25px auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 2.5rem 2.5rem 2.5rem 2.5rem 2.5rem 5rem 10rem 2.5rem;
+  grid-template-rows: 2.5rem 2.5rem 2.5rem 2.5rem 2.5rem 4rem 6rem 4rem 2.5rem 2.5rem;
   gap: 5px;
 
-  .form-add-prod-nome{
+  .form-prod-nome{
     grid-column: 1 / 3;
     grid-row: 1 / 2;
   }
-  .form-add-prod-madeira{
+  .form-prod-madeira{
     grid-column: 3 / 4;
     grid-row: 1 / 2;
   }
-  .form-add-prod-categoria{
+  .form-prod-categoria{
     grid-column: 1 / 2;
     grid-row: 2 / 3; 
   }
-  .form-add-prod-sub-categoria{
+  .form-prod-sub-categoria{
     grid-column: 2 / 3;
     grid-row: 2 / 3; 
   }
-  .form-add-prod-sub-sub-categoria{
+  .form-prod-sub-sub-categoria{
     grid-column: 3 / 4;
     grid-row: 2 / 3; 
   }
-  .form-add-prod-preco{
+  .form-prod-preco{
     grid-column: 1 / 2;
     grid-row: 3 / 4;
   }
-  .form-add-prod-desconto{
+  .form-prod-desconto{
     grid-column: 2 / 3;
     grid-row: 3 / 4;
   }
-  .form-add-prod-condicao{
+  .form-prod-condicao{
     grid-column: 3 / 4;
     grid-row: 3 / 4;
   }
-  .form-add-prod-pagamento{
+  .form-prod-pagamento{
     grid-column: 1 / 3;
     grid-row: 4 / 5;
   }
-  .form-add-prod-quantidade{
+  .form-prod-quantidade{
     grid-column: 3 / 4;
     grid-row: 4 / 5; 
   }
-  .form-add-prod-galeria{
+  .form-prod-galeria{
     grid-column: 1 / 4;
     grid-row: 5 / 6; 
   }
-  .form-add-prod-lista{
+  .form-prod-lista{
     grid-column: 1 / 4;
     grid-row: 6 / 7; 
   }
-  .form-add-prod-descricao{
+  .form-prod-descricao{
     grid-column: 1 / 4;
     grid-row: 7 / 8;
   }
-  .form-add-prod-madetex{
-    grid-column: 1 / 2;
+  .form-prod-variacao{
+    grid-column: 1 / 4;
     grid-row: 8 / 9;
-
-    select{
-      width: 80%;
-      padding: 5px;
-    }
   }
-  .form-add-prod-oferta{
+  .form-prod-tipo-variacao{
+    grid-column: 1 / 2;
+    grid-row: 9 / 10;
+  }
+  .form-prod-madetex{
+    grid-column: 1 / 2;
+    grid-row: 10 / 11;
+  }
+  .form-prod-oferta{
     grid-column: 2 / 3;
-    grid-row: 8 / 9;
+    grid-row: 10 / 11;
   } 
-  .form-add-prod-btn{
+  .form-prod-btn{
       grid-column: 3 / 4;
-      grid-row: 8 / 9;
+      grid-row: 10 / 11;
     button{   
       height: 80%;  
       width: 100%;
@@ -95,4 +98,8 @@
   textarea{
     width: 100%;
    }
+  select{
+    width: 80%;
+    padding: 5px;
+  }
 }  

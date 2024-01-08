@@ -4,23 +4,22 @@
 header{
   background-color: $primaryColor;
 }
-
 .container-header{
   width: 100%;
 }
 .container-header-top{
-  height: 6.25rem;
+  height: 100px;
   display: grid;
   align-content: center;
   justify-content: space-between;
   grid-template-columns: 20% 50% 25%;
 
   .area-logo{
-    margin-inline: 1.9rem;
+    margin-inline: 30px;
     grid-column: 1 / 2;
 
     a{
-      font-size: 1.8rem;
+      font-size: 29px;
       font-weight: 800;
     }
 
@@ -30,12 +29,12 @@ header{
       display: none;
     } 
     .logo-grande{
-      width: 10.31px;
-      height: 3.43rem;
+      width: 165px;
+      height: 55px;
       display: block;
       svg{
-        width: 10.31rem;
-        height: 1.87rem;
+        width: 165px;
+        height: 30px;
       }
     }
   }
@@ -47,9 +46,9 @@ header{
   gap: 2px;
   input, button{
     width: 90%;
-    height: 2.18rem;
+    height: 35px;
     padding: 5px 10px;
-    font-size: 1rem;
+    font-size: 16px;
     border-radius: 5px;
     border: none;
     outline: none;
@@ -58,10 +57,10 @@ header{
     }
   }
   div{
-    height: 2.18rem;
+    height: 35px;
   }
   button{
-    width: 2.18rem;
+    width: 35px;
     padding: 0;
     background-color: $fontClara;
     &:hover{
@@ -70,7 +69,7 @@ header{
   }
   ul{
     display: none;
-    max-height: 12.5rem;
+    max-height: 200px;
     top: 4.18rem;
     background-color: #fff;
     position: absolute;
@@ -254,7 +253,8 @@ header{
 // o que está comentado é para ver se falta, se faltar descomenta : apague
 .container-menu{
   display: none;
-  position: absolute;
+  position: fixed;
+  height: 100vh;
   width: 100vw;
   top: 0px;
   z-index: 1;
@@ -340,6 +340,8 @@ header{
   }
 }
 .area-nav-menu{
+  overflow-y: scroll;
+  height: 76%;
   background-color: #fff2;
   nav{
     padding-top: 1.2rem;

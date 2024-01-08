@@ -27,6 +27,8 @@ function preencherFormulario(produto){
   document.getElementById('descricao').value = produto.descricao
   document.getElementById('loja').value      = produto.loja
   document.getElementById('oferta').value    = produto.oferta
+  document.getElementById('variacao').value  = produto.variacao
+  document.getElementById('tipo-variacao').value = produto.tipo_variacao
   document.getElementById('btn-put').setAttribute('data-id', produto.id) 
 }
 
@@ -47,7 +49,9 @@ async function editarProduto(){
   const id        =document.getElementById('btn-put').getAttribute('data-id')
   const quantidade=document.getElementById('quantidade').value 
   const madeira   =document.getElementById('madeira').value
-  var produtoAtualizado = { nome: nome, madeira: madeira, descricao: descricao, categoria: categoria, sub_categoria: subCategoria, sub_sub_categoria: subSubCategoria, preco: preco, quantidade: quantidade, loja: loja, desconto: desconto, condicao: condicao, pagamento: pagamento, galeria: galeria, lista_descricao: lista, oferta: oferta};
+  const variacao  =document.getElementById('variacao').value;
+  const tipoVariacao =document.getElementById('tipo-variacao').value;
+  var produtoAtualizado = { nome: nome, madeira: madeira, descricao: descricao, categoria: categoria, sub_categoria: subCategoria, sub_sub_categoria: subSubCategoria, preco: preco, quantidade: quantidade, loja: loja, desconto: desconto, condicao: condicao, pagamento: pagamento, galeria: galeria, lista_descricao: lista, oferta: oferta, variacao: variacao, tipo_variacao: tipoVariacao};
 
   const options = {
     method: 'PUT',   

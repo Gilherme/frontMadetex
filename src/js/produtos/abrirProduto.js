@@ -1,7 +1,7 @@
 window.onload = function() {
   setInterval(() => {
     carregarProduto()
-  }, 1000);;
+  }, 1000);
 };
 
 function carregarProduto() {

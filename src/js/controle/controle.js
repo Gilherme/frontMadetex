@@ -1,6 +1,18 @@
 
 // GET
 const userLogado = JSON.parse(localStorage.getItem('user'))
+console.log(userLogado.admin)
+if(!userLogado || !userLogado.admin){
+  showVcNtemPermissao()
+}
+
+
+function showVcNtemPermissao(){
+  document.querySelector('body').innerHTML = '<h1 style="text-align: center; margin: 100px auto 0 auto"> Você não tem permissão para acessar essa área </h1>'
+  setTimeout(() => {
+    window.location.href = '/index.html'
+  }, 2000)
+}
 
 async function carregarProdutos(loja, column){
   const response = await fetch(`https://api.madetex.com.br/produtos?param=${encodeURIComponent(loja)}&column=${encodeURIComponent(column)}&limit=100`)
@@ -65,7 +77,7 @@ async function apagarProduto(id){
       const response = await fetch(`https://api.madetex.com.br/DELproduto/${id}`,
       {method: 'DELETE', headers: { authorization: `${userLogado.token}`}})
       const data = await response.json()
-      console.log(data.msg)
+      alert(data.msg)
     } catch (err) {
       console.error(err)
     }
@@ -77,7 +89,7 @@ async function apagarProduto(id){
 };
 
 // Abrir para editar 
-async function abrirParaEditar(btn){
+async function abrirParaEditar(btn){''
   const id = btn.getAttribute('data-id')
   
   const url = `/src/views/controle/editarProduto.html?id=${encodeURIComponent(id)}`;
@@ -102,7 +114,9 @@ function submitProd(produto){
   let pagamento =document.getElementById('pagamento').value
   let quantidade=document.getElementById('quantidade').value;
   let madeira   =document.getElementById('madeira').value;
-  var produto = { nome: nome, madeira: madeira, descricao: descricao, preco: preco, categoria: categoria, sub_categoria: subCategoria, sub_sub_categoria: subSubCategoria, quantidade: quantidade, loja: loja, desconto: desconto, condicao: condicao, pagamento: pagamento, galeria: galeria, lista_descricao: lista, oferta: oferta };
+  let variacao  =document.getElementById('variacao').value;
+  let tipoVariacao =document.getElementById('tipo-variacao').value;
+  var produto = { nome: nome, madeira: madeira, descricao: descricao, preco: preco, categoria: categoria, sub_categoria: subCategoria, sub_sub_categoria: subSubCategoria, quantidade: quantidade, loja: loja, desconto: desconto, condicao: condicao, pagamento: pagamento, galeria: galeria, lista_descricao: lista, oferta: oferta, variacao: variacao, tipo_variacao: tipoVariacao};
 
   fetch(`https://api.madetex.com.br/adicionarProduto`,{
     // fetch(`http://localhost:1039/adicionarProduto`,{

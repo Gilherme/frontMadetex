@@ -71,25 +71,25 @@ btnAnteriorCateg.addEventListener("click", () => {
   });
 });
 
-// Carrosel madetexs
-const carroselMadetexs = document.querySelector('.container-interno-madetexs');
-let btnProximoMad = carroselMadetexs.querySelector('.btn-proximo');
-let btnAnteriorMad = carroselMadetexs.querySelector('.btn-anterior');
-let carroselMad = carroselMadetexs.querySelector('.carrosel-madetexs');
-btnProximoMad.addEventListener("click", () => {
-  carroselMad.scrollBy({
-    left: +260,
-    behavior: 'smooth'
-  });
-});
-btnAnteriorMad.addEventListener("click", () => {
-  carroselMad.scrollBy({
-    left: -260,
-    behavior: 'smooth'
-  });
-});
+const launchDate = new Date('2024-01-15T00:00:00').getTime();
 
-texts = document.querySelectorAll('.text-logo-mad-carrosel')
-pathsLefth = document.querySelectorAll('.path-logo-mad-carrosel-left')
-pathsRigth = document.querySelectorAll('.path-logo-mad-carrosel-rigth')
+    const countdown = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = launchDate - now;
 
+      function addLeadingZero(number) {
+        return number < 10 ? `0${number}` : number;
+      }
+
+      const days = addLeadingZero(Math.floor(distance / (1000 * 60 * 60 * 24)));
+      const hours = addLeadingZero(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+      const minutes = addLeadingZero(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
+      const seconds = addLeadingZero(Math.floor((distance % (1000 * 60)) / 1000));
+
+      document.querySelector('.timer').textContent = `${days}:${hours}:${minutes}:${seconds}`;
+
+      if (distance < 0) {
+        clearInterval(countdown);
+        document.getElementById('.timer').innerHTML = 'Lançamento!';
+      }
+    }, 1000);

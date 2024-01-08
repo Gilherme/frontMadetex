@@ -62,7 +62,7 @@
         padding-left: 1.2em;
         .titulo{
           font-weight: 500;
-          font-size: 1rem;
+          font-size: 13px;
         }
       }
       div.preco{
@@ -85,19 +85,17 @@
       height: 2em;
 
       .qtd-comum{
-
         input{
           width: 3rem;
         }
       }
-  
       input, select, label, span{
         text-align: center;
         line-height: .9em;
         font-size: .8em;
       }
       .pecas{
-        width: 2em;
+        width: 50px;
       }
       #aparelhada{
         transform: scale(1.1);
@@ -143,7 +141,7 @@
   }
   .resumo-carrinho-desktop{
     background-color: #fff;
-    height: 14.5rem;
+    height: 285px;
     margin-right: 30px;
     margin-top: 30px;
     border-radius: 1rem;
@@ -160,6 +158,9 @@
         font-size: 1.1rem;
         font-weight: 600;
       }
+      .total-pix{
+        color: green;
+      }
     
       div{
         padding: 10px;
@@ -172,6 +173,9 @@
       .esquerda{
         p{
           text-align: end;
+        }
+        .total-no-pix{
+          color: green;
         }
       }
     }
@@ -190,43 +194,8 @@
     }
   }
 }
-#aviso-produtos-diferentes{
-  display: none;
-  width: 320px;
-  height: 320px;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 1rem;
-  position: fixed;
-  top: calc(50vh - 125px);
-  left: calc(50vw - 160px);
-  box-shadow: 0px 100px 2000px 1000px  rgba(0, 0, 0, 0.6);
-  z-index: 6;
-
-  h3,p{
-    text-align: center;
-  }
-  h3{
-    margin-block: 1rem;
-  }
-  p{
-    font-size: .95rem;
-    margin-block: .5rem;
-  }
-  button{
-    display: block;
-    width: 80px;
-    margin: 0 auto;
-    background-color: black;
-    color: #fff;
-    font-weight: 600;
-    border: 0;
-    outline: 0;
-    border-radius: 10px;
-    padding: 5px;
-    margin-block: .5rem;
-    cursor: pointer;
-  }
+#ap-qtd-med, #ap-vigamento{
+  transform: scale(1.1);
 }
 .resumo-compra-mobile, .resumo-finalizar-compra-mobile{
   display: none;
@@ -239,7 +208,7 @@
   background-color: #555555;
   color: #fff;
   border-radius: 5px 5px 0 0;
-
+  
   .total{
     font-size: 1.3rem;
     font-weight: 500;
@@ -269,7 +238,20 @@
   }
 }
 
+@media screen and (min-width: 400px){
+ .main-carrinho{
+  .item-carrinho{
+    section.img-titulo-preco{
+      .link-titulo{
+        .titulo{
+          font-size: 16px;
+        }
+      }
+    }
+  }
+ }
 
+}
 @media screen and (min-width: 600px){
   .item-carrinho{
     font-size: 17px;

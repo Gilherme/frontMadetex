@@ -21,17 +21,10 @@ async function buscarProdutos(limit){
   apresentarProdutos(produtos)
 }
 
-async function buscarDetalhesDoProduto(column, param, loja) {
-    if(loja){
-      const response = await fetch(`https://api.madetex.com.br/produtosFiltroLoja?param=${encodeURIComponent(param)}&column=${encodeURIComponent(column)}&loja=${encodeURIComponent(loja)}`);
-      const produtos = await response.json();
-      apresentarProdutos(produtos)
-    }else{
+async function buscarDetalhesDoProduto(column, param) {
       const response = await fetch(`https://api.madetex.com.br/produtos?param=${encodeURIComponent(param)}&column=${encodeURIComponent(column)}&limit=15`);
       const produtos = await response.json();
       apresentarProdutos(produtos)
-    }
-    
 }
 
 function apresentarProdutos(produtos){

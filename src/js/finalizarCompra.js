@@ -1,30 +1,45 @@
-// public kayTeste = TEST-6cc8b8f8-b27e-41d9-856e-ccf7ea111fa5
-
 preencherResumoFinalizarCompra()
-entregaOuRetira()
+preencherOpcoesDeEntrega()
 
 async function preencherResumoFinalizarCompra(){
-  let loja;
-  let total = 0; let count = 0
+  const produtos = await getProdutosNoCarrinho(userLogado.id)
 
-  const carrinho = await getProdutosNoCarrinho(userLogado.id)
-  carrinho.forEach( item => {
-    total += (item.preco * item.quantidade);
+  let soma1 = 0; let soma2 = 0; let count = 0; let loja;
+
+  produtos.forEach(prod =>{
+    const desconto = prod.desconto.toString().length === 1 ? "0.0" + prod.desconto : '0.' + prod.desconto;
+    
+    loja = prod.loja;
     count += 1;
-    loja = item.loja
-  });
+    let somaAtual = (prod.preco * prod.quantidade)
 
+    if(prod.aparelhada){
+      somaAtual = somaAtual * 1.1;
+    }
+
+    soma1 += somaAtual;
+    soma2 += somaAtual * (1 - desconto);
+  })
+
+  const total = soma1.toFixed(2).replace('.', ',');
+  const totalNoPix = soma2.toFixed(2).replace('.', ',');
   document.querySelector('.items span').textContent = `(${count})`
   document.querySelector('.qtd-items-mobile span').textContent = `(${count})`
-  document.querySelector('.total-items').textContent = `R$ ${total.toFixed(2)}`
-  document.querySelector('.total-com-frete').textContent = `R$ ${total.toFixed(2)}`
-  document.querySelector('.total-com-frete-mobile').textContent = `R$ ${total.toFixed(2)}`
-
+  document.querySelector('.total-items').textContent = `R$ ${total}`
+  document.querySelector('.total-com-frete').textContent = `R$ ${total}`
+  document.querySelector('.total-com-frete-mobile').textContent = `R$ ${total}`
+  document.getElementsByClassName('total-no-pix')[0].textContent = `R$ ${totalNoPix} no pix`
   entregaOuRetira(loja)
 }
 
+async function preencherOpcoesDeEntrega(){
+  const enderecos = await getEnderecosUser(userLogado.id, userLogado.token);
+  if (enderecos) {
+     preencherEnderecosCadastrados(enderecos) };
+}
+
 async function entregaOuRetira(loja){
-  const response = await fetch('./apendices/entregaOuRetira.html')
+  const response = await fetch('/src/views/apendices/entregaOuRetira.html')
   const entregaRetira = await response.text()
   
   const dest = document.querySelector( '.conteudo-finalizar-compra')
@@ -33,8 +48,8 @@ async function entregaOuRetira(loja){
   preencherDadosDaLoja(loja)
 }
 
-async function preencherDadosDaLoja(loja){
-  const response = await fetch(`http://localhost:1039/homeLoja?loja=${encodeURIComponent(loja)}`);
+async function preencherDadosDaLoja(loja){  
+  const response = await fetch(`https://api.madetex.com.br/homeLoja?loja=${encodeURIComponent(loja)}`);
   const dadosLoja = await response.json()
   const data = dadosLoja[0]
 
@@ -46,84 +61,30 @@ async function preencherDadosDaLoja(loja){
   divReiraEntrega.forEach(ende => ende.addEventListener('click', () => selecionarRetiraEntrega(ende)))
 }
 
-function selecionarRetiraEntrega(endereco){
-  const radio = endereco.querySelector('input[name="entrega-retira"]')
-  radio.checked = true
-}
+async function preencherEnderecosCadastrados(ende){
 
-function contunuarEouR(){
+  const enderecoEl = document.getElementsByClassName('enderecos')[0];
+
+  if(ende.length > 0){
+    ende.forEach(e => {
+      let complemento = limitarString(e.complemento, 11)
+      let nome = limitarString(e.nome, 20)
   
-  const radios = document.querySelectorAll('input[name="entrega-retira"]');
-  let valorSelecionado = null;
-
-  radios.forEach((radio) => {
-    if (radio.checked) {
-      valorSelecionado = radio.value;
-    }
-  });
-
-  if (valorSelecionado !== null) {
-    enderecoOuEntrega(valorSelecionado)
-  } else {
-    document.querySelector('.aviso-escolha-opcao').style.display = 'block'
-  }
-}
-
-function enderecoOuEntrega(valorSelecionado){
-  if(valorSelecionado == 'entregar'){
-    verificarSeUserTemEndereco()
-  }
-  if(valorSelecionado == 'retirar'){
-    console.log('é pra retirar')
-  }
-}
-
-async function verificarSeUserTemEndereco(){
-  const enderecos = await getEnderecosUser(userLogado.id)
-
-  if(enderecos.length > 0){
-    carregarSectionEscolherEndereco()
-  }
-  else{
-    getFormCadastarEndereco()
-  }
-}
-
-async function carregarSectionEscolherEndereco(){
-  const response = await fetch('./apendices/escolherEndereco.html')
-  const escolherEndeco = await response.text()
-  
-  const dest = document.querySelector( '.conteudo-finalizar-compra')
-  dest.innerHTML = escolherEndeco
-  preencherEnderecosCadastrados()
-}
-
-async function preencherEnderecosCadastrados(){
-
-  const enderecos = await getEnderecosUser(userLogado.id)
-  const divEscolherEndereco = document.querySelector('.div-escolher-endereco')
-
-  if(enderecos.length > 0){
-    enderecos.forEach(ende => {
-      let complemento = limitarString(ende.complemento, 11)
-      let nome = limitarString(ende.nome, 20)
-  
-      divEscolherEndereco.innerHTML += `
+      enderecoEl.innerHTML += `
       <div class="div-escolha-endereco">
-        <input type="radio" value="${ende.id} "id="endereco" name="escolha">
+        <input type="radio" value="${e.id} "id="endereco" name="escolha">
         <label for="endereco-1">${nome}
-          <span class="span-telefone"> ${ende.telefone}</span>
+          <span class="span-telefone"> ${e.telefone}</span>
         </label>
         <p> 
-          <span class="span-cep">${ende.cep}</span>, ${ende.rua}, ${ende.numero}, 
+          <span class="span-cep">${e.cep}</span>, ${e.rua}, ${e.numero}, 
           <span class="span-complemento">${complemento}</span>
         </p>
-        <button onclick="abrirEditorEndereco(${ende.id}, ${ende.id_usuario})" class="btn-editar-endereco"> Editar </button>
-        <button onclick="excluirEndereco(${ende.id}, ${ende.id_usuario})" class="btn-excluir-endereco"> <img src="../assets/img/lixeira.png">  </button>
+        <button onclick="abrirEditorEndereco(${e.id}, ${e.id_usuario})" class="btn-editar-endereco"> Editar </button>
+        <button onclick="excluirEndereco(${e.id}, ${e.id_usuario})" class="btn-excluir-endereco">  Excluir </button>
       </div>`;
     })
   }
-  
   let divEndereco = document.querySelectorAll('.div-escolha-endereco')
   divEndereco.forEach(ende => ende.addEventListener('click', () => selecionarEndereco(ende)))
 }
@@ -133,34 +94,17 @@ function selecionarEndereco(endereco){
   radio.checked = true
 }
 
-function bntContinuarParaAreaDeFrete(){
-
-  const radios = document.querySelectorAll('input[name="escolha"]');
-  let valorSelecionado = null;
-
-  radios.forEach((radio) => {
-    if (radio.checked) {
-      valorSelecionado = radio.value;
-    }
-  });
-
-  if (valorSelecionado !== null) {
-    continuarParaAreaDeFrete(valorSelecionado)
-  } else {
-    document.querySelector('.aviso-escolha-endereco').style.display = 'block'
-  }
-} 
-
-async function continuarParaAreaDeFrete(idEnde){
-  getInformacoesDoFrete(idEnde)
-} 
+function selecionarRetiraEntrega(endereco){
+  const radio = endereco.querySelector('input[name="entrega-retira"]')
+  radio.checked = true
+}
 
 async function getInformacoesDoFrete(idEnde){
-  const destino = document.querySelector('.conteudo-finalizar-compra')
-  const response = await fetch('./apendices/infoFrete.html')
+  const dest = document.querySelector('.conteudo-finalizar-compra')
+  const response = await fetch('/src/views/apendices/infoFrete.html')
   const infoFrete = await response.text()
 
-  destino.innerHTML = infoFrete
+  dest.innerHTML = infoFrete
   getProdutosNoCarComFrete(userLogado.id, idEnde)
 }
 
@@ -169,7 +113,7 @@ async function getProdutosNoCarComFrete(idUsuario, idEndereco){
   const ende = await getEnderecosUserPelosIds(idEndereco, idUsuario)
   const endereco = ende[0]
 
-  const response = await fetch(`http://localhost:1039/produtosNoCarComFrete?id=${encodeURIComponent(idUsuario)}&cidade=${encodeURIComponent(endereco.cidade)}`)
+  const response = await fetch(`https://api.madetex.com.br/produtosNoCarComFrete?id=${encodeURIComponent(idUsuario)}&cidade=${encodeURIComponent(endereco.cidade)}`)
   const produtos = await response.json() 
   preencherInformacoesDeFrete(produtos)
 }
@@ -231,17 +175,20 @@ function preencherInformacoesDeFrete(produtos){
 
 }
 
-async function getFormCadastarEndereco() {
-  const destino = document.querySelector('.conteudo-finalizar-compra')
+async function exibirFormAddEndereco() {
+  const dest = document.getElementById('form-add-endereco')
   const form = await fetch('/src/views/apendices/formEndereco.html')
   const formEndereco = await form.text()
-  destino.innerHTML = formEndereco
+  dest.innerHTML = formEndereco
 
   const inputTel = document.querySelector('#telefone')
   inputTel.addEventListener('input', ()=> formatarTelefone(inputTel))
 
   const inputCep = document.querySelector('#cep')
   inputCep.addEventListener('input', () => preencherEndereco(inputCep)) 
+
+  document.getElementsByClassName('btn-continuar-ER')[0].style.display = 'none'
+  document.getElementsByClassName('add-endereco')[0].style.display = 'none'
 }
 
 async function preencherEndereco(cep){
@@ -289,38 +236,34 @@ async function cadastrarEndereco(){
   const payload = JSON.parse(localStorage.getItem('user'));
   const idUsuario = payload.id
 
-  const endereco = {nome: nome, cep: cep, estado: estado, cidade: cidade, bairro: bairro, rua: rua, numero: numero, complemento: complemento, telefone: telefone, id_usuario: idUsuario}
+  const endereco = {nome: nome, cep: cep, estado: estado, cidade: cidade, bairro: bairro, rua: rua, numero: numero, complemento: complemento, telefone: telefone, id_usuario: idUsuario};
 
   const response = await fetch('https://api.madetex.com.br/adicionarEndereco',{
     method: 'POST',
     headers: {'Content-Type': 'application/json', authorization: `${userLogado.token}`},
     body: JSON.stringify(endereco),
     })
-  const resposta = await response.json()
-  if (!response.ok) {
-    // console.log(response.el, resposta.msg)
-    exibirMensagemAlertaInput(resposta.el, resposta.msg)
-  }
+  if (!response.ok) { exibirMensagemAlertaInput(resposta.el, resposta.msg)}
   else{
-    carregarSectionEscolherEndereco()
+     const resposta = await response.json()
+     location.reload()
   }
 }
 
 async function excluirEndereco(idEnde, idUser){
   const options = {
     method: 'DELETE',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({idEnde: idEnde, idUser: idUser}),
-    user: 'usuario 123'
+    headers: { 'Content-Type': 'application/json', authorization: userLogado.token },
+    body: JSON.stringify({idEnde: idEnde, idUser: idUser})
   }
 
-  const response = await fetch(`http://localhost:1039/apagarEndereco/${idEnde}/${idUser}`, options)
+  const response = await fetch(`https://api.madetex.com.br/apagarEndereco/${idEnde}/${idUser}`, options)
   if(!response.ok){
     console.log('deu ruim')
   }
   else{
     const resposta = await response.json()
-    window.location = '/views/finalizarCompra.html'
+    location.reload()
     // console.log(resposta.msg)
   }
 }
@@ -342,19 +285,61 @@ async function editarEndereco(id){
 
   const options = {
     method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(endereco),
-    user: 'usuario 123'
+    headers: { 'Content-Type': 'application/json', authorization: userLogado.token },
+    body: JSON.stringify(endereco)
   }
 
-  const response = await fetch(`http://localhost:1039/editarEndereco/${id}`, options)
+  const response = await fetch(`https://api.madetex.com.br/editarEndereco/${id}`, options)
   if(!response.ok){
     const resposta = await response.json()
     exibirMensagemAlertaInput(resposta.el, resposta.msg)
   }
   else{
-    window.location = '/views/finalizarCompra.html'
+    window.location.href = '/src/views/compra/finalizarCompra.html'
   }
+}
+
+function bntContinuarParaAreaDeFrete(){
+
+  const radios = document.querySelectorAll('input[name="escolha"]');
+  let valorSelecionado = null;
+
+  radios.forEach((radio) => {
+    if (radio.checked) {
+      valorSelecionado = radio.value;
+    }
+  });
+
+  if (valorSelecionado !== null) {
+    continuarParaAreaDeFrete(valorSelecionado)
+  } else {
+    document.querySelector('.aviso-escolha-endereco').style.display = 'block'
+  }
+} 
+
+async function continuarParaAreaDeFrete(idEnde){
+  getInformacoesDoFrete(idEnde)
+} 
+
+
+async function abrirEditorEndereco(idEndereco, idUsuario){
+  const dest = document.getElementById('form-add-endereco');
+  const form = await fetch('/src/views/apendices/formEndereco.html')
+  const formEndereco = await form.text()
+  dest.innerHTML = formEndereco
+
+  document.getElementsByClassName('btn-continuar-ER')[0].style.display = 'none'
+  document.getElementsByClassName('add-endereco')[0].style.display = 'none'
+
+  const endeAserEditado = await getEnderecosUserPelosIds(idEndereco, idUsuario, userLogado.token)
+  console.log(endeAserEditado)
+  preencherFormularioEndereco(endeAserEditado[0])
+
+  const inputTel = document.getElementById('telefone')
+  inputTel.addEventListener('input', ()=> formatarTelefone(inputTel))
+
+  const inputCep = document.getElementById('cep')
+  inputCep.addEventListener('input', () => preencherEndereco(inputCep)) 
 }
 
 function preencherFormularioEndereco(ende){
@@ -369,21 +354,11 @@ function preencherFormularioEndereco(ende){
   document.querySelector('#telefone').value = ende.telefone
 
   const divBtn = document.querySelector('.continuar')
-  divBtn.querySelector('.btn-continuar-FC').style.display = 'none'
+  // divBtn.querySelector('.btn-continuar-FC').style.display = 'none'
   
   divBtn.innerHTML = `
     <button onclick="editarEndereco(${ende.id})"> Editar endereço </button>
   `
-}
-
-async function abrirEditorEndereco(idEndereco, idUsuario){
-  getFormCadastarEndereco()
-  preencherEnderecoAserEditado(idEndereco, idUsuario)
-}
-
-async function preencherEnderecoAserEditado(idEndereco, idUsuario){
-  const endeAserEditado = await getEnderecosUserPelosIds(idEndereco, idUsuario)
-  preencherFormularioEndereco(endeAserEditado[0])
 }
 
 window.addEventListener("scroll", () => moverResumoDaCompra(scrollY));

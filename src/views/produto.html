@@ -13,6 +13,7 @@
   <title>Madetex</title>
 </head>
 <body>
+
   <header>
 
     <div class="container-header">
@@ -151,7 +152,6 @@
         <ul id="nav-categorias">
           <li><a href="./produtos.html?param=vigamentos&column=sub_categoria">Vigamentos</a></li>
           <li><a href="./produtos.html?param=janelas&column=sub_sub_categoria">Janelas</a></li>
-          <li><a href="./produtos.html?param=portas&column=sub_sub_categoria">Portas</a></li>
           <li><a href="./produtos.html?param=telhas de barro&column=sub_categoria">Telhas de Barro</a></li>
           <li><a href="./produtos.html?param=telhas de fibrocimento&column=sub_categoria">Telhas de Fibrocimento</a></li>
           <li><a href="./produtos.html?param=telhas de concreto&column=sub_categoria">Telhas de Concreto</a></li>
@@ -174,7 +174,6 @@
           <ul>
             <li><a href="./produtos.html?param=vigamentos&column=sub_categoria">Vigamentos</a></li>
             <li><a href="./produtos.html?param=telhas&column=categoria">Telhas</a></li>
-            <li><a href="./produtos.html?param=portas e janelas&column=sub_categoria">Portas e Janelas</a></li>
             <li class="penultimo"><a href="./produtos.html?param=pinus&column=madeira">Madeira Pinus</a></li>
             <li class="ultimo"><a href="./produtos.html?param=chapas de madeira&column=categoria">Compensados e Madeirites</a></li>
           </ul>
@@ -286,58 +285,52 @@
 
         <span class="frete green">Frete grátis </span>
         <p class="regiao gray"> Para a região de <span>Jundiai-SP</span></p>
-       
-
-        <button class=" btn-cidades-frete-gratis btn-prod-solo"> <span class="seta-frete-gratis">&#10095</span> Ver cidades com frete grátis </button>
-        <ul id="cidades-frete-gratis"></ul>
-        
+        <button class="btn-cidades-frete-gratis btn-prod-solo"> <span class="seta-frete-gratis">&#10095</span> Ver cidades com frete grátis </button>
+        <ul id="cidades-frete-gratis"></ul>  
         <p style="color: #0009;"> Não está nessa região ? entre em contato conosco <a class="btn-prod-solo" href="/src/views/contato.html">aqui</a> para saber o frete</p>
-
-        <p class="retire">
-          <span class="green">Retire grátis </span> em
-          <span class="loja">Madetex Campo Limpo Pta</span>
-        </p>
+        <p class="retire"><span class="green">Retire grátis </span> em <span class="loja">Madetex Campo Limpo Pta</span> </p>
         <a target="_blank" class="link-mapa btn-prod-solo">ver no mapa</a>
-
         <p class="gray entregue">Vendido e entregue por <span>Madetex Campo Limpo Pta</span></p>
-
         <p>Estoque disponível  <span class="gray estoque"> </span></p>
 
-        <p class="quantidade">Quantidade: 
+        <p class="quantidade">
+          <span class="label-qtd">Quantidade: </span> 
           <input autocomplete="off" type="number" id="quantidade" value="1">
         </p>
 
-        <div class="opcoesDeTamanho">
-          
-          <div>
-            <input type="checkbox" name="aparelhada" id="aparelhada">
-            <label class="aparelhada" for="aparelhada">Aparelhada</label>
-          </div>
+        <div class="aparelhada">
+          <input type="checkbox" name="aparelhada" id="aparelhada">
+          <label for="aparelhada">Aparelhada</label>
+        </div>
 
-         <div>
-          <label for="pecas">Quantidade de Peças: </label>
-          <input value="1" type="number" name="pecas" id="pecas"> 
-         </div>
+        <div class="pecas">
+        <label for="pecas">Quantidade de Peças: </label>
+        <input value="1" type="number" name="pecas" id="pecas"> 
+        </div>
 
-          <div>
-            <label for="comprimento">Comprimento: </label>
-            <select name="comprimento" id="comprimento">
-              <option value="1">1,00</option>
-              <option value="1.5">1,50</option>
-              <option value="2">2,00</option>
-              <option value="2.5">2,50</option>
-              <option value="3">3,00</option>
-              <option value="3.5">3,50</option>
-              <option value="4">4,00</option>
-              <option value="4.5">4,50</option>
-              <option value="5">5,00</option>
-              <option value="5.5">5,50</option>
-              <option value="6">6,00</option>
-              <option value="6.5">6,50</option>
-              <option value="7">7,00</option>
-            </select>
-            Metros
-          </div>
+        <div class="comprimento">
+          <label for="comprimento">Comprimento: </label>
+          <select name="comprimento" id="comprimento">
+            <option value="1">1,00</option>
+            <option value="1.5">1,50</option>
+            <option value="2">2,00</option>
+            <option value="2.5">2,50</option>
+            <option value="3">3,00</option>
+            <option value="3.5">3,50</option>
+            <option value="4">4,00</option>
+            <option value="4.5">4,50</option>
+            <option value="5">5,00</option>
+            <option value="5.5">5,50</option>
+            <option value="6">6,00</option>
+            <option value="6.5">6,50</option>
+            <option value="7">7,00</option>
+          </select>
+          Metros
+        </div>
+
+        <div class="medidas">
+          <span class="label-medidas">Medida: </span>
+          <select name="medida" id="medida"></select>
         </div>
 
         <button class="comprar">Comprar agora</button>
@@ -367,11 +360,18 @@
     <button class="btn-red-ape btn-solo"><a href="/src/views/carrinho.html">Carrinho</a></button>
   </div>
 
-  <script src="../js/ferramentas.js"></script>
-  <script src="../js/header.js"></script>
-  <script src="../js/produtos/produtoSolo.js"></script>
-  <script src="../js/produtos/abrirProduto.js"></script>
-  <script src="../js/user/atualizarDados.js"></script>
-  <script src="../js/footer.js"></script>
+  <div class="alert-prod-difer-prodSolo card-ape-alert">
+    <p class="fechar"><button class="x"  onclick="fechar('.alert-prod-difer-prodSolo')">x</button></p>
+    <h3 class="msg-ape 'msg-red">Você só poderá comprar de uma loja por vez</h3>
+    <p class="p-msg-ape">Já tem produtos de outra loja no seu carrinho, você pode adiciona-los mas só pode finalizar a compra de uma loja por vez.</p>
+  </div>
+
+  <script src="/src/js/ferramentas.js"></script>
+  <script src="/src/js/header.js"></script>
+  <script src="/src/js/services/servicesProduto.js"></script>
+  <script src="/src/js/produtos/produtoSolo.js"></script>
+  <script src="/src/js/produtos/abrirProduto.js"></script>
+  <script src="/src/js/user/atualizarDados.js"></script>
+  <script src="/src/js/footer.js"></script>
 </body>
 </html>

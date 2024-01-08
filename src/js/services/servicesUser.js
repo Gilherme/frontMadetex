@@ -1,7 +1,11 @@
-async function getEnderecosUser(idUser){
-  const response = await fetch(`https://api.madetex.com.br/enderecosUser?id=${encodeURIComponent(idUser)}`)
+async function getEnderecosUser(idUser, token){
+  const options = {
+    method: 'GET',
+    headers: {'Content-Type': 'application/json', authorization: `${token}`}
+  }
+  const response = await fetch(`https://api.madetex.com.br/enderecosUser?id=${encodeURIComponent(idUser)}`, options)
   if(!response.ok){
-    alert('erro ao encontrar Endereço')
+    return false
   }
   else{
     const enderecos = await response.json()
@@ -9,9 +13,12 @@ async function getEnderecosUser(idUser){
   }
 }
 
-async function getEnderecosUserPelosIds(idEnde, idUser){
-
-  const response = await fetch(`https://api.madetex.com.br/enderecosUserPelosIds?idUser=${encodeURIComponent(idUser)}&idEnde=${encodeURIComponent(idEnde)}`)
+async function getEnderecosUserPelosIds(idEnde, idUser, token){
+  const options = {
+    method: 'GET',
+    headers: {'Content-Type': 'application/json', authorization: `${token}`}
+  }
+  const response = await fetch(`https://api.madetex.com.br/enderecosUserPelosIds?idUser=${encodeURIComponent(idUser)}&idEnde=${encodeURIComponent(idEnde)}`, options)
   if(!response.ok){
     alert('erro ao encontrar Endereço')
   }

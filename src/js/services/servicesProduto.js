@@ -27,3 +27,20 @@ async function getProdutosEmOfertaPorLoja(loja, limit){
   const data = await response.json();
   return data;
 }
+
+async function getProdutoPorId(id){
+  const response = await fetch(`https://api.madetex.com.br/produto?id=${encodeURIComponent(id)}`)
+  const data = await response.json()
+  return data
+}
+
+async function getProdutosNoCarrinho(idUsuario){
+  const response = await fetch(`https://api.madetex.com.br/produtosNoCarrinho?id=${encodeURIComponent(idUsuario)}`)
+  if(!response.ok){
+    alert('erro ao encontrar produtos no carrinho, tente novamente')
+  }
+  else{
+    const produtos = await response.json()
+    return produtos
+  }
+}

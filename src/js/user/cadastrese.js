@@ -22,6 +22,7 @@ telefoneInput.addEventListener('input', () => formatarTelefone(telefoneInput));
     }
     else{
       exibirAviso(email.value)
+      irParaOheader()
     }
   }
   else{
@@ -31,10 +32,10 @@ telefoneInput.addEventListener('input', () => formatarTelefone(telefoneInput));
 
 function cadastradoComSucesso(email){
     document.querySelector('.card-entre').innerHTML = `
-    <h2 style="text-align: center; margin-top: 5rem;" > Um link de verificação foi enviado para o email ${email}, Clique no link para verificar seu email<h2>`
+    <h3 style="text-align: center; margin: 5rem auto 1rem auto;" > Um link de verificação foi enviado para o email ${email}, Clique no link para verificar seu email<h3> <p> caso não o ache verifique o lixo eletronico ou spam do seu e-mail</p> `
     setTimeout(() => {
       window.location.href = '/src/views/user/login.html'
-    },5000)
+    },10000)
 }
 
 function exibirAviso(email){

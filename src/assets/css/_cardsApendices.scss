@@ -1,6 +1,51 @@
 @import 'base';
 
 // 
+
+.ape-atencao{
+  position: absolute;
+  top: 150px; 
+  width: 320px;
+  left: calc(50% - 160px);
+  padding: 30px 20px;
+  border-radius: 2rem;
+  background-color: #fff;
+  box-shadow: 0px 0px 0px 10000px #0009;
+
+  h1{
+    text-align: center;
+    color: red;
+    margin-bottom: 20px;
+  }
+  h3{
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  p{
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .timer{
+    font-size: 35px;
+    margin-bottom: 0;
+  }
+  span{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+  }
+  button{
+    display: block;
+    margin: 5px auto;
+    background-color: red;
+    color: #fff;
+    border: 0;
+    border-radius: 10px;
+    padding: 7px 25px;
+  }&active{
+    padding: 9px 17px;
+  }
+}
 .card-ape-alert{
   display: none;
   padding: .3rem 1rem 1rem 1rem;
@@ -17,7 +62,13 @@
     font-weight: 500;
     margin: .5rem 1rem 1rem 1rem;
   }
-
+  .msg-red{
+    color: red;
+  }
+  .p-msg-ape{
+    text-align: center;
+    font-size: 14px;
+  }
   button{
     border: 0;
     border-radius: 1rem;
@@ -29,6 +80,7 @@
   }
   a{
     text-decoration: none;
+    display: block;
     width: 100%;
     color: #fff;
     font-size: 1rem;
@@ -59,7 +111,6 @@
     margin: 0 auto;
   }
 }
-
 // menu
 #apendice-logado{
   display: none;
@@ -86,12 +137,9 @@
     }
   }
 }
-
-
 .flex-center{
   @include flex(center);
 }
-
 // card-entre
 
 .header-apendices{

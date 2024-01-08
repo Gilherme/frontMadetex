@@ -175,17 +175,8 @@
       .estoque{
         margin-top: 20px;
       }
-
-      .comprar, .add-carrinho{
-        cursor: pointer;
-        display: block;
-        width: 95%;
-        margin: 15px auto;
-        font-size: 1.1rem;
-        line-height: 3rem;
-        border-radius: 1rem;
-      }
       .quantidade{
+        display: none;
         margin-top: 5px;
         input{
           font-size: 1rem;
@@ -194,28 +185,53 @@
           width: 3.5rem;
         }
       }
-      .opcoesDeTamanho{
+      .pecas{
         display: none;
-        div{
-          margin-top: .7rem;
-        }
-        #pecas, #comprimento{
+        margin-top: 10px;
+
+        #pecas{
           font-size: 1rem;
           line-height: 1.2rem;
           text-align: center;
-          width: 3.5rem;
+          width: 3rem;
         }
+      }
+      .comprimento{
+        margin-top: 10px;
+        display: none;
+
         #comprimento{
-         width: 5rem;
+          font-size: 1rem;
+          line-height: 1.2rem;
+          text-align: center;
+          width: 5rem;
         }
+      }
+      .aparelhada{
+        display: none;
+
         #aparelhada{
           margin-top: 0.3rem;
           height: 1rem;
           width: 1.2rem;
         }
-        .aparelhada{
-          line-height: 1.2rem;
+      } 
+      }
+      .medidas{
+        display: none;
+        margin-top: 10px;
+        select{
+        font-size: 16px;
         }
+      }
+      .comprar, .add-carrinho{
+        cursor: pointer;
+        display: block;
+        width: 95%;
+        margin: 15px auto;
+        font-size: 1.1rem;
+        line-height: 3rem;
+        border-radius: 1rem;
       }
       .comprar{
         border: 0;
@@ -230,6 +246,8 @@
       }
     }
   }
+.opcoes-medidas{
+  display: none;
 }
 
 @media screen and (max-width: 960px){

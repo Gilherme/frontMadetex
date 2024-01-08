@@ -10,14 +10,12 @@ function abrirFechar(elemento) {
     el.style.display = 'none';
   }
 }
-
 function fechar(elemento){
   document.querySelector(elemento).style.display = 'none'
 }
 function abrir(elemento){
   document.querySelector(elemento).style.display = 'block'
 }
-
 function irParaOheader(){
   let header = document.querySelector('header');
   if(header){header.scrollIntoView({ behavior: 'smooth' });}

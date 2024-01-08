@@ -88,29 +88,3 @@ function pesquisar(){
   const detalhesUrl = `/src/views/produtos.html?param=${encodeURIComponent(param)}&column=${encodeURIComponent(local)}`;
   window.location.href = detalhesUrl;
 }
-
-ajustarChapeu()
-
-function ajustarChapeu(){
-  const text = document.querySelector('.logo-grande text')
-  const path = document.querySelectorAll('.logo-grande path')
-  const pathLeft = path[0]
-  const pathRigth = path[1]
-
-  if (window.innerWidth >= 1300){
-    text.setAttribute('y', '38')
-    path.forEach(ph => {
-      ph.setAttribute('stroke-width', '20')
-    })
-    pathLeft.setAttribute('d', 'M 2 50 l 110 -40')
-    pathRigth.setAttribute('d', 'M 105 10 l 120 45')
-  }else{
-    text.setAttribute('y', '24')
-    path.forEach(ph => {
-      ph.setAttribute('stroke-width', '13')
-    })
-    pathLeft.setAttribute('d', 'M 5 35 l 80 -30')
-    pathRigth.setAttribute('d', 'M 80 5 l 80 30')
-  }
-}
-window.addEventListener('resize', ajustarChapeu);

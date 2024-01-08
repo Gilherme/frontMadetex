@@ -258,11 +258,13 @@
           <p class="items">Items <span></span></p>
           <p>Frete </p>
           <p class="total">Total</p>
+          <p class="total-pix">Total no pix</p>
         </div>
         <div class="esquerda">
           <p class="total-items"></p>
           <p class="total-frete green">Grátis</p>
           <p class="total-com-frete"></p>
+          <p class="total-no-pix"></p>
         </div>
       </div>
       <div class="div-jutify-center div-btn-resumo-car">
@@ -272,21 +274,26 @@
   </main>
   
   <div class="resumo-compra-mobile">
-
     <div>
       <p class="qtd-items-mobile">Items <span></span></p>
       <p class="preco-frete-mobile">Frete <span class="green"> Gratis</span></p>
       <p class="total">Total: <span class="total-com-frete-mobile"></span> </p>
-      <!-- <sup style="margin-top: -.7rem;" class="p-no-pix">No pix: <span class="no-pix"></span></sup> -->
+      <sup style="margin-top: -.7rem;" class="p-no-pix">No pix: <span class="no-pix"></span></sup>
       <button onclick="continuarCompra()">Continuar compra</button>
     </div>
+  </div>
 
+  <div class="alert-prod-difer card-ape-alert">
+    <p class="fechar"><button class="x"  onclick="fechar('.alert-prod-difer')">x</button></p>
+    <h3 class="msg-ape 'msg-red">Compre de uma Madetex por vez</h3>
+    <p class="p-msg-ape">Não é possível comprar de duas ou mais lojas de uma vez, deixe no carrinho apenas os produtos da mesma loja para continuar, finalize a compra e depois adicione os produtos da outra loja</p>
   </div>
   
-  <script src="../js/header.js"></script>
-  <script src="../js/ferramentas.js"></script>
-  <script src="../js/user/atualizarDados.js"></script>
-  <script src="../js/carrinho.js"></script>
-  <script src="../js/footer.js"></script>
+  <script src="/src/js/header.js"></script>
+  <script src="/src/js/ferramentas.js"></script>
+  <script src="/src/js/services/servicesProduto.js"></script>
+  <script src="/src/js/user/atualizarDados.js"></script>
+  <script src="/src/js/carrinho.js"></script>
+  <script src="/src/js/footer.js"></script>
 </body>
 </html>

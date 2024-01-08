@@ -4,60 +4,166 @@ async function buscarDetalhesDoProduto() {
   const urlParams = new URLSearchParams(window.location.search);
   const id = urlParams.get('id');
 
-  const response = await fetch(`https://api.madetex.com.br/produto?id=${encodeURIComponent(id)}`);
-  const produto = await response.json();
+  const produto = await getProdutoPorId(id)
 
   preencherProduto(produto[0])
 }
 
-function preencherProduto(produto) {
-  const desconto = produto.desconto.toString().length === 1 ? "0.0" + produto.desconto : '0.' + produto.desconto
-  const preco = produto.preco.toFixed(2)
+function preencherProduto(prod) {
+  const desconto = prod.desconto.toString().length === 1 ? "0.0" + prod.desconto : '0.' + prod.desconto
+  const preco = prod.preco.toFixed(2)
   const precoAvista = (preco - (preco * desconto)).toFixed(2)
 
-  document.querySelector('.descricao h1').textContent = produto.nome;
+  document.querySelector('.descricao h1').textContent = prod.nome;
   document.querySelector('.preco-antigo').textContent = `R$ ${preco.toString().replace('.', ',')}`;
   document.querySelector('.precao').textContent = `R$ ${precoAvista.toString().replace('.', ',')}`;
-  document.querySelector('.condicao').textContent = produto.condicao;
+  document.querySelector('.condicao').textContent = prod.condicao;
   document.querySelector('.preco-parcelado').textContent = `R$ ${preco.toString().replace('.', ',')}`;
 
-  preencherGaleria(produto.galeria)
-  preencherLista(produto.lista_descricao)
-  preencherFormasPag(produto.pagamento)
+  preencherGaleria(prod.galeria)
+  preencherLista(prod.lista_descricao)
+  preencherFormasPag(prod.pagamento)
 
-  document.querySelector('.loja').textContent = produto.loja
-  document.querySelector('.entregue span').textContent = produto.loja
-  document.querySelector('.estoque').textContent = `(${produto.quantidade} unidades)`
+  document.querySelector('.loja').textContent = prod.loja
+  document.querySelector('.entregue span').textContent = prod.loja
+  document.querySelector('.estoque').textContent = `(${prod.quantidade} unidades)`
 
-  if(produto.categoria == "madeiramentos"){
-    exibirOpcoesDeTamanho()
+  let vari = prod.tipo_variacao;
+  exibirVariacao(vari)
+
+  exibirProdutosRelacionados(prod.sub_categoria)
+
+  if(vari == "comum"){
+    quantidadeMaiorQzero()
+  }
+  if(vari == "apQtd"){
+    quantidadeMaiorQzero()
+    const ap  = document.getElementById('aparelhada')
+    const qtd = document.getElementById('quantidade')
+    ap.onchange  = () => atualizaPrecoApQtd(prod.preco, desconto);
+    qtd.onchange = () => atualizaPrecoApQtd(prod.preco, desconto)
+  }
+  if(vari == "apComp"){
+    quantidadeMaiorQzero(true)
+    const pecas       = document.getElementById('pecas')
+    const comprimento = document.getElementById('comprimento')
+    const aparelhada  = document.getElementById('aparelhada')
+    aparelhada.onchange  = () => atualizaPreco(prod.preco, desconto)
+    pecas.onchange       = () => atualizaPreco(prod.preco, desconto);
+    comprimento.onchange = () => atualizaPreco(prod.preco, desconto);
+  }
+  if(vari == "apMed"){
+    quantidadeMaiorQzero()
+    preencherMedidas(prod.variacao, desconto)
+    const ap  = document.getElementById('aparelhada')
+    ap.onchange  = () => atualizaPrecoApMed(desconto);
+  }
+  if(vari == 'medidas'){
+    quantidadeMaiorQzero()
+    preencherMedidas(prod.variacao, desconto)
   }
 
-  exibirProdutosRelacionados(produto.sub_categoria)
-
-  let pecas = document.getElementById('pecas')
-  let comprimento = document.getElementById('comprimento')
-  let aparelhada = document.getElementById('aparelhada')
-  aparelhada.onchange = () => atualizaPreco(produto.preco, desconto)
-  pecas.onchange = () => atualizaPreco(produto.preco, desconto);
-  comprimento.onchange = () => atualizaPreco(produto.preco, desconto);
-
-  buscarDadosDaLoja(produto.loja)
+  preencherDadosDaLoja(prod.loja)
 }
 
-function buscarDadosDaLoja(loja){
-  fetch(`https://api.madetex.com.br/homeLoja?loja=${encodeURIComponent(loja)}`)
-  .then(response => response.json())
-  .then(data => {
-    
-    preencherMapa(data[0].mapa);
-    preencherCidadesFreteGratis(data[0].cidades_frete_gratis);
-  })
+async function preencherDadosDaLoja(loja){
+  const response = await fetch(`https://api.madetex.com.br/homeLoja?loja=${encodeURIComponent(loja)}`)
+    const data = await response.json();
+    if(!response.ok){alert('erro ao pegar dados da loja')}
+    else{
+
+      document.getElementsByClassName('link-mapa')[0].href = data[0].mapa;
+      const cidadesSeparadas = separarString(data[0].cidades_frete_gratis, ',')
+      const listaCidades = document.querySelector('#cidades-frete-gratis')
+
+      for(const cidade of cidadesSeparadas){
+        let li = document.createElement('li')
+        li.textContent = cidade
+        listaCidades.appendChild(li)
+      }
+    }  
 }
 
-function exibirOpcoesDeTamanho(){
-  document.querySelector('.quantidade').style.display = 'none'
-  document.querySelector('.opcoesDeTamanho').style.display = 'block'
+function exibirVariacao(variacao){
+  switch (variacao) {
+    case "comum":
+      document.getElementsByClassName('quantidade')[0].style.display = 'block';
+      break;
+    case "apQtd":
+      document.getElementsByClassName('label-qtd')[0].textContent = 'Metros lineares'
+      document.getElementsByClassName('quantidade')[0].style.display = 'block';
+      document.getElementsByClassName('aparelhada')[0].style.display = 'block'
+      break;
+    case "apComp":
+      document.getElementsByClassName('aparelhada')[0].style.display = 'block';
+      document.getElementsByClassName('pecas')[0].style.display = 'block';
+      document.getElementsByClassName('comprimento')[0].style.display = 'block';
+      break;
+    case "medidas":
+      document.getElementsByClassName("quantidade")[0].style.display = 'block';
+      document.getElementsByClassName('medidas')[0].style.display = 'block';
+      break;
+    case "apMed":
+      document.getElementsByClassName('label-medidas')[0].textContent = 'Largura: ';
+      document.getElementsByClassName('medidas')[0].style.display = 'block';
+      document.getElementsByClassName("quantidade")[0].style.display = 'block';
+      document.getElementsByClassName("aparelhada")[0].style.display = "block"
+      break;
+    default:
+      alert(variacao);
+  }
+}
+
+function preencherMedidas(med, desconto){
+  let m = separarString(med, ' / ')
+  let objMed = {}
+  m.forEach(item => {
+    const [medida, preco] = item.split("/=").map(value => value.trim());
+    objMed[medida] = parseFloat(preco);
+  });
+
+  const selectMedidas = document.getElementById("medida");
+  for (const medida in objMed) {
+    const option = document.createElement("option");
+    option.value = medida;
+    option.text = medida;
+    selectMedidas.add(option);
+  }
+
+  // Atualiza medida
+  selectMedidas.addEventListener("change", function() {
+    const medidaSelecionada = selectMedidas.value;
+    const precoCorrespondente = objMed[medidaSelecionada];
+    const precao = (precoCorrespondente - (precoCorrespondente * desconto))
+
+    const precaoEl = document.getElementsByClassName("precao")[0];
+    const precoAntigoEl = document.getElementsByClassName('preco-antigo')[0];
+    const precoParceladoEl = document.getElementsByClassName('preco-parcelado')[0];
+    precaoEl.textContent = `R$ ${precao.toFixed(2).toString().replace('.', ',')}`;
+    precoAntigoEl.textContent = `R$ ${precoCorrespondente.toFixed(2).toString().replace('.', ',')}`;
+    precoParceladoEl.textContent = `R$ ${precoCorrespondente.toFixed(2).toString().replace('.', ',')}`;
+  });
+}
+
+function atualizaPrecoApQtd(preco, desconto){
+  const precoComDesconto = (preco - (preco * desconto)).toFixed(2)
+  
+  let ap = document.getElementById('aparelhada').checked
+  let qtd = document.getElementById('quantidade').value
+
+  if(qtd <= 0)qtd = 1;
+
+  let precao = qtd * preco;
+  let precoParcelado = qtd * precoComDesconto
+
+  if (ap) {
+    precao = precao * 1.1;
+    precoParcelado = precoParcelado * 1.1;
+  }
+
+  document.getElementsByClassName('precao')[0].textContent = `R$ ${precao.toFixed(2).toString().replace('.', ',')}`
+  document.getElementsByClassName('preco-antigo')[0].textContent = `R$ ${precoParcelado.toFixed(2).toString().replace('.', ',')}`;
+  document.getElementsByClassName('preco-parcelado')[0].textContent = `R$ ${precoParcelado.toFixed(2).toString().replace('.', ',')}`;
 }
 
 function atualizaPreco(preco, desconto) {
@@ -79,10 +185,42 @@ function atualizaPreco(preco, desconto) {
     precoNormalAtual = precoNormalAtual * 1.1;
   }
 
-  document.querySelector('.precao').textContent = `R$ ${precaoAtual.toFixed(2).toString().replace('.', ',')}`
-  document.querySelector('.preco-antigo').textContent = `R$ ${precoNormalAtual.toFixed(2).toString().replace('.', ',')}`;
-  document.querySelector('.preco-parcelado').textContent = `R$ ${precoNormalAtual.toFixed(2).toString().replace('.', ',')}`;
-  document.querySelector('#quantidade').value = qtdMetros
+  document.getElementsByClassName('precao')[0].textContent = `R$ ${precaoAtual.toFixed(2).toString().replace('.', ',')}`
+  document.getElementsByClassName('preco-antigo')[0].textContent = `R$ ${precoNormalAtual.toFixed(2).toString().replace('.', ',')}`;
+  document.getElementsByClassName('preco-parcelado')[0].textContent = `R$ ${precoNormalAtual.toFixed(2).toString().replace('.', ',')}`;
+  document.getElementById('quantidade').value = qtdMetros
+}
+
+function atualizaPrecoApMed() {
+  const ap = document.getElementById('aparelhada').checked;
+  const precaoEl = document.getElementsByClassName('precao')[0];
+  const precoAntigoEl = document.getElementsByClassName('preco-antigo')[0];
+  const precoParceladoEl = document.getElementsByClassName('preco-parcelado')[0];
+
+  let precao = parseFloat(precaoEl.textContent.replace("R$", "").replace(',', '.'));
+  let precinho = parseFloat(precoAntigoEl.textContent.replace("R$", "").replace(',', '.'));
+
+  let porcentagemParaSubtrair = 10 / (1 + 10 / 100);
+
+  precao = ap ? precao * 1.1 : precao * (1 - porcentagemParaSubtrair / 100);
+  precinho = ap ? precinho * 1.1 : precinho * (1 - porcentagemParaSubtrair / 100);
+
+  precao = "R$ " + precao.toFixed(2).replace('.', ',');
+  precinho = "R$ " + precinho.toFixed(2).replace('.', ',');
+
+  precaoEl.textContent = precao;
+  precoAntigoEl.textContent = precinho;
+  precoParceladoEl.textContent = precinho;
+}
+
+function quantidadeMaiorQzero(pc){
+  let qtd = ''
+  if(pc){ qtd = document.getElementById('pecas')}
+  else  { qtd = document.getElementById('quantidade')}
+  
+  qtd.addEventListener('change', () => {
+    if(qtd.value <= 0){ qtd.value = 1;}
+  }) 
 }
 
 async function exibirProdutosRelacionados(subCategoria){
@@ -123,7 +261,6 @@ function preencherGaleria(galeriaDeFotos){
   })
 }
 
-
 function preencherFormasPag(formasDePagamento){
   const formas = separarString(formasDePagamento, " / ")
   const ulFormaPag = document.querySelector('#formas-pag')
@@ -131,21 +268,6 @@ function preencherFormasPag(formasDePagamento){
     let li = document.createElement('li')
     li.textContent = forma
     ulFormaPag.appendChild(li)
-  }
-}
-
-function preencherMapa(link){
-  document.querySelector('.link-mapa').href = link
-}
-
-function preencherCidadesFreteGratis(cidades){
-  const cidadesSeparadas = separarString(cidades, ',')
-  const listaCidades = document.querySelector('#cidades-frete-gratis')
-
-  for(const cidade of cidadesSeparadas){
-    let li = document.createElement('li')
-    li.textContent = cidade
-    listaCidades.appendChild(li)
   }
 }
 
@@ -165,7 +287,6 @@ function showCidadesFreteGratis(){
   toggleSeta('.seta-frete-gratis')
 }
 
-
 function atualizarFotao(btn){
   const img = btn.querySelector('img') 
   const novoFotao = img.src
@@ -179,7 +300,6 @@ const btnComprarAgr = document.querySelector('.comprar')
 btnComprarAgr.addEventListener('click', irParaOcarrinhoOuNao)
 
 function irParaOcarrinhoOuNao(){
-
   const userLogado = localStorage.getItem('user')
 
   if(userLogado){
@@ -204,19 +324,51 @@ function irParaOcarrinhoOuNao(){
 async function adicionarAoCarrinho(idUsuario, qtd){
   const urlParams = new URLSearchParams(window.location.search);
   const produtoId = urlParams.get('id'); 
-  const pecas = document.getElementById('pecas').value
-  const aparelhada = document.getElementById('aparelhada').checked
 
-  const produto = {usuario_ID: idUsuario, produto_ID: produtoId, quantidade: qtd, pecas: pecas || null, aparelhada: aparelhada}
+  const prod = await getProdutoPorId(produtoId)
 
-  // fetch(`http://localhost:1039/adicionarAoCarrinho`,{
-  fetch(`https://api.madetex.com.br/adicionarAoCarrinho`,{
-   method: 'POST',
-   headers: {'Content-Type': 'application/json', authorization: `${userLogado.token}`},
-   body: JSON.stringify(produto)
-   })
-  .then(response => response.json())
-  .catch(error => console.log(error))
+  let pecas = document.getElementById('pecas').value
+  let preco = prod[0].preco
+  let nome = prod[0].nome
+  const ap = document.getElementById('aparelhada').checked;
+  const foto = separarString(prod[0].galeria, ' / ')[0]
+  const medida = document.getElementById('medida').value
+
+  let vari = prod[0].tipo_variacao;
+
+  pecas = vari == "apComp" ? pecas : null
+  if(vari == "apMed"){ nome += ` 2cm x ${medida} x 3m`}
+  if(vari == "medidas") {nome += ` x ${medida}`} 
+  if(vari == "apMed" || vari == "medidas"){
+    const p = document.getElementsByClassName('preco-parcelado')[0]
+    preco = parseFloat(p.textContent.replace("R$", "").replace(',', '.'));
+  }
+
+  const produtoAserInserido = {usuario_ID: idUsuario, produto_ID: prod[0].id, quantidade: qtd, pecas: pecas || null, aparelhada: ap, tipo_variacao: vari, nome, foto, loja: prod[0].loja, desconto: prod[0].desconto, preco}
+  const options = {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json', authorization: `${userLogado.token}`},
+    body: JSON.stringify(produtoAserInserido)
+  }
+  const response = await fetch(`https://api.madetex.com.br/adicionarAoCarrinho`, options)
+  const data = await response.json()
+  if(!response.ok){
+     alert('Erro ao adicionar ao carrinho, saia da sua conta, entre e tente novamente')
+  }
+
+  prodDeLojaDiferNoCar()
+}
+
+async function prodDeLojaDiferNoCar(){
+  const prod = await  getProdutosNoCarrinho(userLogado.id)
+  const todosMesmaLoja = prod.every((produto, index, array) => {
+    return index === 0 || produto.loja === array[index - 1].loja;
+  });
+
+  if(!todosMesmaLoja){
+    abrir('.alert-prod-difer-prodSolo')
+    irParaOheader()
+  }
 }
 
 // seta do carrosel

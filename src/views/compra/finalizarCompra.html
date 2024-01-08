@@ -2,7 +2,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="/src/assets/css/main.css">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&family=Wix+Madefor+Display:wght@500;700;800&display=swap" rel="stylesheet">
@@ -242,60 +242,48 @@
           </ul>
         </nav>
       </div>
-  
     </div>
 
     <main class="main-finalizar-compra">
 
-      <section class="conteudo-finalizar-compra">
-        
-        
-      </section>
+      <section class="conteudo-finalizar-compra"> </section>
 
       <section class="resumo-finalizar-compra">
         <h4>Resumo da compra</h4>
-    
-      <div class="container-interno-resumo-FC">
+  
+        <div class="container-interno-resumo-FC">
+          <div class="direita">
+            <p class="items">Items <span></span></p>
+            <p>Frete </p>
+            <p class="total">Você pagará </p>
+            <p class="green total-pix">ou</p>
+          </div>
 
-        <div class="direita">
-          <p class="items">Items <span></span></p>
-          <p>Frete </p>
-          <p class="total">Você pagará </p>
+          <div class="esquerda">
+            <p class="total-items">aa</p>
+            <p class="total-frete">Grátis</p>
+            <p class="total-com-frete"></p>
+            <p class=" green total-no-pix"></p>
+          </div>
         </div>
-
-        <div class="esquerda">
-          <p class="total-items">aa</p>
-          <p class="total-frete">Grátis</p>
-          <p class="total-com-frete"></p>
-        </div>
-
-      </div>
-
-      
       </section>
+
       <div class="resumo-finalizar-compra-mobile">
         <div>
           <p class="qtd-items-mobile">Items <span></span></p>
           <p class="preco-frete-mobile">Frete: <span class=""> Grátis</span></p>
           <p class="total">Total: <span class="total-com-frete-mobile"></span></p>
-          <!-- <button onclick="continuarCompraFC()">Continuar compra</button> -->
+          <sup style="margin-top: -.7rem;" class="p-no-pix">No pix: <span class="no-pix"></span></sup>  
         </div>
-    
       </div>
+
     </main>
 
-    <div class="ape-faca-login card-ape-alert">
-      <p class="fechar"><button class="x"  onclick="fechar('.ape-faca-login')">x</button></p>
-      <h3 class="msg-ape">Faça login para continuar</h3>
-      <button class="btn-red-ape"><a href="/src/views/user/login.html">Entre</a></button>
-      <button class="btn-black-ape"><a href="/src/views/user/cadastrese.html">Cadastre-se</a></button>
-    </div>
-    
-    <script src="../js/header.js"></script>
-    <script src="../js/ferramentas.js"></script>
-    <script src="../js/services/servicesUser.js"></script>
-    <script src="../js/user/atualizarDados.js"></script>
-    <script src="../js/finalizarCompra.js"></script>
-    <script src="../js/footer.js"></script>
+    <script src="/src/js/header.js"></script>
+    <script src="/src/js/ferramentas.js"></script>
+    <script src="/src/js/services/servicesUser.js"></script>
+    <script src="/src/js/user/atualizarDados.js"></script>
+    <script src="/src/js/finalizarCompra.js"></script>
+    <script src="/src/js/footer.js"></script>
   </body>
 </html>
