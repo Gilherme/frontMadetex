@@ -282,15 +282,5 @@ function moverResumoDaCompra(scroll){
 async function continuarCompra() {
 
   const produtos = await getProdutosNoCarrinho(userLogado.id)
-  console.log(produtos)
-  const todosMesmaLoja = produtos.every((produto, index, array) => {
-    return index === 0 || produto.loja === array[index - 1].loja;
-  });
-
-  if(todosMesmaLoja){
-    window.location.href = '/src/views/compra/finalizarCompra.html'
-  }else{
-    abrir('.alert-prod-difer')
-    irParaOheader()
-  }
+  window.location.href = '/src/views/compra/finalizarCompra.html'
 }

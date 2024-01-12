@@ -147,7 +147,6 @@
           <p>Categorias <span class="seta">&#10095</span></p>
           <ul id="nav-categorias">
             <li><a href="./produtos.html?param=vigamentos&column=sub_categoria">Vigamentos</a></li>
-            <li><a href="./produtos.html?param=janelas&column=sub_sub_categoria">Janelas</a></li>
             <li><a href="./produtos.html?param=portas&column=sub_sub_categoria">Portas</a></li>
             <li><a href="./produtos.html?param=telhas de barro&column=sub_categoria">Telhas de Barro</a></li>
             <li><a href="./produtos.html?param=telhas de fibrocimento&column=sub_categoria">Telhas de Fibrocimento</a></li>
@@ -171,7 +170,6 @@
             <ul>
               <li><a href="./produtos.html?param=vigamentos&column=sub_categoria">Vigamentos</a></li>
               <li><a href="./produtos.html?param=telhas&column=categoria">Telhas</a></li>
-              <li><a href="./produtos.html?param=portas e janelas&column=sub_categoria">Portas e Janelas</a></li>
               <li class="penultimo"><a href="./produtos.html?param=pinus&column=madeira">Madeira Pinus</a></li>
               <li class="ultimo"><a href="./produtos.html?param=chapas de madeira&column=categoria">Compensados e Madeirites</a></li>
             </ul>
@@ -254,14 +252,12 @@
         <div class="container-interno-resumo-FC">
           <div class="direita">
             <p class="items">Items <span></span></p>
-            <p>Frete </p>
             <p class="total">Você pagará </p>
             <p class="green total-pix">ou</p>
           </div>
 
           <div class="esquerda">
             <p class="total-items">aa</p>
-            <p class="total-frete">Grátis</p>
             <p class="total-com-frete"></p>
             <p class=" green total-no-pix"></p>
           </div>
@@ -271,7 +267,6 @@
       <div class="resumo-finalizar-compra-mobile">
         <div>
           <p class="qtd-items-mobile">Items <span></span></p>
-          <p class="preco-frete-mobile">Frete: <span class=""> Grátis</span></p>
           <p class="total">Total: <span class="total-com-frete-mobile"></span></p>
           <sup style="margin-top: -.7rem;" class="p-no-pix">No pix: <span class="no-pix"></span></sup>  
         </div>
@@ -279,10 +274,16 @@
 
     </main>
 
+    <div class="card-ape-alert alert-select-ende">
+      <p class="fechar"><button class="x"  onclick="fechar('.alert-select-ende')">x</button></p>
+      <h3 class="msg-ape 'msg-red">Selecione uma opção para continuar</h3>
+    </div>
+
     <script src="/src/js/header.js"></script>
     <script src="/src/js/ferramentas.js"></script>
-    <script src="/src/js/services/servicesUser.js"></script>
     <script src="/src/js/user/atualizarDados.js"></script>
+    <script src="/src/js/services/servicesUser.js"></script>
+    <script src="/src/js/services/servicePedido.js"></script>
     <script src="/src/js/finalizarCompra.js"></script>
     <script src="/src/js/footer.js"></script>
   </body>

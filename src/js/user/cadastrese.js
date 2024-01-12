@@ -9,7 +9,6 @@ telefoneInput.addEventListener('input', () => formatarTelefone(telefoneInput));
   const tel = telefoneInput.value.replace('(', '').replace(') ', '').replace('-', '').replace(' ', '')
   const usuario = {nome: nome.value, email: email.value.trim(), telefone: tel, senha: senha.value}
 
-  // const response = await fetch(`http://localhost:1039/cadastrarUsuario`, {
   const response = await fetch(`https://api.madetex.com.br/cadastrarUsuario`, {
     method: 'POST', 
     headers: {'Content-Type': 'application/json'},
@@ -37,6 +36,7 @@ function cadastradoComSucesso(email){
       window.location.href = '/src/views/user/login.html'
     },10000)
 }
+
 
 function exibirAviso(email){
   const card = criarElemento('div', 'card-aviso')

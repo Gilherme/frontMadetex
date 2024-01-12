@@ -72,7 +72,7 @@ async function preencherEnderecosCadastrados(ende){
   
       enderecoEl.innerHTML += `
       <div class="div-escolha-endereco">
-        <input type="radio" value="${e.id} "id="endereco" name="escolha">
+        <input type="radio" value="${e.id}" cidade="${e.cidade}" "id="endereco" name="escolha">
         <label for="endereco-1">${nome}
           <span class="span-telefone"> ${e.telefone}</span>
         </label>
@@ -97,25 +97,6 @@ function selecionarEndereco(endereco){
 function selecionarRetiraEntrega(endereco){
   const radio = endereco.querySelector('input[name="entrega-retira"]')
   radio.checked = true
-}
-
-async function getInformacoesDoFrete(idEnde){
-  const dest = document.querySelector('.conteudo-finalizar-compra')
-  const response = await fetch('/src/views/apendices/infoFrete.html')
-  const infoFrete = await response.text()
-
-  dest.innerHTML = infoFrete
-  getProdutosNoCarComFrete(userLogado.id, idEnde)
-}
-
-async function getProdutosNoCarComFrete(idUsuario, idEndereco){
-
-  const ende = await getEnderecosUserPelosIds(idEndereco, idUsuario)
-  const endereco = ende[0]
-
-  const response = await fetch(`https://api.madetex.com.br/produtosNoCarComFrete?id=${encodeURIComponent(idUsuario)}&cidade=${encodeURIComponent(endereco.cidade)}`)
-  const produtos = await response.json() 
-  preencherInformacoesDeFrete(produtos)
 }
 
 function preencherInformacoesDeFrete(produtos){
@@ -299,28 +280,42 @@ async function editarEndereco(id){
   }
 }
 
-function bntContinuarParaAreaDeFrete(){
+// Continuar daqui
+function ContinuarParaAreaDeFrete(){
 
   const radios = document.querySelectorAll('input[name="escolha"]');
-  let valorSelecionado = null;
+  let idEndereco = null;
 
   radios.forEach((radio) => {
     if (radio.checked) {
-      valorSelecionado = radio.value;
+      idEndereco = radio.value;
     }
   });
 
-  if (valorSelecionado !== null) {
-    continuarParaAreaDeFrete(valorSelecionado)
+  if (idEndereco !== null) {
+    criarPedido(idEndereco, userLogado.id)
   } else {
-    document.querySelector('.aviso-escolha-endereco').style.display = 'block'
+    document.getElementsByClassName('alert-select-ende')[0].style.display = 'block'
   }
 } 
 
-async function continuarParaAreaDeFrete(idEnde){
-  getInformacoesDoFrete(idEnde)
-} 
+async function getInformacoesDoFrete(idEnde){
+  const dest = document.querySelector('.conteudo-finalizar-compra')
+  const response = await fetch('/src/views/apendices/infoFrete.html')
+  const infoFrete = await response.text()
 
+  dest.innerHTML = infoFrete
+  getProdutosNoCarComFrete(userLogado.id, idEnde)
+}
+
+async function getProdutosNoCarComFrete(idUsuario, idEndereco){
+  const ende = await getEnderecosUserPelosIds(idEndereco, idUsuario)
+  const endereco = ende[0]
+
+  const response = await fetch(`https://api.madetex.com.br/produtosNoCarComFrete?id=${encodeURIComponent(idUsuario)}&cidade=${encodeURIComponent(endereco.cidade)}`)
+  const produtos = await response.json() 
+  preencherInformacoesDeFrete(produtos)
+}
 
 async function abrirEditorEndereco(idEndereco, idUsuario){
   const dest = document.getElementById('form-add-endereco');
