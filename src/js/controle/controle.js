@@ -1,7 +1,6 @@
 
 // GET
 const userLogado = JSON.parse(localStorage.getItem('user'))
-console.log(userLogado.admin)
 if(!userLogado || !userLogado.admin){
   showVcNtemPermissao()
 }
@@ -44,29 +43,30 @@ function CriarCarroselControle(produtos){
     preco.textContent = `R$ ${ produto.preco}`
 
     card.appendChild(img); card.appendChild(titulo); card.appendChild(preco); card.appendChild(apagar); card.appendChild(editar); card.appendChild(loja)
-    containerCardsProd.appendChild(card)
+    containerCardsProd.appendChild(card);
   });
   sectionProdutosControle.appendChild(containerCardsProd)
-}
-
-// Selecionador dos botões apagar e editar
-const selecionador = document.getElementById('selecionador')
-selecionador.addEventListener('click', ()=>{
 
   const btnApagarProduto = document.querySelectorAll('.apagar');
+  const btnEditarProduto = document.querySelectorAll('.editar');
+  btnEditarProduto.forEach( btn => {
+    btn.addEventListener('click', () =>{
+      abrirParaEditar(btn)
+    })
+  })
   btnApagarProduto.forEach(btn => {
     btn.addEventListener('click', () => {
       const id = btn.id;
       apagarProduto(id)
     });
   });
+}
 
-  const btnEditarProduto = document.querySelectorAll('.editar')
-  btnEditarProduto.forEach( btn => {
-    btn.addEventListener('click', () =>{
-      abrirParaEditar(btn)
-    })
-  })
+// Selecionador dos botões apagar e editar
+const selecionador = document.getElementById('selecionador')
+selecionador.addEventListener('click', ()=>{
+
+  
 });
 
 
@@ -119,12 +119,11 @@ function submitProd(produto){
   var produto = { nome: nome, madeira: madeira, descricao: descricao, preco: preco, categoria: categoria, sub_categoria: subCategoria, sub_sub_categoria: subSubCategoria, quantidade: quantidade, loja: loja, desconto: desconto, condicao: condicao, pagamento: pagamento, galeria: galeria, lista_descricao: lista, oferta: oferta, variacao: variacao, tipo_variacao: tipoVariacao};
 
   fetch(`https://api.madetex.com.br/adicionarProduto`,{
-    // fetch(`http://localhost:1039/adicionarProduto`,{
    method: 'POST',
    headers: { authorization: `${userLogado.token}`,'Content-Type': 'application/json'},
    body: JSON.stringify(produto)
    })
   .then(response => response.json())
-  .then(mensagem => console.log(mensagem))
-  .catch(error => {console.error('Erro ao inserir dados:', error);});
+  .then(mensagem => alert(mensagem.msg))
+  .catch(error => {alert('Erro ao inserir dados:', error);});
 }

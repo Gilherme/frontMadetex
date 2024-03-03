@@ -1,9 +1,33 @@
 <sectio class="section-inf-frete">
-  <h2>Informações de frete</h2>
+  <h2 class="h2-info-frete">Informações da entrega</h2>
   <div class="container-inf-frete">
-
+    
   </div>
+  <form class="dados-recebedor">
+    <h2>Quem vai receber o pedido ? </h2>
+    <p>Informe os dados corretamente. Para o recebimento do pedido será nescessário apresentação do documento escolhido</p>
+    <div class="div-form-one">
+      <label for="nome">Nome completo:</label>
+      <input type="text" name="nome" id="nome">
+    </div>
+    <div class="div-form-two">
+      <div>
+        <select name="RGouCPF" name="RGouCPF" id="RGouCPF">
+          <option value="rg">RG</option>
+          <option value="cpf">CPF</option>
+        </select>
+      </div>
+      <div>
+        <label for="doc">RG ou CPF:</label>
+        <input type="text" name="doc" id="doc">
+      </div>
+    </div>
+    <div class="div-form-one">
+      <label for="whats">WhatsApp</label>
+      <input type="text" name="whats" id="whats">
+    </div>
+  </form>
   <div class="div-jutify-center">
-    <button class="btn-red">Continuar</button>
+    <button onclick="criarPedido()" class="btn-red">Continuar</button>
   </div>
 </section>

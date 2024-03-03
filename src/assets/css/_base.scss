@@ -8,17 +8,28 @@ html{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  border-collapse: collapse;
 }
 body{
   background-color: #1c1c1c09;
 }
 
+.ultimo-da-pagina{
+  margin-bottom: 50px;
+}
+
+.none{
+  display: none;
+}
+.block{
+  display: block;
+}
 
 $borda: 1px solid #fff;
 $font: 'Montserrat', sans-serif;
 $fontClara: #fff;
 $primaryColor: #1c1c1c;
-$secondaryColor: red;
+$secondaryColor: #ff0000;
 $darkRed: #951515;
 .red{color: red;}
 
@@ -39,6 +50,19 @@ $darkRed: #951515;
   } 
 }
 
+.flex{
+  display: flex;
+  justify-content: space-around;
+  padding: 3px 10px;
+  align-items: center;
+}
+.flex-between{
+  justify-content: space-between;
+}
+.bold{
+  font-weight: bold;
+  font-size: 1.05rem;
+}
 .menu-hamburguer{
   border: none;
   background-color: transparent;
@@ -80,6 +104,34 @@ $darkRed: #951515;
   color: red;
   background-color: transparent;
   font-size: .9rem;
+}
+.btn-mais{
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin: 5px auto;
+  border-radius: 50%;
+  border: 1px solid red;
+  color: red;
+  background-color: transparent;
+  font-size: 24px;
+}
+.btn-link{
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.seta-p-cima{
+  display: inline-block;
+  margin-inline: 5px;
+  transform: rotate(-90deg);
+}
+.seta-p-baixo{
+  display: inline-block;
+  margin-inline: 5px;
+  transform: rotate(90deg);
 }
 
 .sup-msg-erro{

@@ -1,4 +1,4 @@
-carregarPopulares(); carregarOfertas();
+carregarPopulares(); carregarOfertas(); carregarCarrosseis();
 
 async function carregarPopulares(){
   const prod = await getProdutosPopulares(12)
@@ -10,6 +10,17 @@ async function carregarOfertas(){
     preencherCarroselProdutos('#section-ofertas', prod)
 } 
 
+async function carregarCarrosseis(){
+  let loja = "Madetex Campo Limpo Pta"
+  const vigamentos =  await getProdutosPorLojaEcategoria(loja, "madeiramentos", 12);
+  const telhas =  await getProdutosPorLojaEcategoria(loja, "telhas", 12);
+  const tabuas = await getProdutosPorLojaEcategoria(loja, "tabuas", 11);
+ 
+  preencherCarroselProdutos('#section-vigamentos', vigamentos);
+  preencherCarroselProdutos('#section-telhas', telhas);
+  preencherCarroselProdutos('#section-tabuas', tabuas);
+}
+
 // Carrosel
 let count = 1;
 document.getElementById("radio1").checked = true; 
@@ -20,7 +31,7 @@ setInterval(function(){
 
 function nextImage(){
   count++;
-  if(count > 3){
+  if(count > 2){
     count = 1;
   }
   document.getElementById("radio"+ count).checked = true;
@@ -71,25 +82,14 @@ btnAnteriorCateg.addEventListener("click", () => {
   });
 });
 
-const launchDate = new Date('2024-01-15T00:00:00').getTime();
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    esconderParagrafo()
+  }, 5000)
+})
 
-    const countdown = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = launchDate - now;
-
-      function addLeadingZero(number) {
-        return number < 10 ? `0${number}` : number;
-      }
-
-      const days = addLeadingZero(Math.floor(distance / (1000 * 60 * 60 * 24)));
-      const hours = addLeadingZero(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
-      const minutes = addLeadingZero(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
-      const seconds = addLeadingZero(Math.floor((distance % (1000 * 60)) / 1000));
-
-      document.querySelector('.timer').textContent = `${days}:${hours}:${minutes}:${seconds}`;
-
-      if (distance < 0) {
-        clearInterval(countdown);
-        document.getElementById('.timer').innerHTML = 'Lançamento!';
-      }
-    }, 1000);
+// Poup-up whatsApp
+function esconderParagrafo(){
+  const p = document.getElementsByClassName('p-poupUp-whats')[0]
+  p.style.marginRight = `-225.4px`
+}

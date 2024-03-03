@@ -21,12 +21,17 @@ function irParaOheader(){
   if(header){header.scrollIntoView({ behavior: 'smooth' });}
 }
 
+async function exibirPoPuP(popUp, destino){
+  const ap = await getApendice(popUp)
+  const dest = document.querySelector(destino)
+  dest.innerHTML = ap;
+}
+
 async function getApendice(caminho){
-  const response = await fetch(caminho)
+  const response = await fetch(`/src/views/apendices/${caminho}`)
   const ape = await response.text()
   return ape
 }
-
 function criarElemento(elemento, classe){
   const element = document.createElement(elemento)
   if(elemento == 'img'){
@@ -36,7 +41,6 @@ function criarElemento(elemento, classe){
   }
   return element
 }
-
 function carregarElemento(caminho, destino){
   fetch(caminho)
     .then( response => response.text())
@@ -47,16 +51,53 @@ function carregarElemento(caminho, destino){
       console.error('Erro ao carregar o conteúdo:', error);
     })
 }
-
 function primeiraMaiuscula(string){
   const resultado = string[0].toUpperCase() + string.substring(1);
   return resultado
 }
 
-function separarString(string, separador){
-  const partes = string.split(separador);
-  return partes
+async function completarEnderecoPeloCep(cep){
+  const valorAtual = cep.value;
+  const cepFormatado = formatarCEP(valorAtual);
+  cep.value = cepFormatado;
+
+  if (cepFormatado.length >= 8) {
+    const response = await fetch(`https://brasilapi.com.br/api/cep/v1/${cepFormatado}`)
+    if(!response.ok){
+      exibirMensagemAlertaInput(cep, 'CEP inválido')
+    }
+    else{
+    const endereco = await response.json();
+    deixarInputVerde(cep, '.msg-erro-cep')
+   
+    const inputEstado = document.querySelector('#estado');
+    const inputCidade = document.querySelector('#cidade');
+    const inputBairro = document.querySelector('#bairro');
+    const inputRua    = document.querySelector('#rua');
+    
+    inputEstado.value = endereco.state; 
+    inputCidade.value = endereco.city; 
+    inputBairro.value = endereco.neighborhood; 
+    inputRua.value    = endereco.street; 
+  
+    document.querySelector('#numero').focus()
+    }
+  }
 }
+const preencherFormEnde = (ende) => {
+  const e = inputsDoEndereco()
+  e.nome = ende.nome; e.cep = ende.cep; e.estado = ende.estado; e.cidade = ende.cidade; e.bairro = ende.bairro; e.rua = ende.rua; e.numero = ende.numero; e.complemento = ende.complemento; e.telefone = ende.telefone;
+}
+const inputsDoEndereco = () => {
+  const nome = document.getElementById('nome'); const cep = document.getElementById('cep'); const estado = document.getElementById('estado'); const cidade = document.getElementById('cidade');const bairro = document.getElementById('bairro');const rua = document.getElementById('rua');  const numero = document.getElementById('numero');  const complemento = document.getElementById('complemento');  const telefone = document.getElementById('telefone');
+  return {nome, cep, estado, cidade, bairro, rua, numero, complemento, telefone}
+}
+const inputsMeuPerfil = () => {
+  const nome = document.getElementById('nome');const email = document.getElementById('email');const tel = document.getElementById('telefone');  const dataNasc = document.getElementById('data-nascimento');  const cpf = document.getElementById('cpf');
+  return {nome, email, tel, dataNasc, cpf}
+}
+
+function separarString(s, separador) {const partes = s.split(separador);return partes}
 
 function exibirMensagemAlertaInput(elemento, mensagem){
   const el = document.querySelector(elemento)
@@ -102,6 +143,18 @@ function formatarCEP(cep) {
   return cep;
 }
 
+function formatarData(data){
+  const dataa = new Date(data);
+  const dia = String(dataa.getDate()).padStart(2, '0');
+  const mes = String(dataa.getMonth() + 1).padStart(2, '0');
+  const ano = dataa.getFullYear();
+  
+  const dataFormatada = `${dia}/${mes}/${ano}`;
+  return dataFormatada;
+}
+
+function formatarPreco(p) {const p1 = "R$ " + p.toFixed(2).toString().replace(".", ",").substring(); return p1}
+
 function formatarTelefone(input) {
   var numero = input.value.replace(/\D/g, '');
   var numeroFormatado = '';
@@ -117,6 +170,48 @@ function formatarTelefone(input) {
   }
 
   input.value = numeroFormatado;
+}
+function desformatarTelefone(telefone) {
+  const numerosApenas = telefone.replace(/\D/g, '');
+  return numerosApenas;
+}
+
+function formatarCPF(input){
+  let cpf = input.value.replace(/\D/g, '');
+
+  cpf = cpf.substring(0, 11);
+
+  if (cpf.length >= 3) {
+    cpf = cpf.substring(0, 3) + '.' + cpf.substring(3);
+  }
+  if (cpf.length >= 7) {
+    cpf = cpf.substring(0, 7) + '.' + cpf.substring(7);
+  }
+  if (cpf.length >= 11) {
+    cpf = cpf.substring(0, 11) + '-' + cpf.substring(11);
+  }
+
+  // Atualiza o valor no input
+  input.value = cpf;
+}
+
+function formatarRG(input) {
+  let rg = input.value.replace(/\D/g, '');
+
+  rg = rg.substring(0, 9);
+
+  if (rg.length >= 2) {
+    rg = rg.substring(0, 2) + '.' + rg.substring(2);
+  }
+  if (rg.length >= 6) {
+    rg = rg.substring(0, 6) + '.' + rg.substring(6);
+  }
+  if (rg.length >= 9) {
+    rg = rg.substring(0, 10) + '-' + rg.substring(10);
+  }
+
+  // Atualiza o valor no input
+  input.value = rg;
 }
 
 function limitarString(texto, limite) {

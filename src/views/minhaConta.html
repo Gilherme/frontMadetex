@@ -60,8 +60,9 @@
             <div class="usuario">
 
               <div id="apendice-logado">
-                <a href="./minhaConta.html">Minha Conta</a> 
-                <a href="./contato.html">Ajuda</a>
+                <a href="/src/views/compra/statusEpagamento.html">Meus Pedidos</a>
+                <a href="/src/views/minhaConta.html">Minha Conta</a> 
+                <a href="/src/views/contato.html">Ajuda</a>
                 <a style="color: red; cursor: pointer;" onclick="sair()">Sair</a>
               </div>
 
@@ -188,7 +189,6 @@
       </div>
      
     </header>
-
     <div id="menu-mobile" class="container-menu">
 
       <button id="btn-x" class="x">
@@ -246,75 +246,43 @@
   
     </div>
 
-    <div class="container-top-minha-conta">
+    <main class="container-nav-conteudo">
 
-      <div class="minha-conta">
+      <div class="cnc-nav">
 
-        <button id="btn-menu-minha-conta" class="menu-hamburguer">
-          <div></div>
-          <div></div>
-          <div></div>
-        </button>
-        <p>Minha conta</p>
+        <button class="mc-btn-toggle">&#10095</button>
 
-        <ul id="card-menu-minha-conta">
-          <li>Dados pessoais</li>
-          <li>Meus endereços</li>
-          <li>Minhas compras</li>
-          <li>Meus cartões</li>
-          <li>Configurações</li>
-        </ul>
-      </div>
-
-      <div class="arvore-config"></div>
-
-    </div>
-
-    <main id="main-minha-conta">
-
-      <div id="container-menu-minha-conta"> 
         <nav>
           <ul>
-            <li onclick="meuPerfil()">Meu perfil</li>
-            <li onclick="minhasCompras()">Minhas compras</li>
-            <li onclick="meusEnderecos()">Meus endereços</li>
-            <li onclick="configuracoes()">Configurações</li>
-            <li onclick="">Contato</li>
+            <li class="cnc-li" onclick="toggleSectionCnc('meuPerfil.html', this)"><img src="/src/assets/img/icones/user.png" alt="icone de user"> <span class="cnc-span">Meu perfil</span></li>
+            <li class="cnc-li" onclick="toggleSectionCnc('minhasCompras.html', this)"><img src="/src/assets/img/icones/compras.png" alt="icone de compras"><span class="cnc-span">Minhas compras</span></li>
+            <li class="cnc-li" onclick="toggleSectionCnc('meusEnderecos.html', this)"><img src="/src/assets/img/icones/local.png" alt="icone de localização"><span class="cnc-span">Meus endereços</span></li>
+            <!-- <li class="cnc-li" onclick="toggleSectionCnc('chat.html', this)"><img src="/src/assets/img/icones/msg-white.png" alt="icone de mensagem"> <span class="cnc-span">Mensagens</span></li> -->
+            <li class="cnc-li" onclick="toggleSectionCnc('configuracoes.html', this)"><img src="/src/assets/img/icones/config-white.png" alt="icnone de configurações"><span class="cnc-span">Configurações</span></li>
           </ul>
         </nav>
 
       </div>
 
-      <div id="container-minha-conta">
+      <div class="cnc-conteudo">
 
-        <div class="perfil">
-          <div class="img-perfil">
-            <img src="../assets/img/user.png" alt="foto do usuario">
-          </div>
+        <div class="cnc-perfil"> 
+         <div class="ncn-img-perfil">
+          <img width="50px" src="/src/assets/img/icones/user-black.png" alt="foto do usuario"> 
+         </div>
           <div>
             <p class="nome-perfil"></p>
             <p class="email-perfil"></p>
+            <hr>
           </div>
         </div>
 
-        <section id="config-escolhida">
-          
-        </section>
-      </div>
-    </main>
-    
-    <div class="ape-faca-login card-ape-alert">
-      <p class="fechar"><button class="x"  onclick="fechar('.ape-faca-login')">x</button></p>
-      <h3 class="msg-ape">Faça login para continuar</h3>
-      <button class="btn-red-ape"><a href="/src/views/user/login.html">Entre</a></button>
-      <button class="btn-black-ape"><a href="/src/views/user/cadastrese.html">Cadastre-se</a></button>
-    </div>
+        <section class="cnc-conteudo-escolhido"></section>
 
-    <script src="../js/header.js"></script>
-    <script src="../js/ferramentas.js"></script>
-    <script src="../js/services/servicesUser.js"></script>
-    <script src="../js/user/atualizarDados.js"></script>
-    <script src="../js/user/minhaConta.js"></script>
-    <script src="../js/footer.js"></script>
+      </div>
+
+    </main>
+
+    <script src="/src/js/header.js"></script><script src="/src/js/ferramentas.js"></script><script src="/src/js/services/servicesUser.js"></script><script src="/src/js/user/atualizarDados.js"></script><script src="/src/js/services/servicePedido.js"></script><script src="/src/js/user/minhaConta.js"></script><script src="/src/js/footer.js"></script>
   </body>
 </html>

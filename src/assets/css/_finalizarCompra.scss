@@ -61,7 +61,7 @@
 }
 
 .section-entrega-retira{
-
+  padding-bottom: 40px;
   h2{
     font-weight: 500;
     width: 90%;
@@ -320,6 +320,66 @@
     text-decoration:underline;
   }
 }
+.h2-info-frete{
+  font-weight: 500;
+  width: 90%;
+  margin: 0 auto;
+}
+.dados-recebedor{
+  background-color: #fff;
+  border-radius: 1rem;
+  width: 90%;
+  padding: 20px;
+  margin: 2rem auto;
+
+  h2{
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 1.2rem;
+  }
+  p{
+    font-size: .9rem;
+    text-align: center;
+    color: red;
+  }
+
+  label{
+    font-size: .92rem;
+    color: #1c1c1c95;
+  }
+  input{
+    display: block;
+    line-height: 30px;
+    font-size: 1rem;
+    padding-left: 7px;
+    background-color: transparent;
+    border-radius: 10px;
+    width: 100%;
+    border: 1.5px solid #1c1c1c90;
+  }
+  select{
+    line-height: 23px;
+    width: 50px;
+    border-radius: 4px;
+  }
+  #whats, #nome{
+    width: 300px;
+  }
+
+  .div-form-one{
+    width: 320px;
+    margin: 1.3rem auto;
+  }
+  .div-form-two{
+    width: 320px;
+    margin: 1.3rem auto;
+    display: flex;
+    gap: 25px;
+    align-items: center;
+  }
+
+}
 
 @media screen and (max-width: 960px){
   .main-finalizar-compra{
@@ -338,7 +398,6 @@
     }
   }
 }
-
 @media screen and (max-width: 660px){
   .main-finalizar-compra{
     margin: 20px 10px 20px 10px;
@@ -423,12 +482,24 @@
     }
   }
 }
-
 @media screen and (max-width: 420px){
   .resumo-finalizar-compra-mobile{
 
     .preco-frete-mobile{
       display: none;
+    }
+  }
+  .dados-recebedor{
+    .div-form-one{
+      width: 250px;
+      margin: 1rem auto;
+    }
+    .div-form-two{
+      width: 250px;
+      margin: 1rem auto;
+    }
+    #whats, #nome{
+      width: 250px;
     }
   }
 }

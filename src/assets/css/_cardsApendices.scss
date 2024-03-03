@@ -1,6 +1,40 @@
 @import 'base';
 
 // 
+.poupUp-whats{
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  img{
+    width: 60px;
+  }
+  a{
+    z-index: 4;
+    order: 2;
+    display: block;
+    text-decoration: none;
+  }
+  button{
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+  }
+  p{
+    display: inline-block;
+    background-color: rgb(24, 209, 24);
+    color: #fff;
+    line-height: 2rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding-inline:  10px;
+    border-radius: 15px 0 0 15px;
+    transition: margin-rightF 2s ease;
+  }
+}
 
 .ape-atencao{
   position: absolute;

@@ -1,5 +1,5 @@
 
-const sectionItemsCar = document.querySelector('.produtos-no-carrinho')
+const sectionCar = document.getElementsByClassName('container-carrinho')[0];
 preencherProdutosNoCarrinho()
 
 async function preencherProdutosNoCarrinho(){
@@ -113,7 +113,7 @@ async function preencherProdutosNoCarrinho(){
      </section>
      </div>
     `
-    sectionItemsCar.innerHTML += produtoNoCarrinho;
+    sectionCar.innerHTML += produtoNoCarrinho;
   });
 
   const selectComprimento = document.querySelectorAll('.comprimento');
@@ -279,8 +279,4 @@ function moverResumoDaCompra(scroll){
   resumo.style.marginTop = `${scroll + 45}px`
 }
 
-async function continuarCompra() {
-
-  const produtos = await getProdutosNoCarrinho(userLogado.id)
-  window.location.href = '/src/views/compra/finalizarCompra.html'
-}
+ function continuarCompra(){window.location.href = '/src/views/compra/finalizarCompra.html'}

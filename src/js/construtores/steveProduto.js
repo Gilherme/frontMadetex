@@ -1,14 +1,12 @@
-function preencherCarroselProdutos( elementoPai, produtos, url){
+function preencherCarroselProdutos( elementoPai, produtos){
   const cards = document.querySelectorAll(`${elementoPai} .card-prod`)
-  // const btnVerMais = document.querySelector(`${elementoPai} .ver-mais-carrosel`)
-  // btnVerMais.href = url
 
   for (let i = 0; i < produtos.length; i++) {
     let  card = cards[i]; let prod = produtos[i]
     
     card.removeChild(card.firstChild);
 
-    const imgProduto = criarElemento('div', 'img-produto');
+    const divImg = criarElemento('div', 'img-produto');
     const img = criarElemento('img');
     const nome = criarElemento('p', 'titulo');
     const loja = criarElemento('p', 'loja')
@@ -25,8 +23,9 @@ function preencherCarroselProdutos( elementoPai, produtos, url){
     parcelamento.textContent = 'em até 10x sem juros'
     loja.textContent = `Vendido por ${prod.loja}`
 
-    imgProduto.appendChild(img)
-    card.appendChild(imgProduto)
+    divImg.appendChild(img)
+    card.appendChild(divImg)
+    card.appendChild(nome)
     if(prod.oferta){
       preco.appendChild(oferta)
       card.appendChild(preco)
@@ -34,7 +33,6 @@ function preencherCarroselProdutos( elementoPai, produtos, url){
       card.appendChild(preco)
     }
     card.appendChild(parcelamento)
-    card.appendChild(nome)
     card.appendChild(loja)
   }
 }

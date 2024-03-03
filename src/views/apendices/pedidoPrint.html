@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/src/assets/css/main.css">
+  <title>Pedido impresso</title>
+</head>
+<body>
+  <div class="container-pedidoPrint">
+    <div class="thead">
+      <h1 class="loja">Madetex.com.br</h1>
+      <div class="div-n-pedido">
+        <label for="n-pedido">Nº Pedido</label>
+        <input type="text" name="n-pedido"  class="n-pedido" value="5524">
+      </div>
+      <div class="div-data">
+        <label for="data">Data e hora</label>
+        <input type="text" name="data" class="data" value=" 26/02/2024 - 14:47">
+      </div>
+       <!-- d => descrição-->
+      <p class="nome-d">Cliente:</p><p class="nome">Isaias Oliveira Santos</p>
+      <p class="id-cliente-d">Código: </p> <p class="id-cliente">1342</p>
+      <p class="rua-d">Rua:</p> <p class="rua">Rua Laerte Monteiro </p>
+      <p class="numero-d">Nº: <span class="numero">219</span></p>
+      <p class="cep-d">CEP <span class="cep"></span></p>
+      <p class="bairro-d">Bairro:</p><p class="bairro">Jardim São Conrado</p> 
+      <p class="cidade-d">Cidade:</p> <p class="cidade">Campo Limpo Pta</p>
+      <p class="uf-d">UF: <span class="uf">SP</span></p> 
+      <p class="informacoes-d">Informações complementares</p> <p class="informacoes">Entrar em contato com o recebedor, quando sair para ele ir ao local da entrega</p>
+      <div class="div-e-ou-r">
+        <label for="e-ou-r">Entrega ou Retira</label>
+        <input type="text" value="Entrega" name="e-ou-r" class="e-ou-r">
+      </div>
+      <p class="fone-d">Telefone:</p><p class="fone">11 94891-2717</p>
+      <p class="cpf-d">CPF / CNPJ: <span class="cpf"></span></p>
+      <p class="rg-d">IE / RG: <span class="rg"></span></p>
+    </div>
+    <br>
+
+    <div class="tbody">
+      <table>
+        <thead>
+          <tr>
+            <th class="th-qtd">Qtd</th>
+            <th class="th-pc">PC</th>
+            <th class="th-nome">Produto</th>
+            <th class="th-valor">Valor</th>
+            <th class="th-id">Código</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-qtd">4m</td>
+            <td class="td-pc">1</td>
+            <td class="td-nome">Tabeira Modelada de 15cm PP2 1pc de 4,00m</td>
+            <td class="td-valor">R$ 104.40</td>
+            <td class="td-id">105</td>
+          </tr>
+          <tr>
+            <td class="td-qtd">2,50m</td>
+            <td class="td-pc">1</td>
+            <td class="td-nome">Tabeira Modelada de 15cm PP2 1pc de 2,10m (Corte)</td>
+            <td class="td-valor">R$ 71.77</td>
+            <td class="td-id">105</td>
+          </tr>
+          <!-- <tr>
+            <td class="td-qtd">1,5m</td>
+            <td class="td-pc">1</td>
+            <td class="td-nome">Caibro de madeira Cambará 5x5cm 1pc de 1,50m </td>
+            <td class="td-valor">R$ 18,13</td>
+            <td class="td-id">242</td>
+          </tr>
+          <tr>
+            <td class="td-qtd">1,5m</td>
+            <td class="td-pc">1</td>
+            <td class="td-nome">Caibro de madeira Cambará 5x5cm 1pc de 1,50m </td>
+            <td class="td-valor">R$ 16,48</td>
+            <td class="td-id">242</td>
+          </tr> -->
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <div class="tfooter">
+
+      <div class="inf-receb">
+        <h2>Informações do Recebedor</h2>
+        <p class="doc-receb-d">Documento: <span class=" doc-receb">RG:  32069604-2</span></p>
+        <p class="nome-receb-d">Nome: <span class="nome-receb">Roberto Salles borborema</span></p>
+        <p class="fone-receb-d">Telefone:  <span class="fone-receb">(11) 97445-4002</span></p>
+        <p class="ass-receb-d">Eu <span class="ass-receb">_____________________________________________ </span>Delcaro que recebi todos os produtos comprados e em perfeito estado.</p>
+      </div>
+      <div class="info-pag">
+
+        <h2>Informações Pagamento</h2>
+        <div class="forma-pag-d">
+          <label for="forma-pag">Forma de Pagamento:</label>
+          <input type="text" name="forma-pag" class="forma-pag">
+        </div>
+        <div class="condicao-pag-d">
+          <label for="condicao-pag">Condição de Pagamento:</label>
+          <input type="text" name="condicao-pag" class="condicao-pag">
+        </div>
+
+        <div class="t-bruto-d">
+          <label for="t-bruto" class="bold">T. bruto:</label>
+          <input type="text" name="t-bruto" class="t. bruto" value="R$ 176,17">
+        </div>
+
+        <div class="v-total-d">
+          <label for="v-total" class="bold">V. Total:</label>
+          <input type="text" name="v-total" class="v-total" value="R$ 176,17">
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
+
+<!-- 
+  <tr>
+            <td class="td-qtd">27m</td>
+            <td class="td-pc">6</td>
+            <td class="td-nome">Quadrado de madeira peroba Aparelhado15x15 6pc de 4,50m</td>
+            <td class="td-valor">R$ 4.075,13</td>
+            <td class="td-id">242</td>
+          </tr>
+          <tr>
+  <td class="td-qtd">38.5m</td>
+  <td class="td-pc">7</td>
+  <td class="td-nome">Prancha de Madeira Cambará 5x20cm Aparelhada 7pc de 5,50m</td>
+  <td class="td-valor">R$ 2.080,23</td>
+  <td class="td-id">122</td>
+</tr>
+<tr>
+  <td class="td-qtd">39m</td>
+  <td class="td-pc">6</td>
+  <td class="td-nome">Prancha de Madeira Cambará 5x20cm Aparelhada 6pc de 6,50m</td>
+  <td class="td-valor">R$ 2107,25</td>
+  <td class="td-id">122</td>
+</tr>
+<tr>
+  <td class="td-qtd">120m</td>
+  <td class="td-pc">40</td>
+  <td class="td-nome">Viga de Madeira Cambará 5x11cm Aparelhada 40pc de 3,00m</td>
+  <td class="td-valor">R$ 3144,24</td>
+  <td class="td-id">125</td>
+</tr>
+<tr>
+  <td class="td-qtd">242m</td>
+  <td class="td-pc">ML</td>
+  <td class="td-nome">Ripão de Madeira Cambará 2,3x5cm Aparelhada</td>
+  <td class="td-valor">R$ 1309,70</td>
+  <td class="td-id">120</td>
+</tr>
+<tr>
+  <td class="td-qtd">30m</td>
+  <td class="td-pc">5</td>
+  <td class="td-nome">Tabeira lisa de madeira cedrinho 6pc de 5,00m</td>
+  <td class="td-valor">R$ 819,00</td>
+  <td class="td-id">110</td>
+</tr> -->
+
+<!-- <tr>
+  <td class="td-qtd">38.5m</td>
+  <td class="td-pc">7</td>
+  <td class="td-nome">Prancha de Madeira Peroba 5x20cm Aparelhada 7pc de 5,50m</td>
+  <td class="td-valor">R$ 2.337,30</td>
+  <td class="td-id">222</td>
+</tr>
+<tr>
+  <td class="td-qtd">39m</td>
+  <td class="td-pc">6</td>
+  <td class="td-nome">Prancha de Madeira Peroba 5x20cm Aparelhada 6pc de 6,50m</td>
+  <td class="td-valor">R$ 2.367,65</td>
+  <td class="td-id">222</td>
+</tr>
+<tr>
+  <td class="td-qtd">120m</td>
+  <td class="td-pc">40</td>
+  <td class="td-nome">Viga de Madeira Peroba 5x11cm Aparelhada 40pc de 3,00m</td>
+  <td class="td-valor">R$ 3.635,28</td>
+  <td class="td-id">212</td>
+</tr>
+<tr>
+  <td class="td-qtd">242m</td>
+  <td class="td-pc">ML</td>
+  <td class="td-nome">Ripão de Madeira Peroba 2,3x5cm Aparelhada</td>
+  <td class="td-valor">R$ 1.538,64</td>
+  <td class="td-id">202</td>
+</tr>
+<tr>
+  <td class="td-qtd">30m</td>
+  <td class="td-pc">5</td>
+  <td class="td-nome">Tabeira lisa de madeira cedrinho 6pc de 5,00m</td>
+  <td class="td-valor">R$ 819,00</td>
+  <td class="td-id">110</td>
+</tr>  -->

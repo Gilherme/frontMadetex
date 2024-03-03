@@ -1,0 +1,29 @@
+.container-pedidos{
+  margin-top: 1.5rem;
+  overflow-x: overlay;
+  .header-pedidos, .card-pedido-controle{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
+  .card-pedido-controle{
+    height: 50px;
+    p{
+      flex-shrink: 0;
+      min-width: 150px;
+    }
+  }
+  h2,  .card-pedido-controle p{
+    text-align: center;
+    border-right: 1px solid black;
+    min-width: 150px;
+    flex-shrink: 0;
+  }
+  
+  .recebedor-el{
+    width: 250px;
+  }
+  .produtos-el, .endereco-el {
+    width: 400px;
+  }
+}

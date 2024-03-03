@@ -5,6 +5,7 @@ h1.contato{
   margin-block: 1rem;
 }
 .redes-sociais-contato{
+  height: 75vh;
   margin: 50px auto;
   width: 300px;
   display: flex;
@@ -13,14 +14,15 @@ h1.contato{
 
   li{
     cursor: pointer;
-    width: 100px;
+    width: 70%;
     img{
-      width: 80%;
+      width: 100%;
     }
   }
 }
 
 .formulario-contato{
+  display: none;
   width: 80%;
   margin: 0 auto;
 

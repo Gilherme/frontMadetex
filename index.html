@@ -41,7 +41,7 @@
             <div>
               <svg height="23" width="130">
                 <a class="logo" href="./index.html">
-                  <text x="8" y="20" stroke="3" fill="red">MADETEX</text>
+                  <text class="logo" x="8" y="20" stroke="3" fill="red">MADETEX</text>
                 </a>
               </svg>
             </div>
@@ -49,8 +49,8 @@
         </div>
 
         <form onsubmit="return false;" class="area-pesquisa">
-          <input id="input-pesquisa" autocomplete="off" onkeyup="pesquisarEnter(event); filtrarSugestoesProd();"
-            type="text" placeholder="Busque por vigamentos, telhas mais... ">
+          <input id="input-pesquisa" autocomplete="off" onkeydown="pesquisarEnter(event)" onkeyup="filtrarSugestoesProd();"
+            type="text" placeholder="Busque por vigamentos, telhas e mais... ">
           <ul></ul>
           <div>
             <button type="button" onclick="pesquisar()">
@@ -67,6 +67,7 @@
           <div class="usuario">
 
             <div id="apendice-logado">
+              <a href="/src/views/compra/statusEpagamento.html">Meus Pedidos</a>
               <a href="/src/views/minhaConta.html">Minha Conta</a>
               <a href="/src/views/contato.html">Ajuda</a>
               <a style="color: red; cursor: pointer;" onclick="sair()">Sair</a>
@@ -264,31 +265,31 @@
       <!-- Radio Ruttons -->
       <input type="radio" name="radio-btn" id="radio1">
       <input type="radio" name="radio-btn" id="radio2">
-      <input type="radio" name="radio-btn" id="radio3">
-      <input type="radio" name="radio-btn" id="radio4">
+      <!-- <input type="radio" name="radio-btn" id="radio3"> -->
+      <!-- <input type="radio" name="radio-btn" id="radio4"> -->
       <!-- Fim Radio Buttons -->
 
       <!-- slider images -->
       <div class="slide first">
-        <img src="./src/assets/img/carrosel1.png" alt="imagem 1">
+        <img src="./src/assets/img/carrosseis/M.png" alt="imagem 1">
       </div>
       <div class="slide">
-        <img src="./src/assets/img/carrosel2.png" alt="imagem 2">
+        <img src="./src/assets/img/carrosseis/PromoCarnaval.png" alt="imagem 2">
       </div>
-      <div class="slide">
-        <img src="./src/assets/img/carrosel3.png" alt="imagem 3">
-      </div>
-      <div class="slide">
-        <img src="./src/assets/img/carrosel2.png" alt="imagem 4">
-      </div>
+      <!-- <div class="slide">
+        <img src="./src/assets/img/carrosseis/carrosel3.png" alt="imagem 3">
+      </div> -->
+      <!-- <div class="slide">
+        <img src="./src/assets/img/carrosseis/carrosel2.png" alt="imagem 4">
+      </div> -->
       <!-- Fim Slider Images -->
 
       <!-- Navegation Auto -->
       <div class="nav-auto">
         <div class="auto-btn1"></div>
         <div class="auto-btn2"></div>
-        <div class="auto-btn3"></div>
-        <div class="auto-btn4"></div>
+        <!-- <div class="auto-btn3"></div> -->
+        <!-- <div class="auto-btn4"></div> -->
       </div>
       <!-- Fim Navegation Auto -->
 
@@ -298,14 +299,14 @@
     <div class="manual-navigation">
       <label for="radio1" class="manual-btn"></label>
       <label for="radio2" class="manual-btn"></label>
-      <label for="radio3" class="manual-btn"></label>
-      <label for="radio4" class="manual-btn"></label>
+      <!-- <label for="radio3" class="manual-btn"></label> -->
+      <!-- <label for="radio4" class="manual-btn"></label> -->
     </div>
   </div>
   <!--Fim do carrosel -->
 
-  <section id="section-populares">
-    <h2 class="titulo-carrosel-produtos">OS QUERIDINHOS DA MADETEX <a class="ver-mais-carrosel" href="./src/views/produtos.html?limit=30">ver
+  <section id="section-ofertas">
+    <h2 class="titulo-carrosel-produtos">  OFERTAS IMPERDIVEIS!!  <a class="ver-mais-carrosel" href="/src/views/produtos.html?param=1&column=oferta">ver
         mais</a></h2>
     <div class="container-produtos">
       <div class="container-carrosel">
@@ -358,72 +359,72 @@
 
       <div class="carrosel-categorias">
 
-        <div class="item-categoria">
+        <!-- <div class="item-categoria">
           <a href="./src/views/produtos.html?param=portas&column=sub_sub_categoria">
-            <div><img src="./src/assets/img/porta.jfif"></div>
+            <div><img src="./src/assets/img/carrosseis/porta.jfif"></div>
             <h3>Portas</h3>
           </a>
-        </div>
+        </div> -->
 
         <div class="item-categoria">
           <a href="./src/views/produtos.html?param=cambara&column=madeira">
-            <div><img src="./src/assets/img/cambara.jfif"></div>
+            <div><img src="./src/assets/img/carrosseis/cambara.jfif"></div>
             <h3>Madeira Cambará</h3>
           </a>
         </div>
 
         <div class="item-categoria">
           <a href="./src/views/produtos.html?param=peroba&column=madeira">
-            <div><img src="./src/assets/img/peroba.jfif"></div>
+            <div><img src="./src/assets/img/carrosseis/peroba.jfif"></div>
             <h3>Madeira Peroba</h3>
           </a>
         </div>
 
         <div class="item-categoria">
           <a href="./src/views/produtos.html?param=pinus&column=madeira">
-            <div><img src="./src/assets/img/pinus.jfif"></div>
+            <div><img src="./src/assets/img/carrosseis/pinus.jfif"></div>
             <h3>Madeira Pinus</h3>
           </a>
         </div>
 
         <div class="item-categoria">
           <a href="./src/views/produtos.html?param=mista&column=madeira">
-            <div><img src="./src/assets/img/mista.jfif"></div>
+            <div><img src="./src/assets/img/carrosseis/mista.jfif"></div>
             <h3>Madeira Mista</h3>
           </a>
         </div>
 
         <div class="item-categoria">
           <a href="./src/views/produtos.html?param=cedro&column=madeira">
-            <div><img src="./src/assets/img/cedrinho.jfif"></div>
+            <div><img src="./src/assets/img/carrosseis/cedrinho.jfif"></div>
             <h3>Madeira Cedrinho</h3>
           </a>
         </div>
 
         <div class="item-categoria">
           <a href="./src/views/produtos.html?param=forro&column=sub_categoria">
-            <div><img src="./src/assets/img/forro.jfif"></div>
+            <div><img src="./src/assets/img/carrosseis/forro.jfif"></div>
             <h3>Forro de madeira</h3>
           </a>
         </div>
 
         <div class="item-categoria">
           <a href="/src/views/produtos.html?param=telhas de barro&column=sub_categoria">
-            <div><img src="./src/assets/img/telhas/telha-romana.jfif"></div>
+            <div><img src="./src/assets/img/telhas/cer/telha-romana.jfif"></div>
             <h3>Telhas de Barro</h3>
           </a>
         </div>
 
         <div class="item-categoria">
           <a href="./src/views/produtos.html?param=telhas de fibrocimento&column=sub_categoria">
-            <div><img src="./src/assets/img//telhas/telha-ondulada.png"></div>
+            <div><img src="./src/assets/img/telhas/fibrocimento/telha-ondulada.png"></div>
             <h3>Telhas de Fibrocimento</h3>
           </a>
         </div>
 
         <div class="item-categoria">
           <a href="./src/views/produtos.html?param=chapas de madeira&column=categoria">
-            <div><img src="./src/assets/img/chapas.jfif"></div>
+            <div><img src="./src/assets/img/carrosseis/chapas.jfif"></div>
             <h3>Chapas de Madeira</h3>
           </a>
         </div>
@@ -444,9 +445,9 @@
     </div>
   </div>
 
-  <section id="section-ofertas">
-    <h2 class="titulo-carrosel-produtos"> OFERTAS IMPERDIVEIS!! 
-      <a class="ver-mais-carrosel" href="./src/views/produtos.html?param=1&column=oferta">ver mais</a>
+  <section id="section-populares">
+    <h2 class="titulo-carrosel-produtos">OS QUERIDINHOS DA MADETEX
+      <a class="ver-mais-carrosel" href="/src/views/produtos.html?limit=30">ver mais</a>
     </h2>
     <div class="container-produtos">
       <div class="container-carrosel">
@@ -488,22 +489,145 @@
     </div>
   </section>
 
-  <div class="ape-atencao">
-    <h1>ATENÇÃO!</h1>
-    <h3>SITE EM DESENVOLVIMENTO</h3>
-    <p>Não é possível fazer compras e pode aprensentar falhas.</p>
-    <span>Faltam</span>
-    <p class="timer"></p>
-    <span>Para o lançamento!</span>
+  <section id="section-vigamentos">
+    <h2 class="titulo-carrosel-produtos">VIGAMENTOS PARA TELHADOS <a class="ver-mais-carrosel" href="./src/views/produtos.html?column=categoria&param=madeiramentos">ver
+        mais</a></h2>
+    <div class="container-produtos">
+      <div class="container-carrosel">
+        <div class="bnt-produtos">
+          <button class="btn-anterior">&#10094</button>
+        </div>
 
-    <button onclick="fechar('.ape-atencao')">Ok</button>
-  </div>
+        <div class="carrosel-interno">
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+        </div>
+
+        <div class="bnt-produtos">
+          <button class="btn-proximo">&#10095</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="section-telhas">
+    <h2 class="titulo-carrosel-produtos">Telhas  <a class="ver-mais-carrosel" href="./src/views/produtos.html?column=categoria&param=telhas">ver
+        mais</a></h2>
+    <div class="container-produtos">
+      <div class="container-carrosel">
+        <div class="bnt-produtos">
+          <button class="btn-anterior">&#10094</button>
+        </div>
+
+        <div class="carrosel-interno">
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+        </div>
+
+        <div class="bnt-produtos">
+          <button class="btn-proximo">&#10095</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ultimo-da-pagina" id="section-tabuas">
+    <h2 class="titulo-carrosel-produtos">TABUAS <a class="ver-mais-carrosel" href="./src/views/produtos.html?param=tabuas&column=categoria">ver
+        mais</a></h2>
+    <div class="container-produtos">
+      <div class="container-carrosel">
+        <div class="bnt-produtos">
+          <button class="btn-anterior">&#10094</button>
+        </div>
+
+        <div class="carrosel-interno">
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div>
+          <!-- <div class="card-prod"><img class="gif-loading" src="./src/assets/img/loading.gif" alt="gif carregando">
+          </div> -->
+        </div>
+
+        <div class="bnt-produtos">
+          <button class="btn-proximo">&#10095</button>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <div class="ape-faca-login card-ape-alert">
     <p class="fechar"><button class="x"  onclick="fechar('.ape-faca-login')">x</button></p>
     <h3 class="msg-ape">Faça login para continuar</h3>
     <button class="btn-red-ape"><a href="/src/views/user/login.html">Entre</a></button>
     <button class="btn-black-ape"><a href="/src/views/user/cadastrese.html">Cadastre-se</a></button>
+  </div>
+
+  <div class="poupUp-whats">
+    <a href="https://wa.me/5511933929157"><button><img src="src/assets/img/whatsapp.png" alt=""></button></a>
+    <p class="p-poupUp-whats">Orçamento pelo whatsapp</p>
   </div>
 
   <script src="./src/js/header.js"></script>

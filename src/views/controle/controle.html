@@ -4,9 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../assets/css/main.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
   <title>Madetex - Controle</title>
 </head>
 <body>
+
   <header class="header-apendices">
     <div class="logo-apendices">
       <svg height="25" width="130">
@@ -22,8 +24,9 @@
   </header>
  
   <ul class="nav-controle">
+    <li onclick="abrirAbaPedidos()">Pedidos</li>
     <li onclick="carregarElemento('/src/views/apendices/formAddProd.html', 'conteudo-controle' )">Adicionar produtos</li>
-    <li onclick="abrirFechar('nav-exibir-prod')">Exibir Produtos</li>
+    <li onclick="carregarProdutos('Madetex Campo Limpo Pta', 'loja')">Exibir Produtos</li>
     <li><a href="./centralDeContato.html">Central de contato</a></li>
     <li><button id="selecionador">Select</button></li>
   </ul>
@@ -44,5 +47,6 @@
   
   <script src="../../js/ferramentas.js"></script>
   <script src="../../js/controle/controle.js"></script>
+  <script src="/src/js/controle/controlePedido.js"></script>
 </body>
 </html>

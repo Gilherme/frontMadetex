@@ -4,6 +4,12 @@
 header{
   background-color: $primaryColor;
 }
+.destaque{
+  color: red;
+}
+.selecionada{
+  background-color: #0003;
+}
 .container-header{
   width: 100%;
 }
@@ -455,8 +461,13 @@ header{
   }
  
 }
-
+.logo{
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
 @media screen and (max-width: 600px){
+  
   html{
     font-size: 15px;
   }

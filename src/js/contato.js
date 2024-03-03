@@ -55,7 +55,7 @@ function enviarMensagem(){
 
 function meioDeContato(meio){
   if(meio == 'whats'){
-    window.location = 'https://wa.me/5511943133043'
+    window.location = 'https://wa.me/5511933929157'
   }if(meio == 'email'){
     window.location = 'mailto:guibarreto64042@gmail.com'
   }

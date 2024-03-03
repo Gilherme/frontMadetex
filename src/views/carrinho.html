@@ -59,8 +59,9 @@
           <div class="usuario">
 
             <div id="apendice-logado">
-              <a href="./minhaConta.html">Minha Conta</a> 
-              <a href="./contato.html">Ajuda</a>
+              <a href="/src/views/compra/statusEpagamento.html">Meus Pedidos</a>
+              <a href="/src/views/minhaConta.html">Minha Conta</a> 
+              <a href="/src/views/contato.html">Ajuda</a>
               <a style="color: red; cursor: pointer;" onclick="sair()">Sair</a>
             </div>
 
@@ -247,7 +248,7 @@
   
   <main class="main-carrinho">
 
-    <section class="produtos-no-carrinho">
+    <section class="container-carrinho">
       <h2 class="h2-meu-carrinho">Meu carrinho de compras</h2>
     </section>
 
@@ -269,6 +270,7 @@
         <button onclick="continuarCompra()">Continuar compra</button>
       </div>
     </section>
+
   </main>
   
   <div class="resumo-compra-mobile">
@@ -283,6 +285,7 @@
   <script src="/src/js/header.js"></script>
   <script src="/src/js/ferramentas.js"></script>
   <script src="/src/js/services/servicesProduto.js"></script>
+  <SCript src="/src/js/services/servicesUser.js"></SCript>
   <script src="/src/js/user/atualizarDados.js"></script>
   <script src="/src/js/carrinho.js"></script>
   <script src="/src/js/footer.js"></script>
